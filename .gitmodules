@@ -7,3 +7,6 @@
 [submodule "submodules/ftrack-connect-foundry"]
 	path = submodules/ftrack-connect-foundry
 	url = https://bitbucket.org/ftrack/ftrack-connect-foundry.git
+[submodule "submodules/ftrack-connect-maya"]
+	path = submodules/ftrack-connect-maya
+	url = https://bitbucket.org/ftrack/ftrack-connect-maya.git
