@@ -4,3 +4,6 @@
 [submodule "submodules/ftrack-connect"]
 	path = submodules/ftrack-connect
 	url = https://bitbucket.org/ftrack/ftrack-connect.git
+[submodule "submodules/ftrack-connect-maya"]
+	path = submodules/ftrack-connect-maya
+	url = https://bitbucket.org/ftrack/ftrack-connect-maya.git
