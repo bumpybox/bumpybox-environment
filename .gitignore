@@ -1,4 +1,5 @@
 windows/*
 src/*
 .eggs
-pythonpath/*
+*.pyc
+utils/config.py

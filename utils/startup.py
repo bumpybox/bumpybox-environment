@@ -6,13 +6,13 @@ import subprocess
 func = os.path.dirname
 env_root = func(sys.executable)
 repo_root = os.path.join(func(func(__file__)))
-"""
+
 # install git and update
 subprocess.call(["conda", "install", "-c", "anaconda", "git", "-y"])
 subprocess.call(["git", "pull"])
 subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
 subprocess.call(["git", "submodule", "update", "--recursive"])
-"""
+
 # install PySide for ftrack-connect
 src = os.path.join(env_root, "Lib", "site-packages", "PySide")
 if os.path.exists(src):
@@ -26,8 +26,7 @@ pattern = r"submodule.submodules\/(.+)\.url"
 for line in config.split("\n"):
     match = re.match(pattern, line)
     if match:
-        print line
-        """
+
         # get submodule path
         submodule_name = match.groups()[0]
         path = os.path.join(repo_root, "submodules", submodule_name)
@@ -44,8 +43,5 @@ for line in config.split("\n"):
         path = os.path.join(repo_root, "src", submodule_name, "setup.py")
         subprocess.call(["python", path, "build"], cwd=os.path.dirname(path))
 
-# setup environment
-os.environ["PYTHONPATH"] = os.path.join(repo_root, "pythonpath")
-
-subprocess.call(["python", "-m", "ftrack_connect"])
-"""
+# chaining environment
+subprocess.call(["python", os.path.join(repo_root, "utils", "environment.py")])

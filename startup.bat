@@ -11,4 +11,4 @@ IF EXIST %~dp0windows\miniconda GOTO INSTALLEXISTS
 
 set PATH=%~dp0windows\miniconda;%~dp0windows\miniconda\Scripts;%PATH%
 
-python %~dp0cross_platform\startup.py
+python %~dp0utils\startup.py
