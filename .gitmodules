@@ -1,3 +1,6 @@
 [submodule "submodules/qtext"]
 	path = submodules/qtext
 	url = https://bitbucket.org/ftrack/qtext.git
+[submodule "submodules/ftrack-connect"]
+	path = submodules/ftrack-connect
+	url = https://bitbucket.org/ftrack/ftrack-connect.git
