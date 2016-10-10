@@ -7,3 +7,6 @@
 [submodule "submodules/ftrack-connect-maya"]
 	path = submodules/ftrack-connect-maya
 	url = https://bitbucket.org/ftrack/ftrack-connect-maya.git
+[submodule "Qt.py"]
+	path = Qt.py
+	url = https://github.com/mottosso/Qt.py
