@@ -10,6 +10,3 @@
 [submodule "submodules/Qt.py"]
 	path = submodules/Qt.py
 	url = https://github.com/mottosso/Qt.py.git
-[submodule "submodules/ftrack-connect-nuke"]
-	path = submodules/ftrack-connect-nuke
-	url = https://bitbucket.org/ftrack/ftrack-connect-nuke.git
