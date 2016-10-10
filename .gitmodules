@@ -13,3 +13,6 @@
 [submodule "submodules/ftrack-connect-foundry"]
 	path = submodules/ftrack-connect-foundry
 	url = https://bitbucket.org/ftrack/ftrack-connect-foundry.git
+[submodule "submodules/ftrack-connect-nuke"]
+	path = submodules/ftrack-connect-nuke
+	url = https://bitbucket.org/ftrack/ftrack-connect-nuke.git
