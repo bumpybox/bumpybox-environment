@@ -30,5 +30,3 @@ def check_module(module_name):
         return True
     except ImportError:
         return False
-
-check_executable("git")

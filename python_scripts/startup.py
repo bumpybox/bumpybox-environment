@@ -63,8 +63,6 @@ except:
 
 env = {"PYTHONPATH": [os.path.join(repo_root, "src", "Qt.py"),
                       os.path.join(repo_root, "src", "qtext", "source"),
-                      os.path.join(repo_root, "src", "ftrack-python-api",
-                                   "source"),
                       os.path.join(repo_root, "src", "ftrack-connect",
                                    "source"),
                       os.path.join(repo_root, "src",
