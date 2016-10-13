@@ -9,7 +9,7 @@ IF EXIST %~dp0windows\miniconda GOTO INSTALLEXISTS
 %~dp0windows\miniconda.exe /RegisterPython=0 /AddToPath=0 /S /D=%~dp0windows\miniconda
 :INSTALLEXISTS
 
-set PATH=%~dp0windows\miniconda;%~dp0windows\miniconda\Scripts;%PATH%
+set PATH=%~dp0windows\miniconda;%~dp0windows\miniconda\Library\bin;%~dp0windows\miniconda\Scripts;%PATH%
 set PYTHONPATH=%~dp0windows\miniconda\Lib\site-packages
 
 python %~dp0python_scripts\update.py
