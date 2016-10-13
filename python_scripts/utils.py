@@ -17,6 +17,8 @@ def check_executable(executable):
             exe_file = os.path.join(path, executable)
             if is_exe(exe_file):
                 return exe_file
+            if is_exe(exe_file + ".exe"):
+                return exe_file + ".exe"
 
     return None
 
@@ -28,3 +30,5 @@ def check_module(module_name):
         return True
     except ImportError:
         return False
+
+check_executable("git")
