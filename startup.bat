@@ -10,5 +10,8 @@ IF EXIST %~dp0windows\miniconda GOTO INSTALLEXISTS
 :INSTALLEXISTS
 
 set PATH=%~dp0windows\miniconda;%~dp0windows\miniconda\Scripts;%PATH%
+set PYTHONPATH=%~dp0windows\miniconda\Lib\site-packages
 
-python %~dp0utils\startup.py
+python %~dp0python_scripts\update.py
+
+python %~dp0python_scripts\startup.py

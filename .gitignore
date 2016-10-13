@@ -2,4 +2,4 @@ windows/*
 src/*
 .eggs
 *.pyc
-utils/config.py
+python_scripts/config.py
