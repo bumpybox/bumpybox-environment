@@ -3,7 +3,7 @@ import subprocess
 import sys
 import re
 
-import utils
+import conda_git_deployment.utils
 
 
 func = os.path.dirname
@@ -11,9 +11,9 @@ env_root = func(sys.executable)
 repo_root = os.path.join(func(func(__file__)))
 
 # install PySide for ftrack-connect
-if not utils.check_module("PySide"):
+if not conda_git_deployment.utils.check_module("PySide"):
     subprocess.call(["pip", "install", "PySide"])
-
+"""
 # installing all submodules
 config = subprocess.check_output(["git", "config", "--list"])
 pattern = r"submodule.submodules\/(.+)\.url"
@@ -45,7 +45,7 @@ for line in config.split("\n"):
 # building submodules
 for path in setup_files:
     subprocess.call(["python", path, "build"], cwd=os.path.dirname(path))
-
+"""
 # setup environment
 for item in os.listdir(os.path.join(repo_root, "environment")):
     try:
