@@ -7,10 +7,10 @@ import conda_git_deployment.utils
 
 
 func = os.path.dirname
-env_root = func(sys.executable)
-repo_root = os.path.join(func(func(__file__)))
+#env_root = func(sys.executable)
+repo_root = os.path.join(os.path.dirname(__file__))
 
-# install PySide for ftrack-connect
+# Install PySide for ftrack-connect.
 if not conda_git_deployment.utils.check_module("PySide"):
     subprocess.call(["pip", "install", "PySide"])
 """
@@ -45,7 +45,7 @@ for line in config.split("\n"):
 # building submodules
 for path in setup_files:
     subprocess.call(["python", path, "build"], cwd=os.path.dirname(path))
-"""
+
 # setup environment
 for item in os.listdir(os.path.join(repo_root, "environment")):
     try:
@@ -53,13 +53,6 @@ for item in os.listdir(os.path.join(repo_root, "environment")):
         os.environ[item] += os.path.join(repo_root, "environment", item)
     except:
         os.environ[item] = os.path.join(repo_root, "environment", item)
-
-try:
-    import config
-    os.environ["FTRACK_SERVER"] = config.FTRACK_SERVER
-    os.environ["FTRACK_APIKEY"] = config.FTRACK_APIKEY
-except:
-    pass
 
 env = {"PYTHONPATH": [os.path.join(repo_root, "src", "Qt.py"),
                       os.path.join(repo_root, "src", "qtext", "source"),
@@ -90,16 +83,16 @@ env = {"PYTHONPATH": [os.path.join(repo_root, "src", "Qt.py"),
                                                          "src",
                                                          "ftrack-connect-maya",
                                                          "resource")]}
+"""
+cwd = os.path.join(repo_root, "submodules", "ftrack-connect")
+subprocess.call(["git", "reset", "--hard", "0.1.25"], cwd=cwd)
+if not conda_git_deployment.utils.check_module("ftrack_connect"):
+    subprocess.call(["python", "setup.py", "install"], cwd=cwd)
 
-for variable in env:
-    path = ""
-    for item in env[variable]:
-        path += os.pathsep + item
-
-    try:
-        os.environ[variable] += path
-    except:
-        os.environ[variable] = path
+cwd = os.path.join(repo_root, "submodules", "ftrack-connect-maya")
+subprocess.call(["git", "reset", "--hard", "0.2.3"], cwd=cwd)
+if not conda_git_deployment.utils.check_module("ftrack_connect_maya"):
+    subprocess.call(["python", "setup.py", "install"], cwd=cwd)
 
 # launch
-subprocess.call(["python", "-m", "ftrack_connect"])
+subprocess.call(["python", os.path.join(repo_root, "environment.py")])
