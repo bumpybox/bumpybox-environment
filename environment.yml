@@ -1,0 +1,15 @@
+name: bumpybox-core
+dependencies:
+- python=2.7
+- pip
+- pip:
+  - PySide
+- git:
+  - https://bitbucket.org/ftrack/ftrack-connect.git:
+    - python $REPO_PATH/setup.py install
+  - https://bitbucket.org/ftrack/ftrack-connect-maya.git:
+    - python $REPO_PATH/setup.py install
+  - https://bitbucket.org/tokejepsen/ftrack-connect-nuke.git:
+    - python $REPO_PATH/setup.py install
+  - https://github.com/Bumpybox/bumpybox-core.git:
+    - python $REPO_PATH/startup.py
