@@ -3,9 +3,7 @@ import subprocess
 import sys
 import re
 
-import conda_git_deployment.utils
-
-
+"""
 func = os.path.dirname
 #env_root = func(sys.executable)
 repo_root = os.path.join(os.path.dirname(__file__))
@@ -13,86 +11,73 @@ repo_root = os.path.join(os.path.dirname(__file__))
 # Install PySide for ftrack-connect.
 if not conda_git_deployment.utils.check_module("PySide"):
     subprocess.call(["pip", "install", "PySide"])
-"""
-# installing all submodules
-config = subprocess.check_output(["git", "config", "--list"])
-pattern = r"submodule.submodules\/(.+)\.url"
-setup_files = []
-for line in config.split("\n"):
-    match = re.match(pattern, line)
-    if match:
 
-        # get submodule path
-        submodule_name = match.groups()[0]
-        path = os.path.join(repo_root, "submodules", submodule_name)
-        path = path.replace("\\", "/")
-
-        if not os.path.exists(path):
-            continue
-
-        # get submodule current commit
-        commit = subprocess.check_output(["git", "rev-parse", "HEAD"],
-                                         cwd=path)
-        commit = commit.replace("\n", "")
-
-        # clone/update repo
-        url = "git+file://" + path + "@" + commit + "#egg=" + submodule_name
-        subprocess.call(["pip", "install", "--editable", url], cwd=repo_root)
-
-        path = os.path.join(repo_root, "src", submodule_name, "setup.py")
-        setup_files.append(path)
-
-# building submodules
-for path in setup_files:
-    subprocess.call(["python", path, "build"], cwd=os.path.dirname(path))
-
-# setup environment
-for item in os.listdir(os.path.join(repo_root, "environment")):
-    try:
-        os.environ[item] += os.pathsep
-        os.environ[item] += os.path.join(repo_root, "environment", item)
-    except:
-        os.environ[item] = os.path.join(repo_root, "environment", item)
-
-env = {"PYTHONPATH": [os.path.join(repo_root, "src", "Qt.py"),
-                      os.path.join(repo_root, "src", "qtext", "source"),
-                      os.path.join(repo_root, "src", "ftrack-connect",
-                                   "source"),
-                      os.path.join(repo_root, "src",
-                                   "ftrack-connect-foundry", "source"),
-                      os.path.join(repo_root, "src",
-                                   "ftrack-connect-maya", "source"),
-                      os.path.join(repo_root, "src",
-                                   "ftrack-connect-maya", "resource",
-                                   "scripts"),
-                      os.path.join(repo_root, "src",
-                                   "ftrack-connect-nuke", "source")],
-       "FTRACK_CONNECT_PLUGIN_PATH": [os.path.join(repo_root, "src",
-                                                   "ftrack-connect"),
-                                      os.path.join(repo_root, "src",
-                                                   "ftrack-connect-foundry"),
-                                      os.path.join(repo_root, "src",
-                                                   "ftrack-connect-maya"),
-                                      os.path.join(repo_root, "src",
-                                                   "ftrack-connect-nuke")],
-       "FTRACK_CONNECT_NUKE_PLUGINS_PATH": [os.path.join(repo_root,
-                                                         "src",
-                                                         "ftrack-connect-nuke",
-                                                         "resource")],
-       "FTRACK_CONNECT_MAYA_PLUGINS_PATH": [os.path.join(repo_root,
-                                                         "src",
-                                                         "ftrack-connect-maya",
-                                                         "resource")]}
-"""
+# Check for ftrack_connect module and install if missing.
 cwd = os.path.join(repo_root, "submodules", "ftrack-connect")
+# Currently reset to older release because of maya issues.
 subprocess.call(["git", "reset", "--hard", "0.1.25"], cwd=cwd)
 if not conda_git_deployment.utils.check_module("ftrack_connect"):
     subprocess.call(["python", "setup.py", "install"], cwd=cwd)
 
+# Check for ftrack_connect_maya module and install if missing.
 cwd = os.path.join(repo_root, "submodules", "ftrack-connect-maya")
+# Currently reset to older release because of https://bitbucket.org/ftrack/ftrack-connect-maya/pull-requests/22/check-maya-version-to-decide-which-way-to/diff#comment-None
 subprocess.call(["git", "reset", "--hard", "0.2.3"], cwd=cwd)
 if not conda_git_deployment.utils.check_module("ftrack_connect_maya"):
     subprocess.call(["python", "setup.py", "install"], cwd=cwd)
 
-# launch
-subprocess.call(["python", os.path.join(repo_root, "environment.py")])
+# The "ftrack" module is required for the install of ftrack-connect-nuke.
+path = os.path.join(repo_root, "environment", "PYTHONPATH")
+try:
+    os.environ["PYTHONPATH"] += os.pathsep + path
+except:
+    os.environ["PYTHONPATH"] = path
+
+# Check for ftrack_connect_nuke module and install if missing.
+cwd = os.path.join(repo_root, "submodules", "ftrack-connect-nuke")
+if not conda_git_deployment.utils.check_module("ftrack_connect_nuke"):
+    subprocess.call(["python", "setup.py", "install"], cwd=cwd)
+"""
+repo_root = os.path.join(os.path.dirname(__file__))
+
+pythonpath = [
+    os.path.join(repo_root, "environment", "PYTHONPATH")
+]
+# Conda modifies the sys.path, so any application expecting python modules to
+# be in PYTHONPATH needs to be added manually. This is usually egg paths.
+for path in sys.path:
+    if path.endswith(".egg"):
+        pythonpath.append(path)
+
+# Adding hook directories for ftrack-connect to pick up actions.
+import ftrack_connect_maya
+# To import ftrack_connect_nuke, the ftrack module is required to be available.
+sys.path.append(os.path.join(repo_root, "environment", "PYTHONPATH"))
+import ftrack_connect_nuke
+
+ftrack_connect_plugin_path = [
+    os.path.abspath(
+        os.path.join(os.path.dirname(ftrack_connect_maya.__file__), "..")
+    ),
+    os.path.abspath(
+        os.path.join(os.path.dirname(ftrack_connect_nuke.__file__), "..")
+    )
+]
+
+# Setting environment.
+env = {
+    "PYTHONPATH": pythonpath,
+    "FTRACK_CONNECT_PLUGIN_PATH": ftrack_connect_plugin_path,
+}
+for variable in env:
+    path = ""
+    for item in env[variable]:
+        path += os.pathsep + item
+
+    try:
+        os.environ[variable] += path
+    except:
+        os.environ[variable] = path
+
+# Launch ftrack-connect
+subprocess.call(["python", "-m", "ftrack_connect"])

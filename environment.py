@@ -5,14 +5,15 @@ import re
 
 import conda_git_deployment.utils
 import ftrack_connect_maya
+import ftrack_connect_nuke
 
 
-func = os.path.dirname
-#env_root = func(sys.executable)
 repo_root = os.path.join(os.path.dirname(__file__))
 
 pythonpath = [
-    os.path.join(repo_root, "environment", "PYTHONPATH")
+    os.path.abspath(
+        os.path.join(repo_root, "submodules", "pyblish-base")
+    ),
 ]
 # Conda modifies the sys.path, so any application expecting python modules to
 # be in PYTHONPATH needs to be added manually. This is usually egg paths.
@@ -20,9 +21,13 @@ for path in sys.path:
     if path.endswith(".egg"):
         pythonpath.append(path)
 
+# Adding hook directories for ftrack-connect to pick up actions.
 ftrack_connect_plugin_path = [
     os.path.abspath(
         os.path.join(os.path.dirname(ftrack_connect_maya.__file__), "..")
+    ),
+    os.path.abspath(
+        os.path.join(os.path.dirname(ftrack_connect_nuke.__file__), "..")
     )
 ]
 
@@ -41,5 +46,5 @@ for variable in env:
     except:
         os.environ[variable] = path
 
-# launch
+# Launch ftrack-connect
 subprocess.call(["python", "-m", "ftrack_connect"])
