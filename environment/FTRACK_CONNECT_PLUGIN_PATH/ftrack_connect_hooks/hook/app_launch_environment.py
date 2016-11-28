@@ -18,8 +18,9 @@ def modify_application_launch(event):
         site_packages = os.path.join(os.path.dirname(os.path.dirname(path)),
                                      "Python", "Lib", "site-packages")
 
-        data["options"]["env"]["PYTHONPATH"] = (site_packages + os.pathsep +
-                                                os.environ["PYTHONPATH"])
+        data["options"]["env"]["PYTHONPATH"] = (
+            site_packages + os.pathsep + data["options"]["env"]["PYTHONPATH"]
+        )
 
     return data
 
