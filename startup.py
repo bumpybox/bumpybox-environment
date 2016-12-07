@@ -63,6 +63,11 @@ env["FTRACK_CONNECT_MAYA_PLUGINS_PATH"] = [
     )
 ]
 
+# FTRACK_LOCATION_PLUGIN_PATH
+env["FTRACK_LOCATION_PLUGIN_PATH"] = [
+    os.path.join(repo_root, "environment", "FTRACK_LOCATION_PLUGIN_PATH"),
+]
+
 # Setting environment.
 for variable in env:
     path = ""
