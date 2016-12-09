@@ -6,6 +6,38 @@ import ftrack
 
 class ProjectDiskStructure(ftrack.StandardStructure):
 
+    def _getParts(self, entity):
+        '''Return resource identifier parts from *entity*.'''
+        version = None
+        structureNames = []
+        for item in reversed(entity.getParents()):
+            if isinstance(item, (
+                ftrack.api.client.Task, ftrack.api.client.Project
+            )):
+                structureNames.append(item.getName())
+
+            if isinstance(item, ftrack.api.client.AssetVersion):
+                version = item
+
+        if version is None:
+            raise ValueError(
+                'Could not retreive version from {0!r}'.format(entity)
+            )
+
+        versionNumber = self._formatVersion(version.getVersion())
+
+        parts = structureNames
+        if len(parts) == 1 and self.projectVersionsPrefix:
+            # Add *projectVersionsPrefix* if configured and the version is
+            # published directly under the project.
+            parts.append(self.projectVersionsPrefix)
+
+        parts.append(item.getAsset().getName())
+        parts.append(item.getAsset().getType().getShort())
+        parts.append(versionNumber)
+
+        return [self.sanitiseForFilesystem(part) for part in parts]
+
     def getResourceIdentifier(self, entity):
 
         project = entity.getParents()[-1]
@@ -15,7 +47,7 @@ class ProjectDiskStructure(ftrack.StandardStructure):
             system_name = "unix"
 
         mount = ftrack.Disk(project.get("diskid")).get(system_name)
-        parts = [mount, project.get("root")]
+        parts = []
 
         if not entity.isContainer():
             container = entity.getContainer()
@@ -48,6 +80,7 @@ class ProjectDiskStructure(ftrack.StandardStructure):
             else:
                 # File component does not have a container, construct name from
                 # component name and file type.
+                parts += [mount, project.get("root")]
                 parts += self._getParts(entity)
                 name = entity.getName() + entity.getFileType()
                 parts.append(self.sanitiseForFilesystem(name))
@@ -55,6 +88,7 @@ class ProjectDiskStructure(ftrack.StandardStructure):
         elif entity.isSequence():
             # Create sequence expression for the sequence component and add it
             # to the parts.
+            parts += [mount, project.get("root")]
             parts += self._getParts(entity)
             sequenceExpression = self._getSequenceExpression(entity)
             parts.append(
@@ -67,6 +101,7 @@ class ProjectDiskStructure(ftrack.StandardStructure):
 
         elif entity.isContainer():
             # Add the name of the container to the resource identifier parts.
+            parts += [mount, project.get("root")]
             parts += self._getParts(entity)
             parts.append(self.sanitiseForFilesystem(entity.getName()))
 
