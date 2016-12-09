@@ -53,7 +53,7 @@ env["PYBLISHPLUGINPATH"] = [
 env["FTRACK_CONNECT_PLUGIN_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-maya"),
     os.path.join(repo_root, "environment", "FTRACK_CONNECT_PLUGIN_PATH"),
-    #os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
 ]
 
 # FTRACK_CONNECT_MAYA_PLUGINS_PATH
