@@ -13,6 +13,7 @@ env["PYTHONPATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox",
                  "pyblish_bumpybox", "environment_variables", "pythonpath"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-template"),
 ]
 
 # NUKE_PATH
@@ -66,6 +67,11 @@ env["FTRACK_CONNECT_MAYA_PLUGINS_PATH"] = [
 # FTRACK_LOCATION_PLUGIN_PATH
 env["FTRACK_LOCATION_PLUGIN_PATH"] = [
     os.path.join(repo_root, "environment", "FTRACK_LOCATION_PLUGIN_PATH"),
+]
+
+# FTRACK_EVENT_PLUGIN_PATH
+env["FTRACK_EVENT_PLUGIN_PATH"] = [
+    os.path.join(repo_root, "environment", "FTRACK_EVENT_PLUGIN_PATH"),
 ]
 
 # Setting environment.

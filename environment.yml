@@ -20,3 +20,4 @@ dependencies:
   - https://github.com/pyblish/pyblish-ftrack.git
   - https://github.com/Bumpybox/pyblish-bumpybox.git
   - https://github.com/tokejepsen/ftrack-hooks.git
+  - https://github.com/tokejepsen/ftrack-template.git
