@@ -10,6 +10,7 @@ env["PYTHONPATH"] = [
     os.path.join(repo_root, "environment", "PYTHONPATH"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-maya",
                  "pyblish_maya", "pythonpath"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-houdini"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox",
                  "pyblish_bumpybox", "environment_variables", "pythonpath"),
@@ -26,6 +27,8 @@ env["NUKE_PATH"] = [
 env["HOUDINI_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox",
                  "pyblish_bumpybox", "environment_variables", "houdini_path"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-houdini",
+                 "pyblish_houdini", "houdini_path"),
     "&"
 ]
 
