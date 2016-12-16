@@ -1,4 +1,4 @@
-name: bumpybox-core
+name: bumpybox-environment
 channels:
 - menpo
 dependencies:
