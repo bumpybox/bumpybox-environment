@@ -1,5 +1,5 @@
 import ftrack_api
-from ftrack_locations import ftrack_template_disk
+import ftrack_locations
 
 
 def configure_locations(event):
@@ -7,7 +7,7 @@ def configure_locations(event):
     session = event["data"]["session"]
 
     # Find location(s) and customise instances.
-    location = ftrack_template_disk.get_new_location(session)
+    location = ftrack_locations.get_new_location(session)
     ftrack_api.mixin(
         location, ftrack_api.entity.location.UnmanagedLocationMixin
     )

@@ -1,5 +1,5 @@
 import ftrack
-from ftrack_locations import ftrack_template_disk
+import ftrack_locations
 
 
 def register(registry, **kw):
@@ -11,6 +11,6 @@ def register(registry, **kw):
         # Exit to avoid registering this plugin again.
         return
 
-    location = ftrack_template_disk.get_old_location()
+    location = ftrack_locations.get_old_location()
 
     registry.add(location)
