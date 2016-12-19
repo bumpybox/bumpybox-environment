@@ -1,5 +1,6 @@
 import os
-import subprocess
+
+from conda_git_deployment import utils
 
 
 repo_root = os.path.join(os.path.dirname(__file__))
@@ -15,6 +16,7 @@ env["PYTHONPATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-bumpybox",
                  "pyblish_bumpybox", "environment_variables", "pythonpath"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-template"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-locations"),
 ]
 
 # NUKE_PATH
@@ -56,6 +58,7 @@ env["PYBLISHPLUGINPATH"] = [
 # FTRACK_CONNECT_PLUGIN_PATH
 env["FTRACK_CONNECT_PLUGIN_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-maya"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-nuke"),
     os.path.join(repo_root, "environment", "FTRACK_CONNECT_PLUGIN_PATH"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
 ]
@@ -64,6 +67,13 @@ env["FTRACK_CONNECT_PLUGIN_PATH"] = [
 env["FTRACK_CONNECT_MAYA_PLUGINS_PATH"] = [
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-maya", "resource"
+    )
+]
+
+# FTRACK_CONNECT_NUKE_PLUGINS_PATH
+env["FTRACK_CONNECT_NUKE_PLUGINS_PATH"] = [
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-nuke", "resource"
     )
 ]
 
@@ -77,6 +87,11 @@ env["FTRACK_EVENT_PLUGIN_PATH"] = [
     os.path.join(repo_root, "environment", "FTRACK_EVENT_PLUGIN_PATH"),
 ]
 
+# FTRACK_LOCATIONS_MODULE
+env["FTRACK_LOCATIONS_MODULE"] = [
+    os.environ.get("FTRACK_LOCATIONS_MODULE", "ftrack_template_disk")
+]
+
 # Setting environment.
 for variable in env:
     path = ""
@@ -86,7 +101,7 @@ for variable in env:
     try:
         os.environ[variable] += path
     except:
-        os.environ[variable] = path
+        os.environ[variable] = path[1:]
 
-# Launch ftrack-connect
-subprocess.call(["python", "-m", "ftrack_connect"])
+
+utils.write_environment(os.environ)
