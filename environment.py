@@ -8,7 +8,6 @@ env = {}
 
 # PYTHONPATH
 env["PYTHONPATH"] = [
-    os.path.join(repo_root, "environment", "PYTHONPATH"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-maya",
                  "pyblish_maya", "pythonpath"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-houdini"),
@@ -53,43 +52,6 @@ env["PYBLISHPLUGINPATH"] = [
                  "pyblish_bumpybox", "plugins", "ftrack"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-ftrack",
                  "pyblish_ftrack", "plugins"),
-]
-
-# FTRACK_CONNECT_PLUGIN_PATH
-env["FTRACK_CONNECT_PLUGIN_PATH"] = [
-    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-maya"),
-    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-nuke"),
-    os.path.join(repo_root, "environment", "FTRACK_CONNECT_PLUGIN_PATH"),
-    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
-]
-
-# FTRACK_CONNECT_MAYA_PLUGINS_PATH
-env["FTRACK_CONNECT_MAYA_PLUGINS_PATH"] = [
-    os.path.join(
-        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-maya", "resource"
-    )
-]
-
-# FTRACK_CONNECT_NUKE_PLUGINS_PATH
-env["FTRACK_CONNECT_NUKE_PLUGINS_PATH"] = [
-    os.path.join(
-        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-connect-nuke", "resource"
-    )
-]
-
-# FTRACK_LOCATION_PLUGIN_PATH
-env["FTRACK_LOCATION_PLUGIN_PATH"] = [
-    os.path.join(repo_root, "environment", "FTRACK_LOCATION_PLUGIN_PATH"),
-]
-
-# FTRACK_EVENT_PLUGIN_PATH
-env["FTRACK_EVENT_PLUGIN_PATH"] = [
-    os.path.join(repo_root, "environment", "FTRACK_EVENT_PLUGIN_PATH"),
-]
-
-# FTRACK_LOCATIONS_MODULE
-env["FTRACK_LOCATIONS_MODULE"] = [
-    os.environ.get("FTRACK_LOCATIONS_MODULE", "ftrack_template_disk")
 ]
 
 # Setting environment.
