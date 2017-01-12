@@ -8,16 +8,24 @@ dependencies:
 - pip:
   - PySide
   - clique
+  - lucidity
   - pyperclip
 - git:
-  - https://github.com/Bumpybox/bumpybox-core.git:
-    - python $REPO_PATH/startup.py
+  - https://github.com/bumpybox/Tapp.git
+  - https://bitbucket.org/tokejepsen/QtExt.git
   - https://bitbucket.org/ftrack/ftrack-connect.git
-  - https://bitbucket.org/ftrack/ftrack-connect-maya.git
-  - https://github.com/pyblish/pyblish-base.git
-  - https://github.com/pyblish/pyblish-lite.git
-  - https://github.com/pyblish/pyblish-maya.git
-  - https://github.com/pyblish/pyblish-ftrack.git
-  - https://github.com/Bumpybox/pyblish-bumpybox.git
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git
   - https://github.com/tokejepsen/ftrack-hooks.git
+  - https://github.com/tokejepsen/ftrack-locations.git
   - https://github.com/tokejepsen/ftrack-template.git
+  - https://github.com/pyblish/pyblish-base.git
+  - https://github.com/bumpybox/pyblish-bumpybox.git
+  - https://github.com/tokejepsen/pyblish-ftrack.git@f9d5c7b02607ed86ded0532136b4c743581534bf
+  - https://github.com/pyblish/pyblish-houdini.git
+  - https://github.com/tokejepsen/pyblish-lite.git
+  - https://github.com/pyblish/pyblish-maya.git
+  - https://github.com/tokejepsen/ftrack-connect-environment.git:
+    - python $REPO_PATH/environment.py
+  - https://github.com/tokejepsen/bumpybox-environment.git:
+    - python $REPO_PATH/environment.py
+    - python -m ftrack_connect
