@@ -29,6 +29,7 @@ environment["PYTHONPATH"] = [
         "environment",
         "PYTHONPATH"
     ),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "studio-library"),
 ]
 
 # MAYA_PLUG_IN_PATH
