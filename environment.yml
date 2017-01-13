@@ -11,7 +11,7 @@ dependencies:
   - lucidity
   - pyperclip
 - git:
-  - https://github.com/bumpybox/Tapp.git@57d8d03d91d1fb32d864f23f59f4a5899273f1c1
+  - https://github.com/bumpybox/Tapp.git@95ab251f3a8ca9c0861b37e10e889750fc481c84
   - https://bitbucket.org/tokejepsen/QtExt.git@34f785b32161d0c7006706ab5ca12763ad6d662e
   - https://bitbucket.org/ftrack/ftrack-connect.git@64b062c0b6b86ba45225878f154f0e04180cbfe1
   - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@4487fa733768a90d3a831d4570a8606c4a3d1556
