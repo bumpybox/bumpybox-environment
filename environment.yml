@@ -23,7 +23,7 @@ dependencies:
   - https://github.com/bumpybox/pyblish-bumpybox.git@b5b28c0a4769078d78c775dfd1612aa11f556ce5
   - https://github.com/tokejepsen/pyblish-ftrack.git@f9d5c7b02607ed86ded0532136b4c743581534bf
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
-  - https://github.com/tokejepsen/pyblish-lite.git@543a64d4d6f6d6ce425a52b9eba8969b8e896366
+  - https://github.com/tokejepsen/pyblish-lite.git@b1737db3242d485a0377dc52265ebae805268a97
   - https://github.com/pyblish/pyblish-maya.git@93651557bb62d3f367d3ec753b7b832398373888
   - https://github.com/tokejepsen/ftrack-connect-environment.git@275f7af2933b488fa2c60ef61ab1984be389714c:
     - python $REPO_PATH/environment.py
