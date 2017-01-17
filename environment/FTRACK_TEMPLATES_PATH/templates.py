@@ -65,6 +65,14 @@ def register():
                         os.path.dirname(__file__), "maya.mb"
                     )
                 }
+            },
+            "{hiero}": {
+                "hiero_v{padded_version}.hrox": {
+                    "isfile": True,
+                    "source": os.path.join(
+                        os.path.dirname(__file__), "hiero.hrox"
+                    )
+                }
             }
         },
         "publish": {

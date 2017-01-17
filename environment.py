@@ -30,6 +30,25 @@ environment["PYTHONPATH"] = [
         "PYTHONPATH"
     ),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "studio-library"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-hiero"),
+    os.path.join(os.path.dirname(__file__), "environment", "PYTHONPATH"),
+]
+
+# HIERO_PLUGIN_PATH
+environment["HIERO_PLUGIN_PATH"] = [
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"],
+        "pyblish-hiero",
+        "pyblish_hiero",
+        "hiero_plugin_path",
+    ),
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"],
+        "pyblish-bumpybox",
+        "pyblish_bumpybox",
+        "environment_variables",
+        "hiero_plugin_path"
+    ),
 ]
 
 # MAYA_PLUG_IN_PATH
