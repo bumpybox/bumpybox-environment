@@ -11,22 +11,22 @@ dependencies:
   - lucidity
   - pyperclip
 - git:
-  - https://bitbucket.org/ftrack/ftrack-connect.git@64b062c0b6b86ba45225878f154f0e04180cbfe1
-  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@4487fa733768a90d3a831d4570a8606c4a3d1556
-  - https://github.com/tokejepsen/ftrack-hooks.git@5a424ae0c60714693a6c335589855f2a48cff908
-  - https://github.com/tokejepsen/ftrack-locations.git@eccb7fca95db6d039906aa6f2da0c65f012c4838
-  - https://github.com/tokejepsen/ftrack-template.git@825e29b1a81a65a38fc56f4e5b744b23a79e72df
-  - https://github.com/pyblish/pyblish-base.git@6dc5781d6bb7b97fb7bc9df268f59e24a477c272
-  - https://github.com/bumpybox/pyblish-bumpybox.git@3cbdaebbf9df57da45238e3f1735ab13ffe68987
-  - https://github.com/pyblish/pyblish-ftrack.git@efd210819fe3cfd05605b0740c2f11ac3389ab49
-  - https://github.com/pyblish/pyblish-hiero.git@cb2ad22d8cc21e33f4927197d790156569aef2b3
-  - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
-  - https://github.com/tokejepsen/pyblish-lite.git@594b101f47f4e38979b835a58276ce3281cb9805
-  - https://github.com/pyblish/pyblish-maya.git@93651557bb62d3f367d3ec753b7b832398373888
-  - https://bitbucket.org/tokejepsen/QtExt.git@34f785b32161d0c7006706ab5ca12763ad6d662e
-  - https://github.com/tokejepsen/studio-library.git@81e48e19ccd1b2f95fdf42d51c38527d48e77e52
-  - https://github.com/bumpybox/Tapp.git@0da5ec5bc2d4b55c73d312e9888e24cd114ca213
-  - https://github.com/tokejepsen/ftrack-connect-environment.git@275f7af2933b488fa2c60ef61ab1984be389714c:
+  - https://github.com/bumpybox/Tapp.git
+  - https://github.com/mjmvisser/studiolibrary.git
+  - https://bitbucket.org/tokejepsen/QtExt.git
+  - https://github.com/pyblish/pyblish-maya.git
+  - https://github.com/pyblish/pyblish-lite.git
+  - https://github.com/pyblish/pyblish-houdini.git
+  - https://github.com/pyblish/pyblish-hiero.git
+  - https://github.com/pyblish/pyblish-ftrack.git
+  - https://github.com/bumpybox/pyblish-bumpybox.git
+  - https://github.com/pyblish/pyblish-base.git
+  - https://github.com/tokejepsen/ftrack-template.git
+  - https://github.com/tokejepsen/ftrack-locations.git
+  - https://github.com/tokejepsen/ftrack-hooks.git
+  - https://bitbucket.org/ftrack/ftrack-connect.git
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git
+  - https://github.com/tokejepsen/ftrack-connect-environment.git:
     - python $REPO_PATH/environment.py
   - https://github.com/bumpybox/bumpybox-environment.git:
     - python $REPO_PATH/environment.py

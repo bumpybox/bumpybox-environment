@@ -29,7 +29,7 @@ environment["PYTHONPATH"] = [
         "environment",
         "PYTHONPATH"
     ),
-    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "studio-library"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"]),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-hiero"),
     os.path.join(os.path.dirname(__file__), "environment", "PYTHONPATH"),
 ]
