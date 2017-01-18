@@ -14,9 +14,14 @@ global proc shelf_Bumpybox () {
         -preventOverride 0
         -annotation "Studio Library" 
         -enableBackground 0
+        -highlightColor 0.321569 0.521569 0.65098 
         -align "center" 
         -label "import tapp.maya.studiolibrary\ntapp.maya.studiolibrary.main()" 
         -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
         -font "plainLabelFont" 
         -imageOverlayLabel "Studio Library" 
         -overlayLabelColor 0.8 0.8 0.8 
