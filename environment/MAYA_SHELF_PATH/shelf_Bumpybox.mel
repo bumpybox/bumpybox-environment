@@ -55,6 +55,7 @@ global proc shelf_Bumpybox () {
         -flipY 0
         -useAlpha 1
         -font "plainLabelFont" 
+        -imageOverlayLabel "AnimTransfer" 
         -overlayLabelColor 0.8 0.8 0.8 
         -overlayLabelBackColor 0 0 0 0.5 
         -image "pythonFamily.png" 
