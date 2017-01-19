@@ -38,7 +38,7 @@ def register():
         system_name = "unix"
 
     mount = (
-        "{#project.disk." + system_name + "}/{#project.root}/{#project.name}"
+        "{#project.disk." + system_name + "}/{#project.root}"
     )
     task = "{#task.name}"
     tasks = "Tasks/" + task
