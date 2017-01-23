@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hieroXML>
-<hieroXML version="10" revision="1367" release="10.0v1" name="Hiero">
- <Project guid="{6b5f002f-1a54-5d48-9b1c-4f6b9869147a}" floatLut="linear" logLut="Cineon" workingSpace="linear" name="hiero" timedisplayformat="0" starttimecode="86400" shotPresetName="Basic Nuke Shot With Annotations" redVideoDecodeMode="0" sixteenBitLut="sRGB" nukeUseOCIO="0" samplerate="48000/1" framerate="24/1" viewerLut="sRGB" ocioConfigCustom="0" thumbnailLut="sRGB" buildTrackName="VFX" ocioconfigpath="" useViewColors="0" editable="1" eightBitLut="sRGB">
+<hieroXML version="10" revision="159" release="10.5v1" name="Hiero">
+ <Project guid="{2c9cec34-5db6-6d4d-9f79-31cae3797be0}" floatLut="linear" ocioConfigName="custom" logLut="Cineon" workingSpace="linear" name="hiero" timedisplayformat="0" starttimecode="86400" shotPresetName="Basic Nuke Shot With Annotations" redVideoDecodeMode="0" sixteenBitLut="sRGB" nukeUseOCIO="0" samplerate="48000/1" framerate="24/1" timelineReformatType="Disabled" viewerLut="sRGB" ocioConfigCustom="0" thumbnailLut="sRGB" buildTrackName="VFX" ocioconfigpath="" timelineReformatCenter="1" useViewColors="0" editable="1" timelineReformatResizeType="Width" eightBitLut="sRGB">
   <items>
-   <RootBinProjectItem editable="1" guid="{41a27805-a781-3843-b289-2c1dfdbcdd6d}" name="Sequences">
+   <RootBinProjectItem editable="1" guid="{0052afa5-fd84-0041-b1ab-0090bd41d101}" name="Sequences">
     <BinViewType>2</BinViewType>
     <BinViewZoom>70</BinViewZoom>
     <AllowedItems>13</AllowedItems>
    </RootBinProjectItem>
-   <RootBinProjectItem editable="1" guid="{81d6f558-bd07-6444-b445-09443b69edcd}" name="Tags">
+   <RootBinProjectItem editable="1" guid="{924d18b7-08e9-694c-b133-0e9baa1700d8}" name="Tags">
     <BinViewType>2</BinViewType>
     <BinViewZoom>70</BinViewZoom>
     <AllowedItems>17</AllowedItems>
@@ -17,8 +17,8 @@
   <BinViewType>2</BinViewType>
   <BinViewZoom>70</BinViewZoom>
   <AllowedItems>2</AllowedItems>
-  <RootBinProjectItem objName="sequencesBin" guid="{41a27805-a781-3843-b289-2c1dfdbcdd6d}" link="internal"/>
-  <RootBinProjectItem objName="tagsBin" guid="{81d6f558-bd07-6444-b445-09443b69edcd}" link="internal"/>
+  <RootBinProjectItem objName="sequencesBin" guid="{0052afa5-fd84-0041-b1ab-0090bd41d101}" link="internal"/>
+  <RootBinProjectItem objName="tagsBin" guid="{924d18b7-08e9-694c-b133-0e9baa1700d8}" link="internal"/>
   <MediaFormatValue default="0" objName="outputformat" value="1,[ 0, 0, 1920, 1080],[ 0, 0, 1920, 1080],HD 1080" name=""/>
   <Views>
    <View name="main" color="#ffffff"/>

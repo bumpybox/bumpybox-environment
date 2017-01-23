@@ -81,11 +81,10 @@ def resetSelection(translation=True, rotation=True,
 def get_all_nodes(node_list):
     nodes = []
     children = pm.listRelatives(
-        node_list[0].root(), allDescendents=True, type="transform"
+        node_list[0].root(), allDescendents=True, type="nurbsCurve"
     )
     for node in children:
-        if node.name().endswith("_cnt"):
-            nodes.append(node)
+        nodes.append(node.getTransform())
     return nodes
 
 
