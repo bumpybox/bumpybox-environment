@@ -88,6 +88,9 @@ environment["FTRACK_TEMPLATES_PATH"] = [
 # FTRACK_CONNECT_PLUGIN_PATH
 environment["FTRACK_CONNECT_PLUGIN_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
+    os.path.join(
+        os.path.dirname(__file__), "environment", "FTRACK_CONNECT_PLUGIN_PATH"
+    )
 ]
 
 # FTRACK_LOCATION_PLUGIN_PATH
