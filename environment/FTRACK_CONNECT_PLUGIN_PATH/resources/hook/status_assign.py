@@ -24,6 +24,12 @@ def callback(event):
         changes, to the subgroup.
     """
 
+    # Return early if event wasn't triggered by the current user.
+    if "user" in event["data"]:
+        user = ftrack.User(event["data"]["user"]["userid"])
+        if user.getUsername() != getpass.getuser():
+            return
+
     for entity in event['data'].get('entities', []):
 
         # Filter non-assetversions
