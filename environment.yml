@@ -11,6 +11,7 @@ dependencies:
   - lucidity
   - pyperclip
 - git:
+  - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://github.com/bumpybox/Tapp.git@0d5ca78f2ca8f28f12a3a5f0565f99e8efe962de
   - https://github.com/tokejepsen/studio-library.git@de4d349daebc1a961a81c5506fd0e2c08e1470af
   - https://bitbucket.org/ftrack/QtExt.git@f88d1db8d5b7a0f5162f29a0701166d3be24fd19
@@ -19,7 +20,7 @@ dependencies:
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
   - https://github.com/pyblish/pyblish-hiero.git@8cfcfe00ee1eef07385ceb39381cac5b7d9f1c1d
   - https://github.com/pyblish/pyblish-ftrack.git@224ca4ba26f2566d8adf31268ea7db264d7f1d2a
-  - https://github.com/bumpybox/pyblish-bumpybox.git@2dc5a1e8d1d61d8bb3a5c63726cdb3165fdc2828
+  - https://github.com/bumpybox/pyblish-bumpybox.git@632daafe2e52dc8e0e5daf4064b4125b0ebe84a7
   - https://github.com/pyblish/pyblish-base.git@9a3d78772f73e5905c131f9431cc3a266b23cbf7
   - https://github.com/tokejepsen/maya-capture-gui.git@329bdd7bbf018fe67425f2273eba15b7c9ebd958
   - https://github.com/tokejepsen/maya-capture.git@aa62ddec9c879396a01bdb9a5dc2952453cd2396
