@@ -63,9 +63,14 @@ environment["MAYA_PLUG_IN_PATH"] = [
     ),
 ]
 
-# MAYA_PLUG_IN_PATH
+# MAYA_SHELF_PATH
 environment["MAYA_SHELF_PATH"] = [
     os.path.join(os.path.dirname(__file__), "environment", "MAYA_SHELF_PATH")
+]
+
+# MAYA_MODULE_PATH
+environment["MAYA_MODULE_PATH"] = [
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "cvshapeinverter"),
 ]
 
 # PYBLISHPLUGINPATH
