@@ -19,7 +19,7 @@ dependencies:
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
   - https://github.com/pyblish/pyblish-hiero.git@cb2ad22d8cc21e33f4927197d790156569aef2b3
   - https://github.com/pyblish/pyblish-ftrack.git@224ca4ba26f2566d8adf31268ea7db264d7f1d2a
-  - https://github.com/bumpybox/pyblish-bumpybox.git@1cf5dd3ecd47c963685aa4ecb650db676825bc02
+  - https://github.com/bumpybox/pyblish-bumpybox.git@4106e5240602df65021e96a14f6ade88e296df08
   - https://github.com/pyblish/pyblish-base.git@9a3d78772f73e5905c131f9431cc3a266b23cbf7
   - https://github.com/tokejepsen/maya-capture-gui.git@329bdd7bbf018fe67425f2273eba15b7c9ebd958
   - https://github.com/tokejepsen/maya-capture.git@aa62ddec9c879396a01bdb9a5dc2952453cd2396
