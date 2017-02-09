@@ -1,32 +1,8 @@
-import os
 from functools import partial
 
 import pymel.core as pm
 import maya.cmds as cmds
 
-
-# Quiet load alembic plugins
-pm.loadPlugin('AbcExport.mll', quiet=True)
-pm.loadPlugin('AbcImport.mll', quiet=True)
-
-
-# Set project to workspace next to scene file.
-def set_workspace():
-    current_file = cmds.file(sceneName=True, query=True)
-    workspace = os.path.join(
-        os.path.dirname(os.path.abspath(current_file)), "workspace"
-    )
-
-    if not os.path.exists(workspace):
-        os.makedirs(workspace)
-
-    for item in pm.system.Workspace.fileRules:
-        pm.system.Workspace.fileRules[item] = workspace
-
-    pm.system.Workspace.save()
-
-
-pm.evalDeferred("set_workspace()")
 
 # Marking menu
 WindowName = 'CustomAnimationMarkingMenu'
