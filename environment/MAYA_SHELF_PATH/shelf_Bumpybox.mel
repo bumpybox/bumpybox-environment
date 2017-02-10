@@ -127,7 +127,7 @@ global proc shelf_Bumpybox () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import os\nimport shutil\n\nimport pymel.core\n\n\nimage_plane = pymel.core.ls(selection=True)[0].getShape()\nsrc = image_plane.imageName.get()\ndst = os.path.join(os.path.expanduser('~'), os.path.basename(src))\nshutil.copy(src, dst)\nimage_plane.imageName.set(dst)\ntry:\n    image_plane.addAttr(\"remoteImageName\", dt=\"string\")\nexcept:\n    pass\nimage_plane.remoteImageName.set(src)" 
+        -command "import os\nimport shutil\n\nimport pymel.core\n\n\nimage_plane = pymel.core.ls(selection=True)[0]\nsrc = image_plane.imageName.get()\ndst = os.path.join(os.path.expanduser('~'), os.path.basename(src))\nshutil.copy(src, dst)\nimage_plane.imageName.set(dst)\ntry:\n    image_plane.addAttr(\"remoteImageName\", dt=\"string\")\nexcept:\n    pass\nimage_plane.remoteImageName.set(src)" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -159,7 +159,7 @@ global proc shelf_Bumpybox () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import os\nimport shutil\n\nimport pymel.core\n\n\nimage_plane = pymel.core.ls(selection=True)[0].getShape()\nimage_plane.imageName.set(image_plane.remoteImageName.get())\n" 
+        -command "import os\nimport shutil\n\nimport pymel.core\n\n\nimage_plane = pymel.core.ls(selection=True)[0]\nimage_plane.imageName.set(image_plane.remoteImageName.get())\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
