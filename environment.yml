@@ -30,7 +30,7 @@ dependencies:
   - https://bitbucket.org/ftrack/ftrack-connect.git@60eb9f979f0f6b3baaadc9fcee67877a24fc45e8
   - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@e9e0f7610d7bdc85b94eac972e9e624a2929c371
-  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@099ff42d94afc053d4ccfff095dc8a7c820cedf9
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@a3357544ab4986f7fcab45b05b74e669d987ea1f
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@4a5323c453855ff909b7ba6b7ce8ac43617977a2
   - https://github.com/tokejepsen/ftrack-connect-environment.git@3c71b345f1732979364b27b714f898a43ddc20a6:
     - python $REPO_PATH/environment.py
