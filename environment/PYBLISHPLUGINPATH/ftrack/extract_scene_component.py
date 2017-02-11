@@ -1,11 +1,11 @@
-import pyblish.api
+import pyblish.api as api
 import ftrack_locations
 
 
-class BumpyboxFtrackExtractSceneComponent(pyblish.api.InstancePlugin):
+class BumpyboxEnvironmentFtrackExtractSceneComponent(api.InstancePlugin):
     """ Appending output files from local extraction as components. """
 
-    order = pyblish.api.ExtractorOrder
+    order = api.ExtractorOrder
     label = "Scene Component"
     families = ["scene"]
 
@@ -29,7 +29,7 @@ class BumpyboxFtrackExtractSceneComponent(pyblish.api.InstancePlugin):
                     "version": instance.context.data["version"]
                 },
                 "component_data": {
-                    "name": pyblish.api.current_host(),
+                    "name": api.current_host(),
                 },
                 "component_path": instance.context.data["currentFile"],
                 "component_overwrite": True,
