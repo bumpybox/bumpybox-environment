@@ -73,16 +73,6 @@ environment["MAYA_MODULE_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "cvshapeinverter"),
 ]
 
-# PYBLISHPLUGINPATH
-environment["PYBLISHPLUGINPATH"] = [
-    os.path.join(
-        os.path.dirname(__file__), "environment", "PYBLISHPLUGINPATH", "maya"
-    ),
-    os.path.join(
-        os.path.dirname(__file__), "environment", "PYBLISHPLUGINPATH", "ftrack"
-    ),
-]
-
 # FTRACK_TEMPLATES_PATH
 environment["FTRACK_TEMPLATES_PATH"] = [
     os.path.join(
