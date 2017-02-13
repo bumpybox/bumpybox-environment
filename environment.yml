@@ -1,4 +1,3 @@
-name: bumpybox-environment
 channels:
 - menpo
 dependencies:
@@ -11,6 +10,7 @@ dependencies:
   - lucidity
   - pyperclip
 - git:
+  - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://github.com/bumpybox/Tapp.git@0d5ca78f2ca8f28f12a3a5f0565f99e8efe962de
   - https://github.com/tokejepsen/studio-library.git@de4d349daebc1a961a81c5506fd0e2c08e1470af
   - https://bitbucket.org/ftrack/QtExt.git@f88d1db8d5b7a0f5162f29a0701166d3be24fd19
@@ -19,16 +19,16 @@ dependencies:
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
   - https://github.com/pyblish/pyblish-hiero.git@cb2ad22d8cc21e33f4927197d790156569aef2b3
   - https://github.com/pyblish/pyblish-ftrack.git@224ca4ba26f2566d8adf31268ea7db264d7f1d2a
-  - https://github.com/pyblish/pyblish-deadline.git@829be7ab949f4ecd020e2ca6b4c6e849950eb089
-  - https://github.com/bumpybox/pyblish-bumpybox.git@68c165d96ffb5b78a793f77e4be8486343eb0e85
+  - https://github.com/pyblish/pyblish-deadline.git@cdcdb8408cec5e132342f94aa7191e0ed64ecfdd
+  - https://github.com/bumpybox/pyblish-bumpybox.git@da2aa4641d5369e6846500818ae1b2e3648371ec
   - https://github.com/pyblish/pyblish-base.git@9a3d78772f73e5905c131f9431cc3a266b23cbf7
+  - https://github.com/pyblish/pyblish-standalone.git@0f279c0e08f4c99bd6e5ef954452835e01e2ee61
   - https://github.com/tokejepsen/maya-capture-gui.git@329bdd7bbf018fe67425f2273eba15b7c9ebd958
   - https://github.com/tokejepsen/maya-capture.git@aa62ddec9c879396a01bdb9a5dc2952453cd2396
   - https://github.com/tokejepsen/ftrack-template.git@825e29b1a81a65a38fc56f4e5b744b23a79e72df
   - https://github.com/tokejepsen/ftrack-locations.git@eccb7fca95db6d039906aa6f2da0c65f012c4838
-  - https://github.com/tokejepsen/ftrack-hooks.git@5b6e4840b52d21f8d9bd428a311fec843c1eb300
+  - https://github.com/tokejepsen/ftrack-hooks.git@a71280f41c9dafc7c65d2508f66337c2ad3a3cd1
   - https://bitbucket.org/ftrack/ftrack-connect.git@60eb9f979f0f6b3baaadc9fcee67877a24fc45e8
-  - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@e9e0f7610d7bdc85b94eac972e9e624a2929c371
   - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@a3357544ab4986f7fcab45b05b74e669d987ea1f
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@4a5323c453855ff909b7ba6b7ce8ac43617977a2
@@ -37,3 +37,4 @@ dependencies:
   - https://github.com/bumpybox/bumpybox-environment.git:
     - python $REPO_PATH/environment.py
     - python -m ftrack_connect
+name: bumpybox-environment
