@@ -1,0 +1,11 @@
+# 
+
+
+[node ar_prod_shadow]
+    desc                    STRING  "shadow catcher"
+    maya.name               STRING  "ar_prod_shadow"
+    maya.id                 INT     0xA1000001
+    maya.classification     STRING  "shader/surface"
+    maya.output_name        STRING  "outColor"
+    maya.output_shortname   STRING  "out"
+

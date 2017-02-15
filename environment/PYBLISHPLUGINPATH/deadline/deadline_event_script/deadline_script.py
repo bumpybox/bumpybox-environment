@@ -1,3 +1,4 @@
+import os
 import sys
 
 
@@ -6,8 +7,11 @@ def main():
     job_status = sys.argv[0]
     job = sys.argv[1]
 
-    import ftrack
-    task = ftrack.Task(job.GetJobEnvironmentKeyValue("FTRACK_TASKID"))
+    # Setup environment from job.
+    if job.GetJobEnvironmentKeys():
+        for key in job.GetJobEnvironmentKeys():
+            value = job.GetJobEnvironmentKeyValue(key)
+            os.environ[str(key)] = str(value)
 
     status_mapping = {
         "OnJobSubmitted": "Processing Queued",
@@ -27,6 +31,10 @@ def main():
         return
 
     # Need to find the status by name
+    sys.path.append(job.GetJobEnvironmentKeyValue("PYTHONPATH"))
+
+    import ftrack
+
     ft_status = None
     for status in ftrack.getTaskStatuses():
         if status.getName() == status_mapping[job_status]:
