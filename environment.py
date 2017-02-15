@@ -73,6 +73,20 @@ environment["MAYA_MODULE_PATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "cvshapeinverter"),
 ]
 
+# MAYA_CUSTOM_TEMPLATE_PATH
+environment["MAYA_CUSTOM_TEMPLATE_PATH"] = [
+    os.path.join(
+        os.path.dirname(__file__), "environment", "MAYA_CUSTOM_TEMPLATE_PATH"
+    )
+]
+
+# MTOA_TEMPLATES_PATH
+environment["MTOA_TEMPLATES_PATH"] = [
+    os.path.join(
+        os.path.dirname(__file__), "environment", "MTOA_TEMPLATES_PATH"
+    )
+]
+
 # ARNOLD_PLUGIN_PATH
 environment["ARNOLD_PLUGIN_PATH"] = [
     os.path.join(
