@@ -13,25 +13,25 @@ dependencies:
   - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://github.com/bumpybox/Tapp.git@0d5ca78f2ca8f28f12a3a5f0565f99e8efe962de
   - https://github.com/tokejepsen/studio-library.git@de4d349daebc1a961a81c5506fd0e2c08e1470af
-  - https://bitbucket.org/ftrack/QtExt.git@f88d1db8d5b7a0f5162f29a0701166d3be24fd19
-  - https://github.com/pyblish/pyblish-maya.git@b81e6edd67e9969348a133c8a6e630ab92fd6c3f
-  - https://github.com/pyblish/pyblish-lite.git@51ff4850ca13fddbc60137a74fd0e2056fdbbc29
-  - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
-  - https://github.com/pyblish/pyblish-hiero.git@cb2ad22d8cc21e33f4927197d790156569aef2b3
-  - https://github.com/pyblish/pyblish-ftrack.git@224ca4ba26f2566d8adf31268ea7db264d7f1d2a
-  - https://github.com/pyblish/pyblish-deadline.git@cdcdb8408cec5e132342f94aa7191e0ed64ecfdd
-  - https://github.com/bumpybox/pyblish-bumpybox.git@da2aa4641d5369e6846500818ae1b2e3648371ec
   - https://github.com/pyblish/pyblish-base.git@9a3d78772f73e5905c131f9431cc3a266b23cbf7
+  - https://github.com/pyblish/pyblish-lite.git@51ff4850ca13fddbc60137a74fd0e2056fdbbc29
   - https://github.com/pyblish/pyblish-standalone.git@0f279c0e08f4c99bd6e5ef954452835e01e2ee61
-  - https://github.com/tokejepsen/maya-capture-gui.git@329bdd7bbf018fe67425f2273eba15b7c9ebd958
-  - https://github.com/tokejepsen/maya-capture.git@aa62ddec9c879396a01bdb9a5dc2952453cd2396
-  - https://github.com/tokejepsen/ftrack-template.git@825e29b1a81a65a38fc56f4e5b744b23a79e72df
-  - https://github.com/tokejepsen/ftrack-locations.git@eccb7fca95db6d039906aa6f2da0c65f012c4838
-  - https://github.com/tokejepsen/ftrack-hooks.git@a71280f41c9dafc7c65d2508f66337c2ad3a3cd1
+  - https://github.com/pyblish/pyblish-maya.git@b81e6edd67e9969348a133c8a6e630ab92fd6c3f
+  - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
+  - https://github.com/pyblish/pyblish-hiero.git@7d90aa115869ed555889f7858f359f39fb8f11fd
+  - https://github.com/pyblish/pyblish-ftrack.git@5bf6dd77078337b2f48f7065292b74a3fdf480f7
+  - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
+  - https://github.com/bumpybox/pyblish-bumpybox.git@6739ce420829f043129fd1b63b924010a6360773
+  - https://github.com/abstractfactory/maya-capture.git@bdea21ad0cfa008b70d3419438687faf535e85b7
+  - https://github.com/BigRoy/maya-capture-gui.git@fd79a926e6b778061eba599ab6a75794d46f4cb9
+  - https://bitbucket.org/ftrack/QtExt.git@f88d1db8d5b7a0f5162f29a0701166d3be24fd19
   - https://bitbucket.org/ftrack/ftrack-connect.git@60eb9f979f0f6b3baaadc9fcee67877a24fc45e8
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@e9e0f7610d7bdc85b94eac972e9e624a2929c371
-  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@a3357544ab4986f7fcab45b05b74e669d987ea1f
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@49dc42b7755278320e702ed0bcf938386ec63716
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@4a5323c453855ff909b7ba6b7ce8ac43617977a2
+  - https://github.com/tokejepsen/ftrack-template.git@825e29b1a81a65a38fc56f4e5b744b23a79e72df
+  - https://github.com/tokejepsen/ftrack-locations.git@eccb7fca95db6d039906aa6f2da0c65f012c4838
+  - https://github.com/tokejepsen/ftrack-hooks.git@ff7db1b5ac78cba412700fb555394f5256bb42a8
   - https://github.com/tokejepsen/ftrack-connect-environment.git@3c71b345f1732979364b27b714f898a43ddc20a6:
     - python $REPO_PATH/environment.py
   - https://github.com/bumpybox/bumpybox-environment.git:
