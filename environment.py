@@ -53,6 +53,23 @@ environment["HIERO_PLUGIN_PATH"] = [
     ),
 ]
 
+# NUKE_PATH
+environment["NUKE_PATH"] = [
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"],
+        "pyblish-nuke",
+        "pyblish_nuke",
+        "nuke_path"
+    ),
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"],
+        "pyblish-bumpybox",
+        "pyblish_bumpybox",
+        "environment_variables",
+        "nuke_path"
+    ),
+]
+
 # MAYA_PLUG_IN_PATH
 environment["MAYA_PLUG_IN_PATH"] = [
     os.path.join(

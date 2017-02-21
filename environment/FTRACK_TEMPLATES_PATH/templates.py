@@ -73,6 +73,14 @@ def register():
                         os.path.dirname(__file__), "hiero.hrox"
                     )
                 }
+            },
+            "{nuke}": {
+                "nuke_v{padded_version}.nk": {
+                    "isfile": True,
+                    "source": os.path.join(
+                        os.path.dirname(__file__), "nuke.nk"
+                    )
+                }
             }
         },
         "publish": {

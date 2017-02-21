@@ -18,6 +18,7 @@ dependencies:
   - https://github.com/pyblish/pyblish-standalone.git@0f279c0e08f4c99bd6e5ef954452835e01e2ee61
   - https://github.com/pyblish/pyblish-maya.git@b81e6edd67e9969348a133c8a6e630ab92fd6c3f
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
+  - https://github.com/pyblish/pyblish-nuke.git@061de849f501063ad92c532b764847c8883061d7
   - https://github.com/pyblish/pyblish-hiero.git@7d90aa115869ed555889f7858f359f39fb8f11fd
   - https://github.com/pyblish/pyblish-ftrack.git@5bf6dd77078337b2f48f7065292b74a3fdf480f7
   - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
