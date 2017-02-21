@@ -27,7 +27,7 @@ dependencies:
   - https://bitbucket.org/ftrack/QtExt.git@f88d1db8d5b7a0f5162f29a0701166d3be24fd19
   - https://bitbucket.org/ftrack/ftrack-connect.git@60eb9f979f0f6b3baaadc9fcee67877a24fc45e8
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@e9e0f7610d7bdc85b94eac972e9e624a2929c371
-  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@49dc42b7755278320e702ed0bcf938386ec63716
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@a3357544ab4986f7fcab45b05b74e669d987ea1f
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@4a5323c453855ff909b7ba6b7ce8ac43617977a2
   - https://github.com/tokejepsen/ftrack-template.git@825e29b1a81a65a38fc56f4e5b744b23a79e72df
   - https://github.com/tokejepsen/ftrack-locations.git@eccb7fca95db6d039906aa6f2da0c65f012c4838
