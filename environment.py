@@ -51,6 +51,9 @@ environment["HIERO_PLUGIN_PATH"] = [
         "environment_variables",
         "hiero_plugin_path"
     ),
+    os.path.join(
+        os.path.dirname(__file__), "environment", "HIERO_PLUGIN_PATH"
+    ),
 ]
 
 # NUKE_PATH
