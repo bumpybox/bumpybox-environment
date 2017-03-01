@@ -81,6 +81,7 @@ environment["MAYA_PLUG_IN_PATH"] = [
         "environment",
         "MAYA_PLUG_IN_PATH"
     ),
+    os.path.join(os.path.dirname(__file__), "environment", "MAYA_PLUG_IN_PATH")
 ]
 
 # MAYA_SHELF_PATH
