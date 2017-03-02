@@ -70,7 +70,8 @@ environment["NUKE_PATH"] = [
         "pyblish_bumpybox",
         "environment_variables",
         "nuke_path"
-    )
+    ),
+    os.path.join(os.path.dirname(__file__), "environment", "NUKE_PATH")
 ]
 
 # MAYA_PLUG_IN_PATH
@@ -126,6 +127,12 @@ environment["FTRACK_TEMPLATES_PATH"] = [
 environment["FTRACK_CONNECT_PLUGIN_PATH"] = [
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "djv_plugin"
+    ),
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "pending_changes"
+    ),
+    os.path.join(
+        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "status_assign"
     ),
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "pipeline_plugins"
