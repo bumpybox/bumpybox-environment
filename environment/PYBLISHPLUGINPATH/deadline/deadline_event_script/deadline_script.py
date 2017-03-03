@@ -23,7 +23,6 @@ def main():
         "OnJobResumed": "Processing Queued",
         "OnJobPended": "Processing Queued",
         "OnJobReleased": "Processing Queued",
-        "OnJobDeleted": "Processing Done",
     }
 
     # Fail safe for non-existing job statuses
