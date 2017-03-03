@@ -10,6 +10,7 @@ class BumpyboxEnvironmentDeadlineExtractArnoldShaders(api.InstancePlugin):
     order = api.ExtractorOrder
     label = "Arnold Shaders"
     families = ["deadline"]
+    hosts = ["maya"]
 
     def process(self, instance):
 
