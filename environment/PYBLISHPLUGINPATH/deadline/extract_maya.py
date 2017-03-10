@@ -7,6 +7,7 @@ class BumpyboxEnvironmentDeadlineExtractMaya(api.InstancePlugin):
     order = api.ExtractorOrder
     label = "Maya"
     families = ["deadline"]
+    hosts = ["maya"]
 
     def process(self, instance):
 
