@@ -1,7 +1,8 @@
 import os
-import shutil
 
 import pyblish.api as api
+
+from dirsync import sync
 
 
 class BumpyboxEnvironmentDeadlineExtractArnoldShaders(api.InstancePlugin):
@@ -9,28 +10,21 @@ class BumpyboxEnvironmentDeadlineExtractArnoldShaders(api.InstancePlugin):
 
     order = api.ExtractorOrder
     label = "Arnold Shaders"
-    families = ["deadline"]
+    families = ["deadline", "arnold"]
+    match = api.Subset
     hosts = ["maya"]
 
     def process(self, instance):
 
         data = instance.data.get("deadlineData", {"job": {}, "plugin": {}})
 
-        directory = os.path.join(
+        target = os.path.join(
             os.path.dirname(instance.context.data["currentFile"]),
             "workspace",
-            "deadline"
+            "deadline",
+            "ARNOLD_PLUGIN_PATH"
         )
-
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-
-        # Copy required modules
-        arnold_path = os.path.join(directory, "ARNOLD_PLUGIN_PATH")
-        if not os.path.exists(arnold_path):
-            os.makedirs(arnold_path)
-
-        src = os.path.abspath(
+        source = os.path.abspath(
             os.path.join(
                 os.path.dirname(__file__),
                 "..",
@@ -38,13 +32,11 @@ class BumpyboxEnvironmentDeadlineExtractArnoldShaders(api.InstancePlugin):
                 "ARNOLD_PLUGIN_PATH"
             )
         )
-
-        for f in os.listdir(src):
-            shutil.copy(os.path.join(src, f), os.path.join(arnold_path, f))
+        sync(source, target, "sync", create=True, purge=True, modtime=True)
 
         # Add required environment.
         key_values = {
-            "ARNOLD_PLUGIN_PATH": arnold_path
+            "ARNOLD_PLUGIN_PATH": target
         }
 
         if "EnvironmentKeyValue" in data["job"]:

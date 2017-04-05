@@ -9,16 +9,8 @@ class BumpyboxEnvironmentDeadlineExtractEventScript(api.InstancePlugin):
 
     order = api.ExtractorOrder
     label = "Event Script"
-    families = ["deadline"]
-
-    def copytree(self, src, dst, symlinks=False, ignore=None):
-        for item in os.listdir(src):
-            s = os.path.join(src, item)
-            d = os.path.join(dst, item)
-            if os.path.isdir(s):
-                shutil.copytree(s, d, symlinks, ignore)
-            else:
-                shutil.copy2(s, d)
+    families = ["deadline", "ftrack"]
+    match = api.Subset
 
     def process(self, instance):
 
@@ -33,29 +25,16 @@ class BumpyboxEnvironmentDeadlineExtractEventScript(api.InstancePlugin):
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-        # Copy required modules
-        if os.path.exists(os.path.join(directory, "PYTHONPATH")):
-            shutil.rmtree(os.path.join(directory, "PYTHONPATH"))
-        self.copytree(
-            os.path.join(
-                os.path.dirname(__file__),
-                "deadline_event_script",
-                "PYTHONPATH"
-            ),
-            os.path.join(directory, "PYTHONPATH")
-        )
-
         shutil.copy(
             os.path.join(
                 os.path.dirname(__file__),
-                "deadline_event_script",
-                "deadline_script.py"
+                "event_script.py"
             ),
-            os.path.join(directory, "deadline_script.py")
+            os.path.join(directory, "event_script.py")
         )
 
         # Add event script to Deadline submission
-        path = os.path.join(directory, "deadline_script.py")
+        path = os.path.join(directory, "event_script.py")
         if "ExtraInfoKeyValue" in data["job"]:
             data["job"]["ExtraInfoKeyValue"]["EventScript"] = path
         else:
@@ -67,7 +46,6 @@ class BumpyboxEnvironmentDeadlineExtractEventScript(api.InstancePlugin):
             "FTRACK_APIKEY": os.environ["FTRACK_APIKEY"],
             "LOGNAME": os.environ["LOGNAME"],
             "FTRACK_TASKID": os.environ["FTRACK_TASKID"],
-            "PYTHONPATH": os.path.join(directory, "PYTHONPATH")
         }
 
         if "EnvironmentKeyValue" in data["job"]:
