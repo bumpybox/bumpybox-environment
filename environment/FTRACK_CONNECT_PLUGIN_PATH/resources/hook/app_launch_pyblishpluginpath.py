@@ -51,30 +51,54 @@ def modify_application_launch(event):
     except:
         pass
 
-    plugins_path = os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__), "..", "..", "..", "PYBLISHPLUGINPATH"
-        )
-    )
-
     # PYBLISHPLUGINPATH
     environment["PYBLISHPLUGINPATH"] = [
         os.path.join(
-            plugins_path,
-            "ftrack"
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-bumpybox",
+            "pyblish_bumpybox",
+            "plugins"
         ),
         os.path.join(
-            plugins_path,
-            "deadline"
-        ),
-        os.path.join(
-            plugins_path,
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-bumpybox",
+            "pyblish_bumpybox",
+            "plugins",
             app_id.split("_")[0]
         ),
         os.path.join(
-            plugins_path,
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-bumpybox",
+            "pyblish_bumpybox",
+            "plugins",
             app_id.split("_")[0],
             task_type
+        ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-bumpybox",
+            "pyblish_bumpybox",
+            "plugins",
+            "deadline"
+        ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-bumpybox",
+            "pyblish_bumpybox",
+            "plugins",
+            "ftrack"
+        ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-ftrack",
+            "pyblish_ftrack",
+            "plugins"
+        ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "pyblish-deadline",
+            "pyblish_deadline",
+            "plugins"
         ),
     ]
 
