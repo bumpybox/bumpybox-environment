@@ -10,16 +10,3 @@ class mock_entity(dict):
             raise ValueError('Need the keyword argument "entity_type"')
 
         self.__dict__ = kwargs
-
-
-workfile_extensions = [".nk", ".mb"]
-
-single_files = {
-    ".mb": "scene",
-    ".ma": "scene",
-    ".nk": "scene",
-    ".mov": "mov",
-    ".abc": "cache"
-}
-
-sequence_files = {".exr": "img"}
