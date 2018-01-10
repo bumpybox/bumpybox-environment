@@ -38,7 +38,7 @@ def get_test_paths():
         "v0001/output/characterA_lookdev_instanceName_v0001/"
         "characterA_lookdev_instanceName_v0001.1001.exr",
 
-        "//disk/test_project/publish/shots/sq0010",
+        "//disk/test_project/publish/shots/sh0010",
         "//disk/test_project/publish/shots/sh0010/lighting",
 
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/"
@@ -242,70 +242,7 @@ def test_excess_templates():
     assert not paths, msg
 
 
-def get_project():
-    return utils.mock_entity(
-        ("disk", {"windows": "//disk", "unix": "//disk"}),
-        ("root", "test_project"),
-        entity_type="Project"
-    )
-
-
-def test_project():
-    assert_entity(get_project())
-
-
-def get_project_folder():
-    project = get_project()
-    return utils.mock_entity(
-        ("project", project),
-        ("parent", project),
-        ("name", "library"),
-        entity_type="Folder"
-    )
-
-
-def test_project_folder():
-    assert_entity(get_project_folder())
-
-
-def get_project_folder_assetbuild():
-    project = get_project()
-    parent = get_project_folder()
-    assetbuildtype = utils.mock_entity(
-        ("name", "character"),
-        entity_type="Type"
-    )
-    return utils.mock_entity(
-        ("project", project),
-        ("parent", parent),
-        ("name", "characterA"),
-        ("type", assetbuildtype),
-        entity_type="AssetBuild"
-    )
-
-
-def test_project_folder_assetbuild():
-    assert_entity(get_project_folder_assetbuild())
-
-
-def get_project_folder_assetbuild_task():
-    project = get_project()
-    assetbuild = get_project_folder_assetbuild()
-
-    return utils.mock_entity(
-        ("project", project),
-        ("parent", assetbuild),
-        ("name", "lookdev"),
-        entity_type="Task"
-    )
-
-
-def test_project_folder_assetbuild_task():
-    assert_entity(get_project_folder_assetbuild_task())
-
-
-def get_project_folder_assetbuild_task_file_components():
-    task = get_project_folder_assetbuild_task()
+def get_task_file_components(task):
 
     entities = []
 
@@ -492,14 +429,7 @@ def get_project_folder_assetbuild_task_file_components():
     return entities
 
 
-def test_project_folder_assetbuild_task_file_components():
-    for entity in get_project_folder_assetbuild_task_file_components():
-        assert_entity(entity)
-
-
-def get_project_folder_assetbuild_task_sequence_components():
-    task = get_project_folder_assetbuild_task()
-
+def get_task_sequences_components(task):
     entities = []
 
     # EXR
@@ -532,14 +462,8 @@ def get_project_folder_assetbuild_task_sequence_components():
     return entities
 
 
-def test_project_folder_assetbuild_task_sequence_components():
-    for entity in get_project_folder_assetbuild_task_sequence_components():
-        assert_entity(entity)
-
-
-def get_project_folder_assetbuild_task_sequence_files():
+def get_sequence_files(containers):
     entities = []
-    containers = get_project_folder_assetbuild_task_sequence_components()
     for container in containers:
         entity = utils.mock_entity(
             ("version", None),
@@ -549,14 +473,189 @@ def get_project_folder_assetbuild_task_sequence_files():
             entity_type="FileComponent"
         )
         entities.append(entity)
-
     return entities
+
+
+def get_project():
+    return utils.mock_entity(
+        ("disk", {"windows": "//disk", "unix": "//disk"}),
+        ("root", "test_project"),
+        entity_type="Project"
+    )
+
+
+def test_project():
+    assert_entity(get_project())
+
+
+def get_project_folder():
+    project = get_project()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", project),
+        ("name", "library"),
+        entity_type="Folder"
+    )
+
+
+def test_project_folder():
+    assert_entity(get_project_folder())
+
+
+def get_project_folder_assetbuild():
+    project = get_project()
+    parent = get_project_folder()
+    assetbuildtype = utils.mock_entity(
+        ("name", "character"),
+        entity_type="Type"
+    )
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", parent),
+        ("name", "characterA"),
+        ("type", assetbuildtype),
+        entity_type="AssetBuild"
+    )
+
+
+def test_project_folder_assetbuild():
+    assert_entity(get_project_folder_assetbuild())
+
+
+def get_project_folder_assetbuild_task():
+    project = get_project()
+    assetbuild = get_project_folder_assetbuild()
+
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", assetbuild),
+        ("name", "lookdev"),
+        entity_type="Task"
+    )
+
+
+def test_project_folder_assetbuild_task():
+    assert_entity(get_project_folder_assetbuild_task())
+
+
+def get_project_folder_assetbuild_task_file_components():
+    task = get_project_folder_assetbuild_task()
+    return get_task_file_components(task)
+
+
+def test_project_folder_assetbuild_task_file_components():
+    for entity in get_project_folder_assetbuild_task_file_components():
+        assert_entity(entity)
+
+
+def get_project_folder_assetbuild_task_sequence_components():
+    task = get_project_folder_assetbuild_task()
+    return get_task_sequences_components(task)
+
+
+def test_project_folder_assetbuild_task_sequence_components():
+    for entity in get_project_folder_assetbuild_task_sequence_components():
+        assert_entity(entity)
+
+
+def get_project_folder_assetbuild_task_sequence_files():
+    containers = get_project_folder_assetbuild_task_sequence_components()
+    return get_sequence_files(containers)
 
 
 def test_project_folder_assetbuild_task_sequence_files():
     entities = get_project_folder_assetbuild_task_sequence_files()
     for entity in entities:
         assert_entity(entity)
+
+
+def get_project_shot():
+    project = get_project()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", project),
+        ("name", "sh0010"),
+        entity_type="Shot"
+    )
+
+
+def test_project_shot():
+    assert_entity(get_project_shot())
+
+
+def get_project_shot_task():
+    project = get_project()
+    parent = get_project_shot()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", parent),
+        ("name", "lighting"),
+        entity_type="Task"
+    )
+
+
+def test_project_shot_task():
+    assert_entity(get_project_shot_task())
+
+
+def get_project_shot_task_file_components():
+    task = get_project_shot_task()
+    return get_task_file_components(task)
+
+
+def test_project_shot_task_file_components():
+    for entity in get_project_shot_task_file_components():
+        assert_entity(entity)
+
+
+def get_project_shot_task_sequence_components():
+    task = get_project_shot_task()
+    return get_task_sequences_components(task)
+
+
+def test_project_shot_task_sequence_components():
+    for entity in get_project_shot_task_sequence_components():
+        assert_entity(entity)
+
+
+def get_project_shot_task_sequence_files():
+    containers = get_project_shot_task_sequence_components()
+    return get_sequence_files(containers)
+
+
+def test_project_shot_task_sequence_files():
+    entities = get_project_shot_task_sequence_files()
+    for entity in entities:
+        assert_entity(entity)
+
+
+def get_project_sequence():
+    project = get_project()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", project),
+        ("name", "sq0010"),
+        entity_type="Sequence"
+    )
+
+
+def test_project_sequence():
+    assert_entity(get_project_sequence())
+
+
+def get_project_sequence_shot():
+    project = get_project()
+    parent = get_project_sequence()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", parent),
+        ("name", "sh0010"),
+        entity_type="Shot"
+    )
+
+
+def test_project_sequence_shot():
+    assert_entity(get_project_sequence_shot())
 
 
 def get_entities():
@@ -570,5 +669,14 @@ def get_entities():
     entities.extend(get_project_folder_assetbuild_task_file_components())
     entities.extend(get_project_folder_assetbuild_task_sequence_components())
     entities.extend(get_project_folder_assetbuild_task_sequence_files())
+
+    entities.append(get_project_shot())
+    entities.append(get_project_shot_task())
+    entities.extend(get_project_shot_task_file_components())
+    entities.extend(get_project_shot_task_sequence_components())
+    entities.extend(get_project_shot_task_sequence_files())
+
+    entities.append(get_project_sequence())
+    entities.append(get_project_sequence_shot())
 
     return entities
