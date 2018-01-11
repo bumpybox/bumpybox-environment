@@ -2,7 +2,6 @@ import os
 import platform
 
 import lucidity
-from bumpybox_environment import utils
 
 
 class Template(lucidity.Template):
@@ -210,6 +209,40 @@ def register():
             "/{parent.type.name}"
             "/{parent.name}"
             "/{name}"
+        ),
+    ])
+
+    # Project/Folder/AssetBuild/Task work files
+    mount = (
+        "{parent.project.disk." + system_name + "}/"
+        "{parent.project.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Folder"
+            "/AssetBuild"
+            "/Task"
+            "/.mb",
+            mount + "/work"
+            "/{parent.parent.name}"
+            "/{parent.type.name}"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Folder"
+            "/AssetBuild"
+            "/Task"
+            "/.nk",
+            mount + "/work"
+            "/{parent.parent.name}"
+            "/{parent.type.name}"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
         ),
     ])
 
@@ -421,6 +454,36 @@ def register():
         ),
     ])
 
+    # Project/Shot/Task work files
+    mount = (
+        "{parent.project.disk." + system_name + "}/"
+        "{parent.project.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Shot"
+            "/Task"
+            "/.mb",
+            mount + "/work"
+            "/shots"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Shot"
+            "/Task"
+            "/.nk",
+            mount + "/work"
+            "/shots"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        ),
+    ])
+
     # Project/Shot/Asset/AssetVersion/Components
     mount = (
         "{version.task.project.disk." + system_name + "}/"
@@ -587,23 +650,273 @@ def register():
         ),
     ])
 
-    # Project/Sequence
+    # Project/Episode
     mount = "{project.disk." + system_name + "}/{project.root}"
     templates.extend([
-        Template("Project/Sequence", mount + "/publish/sequences/{name}"),
-        Template("Project/Sequence", mount + "/work/sequences/{name}"),
+        Template("Project/Episode", mount + "/publish/episodes/{name}"),
+        Template("Project/Episode", mount + "/work/episodes/{name}"),
     ])
 
-    # Project/Sequence/Shot
+    # Project/Episode/Shot
     mount = "{project.disk." + system_name + "}/{project.root}"
     templates.extend([
         Template(
-            "Project/Sequence/Shot",
-            mount + "/publish/sequences/{parent.name}/{name}"
+            "Project/Episode/Shot",
+            mount + "/publish/episodes/{parent.name}/{name}"
         ),
         Template(
-            "Project/Sequence/Shot",
-            mount + "/work/sequences/{parent.name}/{name}"
+            "Project/Episode/Shot",
+            mount + "/work/episodes/{parent.name}/{name}"
+        ),
+    ])
+
+    # Project/Episode/Shot/Task
+    mount = "{project.disk." + system_name + "}/{project.root}"
+    templates.extend([
+        Template(
+            "Project/Episode/Shot/Task",
+            mount + "/publish"
+            "/episodes"
+            "/{parent.parent.name}"
+            "/{parent.name}"
+            "/{name}"
+        ),
+        Template(
+            "Project/Episode/Shot/Task",
+            mount + "/work"
+            "/episodes"
+            "/{parent.parent.name}"
+            "/{parent.name}"
+            "/{name}"
+        ),
+    ])
+
+    # Project/Episode/Shot/Task work files
+    mount = (
+        "{parent.project.disk." + system_name + "}/"
+        "{parent.project.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Task"
+            "/.mb",
+            mount + "/work"
+            "/episodes"
+            "/{parent.parent.name}"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.parent.name}_{parent.name}_{name}_v{version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Task"
+            "/.nk",
+            mount + "/work"
+            "/episodes"
+            "/{parent.parent.name}"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.parent.name}_{parent.name}_{name}_v{version}{file_type}"
+        ),
+    ])
+
+    # Project/Episode/Shot/Asset/AssetVersion/Components
+    mount = (
+        "{version.task.project.disk." + system_name + "}/"
+        "{version.task.project.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/source"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.mb",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "v{version.version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/source"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.nk",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "v{version.version}{file_type}"
+
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/scene"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.mb",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/cache"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.abc",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/mov"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.mov",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/nuke_gizmo"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.gizmo",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/img"
+            "/AssetVersion"
+            "/SequenceComponent"
+            "/.exr",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.parent.name}"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}"
+            "/{version.task.parent.parent.name}_"
+            "{version.task.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}.%{padding}d{file_type}"
+        ),
+        Template(
+            "Project"
+            "/Episode"
+            "/Shot"
+            "/Asset"
+            "/img"
+            "/AssetVersion"
+            "/SequenceComponent"
+            "/.exr"
+            "/FileComponent"
+            "/.exr",
+            "{container.version.task.project.disk." + system_name + "}"
+            "/{container.version.task.project.root}"
+            "/publish"
+            "/episodes"
+            "/{container.version.task.parent.parent.name}"
+            "/{container.version.task.parent.name}"
+            "/{container.version.task.name}"
+            "/v{container.version.version}"
+            "/output"
+            "/{container.version.task.parent.parent.name}_"
+            "{container.version.task.parent.name}_"
+            "{container.version.task.name}_"
+            "{container.version.metadata.instance_name}_"
+            "v{container.version.version}"
+            "/{container.version.task.parent.parent.name}_"
+            "{container.version.task.parent.name}_"
+            "{container.version.task.name}_"
+            "{container.version.metadata.instance_name}_"
+            "v{container.version.version}.{name}{file_type}"
         ),
     ])
 

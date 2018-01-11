@@ -62,59 +62,33 @@ def get_test_paths():
         "sh0010_lighting_instanceName_v0001/"
         "sh0010_lighting_instanceName_v0001.1001.exr",
 
-        "//disk/test_project/publish/sequences/sq0010",
-        "//disk/test_project/publish/sequences/sq0010/sh0010",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting",
-
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/sq0010_sh0010_lighting_v0001.mb",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "nuke/sq0010_sh0010_lighting_v0001.nk",
-
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/output/sq0010_sh0010_lighting_instanceName_v0001.mb",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/output/sq0010_sh0010_lighting_instanceName_v0001.abc",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/output/sq0010_sh0010_lighting_instanceName_v0001.mov",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "nuke/output/sq0010_sh0010_lighting_instanceName_v0001.gizmo",
-
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/output/sq0010_sh0010_lighting_instanceName_v0001/"
-        "sq0010_sh0010_lighting_instanceName_v0001.%04d.exr",
-        "//disk/test_project/publish/sequences/sq0010/sh0010/lighting/v0001/"
-        "maya/output/sq0010_sh0010_lighting_instanceName_v0001/"
-        "sq0010_sh0010_lighting_instanceName_v0001.1001.exr",
-
         "//disk/test_project/publish/episodes/ep0010",
-        "//disk/test_project/publish/episodes/ep0010/sq0010",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting",
+        "//disk/test_project/publish/episodes/ep0010/sh0010",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting",
 
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
-        "v0001/ep0010_sq0010_sh0010_lighting_v0001.mb",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
-        "v0001/ep0010_sq0010_sh0010_lighting_v0001.nk",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/ep0010_sh0010_lighting_v0001.mb",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/ep0010_sh0010_lighting_v0001.nk",
 
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.mb",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_instanceName_v0001.mb",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.abc",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_instanceName_v0001.abc",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.mov",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_instanceName_v0001.mov",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.gizmo",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
-        "v0001/output/ep0010_sq0010_sh0010_lighting_instanceName_v0001/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.%04d.exr",
-        "//disk/test_project/publish/episodes/ep0010/sq0010/sh0010/lighting/"
-        "v0001/output/ep0010_sq0010_sh0010_lighting_instanceName_v0001/"
-        "ep0010_sq0010_sh0010_lighting_instanceName_v0001.1001.exr",
+        "ep0010_sh0010_lighting_instanceName_v0001.gizmo",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.%04d.exr",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.1001.exr",
 
         "//disk/test_project/work",
 
@@ -136,22 +110,13 @@ def get_test_paths():
         "//disk/test_project/work/shots/sh0010/lighting/"
         "sh0010_lighting_v0001.nk",
 
-        "//disk/test_project/work/sequences/sq0010",
-        "//disk/test_project/work/sequences/sq0010/sh0010",
-        "//disk/test_project/work/sequences/sq0010/sh0010/lighting",
-        "//disk/test_project/work/sequences/sq0010/sh0010/lighting/"
-        "sq0010_sh0010_lighting_v0001.mb",
-        "//disk/test_project/work/sequences/sq0010/sh0010/lighting/"
-        "sq0010_sh0010_lighting_v0001.nk",
-
         "//disk/test_project/work/episodes/ep0010",
-        "//disk/test_project/work/episodes/ep0010/sq0010",
-        "//disk/test_project/work/episodes/ep0010/sq0010/sh0010",
-        "//disk/test_project/work/episodes/ep0010/sq0010/sh0010/lighting",
-        "//disk/test_project/work/episodes/ep0010/sq0010/sh0010/lighting/"
-        "ep0010_sq0010_sh0010_lighting_v0001.mb",
-        "//disk/test_project/work/episodes/ep0010/sq0010/sh0010/lighting/"
-        "ep0010_sq0010_sh0010_lighting_v0001.nk",
+        "//disk/test_project/work/episodes/ep0010/sh0010",
+        "//disk/test_project/work/episodes/ep0010/sh0010/lighting",
+        "//disk/test_project/work/episodes/ep0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_v0001.mb",
+        "//disk/test_project/work/episodes/ep0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_v0001.nk",
     ]
 
 
@@ -245,6 +210,28 @@ def test_excess_templates():
 def get_task_file_components(task):
 
     entities = []
+
+    # Maya work file
+    entities.append(
+        utils.mock_entity(
+            ("parent", task["parent"]),
+            ("version", 1),
+            ("file_type", ".mb"),
+            ("name", task["name"]),
+            entity_type="Task"
+        )
+    )
+
+    # Nuke work file
+    entities.append(
+        utils.mock_entity(
+            ("parent", task["parent"]),
+            ("version", 1),
+            ("file_type", ".nk"),
+            ("name", task["name"]),
+            entity_type="Task"
+        )
+    )
 
     # Maya source
     assettype = utils.mock_entity(
@@ -629,23 +616,23 @@ def test_project_shot_task_sequence_files():
         assert_entity(entity)
 
 
-def get_project_sequence():
+def get_project_episode():
     project = get_project()
     return utils.mock_entity(
         ("project", project),
         ("parent", project),
-        ("name", "sq0010"),
-        entity_type="Sequence"
+        ("name", "ep0010"),
+        entity_type="Episode"
     )
 
 
-def test_project_sequence():
-    assert_entity(get_project_sequence())
+def test_project_episode():
+    assert_entity(get_project_episode())
 
 
-def get_project_sequence_shot():
+def get_project_episode_shot():
     project = get_project()
-    parent = get_project_sequence()
+    parent = get_project_episode()
     return utils.mock_entity(
         ("project", project),
         ("parent", parent),
@@ -654,8 +641,54 @@ def get_project_sequence_shot():
     )
 
 
-def test_project_sequence_shot():
-    assert_entity(get_project_sequence_shot())
+def test_project_episode_shot():
+    assert_entity(get_project_episode_shot())
+
+
+def get_project_episode_shot_task():
+    project = get_project()
+    parent = get_project_episode_shot()
+    return utils.mock_entity(
+        ("project", project),
+        ("parent", parent),
+        ("name", "lighting"),
+        entity_type="Task"
+    )
+
+
+def test_project_episode_shot_task():
+    assert_entity(get_project_episode_shot_task())
+
+
+def get_project_episode_shot_task_file_components():
+    task = get_project_episode_shot_task()
+    return get_task_file_components(task)
+
+
+def test_project_episode_shot_task_file_components():
+    for entity in get_project_episode_shot_task_file_components():
+        assert_entity(entity)
+
+
+def get_project_episode_shot_task_sequence_components():
+    task = get_project_episode_shot_task()
+    return get_task_sequences_components(task)
+
+
+def test_project_episode_shot_task_sequence_components():
+    for entity in get_project_episode_shot_task_sequence_components():
+        assert_entity(entity)
+
+
+def get_project_episode_shot_task_sequence_files():
+    containers = get_project_episode_shot_task_sequence_components()
+    return get_sequence_files(containers)
+
+
+def test_project_episode_shot_task_sequence_files():
+    entities = get_project_episode_shot_task_sequence_files()
+    for entity in entities:
+        assert_entity(entity)
 
 
 def get_entities():
@@ -676,7 +709,11 @@ def get_entities():
     entities.extend(get_project_shot_task_sequence_components())
     entities.extend(get_project_shot_task_sequence_files())
 
-    entities.append(get_project_sequence())
-    entities.append(get_project_sequence_shot())
+    entities.append(get_project_episode())
+    entities.append(get_project_episode_shot())
+    entities.append(get_project_episode_shot_task())
+    entities.extend(get_project_episode_shot_task_file_components())
+    entities.extend(get_project_episode_shot_task_sequence_components())
+    entities.extend(get_project_episode_shot_task_sequence_files())
 
     return entities
