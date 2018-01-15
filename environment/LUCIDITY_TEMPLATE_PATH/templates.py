@@ -171,6 +171,49 @@ def register():
         Template("Project", mount + "/work"),
     ])
 
+    # Project/Task
+    mount = "{project.disk." + system_name + "}/{project.root}"
+    templates.extend([
+        Template("Project/Task", mount + "/work/tasks/{name}"),
+    ])
+
+    # Project/Task work files
+    mount = (
+        "{parent.disk." + system_name + "}/{parent.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Task"
+            "/.hrox",
+            mount + "/work"
+            "/tasks"
+            "/{name}"
+            "/{name}_v{version}{file_type}"
+        ),
+    ])
+
+    # Project/Asset/AssetVersion/Components
+    mount = (
+        "{version.task.project.disk." + system_name + "}/"
+        "{version.task.project.root}"
+    )
+    templates.extend([
+        Template(
+            "Project"
+            "/Asset"
+            "/source"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.hrox",
+            mount + "/publish"
+            "/tasks"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/{version.task.name}_v{version.version}{file_type}"
+        )
+    ])
+
     # Project/Folder
     mount = "{project.disk." + system_name + "}/{project.root}"
     templates.extend([
