@@ -103,4 +103,10 @@ environment["FTRACK_CONNECT_PLUGIN_PATH"] = [
     ),
 ]
 
+# FTRACK_EVENT_PLUGIN_PATH
+environment["FTRACK_EVENT_PLUGIN_PATH"] = [
+    os.path.join(
+        os.path.dirname(__file__), "environment", "FTRACK_EVENT_PLUGIN_PATH"
+    )
+]
 utils.write_environment(environment)
