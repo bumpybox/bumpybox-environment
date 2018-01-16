@@ -25,6 +25,7 @@ environment["PYTHONPATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "studio-library"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture-gui"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
     os.path.join(os.path.dirname(__file__), "environment", "PYTHONPATH"),
 ]
 
@@ -98,17 +99,11 @@ environment["FTRACK_CONNECT_PLUGIN_PATH"] = [
         os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "djv_plugin"
     ),
     os.path.join(
-        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "pending_changes"
-    ),
-    os.path.join(
-        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "status_assign"
+        os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks", "create_structure"
     ),
     os.path.join(
         os.path.dirname(__file__), "environment", "FTRACK_CONNECT_PLUGIN_PATH"
-    ),
-    os.path.join(
-        os.environ["CONDA_GIT_REPOSITORY"], "pyblish-ftrack", "pyblish_ftrack"
-    ),
+    )
 ]
 
 # FTRACK_EVENT_PLUGIN_PATH
