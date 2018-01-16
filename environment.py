@@ -28,6 +28,13 @@ environment["PYTHONPATH"] = [
     os.path.join(os.path.dirname(__file__), "environment", "PYTHONPATH"),
 ]
 
+# LUCIDITY_TEMPLATE_PATH
+environment["LUCIDITY_TEMPLATE_PATH"] = [
+    os.path.join(
+        os.path.dirname(__file__), "environment", "LUCIDITY_TEMPLATE_PATH"
+    ),
+]
+
 # HIERO_PLUGIN_PATH
 environment["HIERO_PLUGIN_PATH"] = [
     os.path.join(
