@@ -151,3 +151,30 @@ class Template(lucidity.Template):
         return os.path.abspath(
             super(Template, self).format(data)
         ).replace("\\", "/")
+
+
+def get_work_file(session, task, application, version):
+    """Gets the assumed path to the work file of the application."""
+
+    extension_mapping = {
+        ".hrox": "nukestudio",
+        ".nk": "nuke",
+        ".mb": "maya",
+        ".hip": "houdini"
+    }
+    extension = None
+    for key, value in extension_mapping.iteritems():
+        if value == application:
+            extension = key
+
+    # Faking an Ftrack component for the location structure.
+    entity = mock_entity(
+        ("parent", task["parent"]),
+        ("version", version),
+        ("file_type", extension),
+        ("name", task["name"]),
+        entity_type="Task"
+    )
+
+    location = session.pick_location()
+    return location.structure.get_resource_identifier(entity)
