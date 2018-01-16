@@ -39,16 +39,15 @@ environment["LUCIDITY_TEMPLATE_PATH"] = [
 environment["HIERO_PLUGIN_PATH"] = [
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"],
-        "pyblish-hiero",
-        "pyblish_hiero",
-        "hiero_plugin_path",
+        "pyblish-nukestudio",
+        "pyblish_nukestudio",
+        "HIERO_PLUGIN_PATH",
     ),
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"],
-        "pyblish-bumpybox",
-        "pyblish_bumpybox",
-        "environment_variables",
-        "hiero_plugin_path"
+        "pyblish-grill-environment",
+        "environment",
+        "HIERO_PLUGIN_PATH"
     ),
     os.path.join(
         os.path.dirname(__file__), "environment", "HIERO_PLUGIN_PATH"
