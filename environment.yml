@@ -13,6 +13,7 @@ dependencies:
   - psutil==5.4.1
   - https://bitbucket.org/ftrack/qtext/get/0.2.0.zip
   - setuptools==36.4
+  - https://github.com/pyqt/python-qt5/archive/0.3.0.zip
 - git:
   - https://github.com/chadmv/cvshapeinverter.git
   - https://github.com/bumpybox/Tapp.git
