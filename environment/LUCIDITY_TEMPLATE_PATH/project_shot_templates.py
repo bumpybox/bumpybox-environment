@@ -1,5 +1,3 @@
-import platform
-
 from bumpybox_environment import utils
 
 
@@ -18,21 +16,17 @@ def register():
     path "Project/Asset/AssetVersion".
     """
 
-    system_name = platform.system().lower()
-    if system_name != "windows":
-        system_name = "unix"
-
     templates = []
 
     # Project/Shot
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template("Project/Shot", mount + "/publish/shots/{name}"),
         utils.Template("Project/Shot", mount + "/work/shots/{name}"),
     ])
 
     # Project/Shot/Task
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template(
             "Project/Shot/Task",
@@ -51,10 +45,7 @@ def register():
     ])
 
     # Project/Shot/Task work files
-    mount = (
-        "{parent.project.disk." + system_name + "}/"
-        "{parent.project.root}"
-    )
+    mount = "{parent.project.root}"
     templates.extend([
         utils.Template(
             "Project"
@@ -81,10 +72,7 @@ def register():
     ])
 
     # Project/Shot/Asset/AssetVersion/Components
-    mount = (
-        "{version.task.project.disk." + system_name + "}/"
-        "{version.task.project.root}"
-    )
+    mount = "{version.task.project.root}"
     templates.extend([
         utils.Template(
             "Project"
@@ -227,8 +215,7 @@ def register():
             "/.exr"
             "/FileComponent"
             "/.exr",
-            "{container.version.task.project.disk." + system_name + "}"
-            "/{container.version.task.project.root}"
+            "{container.version.task.project.root}"
             "/publish"
             "/shots"
             "/{container.version.task.parent.name}"

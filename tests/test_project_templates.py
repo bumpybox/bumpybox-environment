@@ -4,8 +4,7 @@ import lib
 
 def get_project():
     return utils.mock_entity(
-        ("disk", {"windows": "//disk", "unix": "//disk"}),
-        ("root", "test_project"),
+        ("root", "//disk/test_project"),
         entity_type="Project"
     )
 

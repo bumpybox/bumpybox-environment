@@ -1,5 +1,3 @@
-import platform
-
 from bumpybox_environment import utils
 
 
@@ -18,21 +16,17 @@ def register():
     path "Project/Asset/AssetVersion".
     """
 
-    system_name = platform.system().lower()
-    if system_name != "windows":
-        system_name = "unix"
-
     templates = []
 
     # Project/Folder
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template("Project/Folder", mount + "/publish/{name}"),
         utils.Template("Project/Folder", mount + "/work/{name}"),
     ])
 
     # Project/Folder/AssetBuild
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template(
             "Project/Folder/AssetBuild",
@@ -45,7 +39,7 @@ def register():
     ])
 
     # Project/Folder/AssetBuild/Task
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template(
             "Project/Folder/AssetBuild/Task",
@@ -66,10 +60,7 @@ def register():
     ])
 
     # Project/Folder/AssetBuild/Task work files
-    mount = (
-        "{parent.project.disk." + system_name + "}/"
-        "{parent.project.root}"
-    )
+    mount = "{parent.project.root}"
     templates.extend([
         utils.Template(
             "Project"
@@ -100,10 +91,7 @@ def register():
     ])
 
     # Project/Folder/AssetBuild/Asset/AssetVersion/Components
-    mount = (
-        "{version.task.project.disk." + system_name + "}/"
-        "{version.task.project.root}"
-    )
+    mount = "{version.task.project.root}"
     templates.extend([
         utils.Template(
             "Project"
@@ -261,8 +249,7 @@ def register():
             "/.exr"
             "/FileComponent"
             "/.exr",
-            "{container.version.task.project.disk." + system_name + "}"
-            "/{container.version.task.project.root}"
+            "{container.version.task.project.root}"
             "/publish"
             "/{container.version.task.parent.parent.name}"
             "/{container.version.task.parent.type.name}"

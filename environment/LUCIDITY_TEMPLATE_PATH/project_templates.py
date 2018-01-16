@@ -1,5 +1,3 @@
-import platform
-
 from bumpybox_environment import utils
 
 
@@ -18,14 +16,10 @@ def register():
     path "Project/Asset/AssetVersion".
     """
 
-    system_name = platform.system().lower()
-    if system_name != "windows":
-        system_name = "unix"
-
     templates = []
 
     # Project
-    mount = "{disk." + system_name + "}/{root}"
+    mount = "{root}"
     templates.extend([
         utils.Template("Project", mount),
         utils.Template("Project", mount + "/in"),
@@ -35,15 +29,13 @@ def register():
     ])
 
     # Project/Task
-    mount = "{project.disk." + system_name + "}/{project.root}"
+    mount = "{project.root}"
     templates.extend([
         utils.Template("Project/Task", mount + "/work/tasks/{name}"),
     ])
 
     # Project/Task work files
-    mount = (
-        "{parent.disk." + system_name + "}/{parent.root}"
-    )
+    mount = "{parent.root}"
     templates.extend([
         utils.Template(
             "Project"
@@ -57,10 +49,7 @@ def register():
     ])
 
     # Project/Asset/AssetVersion/Components
-    mount = (
-        "{version.task.project.disk." + system_name + "}/"
-        "{version.task.project.root}"
-    )
+    mount = "{version.task.project.root}"
     templates.extend([
         utils.Template(
             "Project"
