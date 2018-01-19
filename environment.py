@@ -15,6 +15,7 @@ environment["PYTHONPATH"] = [
         "pyblish_maya",
         "pythonpath"
     ),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "pyblish-nukestudio"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "Tapp"),
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"],
@@ -42,7 +43,7 @@ environment["HIERO_PLUGIN_PATH"] = [
         os.environ["CONDA_GIT_REPOSITORY"],
         "pyblish-nukestudio",
         "pyblish_nukestudio",
-        "HIERO_PLUGIN_PATH",
+        "hiero_plugin_path",
     ),
     os.path.join(
         os.environ["CONDA_GIT_REPOSITORY"],
