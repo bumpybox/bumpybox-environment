@@ -73,6 +73,7 @@ environment["PYTHONPATH"] = [
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture-gui"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "ftrack-hooks"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "filelink"),
     os.path.join(os.path.dirname(__file__), "environment", "PYTHONPATH"),
 ]
 
