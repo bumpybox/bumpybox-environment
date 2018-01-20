@@ -114,6 +114,12 @@ environment["FTRACK_EVENT_PLUGIN_PATH"] = [
     )
 ]
 
+# PYBLISH_HOTKEY
+environment["PYBLISH_HOTKEY"] = ["Ctrl+Alt+P"]
+
+# PYBLISH_QML_MODAL
+environment["PYBLISH_QML_MODAL"] = ["True"]
+
 # Kill existing ftrack_connects
 for proc in psutil.process_iter():
     try:
