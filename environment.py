@@ -1,11 +1,57 @@
 import os
+import requests
+import zipfile
 
 import psutil
 
 from conda_git_deployment import utils
 
 
+def download_file(url, path):
+    r = requests.get(url, stream=True)
+    with open(path, 'wb') as f:
+        for chunk in r.iter_content(chunk_size=1024):
+            if chunk:
+                f.write(chunk)
+    if os.path.exists(path):
+        return True
+    else:
+        return False
+
+
+# Install DJV
+root = os.path.dirname(__file__)
+applications_path = os.path.join(root, "applications")
+application_path = os.path.join(applications_path, "djv-1.1.0-Windows-64")
+
+if not os.path.exists(applications_path):
+    os.makedirs(applications_path)
+
+path = os.path.join(applications_path, "djv.zip")
+
+if not os.path.exists(application_path) and not os.path.exists(path):
+    print "Installing DJV..."
+    url = "https://downloads.sourceforge.net/project/djv/djv-stable/1.1.0/"
+    url += "djv-1.1.0-Windows-64.zip"
+    download_file(url, path)
+
+    zip_ref = zipfile.ZipFile(path, "r")
+    zip_ref.extractall(applications_path)
+    zip_ref.close()
+
+    os.remove(path)
+
+# Setup environment
 environment = {}
+
+# PATH
+environment["PATH"] = [
+    os.path.abspath(
+        os.path.join(
+            __file__, "..", "applications", "djv-1.1.0-Windows-64", "bin"
+        )
+    )
+]
 
 # PYTHONPATH
 environment["PYTHONPATH"] = [
