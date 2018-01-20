@@ -32,6 +32,9 @@ class RepairCurrentFile(pyblish.api.Action):
         )
         assert not os.path.exists(work_file), msg.format(work_file)
 
+        if not os.path.exists(os.path.dirname(work_file)):
+            os.makedirs(os.path.dirname(work_file))
+
         application_save = {
             "nukestudio": self.nukestudio_save, "nuke": self.nuke_save
         }
