@@ -32,15 +32,26 @@ def modify_application_launch(event):
 
     environment = {}
 
-    app_id = event["data"]["application"]["label"].lower()
+    identifier = event["data"]["application"]["identifier"]
+    app_id = None
 
-    # Nukex = Nuke, no special plugins for NukeX
-    if app_id == "nukex":
+    # Nuke applications.
+    if identifier.startswith("nuke"):
         app_id = "nuke"
+    if identifier.startswith("nukex"):
+        app_id = "nuke"
+    if identifier.startswith("nuke_studio"):
+        app_id = "nukestudio"
 
-    # Special formatting for After Effects
-    if app_id.startswith("custom after effects"):
-        app_id = "aftereffects"
+    # Maya
+    if identifier.startswith("maya"):
+        app_id = "maya"
+
+    # Return if application is not recognized.
+    if not app_id:
+        msg = '{0} - Application is not recognized to setup PYBLISHPATH: "{1}"'
+        print msg.format(__file__, identifier)
+        return
 
     # Get task type
     task_type = ""
@@ -48,7 +59,7 @@ def modify_application_launch(event):
         task_id = event["data"]["context"]["selection"][0]["entityId"]
         task = ftrack.Task(task_id)
         task_type = task.getType().getName().lower()
-    except:
+    except KeyError:
         pass
 
     # PYBLISHPLUGINPATH
@@ -64,14 +75,14 @@ def modify_application_launch(event):
             "pyblish-bumpybox",
             "pyblish_bumpybox",
             "plugins",
-            app_id.split("_")[0]
+            app_id
         ),
         os.path.join(
             os.environ["CONDA_GIT_REPOSITORY"],
             "pyblish-bumpybox",
             "pyblish_bumpybox",
             "plugins",
-            app_id.split("_")[0],
+            app_id,
             task_type
         ),
         os.path.join(
