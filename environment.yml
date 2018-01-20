@@ -23,7 +23,7 @@ dependencies:
   - https://github.com/abstractfactory/maya-capture.git
   - https://github.com/BigRoy/maya-capture-gui.git
   - https://github.com/pyblish/pyblish-base.git
-  - https://github.com/pyblish/pyblish-qml.git
+  - https://github.com/tokejepsen/pyblish-qml.git
   - https://github.com/pyblish/pyblish-maya.git
   - https://github.com/pyblish/pyblish-houdini.git
   - https://github.com/pyblish/pyblish-nuke.git
