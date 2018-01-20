@@ -111,6 +111,12 @@ def modify_application_launch(event):
             "pyblish_deadline",
             "plugins"
         ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "bumpybox-environment",
+            "environment",
+            "PYBLISHPLUGINPATH"
+        ),
     ]
 
     # adding variables
