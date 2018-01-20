@@ -25,6 +25,73 @@ def register():
         utils.Template("Project/Episode", mount + "/work/episodes/{name}"),
     ])
 
+    # Project/Episode/Task
+    mount = "{project.root}"
+    templates.extend([
+        utils.Template(
+            "Project/Episode/Task",
+            mount + "/publish/episodes/{parent.name}/{name}"
+        ),
+        utils.Template(
+            "Project/Episode/Task",
+            mount + "/work/episodes/{parent.name}/{name}"
+        ),
+    ])
+
+    # Project/Episode/Task work files
+    mount = "{parent.project.root}"
+    templates.extend([
+        utils.Template(
+            "Project"
+            "/Episode"
+            "/Task"
+            "/.hrox",
+            mount + "/work"
+            "/episodes"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        )
+    ])
+
+    # Project/Episode/Task work files
+    mount = "{parent.project.root}"
+    templates.extend([
+        utils.Template(
+            "Project"
+            "/Episode"
+            "/Task"
+            "/.hrox",
+            mount + "/work"
+            "/episodes"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        )
+    ])
+
+    # Project/Episode/Asset/AssetVersion/Components
+    mount = "{version.task.project.root}"
+    templates.extend([
+        utils.Template(
+            "Project"
+            "/Episode"
+            "/Asset"
+            "/source"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.hrox",
+            mount + "/publish"
+            "/episodes"
+            "/{version.task.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/{version.task.parent.name}_"
+            "{version.task.name}_"
+            "v{version.version}{file_type}"
+        ),
+    ])
+
     # Project/Episode/Shot
     mount = "{project.root}"
     templates.extend([

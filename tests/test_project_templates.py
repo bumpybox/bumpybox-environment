@@ -73,3 +73,13 @@ def get_project_task_file_components():
 def test_project_task_file_components():
     for entity in get_project_task_file_components():
         lib.assert_entity(entity)
+
+
+def get_entities():
+    entities = []
+
+    entities.append(get_project())
+    entities.append(get_project_task())
+    entities.extend(get_project_task_file_components())
+
+    return entities

@@ -82,3 +82,18 @@ def test_project_folder_assetbuild_task_sequence_files():
     entities = get_project_folder_assetbuild_task_sequence_files()
     for entity in entities:
         lib.assert_entity(entity)
+
+
+def get_entities():
+    entities = []
+
+    entities.append(get_project_folder())
+    entities.append(get_project_folder_assetbuild())
+    entities.append(get_project_folder_assetbuild_task())
+    entities.extend(get_project_folder_assetbuild_task_file_components())
+    entities.extend(
+        get_project_folder_assetbuild_task_sequence_components()
+    )
+    entities.extend(get_project_folder_assetbuild_task_sequence_files())
+
+    return entities

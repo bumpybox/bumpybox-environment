@@ -70,6 +70,11 @@ def get_test_paths():
         "sh0010_lighting_instanceName_v0001.1001.exr",
 
         "//disk/test_project/publish/episodes/ep0010",
+
+        "//disk/test_project/publish/episodes/ep0010/editing",
+        "//disk/test_project/publish/episodes/ep0010/editing/v0001/"
+        "ep0010_editing_v0001.hrox",
+
         "//disk/test_project/publish/episodes/ep0010/sh0010",
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting",
 
@@ -118,6 +123,11 @@ def get_test_paths():
         "sh0010_lighting_v0001.nk",
 
         "//disk/test_project/work/episodes/ep0010",
+
+        "//disk/test_project/work/episodes/ep0010/editing",
+        "//disk/test_project/work/episodes/ep0010/editing/"
+        "ep0010_editing_v0001.hrox",
+
         "//disk/test_project/work/episodes/ep0010/sh0010",
         "//disk/test_project/work/episodes/ep0010/sh0010/lighting",
         "//disk/test_project/work/episodes/ep0010/sh0010/lighting/"
@@ -148,10 +158,10 @@ def test_proposed_paths():
             paths.remove(path)
 
     msg = "Paths not covered by templates:"
-    for path in paths:
+    for path in sorted(paths):
         msg += "\n{0}".format(path)
     msg += "\nTemplate paths:"
-    for path in template_paths:
+    for path in sorted(template_paths):
         msg += "\n{0}".format(path)
     assert not paths, msg
 
@@ -192,31 +202,9 @@ def test_excess_templates():
 def get_entities():
     entities = []
 
-    entities.append(tpt.get_project())
-
-    entities.append(tpt.get_project_task())
-    entities.extend(tpt.get_project_task_file_components())
-
-    entities.append(tpft.get_project_folder())
-    entities.append(tpft.get_project_folder_assetbuild())
-    entities.append(tpft.get_project_folder_assetbuild_task())
-    entities.extend(tpft.get_project_folder_assetbuild_task_file_components())
-    entities.extend(
-        tpft.get_project_folder_assetbuild_task_sequence_components()
-    )
-    entities.extend(tpft.get_project_folder_assetbuild_task_sequence_files())
-
-    entities.append(tpst.get_project_shot())
-    entities.append(tpst.get_project_shot_task())
-    entities.extend(tpst.get_project_shot_task_file_components())
-    entities.extend(tpst.get_project_shot_task_sequence_components())
-    entities.extend(tpst.get_project_shot_task_sequence_files())
-
-    entities.append(tpet.get_project_episode())
-    entities.append(tpet.get_project_episode_shot())
-    entities.append(tpet.get_project_episode_shot_task())
-    entities.extend(tpet.get_project_episode_shot_task_file_components())
-    entities.extend(tpet.get_project_episode_shot_task_sequence_components())
-    entities.extend(tpet.get_project_episode_shot_task_sequence_files())
+    entities.extend(tpt.get_entities())
+    entities.extend(tpft.get_entities())
+    entities.extend(tpst.get_entities())
+    entities.extend(tpet.get_entities())
 
     return entities

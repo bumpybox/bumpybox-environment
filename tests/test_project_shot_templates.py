@@ -61,3 +61,15 @@ def test_project_shot_task_sequence_files():
     entities = get_project_shot_task_sequence_files()
     for entity in entities:
         lib.assert_entity(entity)
+
+
+def get_entities():
+    entities = []
+
+    entities.append(get_project_shot())
+    entities.append(get_project_shot_task())
+    entities.extend(get_project_shot_task_file_components())
+    entities.extend(get_project_shot_task_sequence_components())
+    entities.extend(get_project_shot_task_sequence_files())
+
+    return entities
