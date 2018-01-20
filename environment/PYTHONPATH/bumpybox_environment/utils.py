@@ -159,8 +159,7 @@ def get_work_file(session, task, application, version):
     extension_mapping = {
         ".hrox": "nukestudio",
         ".nk": "nuke",
-        ".mb": "maya",
-        ".hip": "houdini"
+        ".mb": "maya"
     }
     extension = None
     for key, value in extension_mapping.iteritems():
