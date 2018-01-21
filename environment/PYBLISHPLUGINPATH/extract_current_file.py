@@ -1,7 +1,7 @@
 import pyblish.api
 
 
-class ExtractCurrentFile(pyblish.api.InstancePlugin):
+class BumpyboxExtractCurrentFile(pyblish.api.InstancePlugin):
     """Extracts the current file to an Ftrack component."""
 
     order = pyblish.api.ExtractorOrder

@@ -7,7 +7,7 @@ import filelink
 import clique
 
 
-class ManageFtrackData(pyblish.api.InstancePlugin):
+class BumpyboxManageFtrackData(pyblish.api.InstancePlugin):
     """Manage the data of the Ftrack components."""
 
     order = pyblish.api.IntegratorOrder + 1

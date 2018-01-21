@@ -1,7 +1,7 @@
 import pyblish.api
 
 
-class RepairCurrentFile(pyblish.api.Action):
+class BumpyboxRepairCurrentFile(pyblish.api.Action):
 
     label = "Repair"
     icon = "wrench"
@@ -41,12 +41,12 @@ class RepairCurrentFile(pyblish.api.Action):
         application_save[pyblish.api.current_host()](work_file)
 
 
-class ValidateCurrentFile(pyblish.api.InstancePlugin):
+class BumpyboxValidateCurrentFile(pyblish.api.InstancePlugin):
     """Validate the current file directory against the studio templates."""
 
     order = pyblish.api.ValidatorOrder
     label = "Current File"
-    actions = [RepairCurrentFile]
+    actions = [BumpyboxRepairCurrentFile]
     optional = True
     hosts = ["nuke", "nukeassist", "nukestudio"]
     families = ["source"]
@@ -71,7 +71,7 @@ class ValidateCurrentFile(pyblish.api.InstancePlugin):
         assert work_file == current_file, msg
 
 
-class ValidateFtrackTask(pyblish.api.ContextPlugin):
+class BumpyboxValidateFtrackTask(pyblish.api.ContextPlugin):
     """Validate the application is launched from a task."""
 
     order = pyblish.api.ValidatorOrder
