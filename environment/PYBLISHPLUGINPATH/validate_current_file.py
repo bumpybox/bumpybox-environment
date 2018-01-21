@@ -41,7 +41,7 @@ class RepairCurrentFile(pyblish.api.Action):
         application_save[pyblish.api.current_host()](work_file)
 
 
-class ValidateCurrentFile(pyblish.api.ContextPlugin):
+class ValidateCurrentFile(pyblish.api.InstancePlugin):
     """Validate the current file directory against the studio templates."""
 
     order = pyblish.api.ValidatorOrder
@@ -49,19 +49,20 @@ class ValidateCurrentFile(pyblish.api.ContextPlugin):
     actions = [RepairCurrentFile]
     optional = True
     hosts = ["nuke", "nukeassist", "nukestudio"]
+    families = ["source"]
 
-    def process(self, context):
+    def process(self, instance):
         import os
         from bumpybox_environment import utils
 
         work_file = utils.get_work_file(
-            context.data["ftrackSession"],
-            context.data["ftrackTask"],
+            instance.context.data["ftrackSession"],
+            instance.context.data["ftrackTask"],
             pyblish.api.current_host(),
-            context.data["version"]
+            instance.context.data["version"]
         )
         current_file = os.path.abspath(
-            context.data["currentFile"]
+            instance.context.data["currentFile"]
         ).replace("\\", "/")
 
         msg = "Current file \"{0}\" is not at expected path \"{1}\"".format(
