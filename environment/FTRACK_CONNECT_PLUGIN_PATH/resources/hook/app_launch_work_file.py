@@ -49,7 +49,7 @@ def get_task_data(event):
     if identifier.startswith("nukex"):
         app_id = "nuke"
     if identifier.startswith("nuke_studio"):
-        return
+        app_id = "nukestudio"
 
     # Maya
     if identifier.startswith("maya"):
