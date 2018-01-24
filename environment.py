@@ -167,6 +167,9 @@ environment["PYBLISH_HOTKEY"] = ["Ctrl+Alt+P"]
 # PYBLISH_QML_MODAL
 environment["PYBLISH_QML_MODAL"] = ["True"]
 
+# PYBLISH_ALLOW_DUPLICATE_PLUGIN_NAMES
+environment["PYBLISH_ALLOW_DUPLICATE_PLUGIN_NAMES"] = ["True"]
+
 # Kill existing ftrack_connects
 for proc in psutil.process_iter():
     try:
