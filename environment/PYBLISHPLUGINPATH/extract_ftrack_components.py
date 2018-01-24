@@ -1,7 +1,7 @@
 import pyblish.api
 
 
-class BumpyboxExtractFtrackComponents(pyblish.api.InstancePlugin):
+class ExtractFtrackComponents(pyblish.api.InstancePlugin):
     """Extracts the data for Ftrack components."""
 
     order = pyblish.api.ExtractorOrder

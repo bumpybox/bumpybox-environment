@@ -1,13 +1,7 @@
-import os
-import shutil
-import filecmp
-
 import pyblish.api
-import filelink
-import clique
 
 
-class BumpyboxManageFtrackData(pyblish.api.InstancePlugin):
+class ManageFtrackData(pyblish.api.InstancePlugin):
     """Manage the data of the Ftrack components."""
 
     order = pyblish.api.IntegratorOrder + 1
@@ -15,6 +9,10 @@ class BumpyboxManageFtrackData(pyblish.api.InstancePlugin):
     families = ["ftrack"]
 
     def manage_data(self, src, dst):
+        import shutil
+
+        import filelink
+
         try:
             filelink.create(src, dst)
             self.log.debug("Linking: \"{0}\" to \"{1}\"".format(src, dst))
@@ -29,6 +27,10 @@ class BumpyboxManageFtrackData(pyblish.api.InstancePlugin):
                 raise e
 
     def process(self, instance):
+        import os
+        import filecmp
+
+        import clique
 
         for data in instance.data.get("ftrackComponentsList", []):
 
