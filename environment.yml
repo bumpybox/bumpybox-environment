@@ -22,6 +22,7 @@ dependencies:
   - https://github.com/tokejepsen/filelink.git
   - https://github.com/abstractfactory/maya-capture.git
   - https://github.com/BigRoy/maya-capture-gui.git
+  - https://github.com/tokejepsen/maya-alembic-export.git
   - https://github.com/pyblish/pyblish-base.git
   - https://github.com/tokejepsen/pyblish-qml.git
   - https://github.com/pyblish/pyblish-maya.git
