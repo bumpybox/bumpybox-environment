@@ -69,7 +69,7 @@ environment["PYTHONPATH"] = [
         "environment",
         "PYTHONPATH"
     ),
-    os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "studio-library"),
+    os.path.join(os.environ["CONDA_GIT_REPOSITORY"]),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture-gui"),
     os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-alembic-export"),
@@ -133,9 +133,9 @@ environment["MAYA_PLUG_IN_PATH"] = [
     os.path.join(os.path.dirname(__file__), "environment", "MAYA_PLUG_IN_PATH")
 ]
 
-# MAYA_SHELF_PATH
-environment["MAYA_SHELF_PATH"] = [
-    os.path.join(os.path.dirname(__file__), "environment", "MAYA_SHELF_PATH")
+# XBMLANGPATH
+environment["XBMLANGPATH"] = [
+    os.path.join(os.path.dirname(__file__), "environment", "XBMLANGPATH")
 ]
 
 # MAYA_MODULE_PATH

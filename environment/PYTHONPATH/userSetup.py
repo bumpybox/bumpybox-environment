@@ -248,3 +248,6 @@ def main():
 
 
 pm.evalDeferred("main()")
+pm.evalDeferred(
+    "from bumpybox_environment.maya import shelves;shelves.create()"
+)
