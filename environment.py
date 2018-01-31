@@ -34,7 +34,9 @@ def main():
             "environment",
             "PYTHONPATH"
         ),
-        os.path.join(os.environ["CONDA_GIT_REPOSITORY"]),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"], "studiolibrary", ".."
+        ),
         os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture"),
         os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "maya-capture-gui"),
         os.path.join(
