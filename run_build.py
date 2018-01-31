@@ -4,6 +4,7 @@ import zipfile
 import subprocess
 import stat
 import shutil
+import sys
 
 
 def download_file(url, path):
@@ -29,6 +30,8 @@ def main():
     os.environ["CONDA_ATTACHED"] = "True"
 
     root = os.path.abspath(os.path.join(__file__, ".."))
+
+    return_code = 0
 
     # Create build directory
     build_directory = os.path.join(os.path.expanduser("~"), "build")
@@ -58,7 +61,7 @@ def main():
     )
 
     # Installing the environment
-    subprocess.call(
+    return_code = subprocess.call(
         [
             os.path.join(
                 build_directory,
@@ -77,7 +80,7 @@ def main():
         "deployment",
         "repositories",
     )
-    subprocess.call(
+    return_code = subprocess.call(
         [
             os.path.join(
                 build_directory,
@@ -100,7 +103,7 @@ def main():
         ]
     )
 
-    subprocess.call(
+    return_code = subprocess.call(
         [
             os.path.join(
                 build_directory,
@@ -125,7 +128,7 @@ def main():
         ]
     )
 
-    subprocess.call(
+    return_code = subprocess.call(
         [
             os.path.join(build_directory, "deployment", "startup.bat"),
             "--export-deployment",
@@ -146,6 +149,8 @@ def main():
         )
     )
 
+    return return_code
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
