@@ -1,0 +1,37 @@
+version: 2018.1.31.1
+
+skip_tags: true
+
+environment:
+
+  PYTHONPATH: "%APPVEYOR_BUILD_FOLDER%\\environment\\PYTHONPATH"
+  LUCIDITY_TEMPLATE_PATH: "%APPVEYOR_BUILD_FOLDER%\\environment\\LUCIDITY_TEMPLATE_PATH"
+
+  matrix:
+
+    - PYTHON: "C:\\Python27-x64"
+      PYTHON_VERSION: "2.7.x"
+      PYTHON_ARCH: "64"
+
+install:
+  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+  - pip install requests
+  - pip install pytest
+  - pip install lucidity
+
+build_script:
+  - "%CMD_IN_ENV% python run_build.py"
+
+test_script:
+  - "%CMD_IN_ENV% python run_tests.py"
+
+artifacts:
+- path: deployment.zip
+  name: deployment
+
+deploy:
+  description: AppVeyor Deployment
+  provider: GitHub
+  auth_token:
+    secure: p92hCI4Yd3AZAEBAIci9g9ZDNnHZcP+h+fD22lxAhXkO890Hc1Ajg16iFPArrMtc
+  artifact: deployment
