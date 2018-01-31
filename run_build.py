@@ -128,6 +128,15 @@ def main():
         ]
     )
 
+    # Create start.conf
+    conf_file = os.path.join(build_directory, "deployment", "startup.conf")
+    with open(conf_file, "w") as the_file:
+        the_file.write(
+            "--environment installation/windows/envs/bumpybox-environment/Lib"
+            "/site-packages/repositories/bumpybox-environment/environment.yml"
+        )
+
+    # Create deployment
     return_code = subprocess.call(
         [
             os.path.join(build_directory, "deployment", "startup.bat"),
