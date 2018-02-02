@@ -59,7 +59,7 @@ def import_full_resolution_movie():
         [latest_component],
         {
             "attachCamera": True,
-            "renameCamera": True,
+            "renameCamera": False,
             "resolutionGate": True,
             "imagePlaneVisibility": "Hidden from other cameras",
             "createGround": False,
@@ -88,7 +88,7 @@ def import_half_resolution_movie():
         [latest_component],
         {
             "attachCamera": True,
-            "renameCamera": True,
+            "renameCamera": False,
             "resolutionGate": True,
             "imagePlaneVisibility": "Hidden from other cameras",
             "createGround": False,
