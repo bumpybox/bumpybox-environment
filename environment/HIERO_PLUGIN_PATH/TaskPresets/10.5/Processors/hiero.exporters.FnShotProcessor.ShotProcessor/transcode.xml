@@ -1,0 +1,71 @@
+<root presetname="transcode" tasktype="hiero.exporters.FnShotProcessor.ShotProcessor">
+    <startFrameIndex valuetype="int">1001</startFrameIndex>
+    <exportRoot valuetype="str">Y:/projects/test_project/in/transcode/</exportRoot>
+    <versionIndex valuetype="int">1</versionIndex>
+    <cutUseHandles valuetype="bool">True</cutUseHandles>
+    <versionPadding valuetype="int">2</versionPadding>
+    <exportTemplate valuetype="list">
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">{sequence}/{shot}/{shot}.%04d.exr</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnTranscodeExporter.TranscodePreset">
+                <root presetname="hiero.exporters.FnTranscodeExporter.TranscodeExporter" tasktype="hiero.exporters.FnTranscodeExporter.TranscodeExporter">
+                    <colourspace valuetype="str">default</colourspace>
+                    <file_type valuetype="unicode">exr</file_type>
+                    <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
+                    <channels valuetype="unicode">all</channels>
+                    <includeAudio valuetype="bool">False</includeAudio>
+                    <burninDataEnabled valuetype="bool">False</burninDataEnabled>
+                    <useSingleSocket valuetype="bool">False</useSingleSocket>
+                    <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
+                    <deleteAudio valuetype="bool">True</deleteAudio>
+                    <additionalNodesData valuetype="list" />
+                    <dpx valuetype="dict">
+                        <datatype valuetype="str">8 bit</datatype>
+                        <transfer valuetype="str">(auto detect)</transfer>
+                        <bigEndian valuetype="bool">True</bigEndian>
+                        <fill valuetype="bool">False</fill>
+                    </dpx>
+                    <includeEffects valuetype="bool">True</includeEffects>
+                    <burninData valuetype="dict">
+                        <burnIn_bottomRight valuetype="NoneType">None</burnIn_bottomRight>
+                        <burnIn_topLeft valuetype="NoneType">None</burnIn_topLeft>
+                        <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
+                        <burnIn_padding valuetype="NoneType">None</burnIn_padding>
+                        <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
+                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
+                        <burnIn_font valuetype="NoneType">None</burnIn_font>
+                    </burninData>
+                    <exr valuetype="dict">
+                        <compression valuetype="str">Zip (1 scanline)</compression>
+                        <datatype valuetype="str">16 bit half</datatype>
+                        <noprefix valuetype="bool">False</noprefix>
+                        <write_full_layer_names valuetype="bool">False</write_full_layer_names>
+                        <standard_layer_name_format valuetype="bool">False</standard_layer_name_format>
+                        <interleave valuetype="str">channels, layers and views</interleave>
+                        <dw_compression_level valuetype="float">45.0</dw_compression_level>
+                        <truncateChannelNames valuetype="bool">False</truncateChannelNames>
+                        <metadata valuetype="str">default metadata</metadata>
+                    </exr>
+                    <writeNodeName valuetype="str">Write_{ext}</writeNodeName>
+                    <reformat valuetype="dict">
+                        <filter valuetype="str">Cubic</filter>
+                        <to_type valuetype="str">None</to_type>
+                        <scale valuetype="float">1.0</scale>
+                        <center valuetype="bool">True</center>
+                        <resize valuetype="str">width</resize>
+                    </reformat>
+                    <keepNukeScript valuetype="bool">False</keepNukeScript>
+                    <method valuetype="str">Blend</method>
+                </root>
+            </SequenceItem>
+        </SequenceItem>
+    </exportTemplate>
+    <excludeTags valuetype="list" />
+    <includeTags valuetype="list" />
+    <includeRetimes valuetype="bool">True</includeRetimes>
+    <startFrameSource valuetype="str">Source</startFrameSource>
+    <cutLength valuetype="bool">True</cutLength>
+    <cutHandles valuetype="int">15</cutHandles>
+</root>
