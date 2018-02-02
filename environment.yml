@@ -45,7 +45,7 @@ dependencies:
     - python $REPO_PATH/environment.py
   - https://github.com/tokejepsen/pyblish-grill-environment.git@212bdc2764586e0834430a47e64bb96f4f6dc9ec:
     - python $REPO_PATH/environment.py
-  - https://github.com/bumpybox/bumpybox-environment.git:
+  - https://github.com/bumpybox/bumpybox-environment.git@a1e0454a9bc5eadabb909bc9c8cc92e8a0dfea95:
     - python $REPO_PATH/environment.py
     - python -m ftrack_connect
 name: bumpybox-environment
