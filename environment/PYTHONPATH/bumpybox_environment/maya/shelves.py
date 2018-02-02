@@ -96,4 +96,14 @@ image_plane.imageName.set(image_plane.remoteImageName.get())""",
         "setup.import_half_resolution_movie()"
     )
 
+    cmds.shelfButton(
+        parent=shelf,
+        label="Import Tracking",
+        image="pythonFamily.png",
+        imageOverlayLabel="IT",
+        annotation="Import tracking.",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.import_tracking()"
+    )
+
     cmds.shelfTabLayout(gShelfTopLevel, edit=True, selectTab=shelfName)

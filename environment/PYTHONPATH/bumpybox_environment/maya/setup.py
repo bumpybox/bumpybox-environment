@@ -108,6 +108,16 @@ def get_latest_component(components):
     return latest_component
 
 
+def get_latest_components(components):
+    data = {}
+    for component in components:
+        data[component["version"]["version"]] = []
+    for component in components:
+        data[component["version"]["version"]].append(component)
+
+    return data[max(data.keys())]
+
+
 def import_rigging():
     """Imports rigging from linked AssetBuilds."""
 
@@ -141,3 +151,22 @@ def import_rigging():
                 "mayaGroupNodes": False
             }
         )
+
+
+def import_tracking():
+    session = ftrack_connect.session.get_shared_session()
+    task = session.get("Task", os.environ["FTRACK_TASKID"])
+
+    components = session.query(
+        "Component where version.task.type.name is \"Tracking\" and "
+        "version.asset.type.short is \"cache\""
+    )
+    import_components(
+        get_latest_components(components),
+        {
+            "mayaNamespace": True,
+            "nameSpaceStr": "tracking",
+            "mayaTimeline": False,
+            "connectSelection": False
+        }
+    )
