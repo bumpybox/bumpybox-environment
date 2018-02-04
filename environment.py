@@ -15,7 +15,8 @@ def main():
             os.path.join(
                 __file__, "..", "applications", "djv-1.1.0-Windows-64", "bin"
             )
-        )
+        ),
+        "C:/Program Files (x86)/QuickTime/QTSystem/"
     ]
 
     # PYTHONPATH
