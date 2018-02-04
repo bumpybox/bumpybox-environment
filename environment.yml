@@ -32,7 +32,7 @@ dependencies:
   - https://github.com/pyblish/pyblish-nukestudio.git@225b2af344468fa43c51a14f71a512b8a317cb48
   - https://github.com/pyblish/pyblish-ftrack.git@5dcd1eee3ccbc33178c18adc93a8b7a8652fddc2
   - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
-  - https://github.com/bumpybox/pyblish-bumpybox.git@e989cdabefe84831829b499d0ea3be85ab46de1c
+  - https://github.com/bumpybox/pyblish-bumpybox.git@7ae307a1cbfbb6a6d7999d0d429b848ce3e1666a
   - https://bitbucket.org/ftrack/ftrack-python-legacy-api.git@97cb35a6ae98958f95e61a7925701d9e8eea375d
   - https://bitbucket.org/ftrack/ftrack-connect.git@24ed8ce2404fce9bb6a58fbad363a93132efae14
   - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@d6ca2e46bd073a1e2707e5f5886a5987a9005a6e
