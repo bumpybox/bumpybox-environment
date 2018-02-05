@@ -126,6 +126,16 @@ def main():
             "create_structure"
         ),
         os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "ftrack-hooks",
+            "batch_tasks"
+        ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "ftrack-hooks",
+            "running_jobs"
+        ),
+        os.path.join(
             os.path.dirname(__file__),
             "environment",
             "FTRACK_CONNECT_PLUGIN_PATH"
