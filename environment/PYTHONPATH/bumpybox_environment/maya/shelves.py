@@ -106,4 +106,14 @@ image_plane.imageName.set(image_plane.remoteImageName.get())""",
         "setup.import_tracking()"
     )
 
+    cmds.shelfButton(
+        parent=shelf,
+        label="Import Audio",
+        image="pythonFamily.png",
+        imageOverlayLabel="IA",
+        annotation="Import audio.",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.import_audio()"
+    )
+
     cmds.shelfTabLayout(gShelfTopLevel, edit=True, selectTab=shelfName)

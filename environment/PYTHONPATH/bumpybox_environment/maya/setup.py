@@ -155,7 +155,6 @@ def import_rigging():
 
 def import_tracking():
     session = ftrack_connect.session.get_shared_session()
-    task = session.get("Task", os.environ["FTRACK_TASKID"])
 
     components = session.query(
         "Component where version.task.type.name is \"Tracking\" and "
@@ -170,3 +169,15 @@ def import_tracking():
             "connectSelection": False
         }
     )
+
+
+def import_audio():
+    session = ftrack_connect.session.get_shared_session()
+    task = session.get("Task", os.environ["FTRACK_TASKID"])
+
+    components = session.query(
+        "Component where version.asset.type.short is \"audio\" "
+        "and version.asset.parent.id is \"{0}\"".format(task["parent"]["id"])
+    )
+
+    import_components(get_latest_components(components))
