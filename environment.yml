@@ -23,7 +23,7 @@ dependencies:
   - https://github.com/abstractfactory/maya-capture.git@58763b758a27eafd6455e38f1da3eb84797a2e48
   - https://github.com/BigRoy/maya-capture-gui.git@c02c2385c485db9666b50f00582a60b784338f38
   - https://github.com/tokejepsen/maya-alembic-export.git@841d1e9bf965afe75a5a68bacd6af577c5da6afe
-  - https://github.com/pyblish/pyblish-base.git@5f2661097dfb7c4a6dffa20e5d251b4d5beeb660
+  - https://github.com/pyblish/pyblish-base.git@e90d3012467ed5ae5630d9fb27f17a6a31db9c83
   - https://github.com/pyblish/pyblish-qml.git@927ce409f9e9219cb3fa244d52a48ecb71c841e6
   - https://github.com/pyblish/pyblish-maya.git@a68781285c7e47bb332922870bba461d70fef009
   - https://github.com/pyblish/pyblish-houdini.git@88b189a82fd6b757aa7557c1c490b97e740154a5
@@ -32,10 +32,10 @@ dependencies:
   - https://github.com/pyblish/pyblish-nukestudio.git@225b2af344468fa43c51a14f71a512b8a317cb48
   - https://github.com/pyblish/pyblish-ftrack.git@5dcd1eee3ccbc33178c18adc93a8b7a8652fddc2
   - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
-  - https://github.com/bumpybox/pyblish-bumpybox.git@7ae307a1cbfbb6a6d7999d0d429b848ce3e1666a
+  - https://github.com/bumpybox/pyblish-bumpybox.git@509c176aa6398124f82869a4a499d86a0eee2220
   - https://bitbucket.org/ftrack/ftrack-python-legacy-api.git@97cb35a6ae98958f95e61a7925701d9e8eea375d
   - https://bitbucket.org/ftrack/ftrack-connect.git@24ed8ce2404fce9bb6a58fbad363a93132efae14
-  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@d6ca2e46bd073a1e2707e5f5886a5987a9005a6e
+  - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@9d59d542206aaada2aae6fc83c3ad316389ae691
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@796931b22b0b9fbca7a43da71a473363d6f83d46
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@f092b4daa5643ec736952e0fd84c5321eb279a88
   - https://bitbucket.org/ftrack/ftrack-connect-nuke-studio.git@dcb5d4e4cd3eccb60627207f287c9f9b8f99e614
