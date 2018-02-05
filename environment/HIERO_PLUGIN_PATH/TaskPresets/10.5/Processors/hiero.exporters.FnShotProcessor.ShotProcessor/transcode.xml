@@ -6,13 +6,23 @@
     <versionPadding valuetype="int">2</versionPadding>
     <exportTemplate valuetype="list">
         <SequenceItem valuetype="tuple">
-            <SequenceItem valuetype="str">{sequence}/{shot}/{shot}.%04d.exr</SequenceItem>
+            <SequenceItem valuetype="str">{sequence}/{shot}.mov</SequenceItem>
             <SequenceItem valuetype="hiero.exporters.FnTranscodeExporter.TranscodePreset">
                 <root presetname="hiero.exporters.FnTranscodeExporter.TranscodeExporter" tasktype="hiero.exporters.FnTranscodeExporter.TranscodeExporter">
                     <colourspace valuetype="str">default</colourspace>
-                    <file_type valuetype="unicode">exr</file_type>
-                    <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
-                    <channels valuetype="unicode">all</channels>
+                    <file_type valuetype="unicode">mov</file_type>
+                    <mov valuetype="dict">
+                        <encoder valuetype="str">mov64</encoder>
+                        <bitrate_tolerance valuetype="int">40000000</bitrate_tolerance>
+                        <gop_size valuetype="int">12</gop_size>
+                        <quality_max valuetype="int">31</quality_max>
+                        <quality_min valuetype="int">2</quality_min>
+                        <codec valuetype="str">ap4h&#x09;Apple ProRes 4444</codec>
+                        <b_frames valuetype="int">0</b_frames>
+                        <bitrate valuetype="int">20000</bitrate>
+                    </mov>
+                    <readAllLinesForExport valuetype="bool">True</readAllLinesForExport>
+                    <channels valuetype="str">rgb</channels>
                     <includeAudio valuetype="bool">False</includeAudio>
                     <burninDataEnabled valuetype="bool">False</burninDataEnabled>
                     <useSingleSocket valuetype="bool">False</useSingleSocket>

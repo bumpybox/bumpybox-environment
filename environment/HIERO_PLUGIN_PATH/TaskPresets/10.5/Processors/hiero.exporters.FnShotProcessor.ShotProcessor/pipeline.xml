@@ -117,6 +117,12 @@
                 </root>
             </SequenceItem>
         </SequenceItem>
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">{shot}/audio.wav</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnAudioExportTask.AudioExportPreset">
+                <root presetname="hiero.exporters.FnAudioExportTask.AudioExportTask" tasktype="hiero.exporters.FnAudioExportTask.AudioExportTask" />
+            </SequenceItem>
+        </SequenceItem>
     </exportTemplate>
     <excludeTags valuetype="list" />
     <includeTags valuetype="list" />
