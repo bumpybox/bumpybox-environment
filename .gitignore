@@ -5,3 +5,4 @@ src/*
 python_scripts/config.py
 .cache
 applications
+.pytest_cache
