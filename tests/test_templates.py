@@ -33,6 +33,8 @@ def get_test_paths():
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.mov",
         "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001.wav",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.gizmo",
 
         "//disk/test_project/publish/library/character/characterA/lookdev/"
@@ -59,6 +61,8 @@ def get_test_paths():
         "sh0010_lighting_instanceName_v0001.abc",
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001.mov",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001.wav",
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001.gizmo",
 
@@ -92,6 +96,9 @@ def get_test_paths():
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
         "ep0010_sh0010_lighting_instanceName_v0001.mov",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/"
+        "ep0010_sh0010_lighting_instanceName_v0001.wav",
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
         "ep0010_sh0010_lighting_instanceName_v0001.gizmo",
