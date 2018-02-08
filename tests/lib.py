@@ -54,6 +54,17 @@ def get_task_file_components(task):
         )
     )
 
+    # NukeStudio work file
+    entities.append(
+        utils.mock_entity(
+            ("parent", task["parent"]),
+            ("version", 1),
+            ("file_type", ".hrox"),
+            ("name", task["name"]),
+            entity_type="Task"
+        )
+    )
+
     # Maya source
     assettype = utils.mock_entity(
         ("short", "source"),
@@ -99,6 +110,31 @@ def get_task_file_components(task):
         utils.mock_entity(
             ("version", assetversion),
             ("file_type", ".nk"),
+            ("name", "main"),
+            entity_type="FileComponent"
+        )
+    )
+
+    # NukeStudio source
+    assettype = utils.mock_entity(
+        ("short", "source"),
+        entity_type="Type"
+    )
+    asset = utils.mock_entity(
+        ("parent", task["parent"]),
+        ("type", assettype),
+        entity_type="Asset"
+    )
+    assetversion = utils.mock_entity(
+        ("asset", asset),
+        ("task", task),
+        ("version", 1),
+        entity_type="AssetVersion"
+    )
+    entities.append(
+        utils.mock_entity(
+            ("version", assetversion),
+            ("file_type", ".hrox"),
             ("name", "main"),
             entity_type="FileComponent"
         )

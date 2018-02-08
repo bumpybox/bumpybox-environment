@@ -69,6 +69,17 @@ def register():
             "/{name}"
             "/{parent.name}_{name}_v{version}{file_type}"
         ),
+        utils.Template(
+            "Project"
+            "/Shot"
+            "/Task"
+            "/.hrox",
+            mount + "/work"
+            "/shots"
+            "/{parent.name}"
+            "/{name}"
+            "/{parent.name}_{name}_v{version}{file_type}"
+        ),
     ])
 
     # Project/Shot/Asset/AssetVersion/Components
@@ -98,6 +109,22 @@ def register():
             "/AssetVersion"
             "/FileComponent"
             "/.nk",
+            mount + "/publish"
+            "/shots"
+            "/{version.asset.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/{version.asset.parent.name}_{version.task.name}_"
+            "v{version.version}{file_type}"
+        ),
+        utils.Template(
+            "Project"
+            "/Shot"
+            "/Asset"
+            "/source"
+            "/AssetVersion"
+            "/FileComponent"
+            "/.hrox",
             mount + "/publish"
             "/shots"
             "/{version.asset.parent.name}"

@@ -25,6 +25,8 @@ def get_test_paths():
         "v0001/characterA_lookdev_v0001.mb",
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/characterA_lookdev_v0001.nk",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/characterA_lookdev_v0001.hrox",
 
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.mb",
@@ -54,6 +56,8 @@ def get_test_paths():
         "sh0010_lighting_v0001.mb",
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/"
         "sh0010_lighting_v0001.nk",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/"
+        "sh0010_lighting_v0001.hrox",
 
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001.mb",
@@ -86,6 +90,8 @@ def get_test_paths():
         "v0001/ep0010_sh0010_lighting_v0001.mb",
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/ep0010_sh0010_lighting_v0001.nk",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/ep0010_sh0010_lighting_v0001.hrox",
 
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
@@ -118,6 +124,8 @@ def get_test_paths():
         "characterA_lookdev_v0001.mb",
         "//disk/test_project/work/library/character/characterA/lookdev/"
         "characterA_lookdev_v0001.nk",
+        "//disk/test_project/work/library/character/characterA/lookdev/"
+        "characterA_lookdev_v0001.hrox",
 
         "//disk/test_project/work/tasks/editing",
         "//disk/test_project/work/tasks/editing/editing_v0001.hrox",
@@ -128,6 +136,8 @@ def get_test_paths():
         "sh0010_lighting_v0001.mb",
         "//disk/test_project/work/shots/sh0010/lighting/"
         "sh0010_lighting_v0001.nk",
+        "//disk/test_project/work/shots/sh0010/lighting/"
+        "sh0010_lighting_v0001.hrox",
 
         "//disk/test_project/work/episodes/ep0010",
 
@@ -141,6 +151,8 @@ def get_test_paths():
         "ep0010_sh0010_lighting_v0001.mb",
         "//disk/test_project/work/episodes/ep0010/sh0010/lighting/"
         "ep0010_sh0010_lighting_v0001.nk",
+        "//disk/test_project/work/episodes/ep0010/sh0010/lighting/"
+        "ep0010_sh0010_lighting_v0001.hrox",
     ]
 
 
