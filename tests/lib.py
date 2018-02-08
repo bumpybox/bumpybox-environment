@@ -329,6 +329,87 @@ def get_task_sequences_components(task):
         )
     )
 
+    # JPG
+    assettype = utils.mock_entity(
+        ("short", "img"),
+        entity_type="Type"
+    )
+    asset = utils.mock_entity(
+        ("parent", task["parent"]),
+        ("type", assettype),
+        entity_type="Asset"
+    )
+    assetversion = utils.mock_entity(
+        ("asset", asset),
+        ("task", task),
+        ("version", 1),
+        ("metadata", {"instance_name": "instanceName"}),
+        entity_type="AssetVersion"
+    )
+    entities.append(
+        utils.mock_entity(
+            ("version", assetversion),
+            ("name", "main"),
+            ("file_type", ".jpg"),
+            ("padding", 4),
+            entity_type="SequenceComponent"
+        )
+    )
+
+    # JPG
+    assettype = utils.mock_entity(
+        ("short", "img"),
+        entity_type="Type"
+    )
+    asset = utils.mock_entity(
+        ("parent", task["parent"]),
+        ("type", assettype),
+        entity_type="Asset"
+    )
+    assetversion = utils.mock_entity(
+        ("asset", asset),
+        ("task", task),
+        ("version", 1),
+        ("metadata", {"instance_name": "instanceName"}),
+        entity_type="AssetVersion"
+    )
+    entities.append(
+        utils.mock_entity(
+            ("version", assetversion),
+            ("name", "main"),
+            ("file_type", ".jpeg"),
+            ("padding", 4),
+            entity_type="SequenceComponent"
+        )
+    )
+
+    # JPG
+    assettype = utils.mock_entity(
+        ("short", "img"),
+        entity_type="Type"
+    )
+    asset = utils.mock_entity(
+        ("parent", task["parent"]),
+        ("type", assettype),
+        entity_type="Asset"
+    )
+    assetversion = utils.mock_entity(
+        ("asset", asset),
+        ("task", task),
+        ("version", 1),
+        ("metadata", {"instance_name": "instanceName"}),
+        entity_type="AssetVersion"
+    )
+    entities.append(
+        utils.mock_entity(
+            ("version", assetversion),
+            ("name", "main"),
+            ("file_type", ".png"),
+            ("padding", 4),
+            entity_type="SequenceComponent"
+        )
+    )
+
     return entities
 
 

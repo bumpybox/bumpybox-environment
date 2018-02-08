@@ -45,6 +45,24 @@ def get_test_paths():
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001/"
         "characterA_lookdev_instanceName_v0001.1001.exr",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.%04d.jpg",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.1001.jpg",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.%04d.jpeg",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.1001.jpeg",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.%04d.png",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001/"
+        "characterA_lookdev_instanceName_v0001.1001.png",
 
         "//disk/test_project/publish/tasks/editing/v0001/"
         "editing_v0001.hrox",
@@ -76,6 +94,24 @@ def get_test_paths():
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001/"
         "sh0010_lighting_instanceName_v0001.1001.exr",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.%04d.jpg",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.1001.jpg",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.%04d.jpeg",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.1001.jpeg",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.%04d.png",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001/"
+        "sh0010_lighting_instanceName_v0001.1001.png",
 
         "//disk/test_project/publish/episodes/ep0010",
 
@@ -108,12 +144,31 @@ def get_test_paths():
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
         "ep0010_sh0010_lighting_instanceName_v0001.gizmo",
+
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
         "ep0010_sh0010_lighting_instanceName_v0001.%04d.exr",
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
         "ep0010_sh0010_lighting_instanceName_v0001.1001.exr",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.%04d.jpg",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.1001.jpg",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.%04d.jpeg",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.1001.jpeg",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.%04d.png",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/ep0010_sh0010_lighting_instanceName_v0001/"
+        "ep0010_sh0010_lighting_instanceName_v0001.1001.png",
 
         "//disk/test_project/work",
 
