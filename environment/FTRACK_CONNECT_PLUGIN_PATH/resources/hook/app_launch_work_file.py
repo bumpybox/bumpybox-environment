@@ -25,6 +25,49 @@ def version_get(string, prefix, suffix=None):
     return (matches[-1:][0][1], re.search("\d+", matches[-1:][0]).group())
 
 
+def get_published_file(session, task, work_file, app_id):
+
+    components = session.query(
+        "select version.version from Component where version.task.id is "
+        "\"{0}\" and version.asset.type.short is \"source\"".format(task["id"])
+    )
+
+    latest_component = {"version": {"version": 0}}
+    for component in components:
+        version = component["version"]["version"]
+        if version > latest_component["version"]["version"]:
+            latest_component = component
+
+    locations = {}
+    for location in session.query("select id from Location"):
+        locations[location["id"]] = location
+
+    location_id = max(
+        latest_component.get_availability().iteritems(),
+        key=operator.itemgetter(1)
+    )[0]
+    file_path = locations[location_id].get_resource_identifier(
+        latest_component
+    )
+
+    # If no work file is present, copy published file.
+    # If work file is present, check if published source is of newer date then
+    # copy across with a higher version.
+    if not os.path.exists(work_file):
+        if not os.path.exists(os.path.dirname(work_file)):
+            os.makedirs(os.path.dirname(work_file))
+
+        shutil.copy(file_path, work_file)
+    else:
+        if os.path.getmtime(file_path) > os.path.getmtime(work_file):
+            work_file = utils.get_work_file(
+                session, task, app_id, int(version_get(work_file, "v")[1]) + 1
+            )
+            shutil.copy(file_path, work_file)
+
+    return work_file
+
+
 def get_task_data(event):
 
     data = event["data"]
@@ -94,43 +137,10 @@ def get_task_data(event):
         work_file = max(files[max(files.keys())], key=os.path.getctime)
 
     # Get latest published source file
-    components = session.query(
-        "select version.version from Component where version.task.id is "
-        "\"{0}\" and version.asset.type.short is \"source\"".format(task["id"])
-    )
-
-    latest_component = {"version": {"version": 0}}
-    for component in components:
-        version = component["version"]["version"]
-        if version > latest_component["version"]["version"]:
-            latest_component = component
-
-    locations = {}
-    for location in session.query("select id from Location"):
-        locations[location["id"]] = location
-
-    location_id = max(
-        component.get_availability().iteritems(),
-        key=operator.itemgetter(1)
-    )[0]
-    file_path = locations[location_id].get_resource_identifier(
-        component
-    )
-
-    # If no work file is present, copy published file.
-    # If work file is present, check if published source is of newer date then
-    # copy across with a higher version.
-    if not os.path.exists(work_file):
-        if not os.path.exists(os.path.dirname(work_file)):
-            os.makedirs(os.path.dirname(work_file))
-
-        shutil.copy(file_path, work_file)
-    else:
-        if os.path.getmtime(file_path) > os.path.getmtime(work_file):
-            work_file = utils.get_work_file(
-                session, task, app_id, int(version_get(work_file, "v")[1]) + 1
-            )
-            shutil.copy(file_path, work_file)
+    try:
+        work_file = get_published_file(session, task, work_file, app_id)
+    except AttributeError:
+        pass
 
     # If no work file exists, create a work file
     if not os.path.exists(work_file):
