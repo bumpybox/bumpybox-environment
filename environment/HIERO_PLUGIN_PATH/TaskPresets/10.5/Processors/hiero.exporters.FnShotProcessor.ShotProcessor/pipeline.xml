@@ -12,22 +12,23 @@
                     <colourspace valuetype="str">default</colourspace>
                     <file_type valuetype="unicode">mov</file_type>
                     <mov valuetype="dict">
-                        <b_frames valuetype="int">0</b_frames>
+                        <encoder valuetype="str">mov32</encoder>
                         <bitrate_tolerance valuetype="int">40000000</bitrate_tolerance>
                         <gop_size valuetype="int">12</gop_size>
                         <quality_max valuetype="int">31</quality_max>
                         <quality_min valuetype="int">2</quality_min>
                         <codec valuetype="str">avc1&#x09;H.264</codec>
                         <ycbcr_matrix_type valuetype="str">Auto</ycbcr_matrix_type>
-                        <encoder valuetype="str">mov32</encoder>
+                        <b_frames valuetype="int">0</b_frames>
                         <bitrate valuetype="int">20000</bitrate>
                     </mov>
                     <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
                     <channels valuetype="str">rgb</channels>
-                    <deleteAudio valuetype="bool">True</deleteAudio>
+                    <includeAudio valuetype="bool">False</includeAudio>
                     <burninDataEnabled valuetype="bool">False</burninDataEnabled>
                     <useSingleSocket valuetype="bool">False</useSingleSocket>
                     <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
+                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <additionalNodesData valuetype="list" />
                     <dpx valuetype="dict">
                         <datatype valuetype="str">8 bit</datatype>
@@ -42,12 +43,11 @@
                         <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
                         <burnIn_padding valuetype="NoneType">None</burnIn_padding>
                         <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
-                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
-                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
                         <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
                         <burnIn_font valuetype="NoneType">None</burnIn_font>
                     </burninData>
-                    <includeAudio valuetype="bool">False</includeAudio>
                     <writeNodeName valuetype="str">Write_{ext}</writeNodeName>
                     <reformat valuetype="dict">
                         <filter valuetype="str">Cubic</filter>
@@ -68,23 +68,22 @@
                     <colourspace valuetype="str">default</colourspace>
                     <file_type valuetype="unicode">mov</file_type>
                     <mov valuetype="dict">
-                        <encoder valuetype="str">mov32</encoder>
+                        <b_frames valuetype="int">0</b_frames>
                         <bitrate_tolerance valuetype="int">40000000</bitrate_tolerance>
                         <gop_size valuetype="int">12</gop_size>
                         <quality_max valuetype="int">31</quality_max>
                         <quality_min valuetype="int">2</quality_min>
                         <codec valuetype="str">avc1&#x09;H.264</codec>
                         <ycbcr_matrix_type valuetype="str">Auto</ycbcr_matrix_type>
-                        <b_frames valuetype="int">0</b_frames>
+                        <encoder valuetype="str">mov32</encoder>
                         <bitrate valuetype="int">20000</bitrate>
                     </mov>
                     <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
                     <channels valuetype="str">rgb</channels>
-                    <includeAudio valuetype="bool">False</includeAudio>
+                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <burninDataEnabled valuetype="bool">False</burninDataEnabled>
                     <useSingleSocket valuetype="bool">False</useSingleSocket>
                     <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
-                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <additionalNodesData valuetype="list" />
                     <dpx valuetype="dict">
                         <datatype valuetype="str">8 bit</datatype>
@@ -99,11 +98,12 @@
                         <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
                         <burnIn_padding valuetype="NoneType">None</burnIn_padding>
                         <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
-                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
-                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
                         <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
                         <burnIn_font valuetype="NoneType">None</burnIn_font>
                     </burninData>
+                    <includeAudio valuetype="bool">False</includeAudio>
                     <writeNodeName valuetype="str">Write_{ext}</writeNodeName>
                     <reformat valuetype="dict">
                         <filter valuetype="str">Cubic</filter>
