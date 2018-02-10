@@ -11,17 +11,23 @@ class ExtractCurrentFile(pyblish.api.InstancePlugin):
     families = ["source"]
 
     def process(self, instance):
+        from pyblish import api
+
+        host = api.current_host()
+        if host == "nukeassist":
+            host = "nuke"
 
         instance.data["ftrackComponentsList"] = [
             {
-              "assettype_data": {
-                "short": "source",
-              },
-              "assetversion_data": {
-                "version": instance.context.data["version"],
-              },
-              "component_path": instance.context.data["currentFile"],
-              "component_overwrite": True
+                "assettype_data": {
+                    "short": "source",
+                },
+                "assetversion_data": {
+                    "version": instance.context.data["version"],
+                },
+                "component_data": {"name": host},
+                "component_path": instance.context.data["currentFile"],
+                "component_overwrite": True
             }
         ]
 
