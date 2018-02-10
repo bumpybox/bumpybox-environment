@@ -45,9 +45,16 @@ class ValidateFiles(api.InstancePlugin):
     optional = True
 
     def process(self, instance):
+        import os
 
         current_path = instance[0].fileTextureName.get()
         expected_path = self.get_path(instance)
+
+        # Its acceptable to have textures in the same folder as the
+        # expected_path.
+        if os.path.dirname(current_path) == os.path.dirname(expected_path):
+            return
+
         msg = "Expected \"{0}\" to be at \"{1}\"".format(
             current_path, expected_path
         )
