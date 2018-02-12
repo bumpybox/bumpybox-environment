@@ -17,7 +17,7 @@ dependencies:
 - git:
   - https://github.com/chadmv/cvshapeinverter.git@32bb71308a31a35d0855aa71248651caae3cae55
   - https://github.com/bumpybox/Tapp.git@0d5ca78f2ca8f28f12a3a5f0565f99e8efe962de
-  - https://github.com/tokejepsen/studiolibrary-1.git@9eb310779a9e5448e34f5da13afa4539d0e99bc4
+  - https://github.com/tokejepsen/studiolibrary.git@9eb310779a9e5448e34f5da13afa4539d0e99bc4
   - https://github.com/Psyop/Cryptomatte.git@bf6edff6c37d03ec1947cd2a50bd55961562d74e
   - https://github.com/tokejepsen/filelink.git@01c782e4ce8043914cc09908392747954f5284b1
   - https://github.com/abstractfactory/maya-capture.git@58763b758a27eafd6455e38f1da3eb84797a2e48
