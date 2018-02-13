@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import ftrack_api
 from bumpybox_environment import utils
@@ -13,9 +14,14 @@ def modify_launch(event):
     )
 
     work_file = utils.get_work_file(session, task, "maya", 1)
-    project_path = os.path.join(os.path.dirname(work_file))
+    project_path = os.path.dirname(work_file)
 
     event["data"]["command"].extend(["-proj", project_path])
+
+    # Copy workspace.mel
+    src = os.path.abspath(os.path.join(__file__, "..", "..", "workspace.mel"))
+    dst = os.path.abspath(os.path.join(work_file, "..", "workspace.mel"))
+    shutil.copy(src, dst)
 
 
 def register(session, **kw):
