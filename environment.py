@@ -89,7 +89,10 @@ def main():
             "pyblish_bumpybox",
             "environment_variables",
             "nuke_path"
-        )
+        ),
+        os.path.join(
+            os.path.dirname(__file__), "environment", "NUKE_PATH"
+        ),
     ]
 
     # MAYA_PLUG_IN_PATH
