@@ -16,14 +16,19 @@ def download_file(url, path):
         return False
 
 
-def install_djv():
+def get_applications_path():
 
-    root = os.path.dirname(__file__)
-    applications_path = os.path.join(root, "applications")
-    application_path = os.path.join(applications_path, "djv-1.1.0-Windows-64")
-
+    applications_path = os.path.join(os.path.dirname(__file__), "applications")
     if not os.path.exists(applications_path):
         os.makedirs(applications_path)
+
+    return applications_path
+
+
+def install_djv():
+
+    applications_path = get_applications_path()
+    application_path = os.path.join(applications_path, "djv-1.1.0-Windows-64")
 
     path = os.path.join(applications_path, "djv.zip")
 
@@ -40,5 +45,28 @@ def install_djv():
         os.remove(path)
 
 
+def install_alshaders():
+
+    applications_path = get_applications_path()
+    application_path = os.path.join(
+        applications_path, "alShaders-win-2.0.0b2-ai5.0.1.0"
+    )
+
+    path = os.path.join(applications_path, "alshaders.zip")
+
+    if not os.path.exists(application_path) and not os.path.exists(path):
+        print "Installing AlShaders..."
+        url = "https://github.com/anderslanglands/alShaders2/releases/"
+        url += "download/2.0.0-beta2/alShaders-win-2.0.0b2-ai5.0.1.0.zip"
+        download_file(url, path)
+
+        zip_ref = zipfile.ZipFile(path, "r")
+        zip_ref.extractall(application_path)
+        zip_ref.close()
+
+        os.remove(path)
+
+
 if __name__ == "__main__":
     install_djv()
+    install_alshaders()

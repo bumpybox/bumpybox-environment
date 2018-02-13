@@ -115,6 +115,19 @@ def main():
         os.path.join(os.environ["CONDA_GIT_REPOSITORY"], "cvshapeinverter"),
     ]
 
+    # ARNOLD_PLUGIN_PATH
+    environment["ARNOLD_PLUGIN_PATH"] = [
+        os.path.abspath(
+            os.path.join(
+                __file__,
+                "..",
+                "applications",
+                "alShaders-win-2.0.0b2-ai5.0.1.0",
+                "bin"
+            )
+        )
+    ]
+
     # FTRACK_CONNECT_PLUGIN_PATH
     environment["FTRACK_CONNECT_PLUGIN_PATH"] = [
         os.path.join(
