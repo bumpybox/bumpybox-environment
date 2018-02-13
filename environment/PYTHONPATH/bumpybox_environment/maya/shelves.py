@@ -110,10 +110,40 @@ image_plane.imageName.set(image_plane.remoteImageName.get())""",
         parent=shelf,
         label="Import Audio",
         image="pythonFamily.png",
-        imageOverlayLabel="IA",
+        imageOverlayLabel="IAu",
         annotation="Import audio.",
         command="from bumpybox_environment.maya import setup;"
         "setup.import_audio()"
+    )
+
+    cmds.shelfButton(
+        parent=shelf,
+        label="Import Animation",
+        image="pythonFamily.png",
+        imageOverlayLabel="IAn",
+        annotation="Import animation.",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.import_animation()"
+    )
+
+    cmds.shelfButton(
+        parent=shelf,
+        label="Import Lookdev",
+        image="pythonFamily.png",
+        imageOverlayLabel="IL",
+        annotation="Import lookdev.",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.import_lookdev()"
+    )
+
+    cmds.shelfButton(
+        parent=shelf,
+        label="Connect Alembic",
+        image="pythonFamily.png",
+        imageOverlayLabel="CA",
+        annotation="Connect alembic.",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.connect_alembic()"
     )
 
     cmds.shelfTabLayout(gShelfTopLevel, edit=True, selectTab=shelfName)

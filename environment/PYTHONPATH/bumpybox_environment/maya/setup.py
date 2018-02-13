@@ -1,6 +1,9 @@
 import os
 import operator
 
+import maya.cmds as cmds
+import pymel
+
 import ftrack_api
 import ftrack_connect
 from ftrack_connect.connector import FTAssetObject
@@ -181,3 +184,95 @@ def import_audio():
     )
 
     import_components(get_latest_components(components))
+
+
+def import_animation():
+    session = ftrack_connect.session.get_shared_session()
+    task = session.get("Task", os.environ["FTRACK_TASKID"])
+
+    components = session.query(
+        "Component where version.task.type.name is \"Animation\" and "
+        "version.asset.type.short is \"cache\" and "
+        "version.asset.parent.id is \"{0}\"".format(task["parent"]["id"])
+    )
+
+    import_components(
+        get_latest_components(components),
+        {
+            "mayaNamespace": True,
+            "nameSpaceStr": "animation",
+            "mayaTimeline": False,
+            "connectSelection": False
+        }
+    )
+
+
+def import_lookdev():
+    """Imports lookdev from linked AssetBuilds."""
+
+    session = ftrack_connect.session.get_shared_session()
+    task = session.get("Task", os.environ["FTRACK_TASKID"])
+
+    links = session.query(
+        "select from_id from TypedContextLink where to_id is "
+        "\"{0}\"".format(task["parent"]["id"])
+    )
+    for link in links:
+        components = session.query(
+            "Component where version.task.type.name is \"Lookdev\" and "
+            "version.asset.type.short is \"scene\" and "
+            "version.asset.parent.id is \"{0}\"".format(link["from_id"])
+        )
+
+        component = get_latest_components(components)[0]
+
+        if not component:
+            continue
+
+        import_components(
+            [component],
+            {
+                "mayaAddNamespace": True,
+                "mayaNamespace": "Custom",
+                "nameSpaceStr": "{0}_lookdev".format(
+                    component["version"]["asset"]["parent"]["name"]
+                ),
+                "mayaGroupNodes": False
+            }
+        )
+
+
+def connect_alembic():
+
+    data = {}
+    for node in pymel.core.ls(type="mesh", uuid=True):
+        uuid = None
+        source = False
+        try:
+            uuid = node.uuid.get()
+            source = True
+        except AttributeError:
+            uuid = cmds.ls(node.name(), uuid=True)[0]
+
+        node_data = data.get(uuid, {})
+        if source:
+            node_data["source"] = node
+        else:
+            node_data["destination"] = node
+
+        data[uuid] = node_data
+
+    for uuid, uuid_data in data.iteritems():
+
+        if "source" not in uuid_data:
+            continue
+
+        if "destination" not in uuid_data:
+            continue
+
+        pymel.core.blendShape(
+            uuid_data["source"],
+            uuid_data["destination"],
+            weight=[(0, 1)],
+            origin="world"
+        )
