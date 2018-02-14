@@ -1,10 +1,3 @@
-import os
-import json
-import shutil
-import threading
-import traceback
-import logging
-
 import ftrack_api
 from ftrack_hooks.action import BaseAction
 
