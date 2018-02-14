@@ -29,7 +29,8 @@ def get_published_file(session, task, work_file, app_id):
 
     components = session.query(
         "select version.version from Component where version.task.id is "
-        "\"{0}\" and version.asset.type.short is \"source\"".format(task["id"])
+        "\"{0}\" and version.asset.type.short is \"source\" and "
+        "name is \"{1}\"".format(task["id"], app_id)
     )
 
     latest_component = {"version": {"version": 0}}
