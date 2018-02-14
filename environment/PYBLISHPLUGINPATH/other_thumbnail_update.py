@@ -14,6 +14,7 @@ class FtrackUpdateThumbnails(pyblish.api.InstancePlugin):
             if data.get("thumbnail", False):
                 task = instance.context.data["ftrackTask"]
                 task["thumbnail_id"] = data["component"]["id"]
-                task["parent"]["thumbnail_id"] = data["component"]["id"]
+                parent = data["component"]["version"]["asset"]["parent"]
+                parent["thumbnail_id"] = data["component"]["id"]
 
                 instance.context.data["ftrackSession"].commit()
