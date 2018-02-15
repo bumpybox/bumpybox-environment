@@ -31,14 +31,14 @@ dependencies:
   - https://github.com/pyblish/pyblish-nukestudio.git@225b2af344468fa43c51a14f71a512b8a317cb48
   - https://github.com/pyblish/pyblish-ftrack.git@5dcd1eee3ccbc33178c18adc93a8b7a8652fddc2
   - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
-  - https://github.com/bumpybox/pyblish-bumpybox.git@87f720f97025e63435c407b1b38d84edec2bebe9
+  - https://github.com/bumpybox/pyblish-bumpybox.git@e35998f6f33ab01d00c780b7391d93fb5fabe895
   - https://bitbucket.org/ftrack/ftrack-python-legacy-api.git@97cb35a6ae98958f95e61a7925701d9e8eea375d
-  - https://bitbucket.org/ftrack/ftrack-connect.git@24ed8ce2404fce9bb6a58fbad363a93132efae14
+  - https://bitbucket.org/ftrack/ftrack-connect.git@cd3096b1dad417e9a65cd41835f4fd3d5bb439ba
   - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@9d59d542206aaada2aae6fc83c3ad316389ae691
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@796931b22b0b9fbca7a43da71a473363d6f83d46
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@f092b4daa5643ec736952e0fd84c5321eb279a88
   - https://bitbucket.org/ftrack/ftrack-connect-nuke-studio.git@dcb5d4e4cd3eccb60627207f287c9f9b8f99e614
-  - https://bitbucket.org/tokejepsen/ftrack-connect-rv.git@6f113a118b0c5c15809c461c5d1c793892701224
+  - https://bitbucket.org/tokejepsen/ftrack-connect-rv.git@66bf147329ee3c5230699163ac506afddf8b22ff
   - https://github.com/tokejepsen/ftrack-hooks.git@87140664a3b4cf1070784de3e402b5314918dc30
   - https://github.com/tokejepsen/ftrack-connect-environment.git@63945f0244e94f539aa52006ec7781c2e63b8d2a:
     - python $REPO_PATH/environment.py
