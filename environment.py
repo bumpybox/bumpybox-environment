@@ -176,6 +176,12 @@ def main():
     # PYBLISH_ALLOW_DUPLICATE_PLUGIN_NAMES
     environment["PYBLISH_ALLOW_DUPLICATE_PLUGIN_NAMES"] = ["True"]
 
+    # solidangle_LICENSE
+    environment["solidangle_LICENSE"] = ["5053"]
+
+    # foundry_LICENSE
+    environment["foundry_LICENSE"] = ["4101@172.17.0.2"]
+
     # Kill existing ftrack_connects
     for proc in psutil.process_iter():
         try:
