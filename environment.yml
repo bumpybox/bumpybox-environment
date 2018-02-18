@@ -38,7 +38,7 @@ dependencies:
   - https://bitbucket.org/ftrack/ftrack-connect-foundry.git@796931b22b0b9fbca7a43da71a473363d6f83d46
   - https://bitbucket.org/ftrack/ftrack-connect-nuke.git@f092b4daa5643ec736952e0fd84c5321eb279a88
   - https://bitbucket.org/ftrack/ftrack-connect-nuke-studio.git@dcb5d4e4cd3eccb60627207f287c9f9b8f99e614
-  - https://bitbucket.org/tokejepsen/ftrack-connect-rv.git@66bf147329ee3c5230699163ac506afddf8b22ff
+  - https://bitbucket.org/tokejepsen/ftrack-connect-rv.git@3e38178b8e462d884532b828d0b96748b60e135b
   - https://github.com/tokejepsen/ftrack-hooks.git@87140664a3b4cf1070784de3e402b5314918dc30
   - https://github.com/tokejepsen/ftrack-connect-environment.git@63945f0244e94f539aa52006ec7781c2e63b8d2a:
     - python $REPO_PATH/environment.py
