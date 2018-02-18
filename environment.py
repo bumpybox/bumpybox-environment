@@ -196,4 +196,5 @@ def main():
 
 if __name__ == "__main__":
     environment_setup.install_djv()
+    environment_setup.install_alshaders()
     main()
