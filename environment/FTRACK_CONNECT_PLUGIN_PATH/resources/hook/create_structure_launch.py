@@ -40,9 +40,18 @@ def application_launch(event):
     """Return each entities in the selection in data dictionaries."""
 
     session = get_shared_session()
-    entity = session.get(
-        "Task", event["data"]["context"]["selection"][0]["entityId"]
-    )
+
+    entity_id = None
+    try:
+        entity_id = event["data"]["context"]["selection"][0]["entityId"]
+    except TypeError:
+        return
+
+    entity = session.get("Task", entity_id)
+
+    if entity is None:
+        return
+
     entities = []
     for link in entity["link"]:
         entities.append(session.get(link["type"], link["id"]))
