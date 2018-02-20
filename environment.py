@@ -177,7 +177,7 @@ def main():
     environment["PYBLISH_ALLOW_DUPLICATE_PLUGIN_NAMES"] = ["True"]
 
     # solidangle_LICENSE
-    environment["solidangle_LICENSE"] = ["5053"]
+    environment["solidangle_LICENSE"] = ["5053@BUMPYBOXSERVER"]
 
     # foundry_LICENSE
     environment["foundry_LICENSE"] = ["4101@172.17.0.2"]
