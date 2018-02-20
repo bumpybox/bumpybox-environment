@@ -4,7 +4,7 @@ import pyblish.api
 class ExtractDeadlineMaya(pyblish.api.InstancePlugin):
     """Extracts studio data for Deadline."""
 
-    order = pyblish.api.ExtractorOrder - 0.1
+    order = pyblish.api.ExtractorOrder
     label = "Bumpybox Deadline"
     optional = True
     hosts = ["maya"]
