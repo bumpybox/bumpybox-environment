@@ -4,13 +4,14 @@ dependencies:
 - ffmpeg=2.7.0=0
 - python=2.7.14=h8c3f1cb_23
 - pip:
-  - PySide
+  - PySide==1.2.4
   - clique==1.5.0
   - lucidity==1.5.0
   - pyperclip==1.6.0
   - arrow==0.10.0
   - riffle==0.3.0
   - psutil==5.4.1
+  - backports.ssl_match_hostname==3.5.0.1
   - https://bitbucket.org/ftrack/qtext/get/0.2.0.zip
   - https://github.com/pyqt/python-qt5/archive/0.3.0.zip
 - git:
@@ -31,7 +32,7 @@ dependencies:
   - https://github.com/pyblish/pyblish-nukestudio.git@225b2af344468fa43c51a14f71a512b8a317cb48
   - https://github.com/pyblish/pyblish-ftrack.git@5dcd1eee3ccbc33178c18adc93a8b7a8652fddc2
   - https://github.com/pyblish/pyblish-deadline.git@10c1a4ff3fd4f44dc7ff34f104fa41a62adb3091
-  - https://github.com/bumpybox/pyblish-bumpybox.git@e35998f6f33ab01d00c780b7391d93fb5fabe895
+  - https://github.com/bumpybox/pyblish-bumpybox.git@6dd370e0daac471cc5d42955a43d8a07085e9f44
   - https://bitbucket.org/ftrack/ftrack-python-legacy-api.git@97cb35a6ae98958f95e61a7925701d9e8eea375d
   - https://bitbucket.org/ftrack/ftrack-connect.git@cd3096b1dad417e9a65cd41835f4fd3d5bb439ba
   - https://bitbucket.org/tokejepsen/ftrack-connect-maya.git@9d59d542206aaada2aae6fc83c3ad316389ae691
@@ -42,7 +43,7 @@ dependencies:
   - https://github.com/tokejepsen/ftrack-hooks.git@87140664a3b4cf1070784de3e402b5314918dc30
   - https://github.com/tokejepsen/ftrack-connect-environment.git@63945f0244e94f539aa52006ec7781c2e63b8d2a:
     - python $REPO_PATH/environment.py
-  - https://github.com/tokejepsen/pyblish-grill-environment.git@3549f5fd96819ee0faf17411307ce2b98c4db5f8:
+  - https://github.com/tokejepsen/pyblish-grill-environment.git@4bed1c2e9a2fed6b29dae7525cf20c3a3060eb67:
     - python $REPO_PATH/environment.py
   - https://github.com/bumpybox/bumpybox-environment.git:
     - python $REPO_PATH/environment.py
