@@ -54,6 +54,12 @@ class ExtractDeadlineMaya(pyblish.api.InstancePlugin):
         # Output prefix
         data["plugin"]["OutputFilePrefix"] = "<RenderLayer>/" + basename
 
+        # Add arnold license limit
+        data["job"]["LimitGroups"] = "arnold"
+
+        # Add group
+        data["job"]["Group"] = "mtoa"
+
         # Set environment
         environment = data["job"].get("EnvironmentKeyValue", {})
         environment["solidangle_LICENSE"] = os.environ["solidangle_LICENSE"]
