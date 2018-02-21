@@ -93,6 +93,11 @@ def main():
         os.path.join(
             os.path.dirname(__file__), "environment", "NUKE_PATH"
         ),
+        os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "Cryptomatte",
+            "nuke"
+        ),
     ]
 
     # MAYA_PLUG_IN_PATH
