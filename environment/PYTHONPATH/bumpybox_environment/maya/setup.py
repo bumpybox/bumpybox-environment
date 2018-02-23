@@ -276,3 +276,23 @@ def connect_alembic():
             weight=[(0, 1)],
             origin="world"
         )
+
+        attributes = [
+            "aiSubdivType",
+            "aiSubdivIterations",
+            "aiSubdivUvSmoothing",
+            "aiOpaque"
+        ]
+        for attribute_name in attributes:
+            source_attribute = pymel.core.PyNode(
+                "{0}.{1}".format(uuid_data["destination"], attribute_name)
+            )
+
+            for shp in uuid_data["destination"].getTransform().getShapes():
+                if shp.isReferenced():
+                    continue
+
+                destination_attribute = pymel.core.PyNode(
+                    "{0}.{1}".format(shp, attribute_name)
+                )
+                destination_attribute.set(source_attribute.get())
