@@ -7,6 +7,7 @@ class ManageFtrackData(pyblish.api.InstancePlugin):
     order = pyblish.api.IntegratorOrder + 1
     label = "Manage Data"
     families = ["ftrack"]
+    targets = ["default", "process"]
 
     def manage_data(self, src, dst):
         import shutil
