@@ -9,6 +9,7 @@ class ExtractCurrentFile(pyblish.api.InstancePlugin):
     optional = True
     hosts = ["nuke", "nukeassist", "nukestudio", "maya"]
     families = ["source"]
+    targets = ["default", "process"]
 
     def process(self, instance):
         from pyblish import api
