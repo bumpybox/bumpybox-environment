@@ -31,6 +31,8 @@ def get_test_paths():
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.mb",
         "//disk/test_project/publish/library/character/characterA/lookdev/"
+        "v0001/output/characterA_lookdev_instanceName_v0001.nk",
+        "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.abc",
         "//disk/test_project/publish/library/character/characterA/lookdev/"
         "v0001/output/characterA_lookdev_instanceName_v0001.mov",
@@ -87,6 +89,8 @@ def get_test_paths():
 
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001.mb",
+        "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
+        "sh0010_lighting_instanceName_v0001.nk",
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
         "sh0010_lighting_instanceName_v0001.abc",
         "//disk/test_project/publish/shots/sh0010/lighting/v0001/output/"
@@ -148,6 +152,9 @@ def get_test_paths():
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
         "ep0010_sh0010_lighting_instanceName_v0001.mb",
+        "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
+        "v0001/output/"
+        "ep0010_sh0010_lighting_instanceName_v0001.nk",
         "//disk/test_project/publish/episodes/ep0010/sh0010/lighting/"
         "v0001/output/"
         "ep0010_sh0010_lighting_instanceName_v0001.abc",
