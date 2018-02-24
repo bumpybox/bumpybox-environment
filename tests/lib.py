@@ -426,6 +426,32 @@ def get_task_file_components(task):
         )
     )
 
+    # MOV for image sequence
+    assettype = utils.mock_entity(
+        ("short", "img"),
+        entity_type="Type"
+    )
+    asset = utils.mock_entity(
+        ("parent", task["parent"]),
+        ("type", assettype),
+        entity_type="Asset"
+    )
+    assetversion = utils.mock_entity(
+        ("asset", asset),
+        ("task", task),
+        ("version", 1),
+        ("metadata", {"instance_name": "instanceName"}),
+        entity_type="AssetVersion"
+    )
+    entities.append(
+        utils.mock_entity(
+            ("version", assetversion),
+            ("file_type", ".mov"),
+            ("name", "main"),
+            entity_type="FileComponent"
+        )
+    )
+
     return entities
 
 

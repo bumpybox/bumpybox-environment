@@ -329,6 +329,25 @@ def register():
             "/Asset"
             "/img"
             "/AssetVersion"
+            "/FileComponent"
+            "/.mov",
+            mount + "/publish"
+            "/shots"
+            "/{version.asset.parent.name}"
+            "/{version.task.name}"
+            "/v{version.version}"
+            "/output"
+            "/{version.asset.parent.name}_"
+            "{version.task.name}_"
+            "{version.metadata.instance_name}_"
+            "v{version.version}{file_type}"
+        ),
+        utils.Template(
+            "Project"
+            "/Shot"
+            "/Asset"
+            "/img"
+            "/AssetVersion"
             "/SequenceComponent"
             "/.exr",
             mount + "/publish"
