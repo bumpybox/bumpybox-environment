@@ -157,6 +157,11 @@ def main():
             "running_jobs"
         ),
         os.path.join(
+            os.environ["CONDA_GIT_REPOSITORY"],
+            "ftrack-hooks",
+            "status_assign"
+        ),
+        os.path.join(
             os.path.dirname(__file__),
             "environment",
             "FTRACK_CONNECT_PLUGIN_PATH"
