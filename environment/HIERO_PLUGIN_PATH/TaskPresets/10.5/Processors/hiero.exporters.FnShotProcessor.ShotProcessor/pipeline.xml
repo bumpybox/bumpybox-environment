@@ -12,23 +12,22 @@
                     <colourspace valuetype="str">default</colourspace>
                     <file_type valuetype="unicode">mov</file_type>
                     <mov valuetype="dict">
-                        <encoder valuetype="str">mov32</encoder>
+                        <b_frames valuetype="int">0</b_frames>
                         <bitrate_tolerance valuetype="int">40000000</bitrate_tolerance>
                         <gop_size valuetype="int">12</gop_size>
                         <quality_max valuetype="int">31</quality_max>
                         <quality_min valuetype="int">2</quality_min>
                         <codec valuetype="str">avc1&#x09;H.264</codec>
                         <ycbcr_matrix_type valuetype="str">Auto</ycbcr_matrix_type>
-                        <b_frames valuetype="int">0</b_frames>
+                        <encoder valuetype="str">mov32</encoder>
                         <bitrate valuetype="int">20000</bitrate>
                     </mov>
                     <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
                     <channels valuetype="str">rgb</channels>
-                    <includeAudio valuetype="bool">False</includeAudio>
+                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <burninDataEnabled valuetype="bool">False</burninDataEnabled>
                     <useSingleSocket valuetype="bool">False</useSingleSocket>
                     <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
-                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <additionalNodesData valuetype="list" />
                     <dpx valuetype="dict">
                         <datatype valuetype="str">8 bit</datatype>
@@ -43,11 +42,12 @@
                         <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
                         <burnIn_padding valuetype="NoneType">None</burnIn_padding>
                         <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
-                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
-                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
                         <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
                         <burnIn_font valuetype="NoneType">None</burnIn_font>
                     </burninData>
+                    <includeAudio valuetype="bool">False</includeAudio>
                     <writeNodeName valuetype="str">Write_{ext}</writeNodeName>
                     <reformat valuetype="dict">
                         <filter valuetype="str">Cubic</filter>
@@ -68,22 +68,23 @@
                     <colourspace valuetype="str">default</colourspace>
                     <file_type valuetype="unicode">mov</file_type>
                     <mov valuetype="dict">
-                        <b_frames valuetype="int">0</b_frames>
+                        <encoder valuetype="str">mov32</encoder>
                         <bitrate_tolerance valuetype="int">40000000</bitrate_tolerance>
                         <gop_size valuetype="int">12</gop_size>
                         <quality_max valuetype="int">31</quality_max>
                         <quality_min valuetype="int">2</quality_min>
                         <codec valuetype="str">avc1&#x09;H.264</codec>
                         <ycbcr_matrix_type valuetype="str">Auto</ycbcr_matrix_type>
-                        <encoder valuetype="str">mov32</encoder>
+                        <b_frames valuetype="int">0</b_frames>
                         <bitrate valuetype="int">20000</bitrate>
                     </mov>
                     <readAllLinesForExport valuetype="bool">False</readAllLinesForExport>
                     <channels valuetype="str">rgb</channels>
-                    <deleteAudio valuetype="bool">True</deleteAudio>
+                    <includeAudio valuetype="bool">False</includeAudio>
                     <burninDataEnabled valuetype="bool">False</burninDataEnabled>
                     <useSingleSocket valuetype="bool">False</useSingleSocket>
                     <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
+                    <deleteAudio valuetype="bool">True</deleteAudio>
                     <additionalNodesData valuetype="list" />
                     <dpx valuetype="dict">
                         <datatype valuetype="str">8 bit</datatype>
@@ -98,12 +99,11 @@
                         <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
                         <burnIn_padding valuetype="NoneType">None</burnIn_padding>
                         <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
-                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
-                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
                         <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
                         <burnIn_font valuetype="NoneType">None</burnIn_font>
                     </burninData>
-                    <includeAudio valuetype="bool">False</includeAudio>
                     <writeNodeName valuetype="str">Write_{ext}</writeNodeName>
                     <reformat valuetype="dict">
                         <filter valuetype="str">Cubic</filter>
@@ -121,6 +121,86 @@
             <SequenceItem valuetype="str">{shot}/audio.wav</SequenceItem>
             <SequenceItem valuetype="hiero.exporters.FnAudioExportTask.AudioExportPreset">
                 <root presetname="hiero.exporters.FnAudioExportTask.AudioExportTask" tasktype="hiero.exporters.FnAudioExportTask.AudioExportTask" />
+            </SequenceItem>
+        </SequenceItem>
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">{shot}/main.exr</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnExternalRender.NukeRenderPreset">
+                <root presetname="hiero.exporters.FnExternalRender.NukeRenderTask" tasktype="hiero.exporters.FnExternalRender.NukeRenderTask">
+                    <burninDataEnabled valuetype="bool">False</burninDataEnabled>
+                    <colourspace valuetype="str">default</colourspace>
+                    <file_type valuetype="unicode">exr</file_type>
+                    <create_directories valuetype="bool">True</create_directories>
+                    <dpx valuetype="dict">
+                        <datatype valuetype="str">8 bit</datatype>
+                        <transfer valuetype="str">(auto detect)</transfer>
+                        <bigEndian valuetype="bool">True</bigEndian>
+                        <fill valuetype="bool">False</fill>
+                    </dpx>
+                    <channels valuetype="unicode">rgba</channels>
+                    <burninData valuetype="dict">
+                        <burnIn_bottomRight valuetype="NoneType">None</burnIn_bottomRight>
+                        <burnIn_topLeft valuetype="NoneType">None</burnIn_topLeft>
+                        <burnIn_topMiddle valuetype="NoneType">None</burnIn_topMiddle>
+                        <burnIn_padding valuetype="NoneType">None</burnIn_padding>
+                        <burnIn_topRight valuetype="NoneType">None</burnIn_topRight>
+                        <burnIn_bottomMiddle valuetype="NoneType">None</burnIn_bottomMiddle>
+                        <burnIn_bottomLeft valuetype="NoneType">None</burnIn_bottomLeft>
+                        <burnIn_textSize valuetype="NoneType">None</burnIn_textSize>
+                        <burnIn_font valuetype="NoneType">None</burnIn_font>
+                    </burninData>
+                    <exr valuetype="dict">
+                        <compression valuetype="str">Zip (1 scanline)</compression>
+                        <datatype valuetype="str">16 bit half</datatype>
+                        <noprefix valuetype="bool">False</noprefix>
+                        <write_full_layer_names valuetype="bool">False</write_full_layer_names>
+                        <standard_layer_name_format valuetype="bool">False</standard_layer_name_format>
+                        <interleave valuetype="str">channels, layers and views</interleave>
+                        <dw_compression_level valuetype="float">45.0</dw_compression_level>
+                        <truncateChannelNames valuetype="bool">False</truncateChannelNames>
+                        <metadata valuetype="str">default metadata</metadata>
+                    </exr>
+                    <writeNodeName valuetype="str">main</writeNodeName>
+                    <reformat valuetype="dict">
+                        <filter valuetype="str">Cubic</filter>
+                        <to_type valuetype="str">None</to_type>
+                        <scale valuetype="float">1.0</scale>
+                        <center valuetype="bool">True</center>
+                        <resize valuetype="str">width</resize>
+                    </reformat>
+                </root>
+            </SequenceItem>
+        </SequenceItem>
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">{shot}/editing.nk</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnNukeShotExporter.NukeShotPreset">
+                <root presetname="hiero.exporters.FnNukeShotExporter.NukeShotExporter" tasktype="hiero.exporters.FnNukeShotExporter.NukeShotExporter">
+                    <includeAnnotations valuetype="bool">False</includeAnnotations>
+                    <postProcessScript valuetype="bool">True</postProcessScript>
+                    <collateSequence valuetype="bool">False</collateSequence>
+                    <enable valuetype="bool">True</enable>
+                    <additionalNodesData valuetype="list" />
+                    <timelineWriteNode valuetype="unicode">{shot}/main.exr</timelineWriteNode>
+                    <showAnnotations valuetype="bool">True</showAnnotations>
+                    <annotationsPreCompPaths valuetype="list" />
+                    <collateShotNames valuetype="bool">True</collateShotNames>
+                    <includeEffects valuetype="bool">True</includeEffects>
+                    <writePaths valuetype="list">
+                        <SequenceItem valuetype="unicode">{shot}/main.exr</SequenceItem>
+                    </writePaths>
+                    <additionalNodesEnabled valuetype="bool">False</additionalNodesEnabled>
+                    <readPaths valuetype="list" />
+                    <reformat valuetype="dict">
+                        <filter valuetype="str">Cubic</filter>
+                        <to_type valuetype="str">Plate Resolution</to_type>
+                        <center valuetype="bool">True</center>
+                        <resize valuetype="str">width</resize>
+                    </reformat>
+                    <collateTracks valuetype="bool">False</collateTracks>
+                    <connectTracks valuetype="bool">False</connectTracks>
+                    <method valuetype="str">Blend</method>
+                    <collateCustomStart valuetype="bool">True</collateCustomStart>
+                </root>
             </SequenceItem>
         </SequenceItem>
     </exportTemplate>
