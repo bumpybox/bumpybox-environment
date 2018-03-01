@@ -33,6 +33,10 @@ class ExtractDeadlineMaya(pyblish.api.InstancePlugin):
             "render",
             "{0}_{1}{2}".format(basename, time.strftime("%Y%m%d%H%M%S"), ext)
         )
+
+        if not os.path.exists(os.path.dirname(path)):
+            os.makedirs(os.path.dirname(path))
+
         shutil.copy(instance.context.data["currentFile"], path)
 
         data["plugin"]["SceneFile"] = path
@@ -50,6 +54,41 @@ class ExtractDeadlineMaya(pyblish.api.InstancePlugin):
             shutil.copy(source, destination)
 
         data["job"]["ScriptDependency0"] = destination
+
+        # Add event script
+        destination = os.path.join(
+            task["project"]["root"],
+            "render",
+            "event_script.py"
+        )
+        if not os.path.exists(destination):
+            source = os.path.abspath(
+                os.path.join(__file__, "..", "event_script.py")
+            )
+            shutil.copy(source, destination)
+
+        if "ExtraInfoKeyValue" in data["job"]:
+            data["job"]["ExtraInfoKeyValue"]["EventScript"] = destination
+        else:
+            data["job"]["ExtraInfoKeyValue"] = {"EventScript": destination}
+
+        # Add required environment.
+        key_values = {
+            "FTRACK_SERVER": os.environ["FTRACK_SERVER"],
+            "FTRACK_APIKEY": os.environ["FTRACK_APIKEY"],
+            "LOGNAME": os.environ["LOGNAME"],
+            "FTRACK_TASKID": os.environ["FTRACK_TASKID"],
+            "PYTHONPATH": os.path.join(
+                task["project"]["root"],
+                "render",
+                "PYTHONPATH"
+            )
+        }
+
+        if "EnvironmentKeyValue" in data["job"]:
+            data["job"]["EnvironmentKeyValue"].update(key_values)
+        else:
+            data["job"]["EnvironmentKeyValue"] = key_values
 
         # Output prefix
         data["plugin"]["OutputFilePrefix"] = "<RenderLayer>/" + basename
