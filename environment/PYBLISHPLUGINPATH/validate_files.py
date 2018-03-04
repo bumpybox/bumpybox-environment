@@ -40,7 +40,7 @@ class ValidateFiles(api.InstancePlugin):
     order = api.ValidatorOrder
     families = ["file"]
     label = "Files"
-    targets = ["process.local"]
+    targets = ["process"]
     actions = [RepairFiles]
     optional = True
 
