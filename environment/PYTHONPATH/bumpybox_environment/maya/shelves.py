@@ -78,26 +78,6 @@ image_plane.imageName.set(image_plane.remoteImageName.get())""",
 
     cmds.shelfButton(
         parent=shelf,
-        label="Import Movie (Full)",
-        image="pythonFamily.png",
-        imageOverlayLabel="IM(F)",
-        annotation="Import full resolution movie.",
-        command="from bumpybox_environment.maya import setup;"
-        "setup.import_full_resolution_movie()"
-    )
-
-    cmds.shelfButton(
-        parent=shelf,
-        label="Import Movie (Half)",
-        image="pythonFamily.png",
-        imageOverlayLabel="IM(H)",
-        annotation="Import half resolution movie.",
-        command="from bumpybox_environment.maya import setup;"
-        "setup.import_half_resolution_movie()"
-    )
-
-    cmds.shelfButton(
-        parent=shelf,
         label="Import Tracking",
         image="pythonFamily.png",
         imageOverlayLabel="IT",

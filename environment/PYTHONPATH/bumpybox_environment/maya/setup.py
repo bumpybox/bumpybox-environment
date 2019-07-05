@@ -3,14 +3,6 @@ import os
 from avalon import io, api
 
 
-def import_full_resolution_movie():
-    raise NotImplementedError("This is not implemented yet.")
-
-
-def import_half_resolution_movie():
-    raise NotImplementedError("This is not implemented yet.")
-
-
 def import_rigging():
     shot = io.find_one({"type": "asset", "name": os.environ["AVALON_ASSET"]})
     for id in shot["data"]["inputs"]:
