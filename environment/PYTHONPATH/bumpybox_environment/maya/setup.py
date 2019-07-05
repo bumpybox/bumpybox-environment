@@ -56,6 +56,3 @@ def import_animation():
 
 def import_lookdev():
     raise NotImplementedError("This is not implemented yet.")
-
-
-import_rigging()
