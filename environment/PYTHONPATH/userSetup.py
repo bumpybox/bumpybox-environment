@@ -81,13 +81,18 @@ def resetSelection(translation=True, rotation=True,
 
 
 def get_all_nodes(node_list):
-    nodes = []
-    children = pm.listRelatives(
-        node_list[0].root(), allDescendents=True, type="nurbsCurve"
-    )
-    for node in children:
-        nodes.append(node.getTransform())
-    return nodes
+    namespaces = []
+    for node in node_list:
+        namespace = ":".join(node.name().split(":")[:-1])
+        if namespace not in namespaces:
+            namespaces.append(namespace)
+
+    sets = [x + ":controls_SET" for x in namespaces]
+    controls = []
+    for set in [x + ":controls_SET" for x in namespaces]:
+        controls.extend(pm.PyNode(set).members())
+
+    return controls
 
 
 def select_all(node_list):
