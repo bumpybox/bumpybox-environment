@@ -65,11 +65,11 @@ def resetSelection(translation=True, rotation=True,
     cmds.undoInfo(openChunk=True)
 
     # Getting selection
-    sel = cmds.ls(slabel=True)
+    sel = cmds.ls(selection=True)
 
     # Zero nodes
     if len(sel) >= 1:
-        for node in cmds.ls(slabel=True):
+        for node in cmds.ls(selection=True):
             resetAttributes(
                 node, translation, rotation, scale, userAttrs
             )
@@ -225,7 +225,7 @@ def main():
         b=MouseButtonMiddle,
         mm=True,
         p="viewPanes",
-        pmcommand=pre_command
+        pmc=pre_command
     )
 
 
