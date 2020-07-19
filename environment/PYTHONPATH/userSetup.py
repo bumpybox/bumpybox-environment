@@ -5,6 +5,11 @@ import maya.cmds as cmds
 
 import ZvParentMaster
 
+try:
+    import avalon
+except:
+    pass
+
 
 # Marking menu
 WindowName = "CustomAnimationMarkingMenu"
@@ -213,6 +218,36 @@ def pre_command(*args):
         print("Window doesnt exist : {}".format(WindowName))
 
 
+def fix_incompatible_instances():
+    mapping = {
+        "endFrame": "frameEnd",
+        "startFrame": "frameStart"
+    }
+
+    objectset = cmds.ls("*.id", long=True, type="objectSet",
+                        recursive=True, objectsOnly=True)
+
+    for objset in objectset:
+        if not cmds.attributeQuery("id", node=objset, exists=True):
+            continue
+
+        id_attr = "{}.id".format(objset)
+        if cmds.getAttr(id_attr) != "pyblish.avalon.instance":
+            continue
+
+        attributes = cmds.listAttr(objset)
+        for key, value in mapping.iteritems():
+            if key not in attributes:
+                continue
+
+            attribute = "{}.{}".format(objset, key)
+            print("Changing {} to {}.".format(attribute, value))
+            cmds.renameAttr(attribute, value)
+
+def on_open(*args, **kwargs):
+    fix_incompatible_instances()
+
+
 def main():
     if pm.popupMenu(WindowName, ex=True):
         pm.deleteUI(WindowName)
@@ -229,6 +264,10 @@ def main():
     )
 
 
+try:
+    avalon.api.on("open", on_open)
+except:
+    pass
 pm.evalDeferred("main()")
 pm.evalDeferred(
     "from bumpybox_environment.maya import shelves;shelves.create()"
