@@ -1,0 +1,410 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "dependencies": [
+        {
+            "uri": "file:///bifrost_object_i.json"
+        },
+        {
+            "uri": "file:///converters_types.json"
+        },
+        {
+            "uri": "file:///Math_types.json"
+        },
+        {
+            "uri": "file:///converters_nodedefs.json"
+        },
+        {
+            "uri": "file:///volume_types.json"
+        },
+        {
+            "uri": "file:///bifrost_geometry_query_types.json"
+        },
+        {
+            "uri": "file:///geometry_types.json"
+        },
+        {
+            "uri": "file:///is_a.json"
+        },
+        {
+            "uri": "file:///create_object_from_schema.json"
+        },
+        {
+            "uri": "file:///is_a_mesh.json"
+        },
+        {
+            "uri": "file:///is_a_strands.json"
+        },
+        {
+            "uri": "file:///is_a_points.json"
+        },
+        {
+            "uri": "file:///is_a_volume.json"
+        },
+        {
+            "uri": "file:///get_geo_schema_type.json"
+        },
+        {
+            "uri": "file:///switch_is_a.json"
+        },
+        {
+            "uri": "file:///Math_float.json"
+        },
+        {
+            "uri": "file:///Math_double.json"
+        },
+        {
+            "uri": "file:///point_types.json"
+        },
+        {
+            "uri": "file:///Math_long.json"
+        },
+        {
+            "uri": "file:///Math_bool.json"
+        },
+        {
+            "uri": "file:///Math_char.json"
+        },
+        {
+            "uri": "file:///Math_int.json"
+        },
+        {
+            "uri": "file:///Math_short.json"
+        },
+        {
+            "uri": "file:///Math_uchar.json"
+        },
+        {
+            "uri": "file:///Math_uint.json"
+        },
+        {
+            "uri": "file:///Math_ulong.json"
+        },
+        {
+            "uri": "file:///Math_ushort.json"
+        },
+        {
+            "uri": "file:///Math_constants.json"
+        },
+        {
+            "uri": "file:///Core_Array_array_bounds_impl.json"
+        },
+        {
+            "uri": "file:///Core_Array_array_bounds.json"
+        },
+        {
+            "uri": "file:///Core_Array_sum_array_impl.json"
+        },
+        {
+            "uri": "file:///Core_Array_sum_array.json"
+        },
+        {
+            "uri": "file:///point_nodedefs.json"
+        },
+        {
+            "uri": "file:///has_property.json"
+        },
+        {
+            "uri": "file:///CoreArrayOps.json"
+        },
+        {
+            "uri": "file:///get_property_any.json"
+        },
+        {
+            "uri": "file:///fluids_types.json"
+        },
+        {
+            "uri": "file:///FCurve.json"
+        },
+        {
+            "uri": "file:///fluids_nodedefs.json"
+        },
+        {
+            "uri": "file:///volume_nodedefs.json"
+        },
+        {
+            "uri": "file:///get_property.json"
+        },
+        {
+            "uri": "file:///get_geo_property.json"
+        },
+        {
+            "uri": "file:///get_position_property.json"
+        },
+        {
+            "uri": "file:///Math_conversion.json"
+        },
+        {
+            "uri": "file:///compute_voxel_scale.json"
+        },
+        {
+            "uri": "file:///post_process_level_set.json"
+        },
+        {
+            "uri": "file:///set_property_any.json"
+        },
+        {
+            "uri": "file:///set_property.json"
+        },
+        {
+            "uri": "file:///get_geo_component_count.json"
+        },
+        {
+            "uri": "file:///set_geo_property_data.json"
+        },
+        {
+            "uri": "file:///compute_fog_density.json"
+        },
+        {
+            "uri": "file:///erase_property.json"
+        },
+        {
+            "uri": "file:///delete_level_set.json"
+        },
+        {
+            "uri": "file:///if_compute_volume.json"
+        },
+        {
+            "uri": "file:///mesh_to_volume.json"
+        },
+        {
+            "uri": "file:///points_to_volume.json"
+        },
+        {
+            "uri": "file:///convert_to_volume.json"
+        }
+    ],
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "MLC::Sample::voxelize_and_rebuild_geo",
+            "uriImported": "file:///voxelize_and_rebuild_geo.json",
+            "metadata": [{
+	    	                        "metaName": "documentation",
+	    	                        "metaType": "string",
+	    	                        "metaValue": "voxelize_and_rebuild_geo.md"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-578 -92"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "geometry"
+                                                },
+                                                {
+                                                    "metaName": "detail_size"
+                                                },
+                                                {
+                                                    "metaName": "resolution_mode"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "468.761 -76.7395"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "mesh"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-555.089 -374.748 1001 682.756"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "geometry",
+                    "portDirection": "input",
+                    "portType": "Amino::Object"
+                },
+                {
+                    "portName": "detail_size",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portDefault": "0.00499999989f"
+                },
+                {
+                    "portName": "resolution_mode",
+                    "portDirection": "input",
+                    "portType": "Geometry::Volume::ResolutionType",
+                    "portDefault": "Relative"
+                },
+                {
+                    "portName": "mesh",
+                    "portDirection": "output"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "contour_dual_marching_cubes",
+                    "nodeType": "Geometry::Converters::contour_dual_marching_cubes",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "43.9296 -149.775"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "convert_to_volume",
+                    "nodeType": "Modeling::Converters::convert_to_volume",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-267.098 -193.659"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "convert_to_volume.volume",
+                    "target": "contour_dual_marching_cubes.volume"
+                },
+                {
+                    "source": ".geometry",
+                    "target": "convert_to_volume.geometry"
+                },
+                {
+                    "source": ".detail_size",
+                    "target": "convert_to_volume.detail_size"
+                },
+                {
+                    "source": ".resolution_mode",
+                    "target": "convert_to_volume.resolution_mode"
+                },
+                {
+                    "source": "contour_dual_marching_cubes.mesh",
+                    "target": ".mesh"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "convert_to_volume.detail_size",
+                    "valueType": "float",
+                    "value": "0.00499999989f"
+                },
+                {
+                    "valueName": "convert_to_volume.enable_bandwidth",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "convert_to_volume.bandwidth",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "convert_to_volume.volume_mode",
+                    "valueType": "Geometry::Converters::VolumeMode",
+                    "value": "Solid"
+                },
+                {
+                    "valueName": "convert_to_volume.offset",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "convert_to_volume.store_level_set",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "convert_to_volume.store_fog_density",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "convert_to_volume.fog_density",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "convert_to_volume.properties",
+                    "valueType": "string",
+                    "value": "*"
+                },
+                {
+                    "valueName": "convert_to_volume.resolution_mode",
+                    "valueType": "Geometry::Volume::ResolutionType",
+                    "value": "Relative"
+                }
+            ]
+        }
+    ]
+}

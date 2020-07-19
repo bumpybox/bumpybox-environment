@@ -1,0 +1,14 @@
+{
+  "AminoConfigurations": [
+    {
+      "libraryName": "My_Compounds",
+      "libraryVersion": "3.1.4",
+      "jsonLibs": [
+        {
+          "path": "compounds",
+          "files": [ ]
+        }
+      ]
+    }
+  ]
+}
