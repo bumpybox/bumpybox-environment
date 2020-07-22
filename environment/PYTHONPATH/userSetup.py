@@ -5,11 +5,6 @@ import maya.cmds as cmds
 
 import ZvParentMaster
 
-try:
-    import avalon
-except:
-    pass
-
 
 # Marking menu
 WindowName = "CustomAnimationMarkingMenu"
@@ -125,10 +120,7 @@ def select_all_cmd(node_list, *args):
 
 
 def align_cmd(node_list, *args):
-    pm.select(node_list[1], node_list[0])
-    import Red9.core.Red9_AnimationUtils as r9Anim
-    r9Anim.AnimFunctions.snap()
-    pm.select(node_list)
+    pm.matchTransform(node_list[0], node_list[1])
 
 
 def zv_attach_cmd(node_list, *args):
@@ -244,6 +236,7 @@ def fix_incompatible_instances():
             print("Changing {} to {}.".format(attribute, value))
             cmds.renameAttr(attribute, value)
 
+
 def on_open(*args, **kwargs):
     fix_incompatible_instances()
 
@@ -265,9 +258,11 @@ def main():
 
 
 try:
+    import avalon
     avalon.api.on("open", on_open)
-except:
+except ImportError:
     pass
+
 pm.evalDeferred("main()")
 pm.evalDeferred(
     "from bumpybox_environment.maya import shelves;shelves.create()"
