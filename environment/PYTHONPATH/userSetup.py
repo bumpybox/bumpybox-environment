@@ -120,7 +120,9 @@ def select_all_cmd(node_list, *args):
 
 
 def align_cmd(node_list, *args):
+    scale = node_list[0].scale.get()
     pm.matchTransform(node_list[0], node_list[1])
+    node_list[0].scale.set(scale)
 
 
 def zv_attach_cmd(node_list, *args):
