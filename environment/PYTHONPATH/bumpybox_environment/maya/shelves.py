@@ -66,4 +66,14 @@ image_plane = pymel.core.ls(selection=True)[0]
 image_plane.imageName.set(image_plane.remoteImageName.get())""",
     )
 
+    cmds.shelfButton(
+        parent=shelf,
+        image="pythonFamily.png",
+        imageOverlayLabel="CAI",
+        annotation="Create animation instances.",
+        label="Create Animation Instances",
+        command="from bumpybox_environment.maya import setup;"
+        "setup.animation_create()"
+    )
+
     cmds.shelfTabLayout(gShelfTopLevel, edit=True, selectTab=shelfName)
