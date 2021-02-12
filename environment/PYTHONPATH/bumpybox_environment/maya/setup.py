@@ -2,6 +2,7 @@ import os
 import getpass
 
 import pymel.core as pc
+from maya import mel
 
 from avalon import api, io
 from avalon.maya import commands
@@ -34,6 +35,28 @@ def lighting_setup():
             members.append(shape.name())
 
         hosts.maya.lib.assign_look(members, subset="lookMain")
+
+    # Connect pointcacheMain to bifrost graphs.
+    mel_commands = [
+        r'vnnCompound "{}" "/" -addIONode true;',
+        r'vnnCompound "{}" "/" -renameNode "input" "Input by Path";',
+        r'vnnNode "{}" "/Input_by_Path" -createOutputPort "mesh" '
+        r'"array<Amino::Object>" -portOptions "pathinfo={{path=\"/*:'
+        r'pointcacheMain//*\";channels=*;setOperation=+;active=true;'
+        r'normalsPerPoint=true;normalsPerFaceVertex=true;'
+        r'normalsPerFace=false}}";',
+        r'vnnNode "{}" "/merge_geometry" -createInputPort "geometry.mesh" '
+        r'"array<Amino::Object>";',
+        r'vnnConnect "{}" ".mesh" "/merge_geometry.geometry.mesh";'
+    ]
+    graphs = ["shadow_graph", "reflection_graph"]
+    for graph in graphs:
+        for command in mel_commands:
+            mel.eval(command.format(graph))
+
+    # Ensure project image rule.
+    pc.workspace.fileRules["images"] = "renders"
+    pc.system.Workspace.save()
 
     # Save workfile.
     project = io.find_one({
