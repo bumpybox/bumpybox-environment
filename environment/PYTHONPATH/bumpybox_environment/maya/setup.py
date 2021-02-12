@@ -1,112 +1,64 @@
+import os
+import getpass
+
 import pymel.core as pc
 
-from avalon import api
-from Qt import QtWidgets, QtCore
+from avalon import api, io
+from avalon.maya import commands
+from pypeapp import Anatomy
+from pype import lib
+import mayalookassigner
 
 
-class CameraWindow(QtWidgets.QDialog):
+def lighting_setup():
+    path = r"Y:/my_petsaurus/work/lighting/lighting_setup.ma"
+    pc.openFile(path, force=True)
 
-    def __init__(self, cameras):
-        super(CameraWindow, self).__init__()
-        self.setWindowFlags(self.windowFlags() | QtCore.Qt.FramelessWindowHint)
+    project = io.find_one({
+        "type": "project"
+    })
+    session = api.Session
+    data = {
+        "project": {
+            "name": project["name"],
+            "code": project["data"].get("code")
+        },
+        "asset": session["AVALON_ASSET"],
+        "task": session["AVALON_TASK"],
+        "version": 1,
+        "user": getpass.getuser()
+    }
+    anatomy = Anatomy(project["name"])
+    template = anatomy.templates["work"]["file"]
+    host = api.registered_host()
 
-        self.camera = None
+    # Define saving file extension
+    current_file = host.current_file()
+    if current_file:
+        # Match the extension of current file
+        _, extension = os.path.splitext(current_file)
+    else:
+        # Fall back to the first extension supported for this host.
+        extension = host.file_extensions()[0]
 
-        self.widgets = {
-            "label": QtWidgets.QLabel("Select camera for image plane."),
-            "list": QtWidgets.QListWidget(),
-            "warning": QtWidgets.QLabel("No cameras selected!"),
-            "buttons": QtWidgets.QWidget(),
-            "okButton": QtWidgets.QPushButton("Ok"),
-            "cancelButton": QtWidgets.QPushButton("Cancel")
-        }
+    data["ext"] = extension
 
-        # Build warning.
-        self.widgets["warning"].setVisible(False)
-        self.widgets["warning"].setStyleSheet("color: red")
+    version = api.last_workfile_with_version(
+        host.work_root(session), template, data, [data["ext"]]
+    )[1]
 
-        # Build list.
-        for camera in cameras:
-            self.widgets["list"].addItem(camera)
+    if version is None:
+        version = 1
+    else:
+        version += 1
 
-        # Build buttons.
-        layout = QtWidgets.QHBoxLayout(self.widgets["buttons"])
-        layout.addWidget(self.widgets["okButton"])
-        layout.addWidget(self.widgets["cancelButton"])
+    data["version"] = version
 
-        # Build layout.
-        layout = QtWidgets.QVBoxLayout(self)
-        layout.addWidget(self.widgets["label"])
-        layout.addWidget(self.widgets["list"])
-        layout.addWidget(self.widgets["buttons"])
-        layout.addWidget(self.widgets["warning"])
+    path = api.format_template_with_optional_keys(data, template)
+    host.save_file(path)
 
-        self.widgets["okButton"].pressed.connect(self.on_ok_pressed)
-        self.widgets["cancelButton"].pressed.connect(self.on_cancel_pressed)
-        self.widgets["list"].itemPressed.connect(self.on_list_itemPressed)
+    commands.reset_frame_range()
 
-    def on_list_itemPressed(self, item):
-        self.camera = item.text()
+    lib.BuildWorkfile().process()
 
-    def on_ok_pressed(self):
-        if self.camera is None:
-            self.widgets["warning"].setVisible(True)
-            return
-
-        self.close()
-
-    def on_cancel_pressed(self):
-        self.camera = None
-        self.close()
-
-
-def animation_create():
-    default_cameras = [
-        "frontShape", "perspShape", "sideShape", "topShape"
-    ]
-    cameras = [
-        x for x in pc.ls(type="camera") if x.name() not in default_cameras
-    ]
-    camera_names = {x.getParent().name(): x for x in cameras}
-    camera_names["Create new camera."] = "create_camera"
-    window = CameraWindow(camera_names.keys())
-    window.exec_()
-
-    camera = camera_names.get(window.camera)
-
-    if camera == "create_camera":
-        camera = pc.createNode("camera")
-
-    if camera:
-        camera = camera.getTransform()
-
-    instances = [
-        {"name": "cameraMain", "family": "camera", "nodes": [camera]},
-        {"name": "pointcacheMain", "family": "pointcache"},
-        {"name": "reviewMain", "family": "review", "nodes": [camera]},
-        {
-            "name": "reviewPrecomp",
-            "family": "review",
-            "nodes": [camera],
-            "attributes": {
-                "isolate": True, "keepImages": True, "imagePlane": False
-            }
-        }
-    ]
-
-    for instance in instances:
-        instance["asset"] = api.Session["AVALON_ASSET"]
-        attributes = instance.pop("attributes", [])
-        nodes = instance.pop("nodes", [])
-
-        object_set = api.create(**instance)
-        object_set = pc.PyNode(object_set)
-
-        for attr_name in attributes:
-            attr = getattr(object_set, attr_name)
-            attr.set(attributes[attr_name])
-
-        for node in nodes:
-            if node is None:
-                continue
-            object_set.add(node)
+    mayalookassigner.show()

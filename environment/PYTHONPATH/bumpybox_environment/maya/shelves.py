@@ -69,11 +69,11 @@ image_plane.imageName.set(image_plane.remoteImageName.get())""",
     cmds.shelfButton(
         parent=shelf,
         image="pythonFamily.png",
-        imageOverlayLabel="CAI",
-        annotation="Create animation instances.",
-        label="Create Animation Instances",
+        imageOverlayLabel="LT",
+        annotation="Lighting setup.",
+        label="Lighting Setup",
         command="from bumpybox_environment.maya import setup;"
-        "setup.animation_create()"
+        "setup.lighting_setup()"
     )
 
     cmds.shelfTabLayout(gShelfTopLevel, edit=True, selectTab=shelfName)
