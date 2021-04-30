@@ -29,6 +29,15 @@ def create():
     cmds.shelfButton(
         parent=shelf,
         image="pythonFamily.png",
+        imageOverlayLabel="ZV",
+        label="ZV Parent Master",
+        annotation="ZV Parent Master",
+        command="import ZvParentMaster;ZvParentMaster.ZvParentMaster()"
+    )
+
+    cmds.shelfButton(
+        parent=shelf,
+        image="pythonFamily.png",
         imageOverlayLabel="LIP",
         annotation="Select the image plane, and execute.",
         label="Localize Image Plane",
