@@ -38,6 +38,19 @@ def create():
     cmds.shelfButton(
         parent=shelf,
         image="pythonFamily.png",
+        imageOverlayLabel="ASP",
+        annotation="AnimSchoolPicker",
+        label="AnimSchoolPicker",
+        command="""
+from maya import cmds, mel
+cmds.loadPlugin("AnimSchoolPicker.mll", quiet=True)
+mel.eval("AnimSchoolPicker()")
+"""
+    )
+
+    cmds.shelfButton(
+        parent=shelf,
+        image="pythonFamily.png",
         imageOverlayLabel="LIP",
         annotation="Select the image plane, and execute.",
         label="Localize Image Plane",
