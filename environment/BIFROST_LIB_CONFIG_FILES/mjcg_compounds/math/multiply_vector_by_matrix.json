@@ -1,0 +1,284 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "dependencies": [
+        {
+            "uri": "file:///Math_types.json"
+        },
+        {
+            "uri": "file:///Math_float.json"
+        },
+        {
+            "uri": "file:///Math_double.json"
+        },
+        {
+            "uri": "file:///Math_conversion.json"
+        },
+        {
+            "uri": "file:///Math_long.json"
+        },
+        {
+            "uri": "file:///Math_char.json"
+        },
+        {
+            "uri": "file:///Math_uint.json"
+        },
+        {
+            "uri": "file:///Math_short.json"
+        },
+        {
+            "uri": "file:///Math_ulong.json"
+        },
+        {
+            "uri": "file:///Math_int.json"
+        },
+        {
+            "uri": "file:///Math_uchar.json"
+        },
+        {
+            "uri": "file:///Math_ushort.json"
+        },
+        {
+            "uri": "file:///Math_quaternion_to_matrix.json"
+        },
+        {
+            "uri": "file:///Math_compose_transform_matrix.json"
+        },
+        {
+            "uri": "file:///Math_vector3_to_vector4.json"
+        },
+        {
+            "uri": "file:///Math_vector4_to_vector3.json"
+        }
+    ],
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "MJCG::Core::Math::multiply_vector_by_matrix",
+            "uriImported": "file:///multiply_vector_by_matrix.json",
+            "metadata": [
+                {
+                    "metaName": "documentation",
+                    "metaType": "string",
+                    "metaValue": "../math/docs/multiply_vector_by_matrix.md"
+                },
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/mjcg.png"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "matrix"
+                                                },
+                                                {
+                                                    "metaName": "vector"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "123.15 68.1395"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "out_vector"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "1184.92 64.9396"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,Core::Conversion,vector4_to_vector3"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,Core::Conversion,vector3_to_vector4"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,MJCG::Core::Math,multiply_vector_by_matrix"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,MJCG::Core::Math,distance_to"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,MJCG::Core::Math,arc_length"
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "126.039 -108.452 1258.94 743.205"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "vector",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "matrix",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4"
+                },
+                {
+                    "portName": "out_vector",
+                    "portDirection": "output",
+                    "portType": "Math::float3"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "matrix_multiply1",
+                    "nodeType": "Core::Math::matrix_multiply",
+                    "multiInPortNames": [
+                        "transform",
+                        "output1"
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "656.903 45.9356"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "vector3_to_vector4",
+                    "nodeType": "Core::Conversion::vector3_to_vector4",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "388.104 161.515"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "vector4_to_vector3",
+                    "nodeType": "Core::Conversion::vector4_to_vector3",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "923.88 63.6686"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": ".matrix",
+                    "target": "matrix_multiply1.first.transform"
+                },
+                {
+                    "source": ".vector",
+                    "target": "vector3_to_vector4.vector3"
+                },
+                {
+                    "source": "vector3_to_vector4.vector4",
+                    "target": "matrix_multiply1.first.output1"
+                },
+                {
+                    "source": "matrix_multiply1.matrix",
+                    "target": "vector4_to_vector3.vector4"
+                },
+                {
+                    "source": "vector4_to_vector3.vector3",
+                    "target": ".out_vector"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "vector3_to_vector4.w",
+                    "valueType": "float",
+                    "value": "1f"
+                }
+            ]
+        }
+    ]
+}

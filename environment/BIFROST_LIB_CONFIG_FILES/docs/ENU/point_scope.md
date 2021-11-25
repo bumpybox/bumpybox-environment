@@ -25,10 +25,11 @@ This parameter section controls how each point is colored.
   * The `Coloring Mode` parameter determines which rules are used to color the points.  It is an ENUM with the following options:
 
    * "Color" - This mode simply uses whatever the `Color` parameter is set to
-   * "Color x Property" - This mode colors the points by multiplying the `Coloring Property` with the `Color` parameter.  If the `Coloring Property` is a scalar, then this option becomes a uniform scaling of `Color`.  Negative values are not clamped or modified.  If the `Coloring Property` is a vector, per-component multiplication with `Color` is performed; e.g. the x-component scales red, the y-component scales blue, and so on.
-   * "Color x Property (Invert Negatives)" - This mode is identical to "Color x Property" with the following caveats: If the `Coloring Property` is a scalar value, and it is negative, the resulting color will be the result of scaling 1-`Color` by the absolute value of the `Coloring Property`.    Also note that vector-valued properties will be converted to scalars by taking their magnitude.
-   * "Color x Property (Magnitude)" - This option takes the magnitude of the `Coloring Property` and uses that to scale the `Color`.  If the `Coloring Property` is already a scalar, then the absolute value is used.
+   * "ColoredProperty" - This mode colors the points by multiplying the `Coloring Property` with the `Color` parameter.  If the `Coloring Property` is a scalar, then this option becomes a uniform scaling of `Color`.  Negative values are not clamped or modified.  If the `Coloring Property` is a vector, per-component multiplication with `Color` is performed; e.g. the x-component scales red, the y-component scales blue, and so on.
+   * "ColoredPropertyInvertNeg" - This mode is identical to "ColoredProperty" with the following caveats: If the `Coloring Property` is a scalar value, and it is negative, the resulting color will be the result of scaling 1-`Color` by the absolute value of the `Coloring Property`.  Also note that vector-valued properties will be converted to scalars by taking their magnitude.
+   * "ColoredPropertyMagnitude" - This option takes the magnitude of the `Coloring Property` and uses that to scale the `Color`.  If the `Coloring Property` is already a scalar, then the absolute value is used.
    * "Property" - This mode simply colors the points by directly mapping the contents of `Coloring Property` to RGB.  If the `Coloring Property` is not a vector, then a greyscale mapping is done.
+   * "NormalVector" - This mode uses the data mapped to RGB, but the vectors are normalized and remapped to a 0-1 range. 
    * "Heatmap" - This mode takes the magnitude of the `Coloring Property` and uses three fcurves to map the result into R, G and B.
    * "Palette" - This mode is designed for integer and bool properties.  It uses the `Coloring Property` to map into a fixed palette of colors.
 

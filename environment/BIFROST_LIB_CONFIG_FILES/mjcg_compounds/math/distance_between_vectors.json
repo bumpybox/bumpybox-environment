@@ -1,0 +1,266 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "dependencies": [
+        {
+            "uri": "file:///Math_types.json"
+        },
+        {
+            "uri": "file:///Math_long.json"
+        },
+        {
+            "uri": "file:///Math_float.json"
+        },
+        {
+            "uri": "file:///Math_double.json"
+        },
+        {
+            "uri": "file:///Math_char.json"
+        },
+        {
+            "uri": "file:///Math_int.json"
+        },
+        {
+            "uri": "file:///Math_short.json"
+        },
+        {
+            "uri": "file:///Math_uchar.json"
+        },
+        {
+            "uri": "file:///Math_uint.json"
+        },
+        {
+            "uri": "file:///Math_ulong.json"
+        },
+        {
+            "uri": "file:///Math_ushort.json"
+        },
+        {
+            "uri": "file:///riv_types.json"
+        },
+        {
+            "uri": "file:///bifrost_object_i.json"
+        },
+        {
+            "uri": "file:///point_types.json"
+        },
+        {
+            "uri": "file:///FCurve.json"
+        },
+        {
+            "uri": "file:///riv_ops.json"
+        }
+    ],
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "MJCG::Core::Math::distance_between_vectors",
+            "uriImported": "stream:/refactoringShape",
+            "metadata": [
+                {
+                    "metaName": "documentation",
+                    "metaType": "string",
+                    "metaValue": "../math/docs/distance_between_vectors.md"
+                },
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/mjcg.png"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-369 -24"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "first"
+                                                },
+                                                {
+                                                    "metaName": "second"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "458 -30"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "distance"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-840 -255 1680 511"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,vector_length"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,subtract"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,MJCG::Math,distance_to"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,Resize_Vector"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,Distance_To"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "-2170.2 1824.25"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "first",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "second",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "distance",
+                    "portDirection": "output",
+                    "portType": "float"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "subtract",
+                    "nodeType": "Core::Math::subtract",
+                    "multiInPortNames": [
+                        "vector_a",
+                        "vector_b"
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-92.5 -43"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "vector_length",
+                    "nodeType": "Core::Math::length",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "164.5 -25"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "subtract.output",
+                    "target": "vector_length.vector"
+                },
+                {
+                    "source": ".first",
+                    "target": "subtract.first.vector_a"
+                },
+                {
+                    "source": ".second",
+                    "target": "subtract.first.vector_b"
+                },
+                {
+                    "source": "vector_length.length",
+                    "target": ".distance"
+                }
+            ],
+            "values": [],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,350 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "dependencies": [
+        {
+            "uri": "file:///Math_types.json"
+        },
+        {
+            "uri": "file:///Math_long.json"
+        },
+        {
+            "uri": "file:///Math_float.json"
+        },
+        {
+            "uri": "file:///Math_double.json"
+        },
+        {
+            "uri": "file:///Math_char.json"
+        },
+        {
+            "uri": "file:///Math_int.json"
+        },
+        {
+            "uri": "file:///Math_short.json"
+        },
+        {
+            "uri": "file:///Math_uchar.json"
+        },
+        {
+            "uri": "file:///Math_uint.json"
+        },
+        {
+            "uri": "file:///Math_ulong.json"
+        },
+        {
+            "uri": "file:///Math_ushort.json"
+        },
+        {
+            "uri": "file:///riv_types.json"
+        },
+        {
+            "uri": "file:///bifrost_object_i.json"
+        },
+        {
+            "uri": "file:///point_types.json"
+        },
+        {
+            "uri": "file:///FCurve.json"
+        },
+        {
+            "uri": "file:///riv_ops.json"
+        },
+        {
+            "uri": "file:///Math_conversion.json"
+        },
+        {
+            "uri": "file:///Math_radians_to_degrees.json"
+        }
+    ],
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "MJCG::Core::Math::angle_between_vectors",
+            "uriImported": "file:///angle_between_vectors.json",
+            "metadata": [
+                {
+                    "metaName": "documentation",
+                    "metaType": "string",
+                    "metaValue": "../math/docs/angle_between_vectors.md"
+                },
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/mjcg.png"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "first"
+                                                },
+                                                {
+                                                    "metaName": "second"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "10 120"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "radians"
+                                                },
+                                                {
+                                                    "metaName": "degrees"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "1469.94 80.1509"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,Core::Math,normalize"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,acos"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,multiply"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,exp"
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostBoard,Math,radians_to_degrees"
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-69.771 -403.654 1910.91 1199.67"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "12.5 54"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "first",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "3f",
+                        "y": "-4f",
+                        "z": "5f"
+                    }
+                },
+                {
+                    "portName": "second",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "2f",
+                        "y": "7f",
+                        "z": "-3f"
+                    }
+                },
+                {
+                    "portName": "radians",
+                    "portDirection": "output",
+                    "portType": "float"
+                },
+                {
+                    "portName": "degrees",
+                    "portDirection": "output",
+                    "portType": "float"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "dot_product",
+                    "nodeType": "Core::Math::dot",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "620 72"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "radians_to_degrees",
+                    "nodeType": "Core::Conversion::radians_to_degrees",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "1196.13 162.845"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "acos",
+                    "nodeType": "Core::Math::acos",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "896.479 79.0862"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "normalize",
+                    "nodeType": "Core::Math::normalize",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "315 10"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "normalize1",
+                    "nodeType": "Core::Math::normalize",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "315 205"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "acos.arccosine",
+                    "target": "radians_to_degrees.radians"
+                },
+                {
+                    "source": "acos.arccosine",
+                    "target": ".radians"
+                },
+                {
+                    "source": "radians_to_degrees.degrees",
+                    "target": ".degrees"
+                },
+                {
+                    "source": ".first",
+                    "target": "normalize.value"
+                },
+                {
+                    "source": ".second",
+                    "target": "normalize1.value"
+                },
+                {
+                    "source": "normalize1.normalized",
+                    "target": "dot_product.second"
+                },
+                {
+                    "source": "normalize.normalized",
+                    "target": "dot_product.first"
+                },
+                {
+                    "source": "dot_product.dot_product",
+                    "target": "acos.value"
+                }
+            ],
+            "values": [],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

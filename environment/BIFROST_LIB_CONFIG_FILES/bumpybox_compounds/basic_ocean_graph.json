@@ -1,0 +1,1195 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "dependencies": [
+        {
+            "uri": "file:///bifrost_object_i.json"
+        },
+        {
+            "uri": "file:///Math_types.json"
+        },
+        {
+            "uri": "file:///bifrost_geometry_query_types.json"
+        },
+        {
+            "uri": "file:///geometry_types.json"
+        },
+        {
+            "uri": "file:///set_property_any.json"
+        },
+        {
+            "uri": "file:///set_property.json"
+        },
+        {
+            "uri": "file:///FCurve.json"
+        },
+        {
+            "uri": "file:///Math_float.json"
+        },
+        {
+            "uri": "file:///Math_double.json"
+        },
+        {
+            "uri": "file:///Math_conversion.json"
+        },
+        {
+            "uri": "file:///riv_types.json"
+        },
+        {
+            "uri": "file:///point_types.json"
+        },
+        {
+            "uri": "file:///riv_ops.json"
+        },
+        {
+            "uri": "file:///Math_long.json"
+        },
+        {
+            "uri": "file:///Math_char.json"
+        },
+        {
+            "uri": "file:///Math_int.json"
+        },
+        {
+            "uri": "file:///Math_short.json"
+        },
+        {
+            "uri": "file:///Math_uchar.json"
+        },
+        {
+            "uri": "file:///Math_uint.json"
+        },
+        {
+            "uri": "file:///Math_ulong.json"
+        },
+        {
+            "uri": "file:///Math_ushort.json"
+        },
+        {
+            "uri": "file:///Math_axis_angle_to_quaternion.json"
+        },
+        {
+            "uri": "file:///Math_quaternion_to_matrix.json"
+        },
+        {
+            "uri": "file:///Math_bool.json"
+        },
+        {
+            "uri": "file:///increment_decrement.json"
+        },
+        {
+            "uri": "file:///Math_constants.json"
+        },
+        {
+            "uri": "file:///noise_nodedefs.json"
+        },
+        {
+            "uri": "file:///fractal_turbulence.json"
+        },
+        {
+            "uri": "file:///Math_lerp_with_clamp.json"
+        },
+        {
+            "uri": "file:///Math_vector3_to_vector4.json"
+        },
+        {
+            "uri": "file:///Math_vector4_to_vector3.json"
+        },
+        {
+            "uri": "file:///Math_degrees_to_radians.json"
+        },
+        {
+            "uri": "file:///simulation_types.json"
+        },
+        {
+            "uri": "file:///simulation_nodedefs.json"
+        },
+        {
+            "uri": "file:///CoreArrayOps.json"
+        },
+        {
+            "uri": "file:///get_property_any.json"
+        },
+        {
+            "uri": "file:///get_property.json"
+        },
+        {
+            "uri": "file:///get_geo_property.json"
+        },
+        {
+            "uri": "file:///get_point_position.json"
+        },
+        {
+            "uri": "file:///has_property.json"
+        },
+        {
+            "uri": "file:///create_volume_geo_prop.json"
+        },
+        {
+            "uri": "file:///is_a.json"
+        },
+        {
+            "uri": "file:///create_object_from_schema.json"
+        },
+        {
+            "uri": "file:///is_a_mesh.json"
+        },
+        {
+            "uri": "file:///is_a_strands.json"
+        },
+        {
+            "uri": "file:///is_a_points.json"
+        },
+        {
+            "uri": "file:///is_a_volume.json"
+        },
+        {
+            "uri": "file:///get_geo_schema_type.json"
+        },
+        {
+            "uri": "file:///switch_is_a.json"
+        },
+        {
+            "uri": "file:///get_target_component.json"
+        },
+        {
+            "uri": "file:///create_data_geo_prop.json"
+        },
+        {
+            "uri": "file:///get_geo_component_count.json"
+        },
+        {
+            "uri": "file:///set_geo_property.array.json"
+        },
+        {
+            "uri": "file:///set_geo_property.scalar.json"
+        },
+        {
+            "uri": "file:///set_point_position.json"
+        },
+        {
+            "uri": "file:///erase_property.json"
+        },
+        {
+            "uri": "file:///Math_compose_transform_matrix.json"
+        },
+        {
+            "uri": "file:///Math_matrix_to_quaternion.json"
+        },
+        {
+            "uri": "file:///get_property_keys.json"
+        },
+        {
+            "uri": "file:///is_empty.json"
+        },
+        {
+            "uri": "file:///materials.json"
+        },
+        {
+            "uri": "file:///set_point_shape.json"
+        },
+        {
+            "uri": "file:///particle_shape_settings.json"
+        },
+        {
+            "uri": "file:///fluids_types.json"
+        },
+        {
+            "uri": "file:///fluids_nodedefs.json"
+        },
+        {
+            "uri": "file:///volume_types.json"
+        },
+        {
+            "uri": "file:///volume_nodedefs.json"
+        },
+        {
+            "uri": "file:///get_position_property.json"
+        },
+        {
+            "uri": "file:///Core_Array_array_bounds_impl.json"
+        },
+        {
+            "uri": "file:///Core_Array_array_bounds.json"
+        },
+        {
+            "uri": "file:///get_position_property_name.json"
+        },
+        {
+            "uri": "file:///set_bounds_from_geo.json"
+        },
+        {
+            "uri": "file:///set_bounds_property.json"
+        },
+        {
+            "uri": "file:///copy_all_properties.json"
+        },
+        {
+            "uri": "file:///particle_solver_settings.json"
+        },
+        {
+            "uri": "file:///get_particles.json"
+        },
+        {
+            "uri": "file:///set_particles.json"
+        },
+        {
+            "uri": "file:///get_velocity_property_name.json"
+        },
+        {
+            "uri": "file:///get_velocity_property.json"
+        },
+        {
+            "uri": "file:///is_valid_object_volume.json"
+        },
+        {
+            "uri": "file:///get_child_object.json"
+        },
+        {
+            "uri": "file:///has_child_object.json"
+        },
+        {
+            "uri": "file:///next_child.json"
+        },
+        {
+            "uri": "file:///get_simulation_units.json"
+        },
+        {
+            "uri": "file:///get_position_in_units.json"
+        },
+        {
+            "uri": "file:///object_has_tag.json"
+        },
+        {
+            "uri": "file:///compute_box_mask.json"
+        },
+        {
+            "uri": "file:///compute_sphere_mask.json"
+        },
+        {
+            "uri": "file:///array_has_values.json"
+        },
+        {
+            "uri": "file:///query_nodedefs.json"
+        },
+        {
+            "uri": "file:///compute_voxel_scale.json"
+        },
+        {
+            "uri": "file:///set_geo_property_data.json"
+        },
+        {
+            "uri": "file:///converters_types.json"
+        },
+        {
+            "uri": "file:///converters_nodedefs.json"
+        },
+        {
+            "uri": "file:///post_process_level_set.json"
+        },
+        {
+            "uri": "file:///compute_fog_density.json"
+        },
+        {
+            "uri": "file:///delete_level_set.json"
+        },
+        {
+            "uri": "file:///if_compute_volume.json"
+        },
+        {
+            "uri": "file:///mesh_to_volume.json"
+        },
+        {
+            "uri": "file:///points_to_volume.json"
+        },
+        {
+            "uri": "file:///convert_to_volume_internal.json"
+        },
+        {
+            "uri": "file:///compute_mesh_distance_mask.json"
+        },
+        {
+            "uri": "file:///compute_point_dropoff_mask.json"
+        },
+        {
+            "uri": "file:///get_geo_property_check.json"
+        },
+        {
+            "uri": "file:///compute_property_mask.json"
+        },
+        {
+            "uri": "file:///Math_array.json"
+        },
+        {
+            "uri": "file:///compute_directional_force.json"
+        },
+        {
+            "uri": "file:///compute_radial_force.json"
+        },
+        {
+            "uri": "file:///compute_mesh_force.json"
+        },
+        {
+            "uri": "file:///calc_turbulence.json"
+        },
+        {
+            "uri": "file:///compute_turbulence.json"
+        },
+        {
+            "uri": "file:///compute_force_field.json"
+        },
+        {
+            "uri": "file:///aero_nodedefs.json"
+        },
+        {
+            "uri": "file:///compute_buoyancy_force.json"
+        },
+        {
+            "uri": "file:///compute_vorticity_force.json"
+        },
+        {
+            "uri": "file:///apply_modulate_for_type.json"
+        },
+        {
+            "uri": "file:///compute_modulate_property.json"
+        },
+        {
+            "uri": "file:///compute_dissipate_property.json"
+        },
+        {
+            "uri": "file:///clamp_masked_vector.json"
+        },
+        {
+            "uri": "file:///compute_clamp_property.json"
+        },
+        {
+            "uri": "file:///compute_set_bool_property.json"
+        },
+        {
+            "uri": "file:///get_sub_object.json"
+        },
+        {
+            "uri": "file:///get_point_count.json"
+        },
+        {
+            "uri": "file:///CoreStringOps.json"
+        },
+        {
+            "uri": "file:///compute_kill.json"
+        },
+        {
+            "uri": "file:///create_tagged_object.json"
+        },
+        {
+            "uri": "file:///insert_child_object.json"
+        },
+        {
+            "uri": "file:///force_field.json"
+        },
+        {
+            "uri": "file:///volume_influence.json"
+        },
+        {
+            "uri": "file:///drag_force.json"
+        },
+        {
+            "uri": "file:///drag_influence.json"
+        },
+        {
+            "uri": "file:///set_velocity_property.json"
+        },
+        {
+            "uri": "file:///get_tag.json"
+        },
+        {
+            "uri": "file:///compute_tag_categories.json"
+        },
+        {
+            "uri": "file:///init_kill_fields.json"
+        },
+        {
+            "uri": "file:///set_units_on_body.json"
+        },
+        {
+            "uri": "file:///apply_fields.json"
+        },
+        {
+            "uri": "file:///get_particle_solver_properties.json"
+        },
+        {
+            "uri": "file:///get_particle_solver_settings.json"
+        },
+        {
+            "uri": "file:///age_and_mark_dead.json"
+        },
+        {
+            "uri": "file:///Core_Array_slice_array.json"
+        },
+        {
+            "uri": "file:///Core_Array_reverse_array.json"
+        },
+        {
+            "uri": "file:///remove_from_array.json"
+        },
+        {
+            "uri": "file:///remove_from_geo_property.json"
+        },
+        {
+            "uri": "file:///set_sub_object_property.json"
+        },
+        {
+            "uri": "file:///delete_points_in_points.json"
+        },
+        {
+            "uri": "file:///delete_points.json"
+        },
+        {
+            "uri": "file:///remove_dead_particles.json"
+        },
+        {
+            "uri": "file:///get_sub_object_if_exists.json"
+        },
+        {
+            "uri": "file:///get_particle_velocity.json"
+        },
+        {
+            "uri": "file:///get_particle_position.json"
+        },
+        {
+            "uri": "file:///set_particle_position.json"
+        },
+        {
+            "uri": "file:///scale_acceleration_for_new_particles.json"
+        },
+        {
+            "uri": "file:///transport_particles.json"
+        },
+        {
+            "uri": "file:///set_particle_velocity.json"
+        },
+        {
+            "uri": "file:///apply_gravity.json"
+        },
+        {
+            "uri": "file:///randomize_geo_property.json"
+        },
+        {
+            "uri": "file:///get_indexer_element.json"
+        },
+        {
+            "uri": "file:///get_max_index.json"
+        },
+        {
+            "uri": "file:///is_a_range_geo_property.json"
+        },
+        {
+            "uri": "file:///get_range_geo_property.json"
+        },
+        {
+            "uri": "file:///sample_volume_property.json"
+        },
+        {
+            "uri": "file:///Core_Array_empty_array.json"
+        },
+        {
+            "uri": "file:///math_util.json"
+        },
+        {
+            "uri": "file:///get_loc_element.json"
+        },
+        {
+            "uri": "file:///invalid_index.json"
+        },
+        {
+            "uri": "file:///get_mesh_geo_loc_data.json"
+        },
+        {
+            "uri": "file:///max_weight.json"
+        },
+        {
+            "uri": "file:///mesh_v_interp.json"
+        },
+        {
+            "uri": "file:///mesh_fv_interp.json"
+        },
+        {
+            "uri": "file:///mesh_f_interp.json"
+        },
+        {
+            "uri": "file:///choose_mesh_values.json"
+        },
+        {
+            "uri": "file:///get_mesh_structure.json"
+        },
+        {
+            "uri": "file:///get_point_geo_loc_data.json"
+        },
+        {
+            "uri": "file:///point_p_interp.json"
+        },
+        {
+            "uri": "file:///get_strands_structure.json"
+        },
+        {
+            "uri": "file:///get_strand_geo_loc_data.json"
+        },
+        {
+            "uri": "file:///Core_Constants_default_value.json"
+        },
+        {
+            "uri": "file:///strand_p_interp.json"
+        },
+        {
+            "uri": "file:///strand_s_interp.json"
+        },
+        {
+            "uri": "file:///choose_strand_values.json"
+        },
+        {
+            "uri": "file:///sample_property.json"
+        },
+        {
+            "uri": "file:///create_point_cloud.json"
+        },
+        {
+            "uri": "file:///time_to_seed.json"
+        },
+        {
+            "uri": "file:///initialize_particle_age_on_emit.json"
+        },
+        {
+            "uri": "file:///motion_distribute_points.json"
+        },
+        {
+            "uri": "file:///generate_sample_locations.json"
+        },
+        {
+            "uri": "file:///simulation_types_2.json"
+        },
+        {
+            "uri": "file:///generate_sample_points.json"
+        },
+        {
+            "uri": "file:///sample_prop_if_exists.json"
+        },
+        {
+            "uri": "file:///set_particle_property_for_type.json"
+        },
+        {
+            "uri": "file:///set_particle_property_no_sample.json"
+        },
+        {
+            "uri": "file:///set_per_particle_properties.json"
+        },
+        {
+            "uri": "file:///get_normal_property_name.json"
+        },
+        {
+            "uri": "file:///apply_vertex_maps.json"
+        },
+        {
+            "uri": "file:///set_emit_velocities.json"
+        },
+        {
+            "uri": "file:///Math_length_squared.json"
+        },
+        {
+            "uri": "file:///Math_almost_equal.json"
+        },
+        {
+            "uri": "file:///create_points.json"
+        },
+        {
+            "uri": "file:///set_live_forever_age_limit.json"
+        },
+        {
+            "uri": "file:///merge_meshes.json"
+        },
+        {
+            "uri": "file:///merge_points.json"
+        },
+        {
+            "uri": "file:///merge_strands.json"
+        },
+        {
+            "uri": "file:///merge_geometry.json"
+        },
+        {
+            "uri": "file:///Core_Array_sum_array_impl.json"
+        },
+        {
+            "uri": "file:///Core_Array_sum_array.json"
+        },
+        {
+            "uri": "file:///emit_from_sources.json"
+        },
+        {
+            "uri": "file:///get_point_velocity.json"
+        },
+        {
+            "uri": "file:///set_point_velocity.json"
+        },
+        {
+            "uri": "file:///build_closest_accelerator.json"
+        },
+        {
+            "uri": "file:///sample_closest_accelerator.json"
+        },
+        {
+            "uri": "file:///get_closest_locations.json"
+        },
+        {
+            "uri": "file:///collideInfo_type.json"
+        },
+        {
+            "uri": "file:///point_to_mesh_collide.json"
+        },
+        {
+            "uri": "file:///Math_multiply_quaternions.json"
+        },
+        {
+            "uri": "file:///apply_spin_for_step.json"
+        },
+        {
+            "uri": "file:///nucleus_nodedefs.json"
+        },
+        {
+            "uri": "file:///point_to_volume_collide.json"
+        },
+        {
+            "uri": "file:///collide_particles.json"
+        },
+        {
+            "uri": "file:///apply_spin.json"
+        },
+        {
+            "uri": "file:///inside_bound.json"
+        },
+        {
+            "uri": "file:///get_simulation_bounds.json"
+        },
+        {
+            "uri": "file:///apply_bounds_to_particles.json"
+        },
+        {
+            "uri": "file:///setup_solver_for_step.json"
+        },
+        {
+            "uri": "file:///should_simulate.json"
+        },
+        {
+            "uri": "file:///get_particle_solver_substeps.json"
+        },
+        {
+            "uri": "file:///get_particles_to_simulate.json"
+        },
+        {
+            "uri": "file:///compute_point_velocities.json"
+        },
+        {
+            "uri": "file:///convert_auto_resolution_mode.json"
+        },
+        {
+            "uri": "file:///convert_to_volume.json"
+        },
+        {
+            "uri": "file:///has_animated_properties.json"
+        },
+        {
+            "uri": "file:///voxelize_if_changed.json"
+        },
+        {
+            "uri": "file:///setup_colliders.json"
+        },
+        {
+            "uri": "file:///compute_source_velocities.json"
+        },
+        {
+            "uri": "file:///voxelize_source_if_needed.json"
+        },
+        {
+            "uri": "file:///Math_euler_to_quaternion.json"
+        },
+        {
+            "uri": "file:///setup_particle_source.json"
+        },
+        {
+            "uri": "file:///simulation_collide.json"
+        },
+        {
+            "uri": "file:///check_collider_frame_range.json"
+        },
+        {
+            "uri": "file:///setup_particle_solve_object.json"
+        },
+        {
+            "uri": "file:///set_particle_shape.json"
+        },
+        {
+            "uri": "file:///simulate_particles.json"
+        },
+        {
+            "uri": "file:///influence_fields_types.json"
+        },
+        {
+            "uri": "file:///string_to_array.json"
+        },
+        {
+            "uri": "file:///set_has_animated_properties.json"
+        },
+        {
+            "uri": "file:///remap_source_to_property_name.json"
+        },
+        {
+            "uri": "file:///source_to_property_name.json"
+        },
+        {
+            "uri": "file:///vary_source_property.json"
+        },
+        {
+            "uri": "file:///simulating_ocean.json"
+        },
+        {
+            "uri": "file:///source_spindrift.json"
+        },
+        {
+            "uri": "file:///source_vortex.json"
+        },
+        {
+            "uri": "file:///source_wave.json"
+        }
+    ],
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bruce::ocean::basic_ocean_graph",
+            "uriImported": "file:///basic_ocean_graph.json",
+            "metadata": [
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-225 0"
+                                                },
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_metadata",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "225 0"
+                                                },
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-782.219 141.6 1824.65 1272.95"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "-140.5 -249"
+                }
+            ],
+            "ports": [],
+            "compoundNodes": [
+                {
+                    "nodeName": "simulating_ocean",
+                    "nodeType": "Bruce::ocean::simulating_ocean",
+                    "fanInPortNames": {
+                        "vortexs": [
+                            "vortex"
+                        ],
+                        "waves": [
+                            "wave"
+                        ],
+                        "spindrift": [
+                            "spindrift"
+                        ]
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "268.008 645.625"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "source_spindrift",
+                    "nodeType": "Bruce::ocean::source_spindrift",
+                    "fanInPortNames": {
+                        "influences_fields": []
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-37.5595 1085.21"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "source_vortex",
+                    "nodeType": "Bruce::ocean::source_vortex",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-44.3687 454.09"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "source_wave",
+                    "nodeType": "Bruce::ocean::source_wave",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-41.4675 718.536"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "source_vortex.vortex",
+                    "target": "simulating_ocean.vortexs.vortex"
+                },
+                {
+                    "source": "source_wave.wave",
+                    "target": "simulating_ocean.waves.wave"
+                },
+                {
+                    "source": "source_spindrift.spindrift",
+                    "target": "simulating_ocean.spindrift.spindrift"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "source_spindrift.rate",
+                    "valueType": "float",
+                    "value": "30f"
+                },
+                {
+                    "valueName": "source_spindrift.enable",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_spindrift.start_frame",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.speed",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.normal_speed",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.spread",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.inherit_velocity",
+                    "valueType": "float",
+                    "value": "0.300000012f"
+                },
+                {
+                    "valueName": "source_spindrift.size",
+                    "valueType": "float",
+                    "value": "0.0500000007f"
+                },
+                {
+                    "valueName": "source_spindrift.simulation_speed",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.min",
+                    "valueType": "float",
+                    "value": "500f"
+                },
+                {
+                    "valueName": "source_spindrift.max",
+                    "valueType": "float",
+                    "value": "1000f"
+                },
+                {
+                    "valueName": "source_spindrift.age_min",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_spindrift.age_max",
+                    "valueType": "float",
+                    "value": "10f"
+                },
+                {
+                    "valueName": "source_spindrift.age_bias",
+                    "valueType": "float",
+                    "value": "-0.800000012f"
+                },
+                {
+                    "valueName": "source_vortex.enable",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_vortex.depth",
+                    "valueType": "float",
+                    "value": "20f"
+                },
+                {
+                    "valueName": "source_vortex.radius",
+                    "valueType": "float",
+                    "value": "15f"
+                },
+                {
+                    "valueName": "source_vortex.crop",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_vortex.frequency",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.amplitude",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.curl",
+                    "valueType": "float",
+                    "value": "-750f"
+                },
+                {
+                    "valueName": "source_wave.dip",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.shrink",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.width",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.depth",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.height",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.use_color",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_wave.multiply",
+                    "valueType": "float",
+                    "value": "5f"
+                },
+                {
+                    "valueName": "source_wave.offset",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.clip",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.smooth",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.inversion",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_wave.use_RGB",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "source_wave.all",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "source_wave.use_noise",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_wave.magnitude",
+                    "valueType": "float",
+                    "value": "3f"
+                },
+                {
+                    "valueName": "source_wave.frequency",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.speed",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.num_frequencies",
+                    "valueType": "long",
+                    "value": "1"
+                },
+                {
+                    "valueName": "source_wave.ratio",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "source_wave.frequency_ratio",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.YZ_Scale",
+                    "valueType": "float",
+                    "value": "0.5f"
+                },
+                {
+                    "valueName": "source_wave.color",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "source_wave.start_frame",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "source_wave.world_matrix",
+                    "valueType": "Math::float4x4",
+                    "value": {
+                        "c0": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,12 +1,42 @@
 {
   "AminoConfigurations": [
     {
-      "libraryName": "My_Compounds",
-      "libraryVersion": "3.1.4",
+      "libraryName": "Bumpybox",
+      "libraryVersion": "0.1.0",
       "jsonLibs": [
         {
-          "path": "compounds",
-          "files": [ ]
+          "path": "bumpybox_compounds",
+          "files": []
+        }
+      ]
+    },
+    {
+      "vendorName": "Autodesk",
+      "libraryVersion": "0.4.1",
+      "libraryName": "Rebel-PO-Alliance",
+      "jsonLibs": [
+        {
+          "path": "rebel_compounds",
+          "files": []
+        },
+        {
+          "path": "rebel_graphs",
+          "files": []
+        }
+      ]
+    },
+    {
+      "vendorName": "Maxime Jeanmougin",
+      "libraryVersion": "2.0.0",
+      "libraryName": "MJCG",
+      "jsonLibs": [
+        {
+          "path": "mjcg_compounds",
+          "files": []
+        },
+        {
+          "path": "mjcg_graphs",
+          "files": []
         }
       ]
     }
