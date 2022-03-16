@@ -37,8 +37,7 @@ def create():
 
     cmds.shelfButton(
         parent=shelf,
-        image="pythonFamily.png",
-        imageOverlayLabel="ASP",
+        image="AnimSchoolLogoIcon.png",
         annotation="AnimSchoolPicker",
         label="AnimSchoolPicker",
         command="""
