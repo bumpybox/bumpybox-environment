@@ -95,6 +95,11 @@
                                             "metaValue": "2"
                                         },
                                         {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-250.725 120.083"
+                                        },
+                                        {
                                             "metaName": "io_ports",
                                             "metadata": [
                                                 {
@@ -104,11 +109,6 @@
                                                     "metaName": "second"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "metaName": "LayoutPos",
-                                            "metaType": "string",
-                                            "metaValue": "10 120"
                                         }
                                     ]
                                 }
@@ -126,6 +126,11 @@
                                             "metaValue": "2"
                                         },
                                         {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "1469.94 80.1509"
+                                        },
+                                        {
                                             "metaName": "io_ports",
                                             "metadata": [
                                                 {
@@ -135,17 +140,17 @@
                                                     "metaName": "degrees"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "metaName": "LayoutPos",
-                                            "metaType": "string",
-                                            "metaValue": "1469.94 80.1509"
                                         }
                                     ]
                                 }
                             ]
                         }
                     ]
+                },
+                {
+                    "metaName": "_recentNode_",
+                    "metaType": "string",
+                    "metaValue": "BifrostGraph,Core::Math,clamp"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -168,14 +173,9 @@
                     "metaValue": "BifrostBoard,Math,exp"
                 },
                 {
-                    "metaName": "_recentNode_",
-                    "metaType": "string",
-                    "metaValue": "BifrostBoard,Math,radians_to_degrees"
-                },
-                {
                     "metaName": "ViewportRect",
                     "metaType": "string",
-                    "metaValue": "-69.771 -403.654 1910.91 1199.67"
+                    "metaValue": "-312.614 -600.809 1990.25 1194.86"
                 },
                 {
                     "metaName": "DisplayMode",
@@ -185,39 +185,25 @@
                 {
                     "metaName": "LayoutPos",
                     "metaType": "string",
-                    "metaValue": "12.5 54"
+                    "metaValue": "-126.625 -246.449"
                 }
             ],
             "ports": [
                 {
                     "portName": "first",
-                    "portDirection": "input",
-                    "portType": "Math::float3",
-                    "portDefault": {
-                        "x": "3f",
-                        "y": "-4f",
-                        "z": "5f"
-                    }
+                    "portDirection": "input"
                 },
                 {
                     "portName": "second",
-                    "portDirection": "input",
-                    "portType": "Math::float3",
-                    "portDefault": {
-                        "x": "2f",
-                        "y": "7f",
-                        "z": "-3f"
-                    }
+                    "portDirection": "input"
                 },
                 {
                     "portName": "radians",
-                    "portDirection": "output",
-                    "portType": "float"
+                    "portDirection": "output"
                 },
                 {
                     "portName": "degrees",
-                    "portDirection": "output",
-                    "portType": "float"
+                    "portDirection": "output"
                 }
             ],
             "compoundNodes": [
@@ -233,7 +219,7 @@
                         {
                             "metaName": "LayoutPos",
                             "metaType": "string",
-                            "metaValue": "620 72"
+                            "metaValue": "359.275 72.0837"
                         }
                     ]
                 },
@@ -281,7 +267,7 @@
                         {
                             "metaName": "LayoutPos",
                             "metaType": "string",
-                            "metaValue": "315 10"
+                            "metaValue": "54.2752 10.0837"
                         }
                     ]
                 },
@@ -297,7 +283,23 @@
                         {
                             "metaName": "LayoutPos",
                             "metaType": "string",
-                            "metaValue": "315 205"
+                            "metaValue": "54.2752 205.083"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "clamp",
+                    "nodeType": "Core::Math::clamp",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "621.757 47.1141"
                         }
                     ]
                 }
@@ -306,22 +308,6 @@
                 {
                     "source": "acos.arccosine",
                     "target": "radians_to_degrees.radians"
-                },
-                {
-                    "source": "acos.arccosine",
-                    "target": ".radians"
-                },
-                {
-                    "source": "radians_to_degrees.degrees",
-                    "target": ".degrees"
-                },
-                {
-                    "source": ".first",
-                    "target": "normalize.value"
-                },
-                {
-                    "source": ".second",
-                    "target": "normalize1.value"
                 },
                 {
                     "source": "normalize1.normalized",
@@ -333,10 +319,41 @@
                 },
                 {
                     "source": "dot_product.dot_product",
+                    "target": "clamp.value"
+                },
+                {
+                    "source": "clamp.clamped",
                     "target": "acos.value"
+                },
+                {
+                    "source": ".first",
+                    "target": "normalize.value"
+                },
+                {
+                    "source": ".second",
+                    "target": "normalize1.value"
+                },
+                {
+                    "source": "acos.arccosine",
+                    "target": ".radians"
+                },
+                {
+                    "source": "radians_to_degrees.degrees",
+                    "target": ".degrees"
                 }
             ],
-            "values": [],
+            "values": [
+                {
+                    "valueName": "clamp.min",
+                    "valueType": "float",
+                    "value": "-1f"
+                },
+                {
+                    "valueName": "clamp.max",
+                    "valueType": "float",
+                    "value": "1f"
+                }
+            ],
             "reservedNodeNames": [
                 {
                     "name": "input"

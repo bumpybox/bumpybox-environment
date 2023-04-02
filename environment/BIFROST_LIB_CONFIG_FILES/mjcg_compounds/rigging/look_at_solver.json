@@ -7,86 +7,6 @@
             }
         ]
     },
-    "dependencies": [
-        {
-            "uri": "file:///Math_types.json"
-        },
-        {
-            "uri": "file:///Math_long.json"
-        },
-        {
-            "uri": "file:///Math_float.json"
-        },
-        {
-            "uri": "file:///Math_double.json"
-        },
-        {
-            "uri": "file:///Math_char.json"
-        },
-        {
-            "uri": "file:///Math_int.json"
-        },
-        {
-            "uri": "file:///Math_short.json"
-        },
-        {
-            "uri": "file:///Math_uchar.json"
-        },
-        {
-            "uri": "file:///Math_uint.json"
-        },
-        {
-            "uri": "file:///Math_ulong.json"
-        },
-        {
-            "uri": "file:///Math_ushort.json"
-        },
-        {
-            "uri": "file:///Math_conversion.json"
-        },
-        {
-            "uri": "file:///Math_multiply_quaternions.json"
-        },
-        {
-            "uri": "file:///Math_rotate_by_quaternion.json"
-        },
-        {
-            "uri": "file:///Math_bool.json"
-        },
-        {
-            "uri": "file:///Math_matrix_to_quaternion.json"
-        },
-        {
-            "uri": "file:///Math_quaternion_to_matrix.json"
-        },
-        {
-            "uri": "file:///Math_compose_transform_matrix.json"
-        },
-        {
-            "uri": "file:///Math_vector3_to_vector4.json"
-        },
-        {
-            "uri": "file:///Math_vector4_to_vector3.json"
-        },
-        {
-            "uri": "file:///multiply_vector_by_matrix.json"
-        },
-        {
-            "uri": "file:///normal_and_tangent_to_orientation.json"
-        },
-        {
-            "uri": "file:///Math_lerp_with_clamp.json"
-        },
-        {
-            "uri": "file:///Math_nlerp.json"
-        },
-        {
-            "uri": "file:///Math_quaternion_slerp.json"
-        },
-        {
-            "uri": "file:///linear_interpolate_transform.json"
-        }
-    ],
     "namespaces": [],
     "types": [],
     "compounds": [
@@ -202,7 +122,7 @@
                 {
                     "metaName": "ViewportRect",
                     "metaType": "string",
-                    "metaValue": "-1237 -372.929 2660 1589.86"
+                    "metaValue": "-1103.39 -110.069 2840.05 834.787"
                 },
                 {
                     "metaName": "DisplayMode",
@@ -212,7 +132,7 @@
                 {
                     "metaName": "LayoutPos",
                     "metaType": "string",
-                    "metaValue": "305.174 -235.822"
+                    "metaValue": "1001.19 133.765"
                 }
             ],
             "ports": [
@@ -903,22 +823,6 @@
                     ]
                 },
                 {
-                    "nodeName": "rotate_by_quaternion",
-                    "nodeType": "Core::Math::rotate_by_quaternion",
-                    "metadata": [
-                        {
-                            "metaName": "DisplayMode",
-                            "metaType": "string",
-                            "metaValue": "2"
-                        },
-                        {
-                            "metaName": "LayoutPos",
-                            "metaType": "string",
-                            "metaValue": "-86.3559 547.006"
-                        }
-                    ]
-                },
-                {
                     "nodeName": "matrix_to_quaternion",
                     "nodeType": "Core::Math::matrix_to_SRT",
                     "metadata": [
@@ -947,38 +851,6 @@
                             "metaName": "LayoutPos",
                             "metaType": "string",
                             "metaValue": "540.701 -46.495"
-                        }
-                    ]
-                },
-                {
-                    "nodeName": "inverse_matrix",
-                    "nodeType": "Core::Math::inverse_matrix",
-                    "metadata": [
-                        {
-                            "metaName": "DisplayMode",
-                            "metaType": "string",
-                            "metaValue": "2"
-                        },
-                        {
-                            "metaName": "LayoutPos",
-                            "metaType": "string",
-                            "metaValue": "-739.603 713.649"
-                        }
-                    ]
-                },
-                {
-                    "nodeName": "multiply_vector_by_matrix",
-                    "nodeType": "MJCG::Core::Math::multiply_vector_by_matrix",
-                    "metadata": [
-                        {
-                            "metaName": "DisplayMode",
-                            "metaType": "string",
-                            "metaValue": "2"
-                        },
-                        {
-                            "metaName": "LayoutPos",
-                            "metaType": "string",
-                            "metaValue": "-436.079 570.547"
                         }
                     ]
                 },
@@ -1037,16 +909,8 @@
                     "target": "quaternion_from_direction_and_upVector.tangent"
                 },
                 {
-                    "source": "rotate_by_quaternion.rotated_vector",
-                    "target": "quaternion_from_direction_and_upVector.normal"
-                },
-                {
                     "source": "matrix_to_quaternion.scale",
                     "target": "compose_transform_matrix.scale"
-                },
-                {
-                    "source": "matrix_to_quaternion.quaternion",
-                    "target": "rotate_by_quaternion.quaternion"
                 },
                 {
                     "source": "matrix_to_quaternion.translation",
@@ -1055,14 +919,6 @@
                 {
                     "source": "matrix_to_quaternion.translation",
                     "target": "compose_transform_matrix.translation"
-                },
-                {
-                    "source": "inverse_matrix.inverted",
-                    "target": "multiply_vector_by_matrix.matrix"
-                },
-                {
-                    "source": "multiply_vector_by_matrix.out_vector",
-                    "target": "rotate_by_quaternion.vector"
                 },
                 {
                     "source": "quaternion_from_direction_and_upVector.quaternion",
@@ -1090,10 +946,6 @@
                 },
                 {
                     "source": ".matrix",
-                    "target": "inverse_matrix.matrix"
-                },
-                {
-                    "source": ".matrix",
                     "target": "matrix_lerp.first"
                 },
                 {
@@ -1102,7 +954,7 @@
                 },
                 {
                     "source": ".up_vector",
-                    "target": "multiply_vector_by_matrix.vector"
+                    "target": "quaternion_from_direction_and_upVector.normal"
                 }
             ],
             "values": [

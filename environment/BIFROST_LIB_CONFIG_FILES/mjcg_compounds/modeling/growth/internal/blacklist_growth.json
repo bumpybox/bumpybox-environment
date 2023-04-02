@@ -12,7 +12,7 @@
       "name": "MJCG::Modeling::Growth::Internal",
       "metadata": [
         {
-          "metaName": "blackListed",
+          "metaName": "internal",
           "metaType": "bool",
           "metaValue": "true"
         }

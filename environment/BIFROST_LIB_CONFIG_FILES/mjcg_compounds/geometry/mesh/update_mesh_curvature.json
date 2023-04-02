@@ -7,203 +7,6 @@
             }
         ]
     },
-    "dependencies": [
-        {
-            "uri": "file:///bifrost_object_i.json"
-        },
-        {
-            "uri": "file:///Math_types.json"
-        },
-        {
-            "uri": "file:///Math_conversion.json"
-        },
-        {
-            "uri": "file:///bifrost_geometry_query_types.json"
-        },
-        {
-            "uri": "file:///geometry_types.json"
-        },
-        {
-            "uri": "file:///has_property.json"
-        },
-        {
-            "uri": "file:///get_property_any.json"
-        },
-        {
-            "uri": "file:///get_property.json"
-        },
-        {
-            "uri": "file:///create_volume_geo_prop.json"
-        },
-        {
-            "uri": "file:///is_a.json"
-        },
-        {
-            "uri": "file:///create_object_from_schema.json"
-        },
-        {
-            "uri": "file:///is_a_mesh.json"
-        },
-        {
-            "uri": "file:///is_a_strands.json"
-        },
-        {
-            "uri": "file:///is_a_points.json"
-        },
-        {
-            "uri": "file:///is_a_volume.json"
-        },
-        {
-            "uri": "file:///get_geo_schema_type.json"
-        },
-        {
-            "uri": "file:///switch_is_a.json"
-        },
-        {
-            "uri": "file:///get_target_component.json"
-        },
-        {
-            "uri": "file:///create_data_geo_prop.json"
-        },
-        {
-            "uri": "file:///set_property_any.json"
-        },
-        {
-            "uri": "file:///set_property.json"
-        },
-        {
-            "uri": "file:///get_geo_component_count.json"
-        },
-        {
-            "uri": "file:///set_geo_property.array.json"
-        },
-        {
-            "uri": "file:///set_geo_property.scalar.json"
-        },
-        {
-            "uri": "file:///update_mesh_adjacency.json"
-        },
-        {
-            "uri": "file:///Math_long.json"
-        },
-        {
-            "uri": "file:///Math_float.json"
-        },
-        {
-            "uri": "file:///Math_double.json"
-        },
-        {
-            "uri": "file:///Math_char.json"
-        },
-        {
-            "uri": "file:///Math_int.json"
-        },
-        {
-            "uri": "file:///Math_short.json"
-        },
-        {
-            "uri": "file:///Math_uchar.json"
-        },
-        {
-            "uri": "file:///Math_uint.json"
-        },
-        {
-            "uri": "file:///Math_ulong.json"
-        },
-        {
-            "uri": "file:///Math_ushort.json"
-        },
-        {
-            "uri": "file:///riv_types.json"
-        },
-        {
-            "uri": "file:///point_types.json"
-        },
-        {
-            "uri": "file:///FCurve.json"
-        },
-        {
-            "uri": "file:///riv_ops.json"
-        },
-        {
-            "uri": "file:///access_offset_array.json"
-        },
-        {
-            "uri": "file:///Core_Array_sum_array_impl.json"
-        },
-        {
-            "uri": "file:///Core_Array_sum_array.json"
-        },
-        {
-            "uri": "file:///increment_decrement.json"
-        },
-        {
-            "uri": "file:///half_of.json"
-        },
-        {
-            "uri": "file:///one_minus.json"
-        },
-        {
-            "uri": "file:///get_sub_object.json"
-        },
-        {
-            "uri": "file:///get_point_count.json"
-        },
-        {
-            "uri": "file:///Core_Array_array_is_empty.json"
-        },
-        {
-            "uri": "file:///get_geo_target_count.json"
-        },
-        {
-            "uri": "file:///Math_bool.json"
-        },
-        {
-            "uri": "file:///Math_vector4_to_vector3.json"
-        },
-        {
-            "uri": "file:///get_geo_property_check.json"
-        },
-        {
-            "uri": "file:///volume_types.json"
-        },
-        {
-            "uri": "file:///volume_nodedefs.json"
-        },
-        {
-            "uri": "file:///interpret_auto_port_as_vector.json"
-        },
-        {
-            "uri": "file:///get_property_keys.json"
-        },
-        {
-            "uri": "file:///is_empty.json"
-        },
-        {
-            "uri": "file:///materials.json"
-        },
-        {
-            "uri": "file:///standard_surface_mat.json"
-        },
-        {
-            "uri": "file:///assign_diagnostic_material.json"
-        },
-        {
-            "uri": "file:///CoreArrayOps.json"
-        },
-        {
-            "uri": "file:///get_geo_property.json"
-        },
-        {
-            "uri": "file:///object_terminal.json"
-        },
-        {
-            "uri": "file:///get_mesh_structure.json"
-        },
-        {
-            "uri": "file:///erase_property.json"
-        }
-    ],
     "namespaces": [],
     "types": [],
     "compounds": [
@@ -236,17 +39,17 @@
                                             "metaValue": "2"
                                         },
                                         {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-142.596 421.801"
+                                        },
+                                        {
                                             "metaName": "io_ports",
                                             "metadata": [
                                                 {
                                                     "metaName": "mesh"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "metaName": "LayoutPos",
-                                            "metaType": "string",
-                                            "metaValue": "-142.596 421.801"
                                         }
                                     ]
                                 }
@@ -264,6 +67,11 @@
                                             "metaValue": "2"
                                         },
                                         {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "1368.89 581.123"
+                                        },
+                                        {
                                             "metaName": "io_ports",
                                             "metadata": [
                                                 {
@@ -273,11 +81,6 @@
                                                     "metaName": "point_curvature"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "metaName": "LayoutPos",
-                                            "metaType": "string",
-                                            "metaValue": "1368.89 581.123"
                                         }
                                     ]
                                 }
@@ -313,7 +116,7 @@
                 {
                     "metaName": "ViewportRect",
                     "metaType": "string",
-                    "metaValue": "251.191 137.114 1564.33 955.347"
+                    "metaValue": "-259.588 -44.1938 2050.4 1215.43"
                 },
                 {
                     "metaName": "DisplayMode",
@@ -323,7 +126,7 @@
                 {
                     "metaName": "LayoutPos",
                     "metaType": "string",
-                    "metaValue": "-201.232 -15.4605"
+                    "metaValue": "-104.5 66"
                 },
                 {
                     "metaName": "terminal_node_disabled_flags",
@@ -383,6 +186,11 @@
                                                     "metaValue": "2"
                                                 },
                                                 {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-850.837 228.688"
+                                                },
+                                                {
                                                     "metaName": "io_ports",
                                                     "metadata": [
                                                         {
@@ -404,11 +212,6 @@
                                                             "metaName": "point_face_adjacency_index"
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "-850.837 228.688"
                                                 }
                                             ]
                                         }
@@ -426,23 +229,28 @@
                                                     "metaValue": "2"
                                                 },
                                                 {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "1619.76 217.39"
+                                                },
+                                                {
                                                     "metaName": "io_ports",
                                                     "metadata": [
                                                         {
                                                             "metaName": "point_curvature"
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1619.76 217.39"
                                                 }
                                             ]
                                         }
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "metaName": "_recentNode_",
+                            "metaType": "string",
+                            "metaValue": "BifrostGraph,MJCG::Core::Array,array_average"
                         },
                         {
                             "metaName": "_recentNode_",
@@ -465,14 +273,9 @@
                             "metaValue": "BifrostGraph,MJCG::Core::Math,one_minus"
                         },
                         {
-                            "metaName": "_recentNode_",
-                            "metaType": "string",
-                            "metaValue": "BifrostGraph,Core::Math,half_of"
-                        },
-                        {
                             "metaName": "ViewportRect",
                             "metaType": "string",
-                            "metaValue": "-930.723 -396.911 2856.55 1744.52"
+                            "metaValue": "-18.4933 -296.331 2081.16 1233.66"
                         }
                     ],
                     "ports": [
@@ -729,8 +532,7 @@
                                 }
                             ],
                             "forEachCompound": {
-                                "ports": [],
-                                "grainSize": "1"
+                                "ports": []
                             }
                         }
                     ],
@@ -764,22 +566,6 @@
                                     "metaName": "LayoutPos",
                                     "metaType": "string",
                                     "metaValue": "346.682 236.463"
-                                }
-                            ]
-                        },
-                        {
-                            "nodeName": "sum_array",
-                            "nodeType": "Core::Array::sum_array",
-                            "metadata": [
-                                {
-                                    "metaName": "DisplayMode",
-                                    "metaType": "string",
-                                    "metaValue": "2"
-                                },
-                                {
-                                    "metaName": "LayoutPos",
-                                    "metaType": "string",
-                                    "metaValue": "1362.5 216.255"
                                 }
                             ]
                         },
@@ -878,6 +664,22 @@
                                     "metaValue": "74.0493 152.396"
                                 }
                             ]
+                        },
+                        {
+                            "nodeName": "array_average",
+                            "nodeType": "MJCG::Core::Array::array_average",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "1355.43 216.94"
+                                }
+                            ]
                         }
                     ],
                     "connections": [
@@ -922,14 +724,6 @@
                             "target": "increment.value"
                         },
                         {
-                            "source": "sum_array.sum",
-                            "target": ".point_curvature"
-                        },
-                        {
-                            "source": "one_minus.out_value",
-                            "target": "sum_array.array"
-                        },
-                        {
                             "source": ".current_index",
                             "target": "get_from_array1.index"
                         },
@@ -944,6 +738,14 @@
                         {
                             "source": "get_from_array.value",
                             "target": "dot.second"
+                        },
+                        {
+                            "source": "array_average.average",
+                            "target": ".point_curvature"
+                        },
+                        {
+                            "source": "one_minus.out_value",
+                            "target": "array_average.array"
                         }
                     ],
                     "values": [
@@ -951,6 +753,11 @@
                             "valueName": "get_adjacent_faces.max_iterations",
                             "valueType": "long",
                             "value": "10"
+                        },
+                        {
+                            "valueName": "get_adjacent_faces.point_face_adjacency",
+                            "valueType": "array<Geometry::Mesh::FaceEdge>",
+                            "value": []
                         }
                     ],
                     "reservedNodeNames": [
@@ -962,8 +769,7 @@
                         }
                     ],
                     "forEachCompound": {
-                        "ports": [],
-                        "grainSize": "1"
+                        "ports": []
                     }
                 },
                 {
@@ -996,11 +802,6 @@
                             "metaValue": "BifrostGraph,Core::Logic,if"
                         },
                         {
-                            "metaName": "ViewportRect",
-                            "metaType": "string",
-                            "metaValue": "-913.666 -554.301 2053.39 1324.33"
-                        },
-                        {
                             "metaName": "io_nodes",
                             "metadata": [
                                 {
@@ -1015,17 +816,17 @@
                                                     "metaValue": "2"
                                                 },
                                                 {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "-833.608 -66.1212"
-                                                },
-                                                {
                                                     "metaName": "io_ports",
                                                     "metadata": [
                                                         {
                                                             "metaName": "mesh"
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-322.276 -73.7989"
                                                 }
                                             ]
                                         }
@@ -1060,6 +861,11 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "metaName": "ViewportRect",
+                            "metaType": "string",
+                            "metaValue": "-805.534 -408.289 1721.33 1020.36"
                         }
                     ],
                     "ports": [
@@ -1103,7 +909,7 @@
                                 {
                                     "metaName": "LayoutPos",
                                     "metaType": "string",
-                                    "metaValue": "-555.354 40.549"
+                                    "metaValue": "-14.0794 35.1746"
                                 }
                             ]
                         },
@@ -1122,38 +928,6 @@
                                     "metaValue": "290.282 27.5229"
                                 }
                             ]
-                        },
-                        {
-                            "nodeName": "power",
-                            "nodeType": "Core::Math::power",
-                            "metadata": [
-                                {
-                                    "metaName": "DisplayMode",
-                                    "metaType": "string",
-                                    "metaValue": "2"
-                                },
-                                {
-                                    "metaName": "LayoutPos",
-                                    "metaType": "string",
-                                    "metaValue": "-283.029 55.3752"
-                                }
-                            ]
-                        },
-                        {
-                            "nodeName": "clamp",
-                            "nodeType": "Core::Math::clamp",
-                            "metadata": [
-                                {
-                                    "metaName": "DisplayMode",
-                                    "metaType": "string",
-                                    "metaValue": "2"
-                                },
-                                {
-                                    "metaName": "LayoutPos",
-                                    "metaType": "string",
-                                    "metaValue": "1.66507 49.6703"
-                                }
-                            ]
                         }
                     ],
                     "connections": [
@@ -1162,28 +936,8 @@
                             "target": ".diagnostic_strands"
                         },
                         {
-                            "source": "get_geo_property.data",
-                            "target": "power.base"
-                        },
-                        {
                             "source": "scalar_to_vector3.vector3",
                             "target": "assign_diagnostic_material.emission_color"
-                        },
-                        {
-                            "source": "power.power",
-                            "target": "clamp.value"
-                        },
-                        {
-                            "source": "clamp.clamped",
-                            "target": "scalar_to_vector3.z"
-                        },
-                        {
-                            "source": "clamp.clamped",
-                            "target": "scalar_to_vector3.y"
-                        },
-                        {
-                            "source": "clamp.clamped",
-                            "target": "scalar_to_vector3.x"
                         },
                         {
                             "source": ".mesh",
@@ -1192,6 +946,18 @@
                         {
                             "source": ".mesh",
                             "target": "get_geo_property.geometry"
+                        },
+                        {
+                            "source": "get_geo_property.data",
+                            "target": "scalar_to_vector3.x"
+                        },
+                        {
+                            "source": "get_geo_property.data",
+                            "target": "scalar_to_vector3.y"
+                        },
+                        {
+                            "source": "get_geo_property.data",
+                            "target": "scalar_to_vector3.z"
                         }
                     ],
                     "values": [
@@ -1214,16 +980,6 @@
                             "valueName": "get_geo_property.type",
                             "valueType": "array<float>",
                             "value": []
-                        },
-                        {
-                            "valueName": "power.exponent",
-                            "valueType": "float",
-                            "value": "0.454544991f"
-                        },
-                        {
-                            "valueName": "clamp.max",
-                            "valueType": "float",
-                            "value": "1f"
                         }
                     ],
                     "reservedNodeNames": [
@@ -2564,19 +2320,19 @@
                                                                         },
                                                                         {
                                                                             "source": ".pos0",
-                                                                            "target": "subtract.first.output1"
-                                                                        },
-                                                                        {
-                                                                            "source": ".pos0",
                                                                             "target": "subtract1.first.output1"
-                                                                        },
-                                                                        {
-                                                                            "source": ".pos1",
-                                                                            "target": "subtract.first.position"
                                                                         },
                                                                         {
                                                                             "source": ".pos2",
                                                                             "target": "subtract1.first.position"
+                                                                        },
+                                                                        {
+                                                                            "source": ".pos0",
+                                                                            "target": "subtract.first.output1"
+                                                                        },
+                                                                        {
+                                                                            "source": ".pos1",
+                                                                            "target": "subtract.first.position"
                                                                         }
                                                                     ],
                                                                     "values": [],
@@ -2781,14 +2537,6 @@
                                                             "target": ".triangle_normal_sum"
                                                         },
                                                         {
-                                                            "source": ".normal_accumulator",
-                                                            "target": "add.first.normal_acc"
-                                                        },
-                                                        {
-                                                            "source": "triangle_normal.normal",
-                                                            "target": "add.first.output1"
-                                                        },
-                                                        {
                                                             "source": ".triangle_index",
                                                             "target": "triangle_normal.triangle_index"
                                                         },
@@ -2803,9 +2551,22 @@
                                                         {
                                                             "source": ".face_start",
                                                             "target": "triangle_normal.face_start"
+                                                        },
+                                                        {
+                                                            "source": "triangle_normal.normal",
+                                                            "target": "add.first.output1"
+                                                        },
+                                                        {
+                                                            "source": ".normal_accumulator",
+                                                            "target": "add.first.normal_acc"
                                                         }
                                                     ],
                                                     "values": [
+                                                        {
+                                                            "valueName": "triangle_normal.positions",
+                                                            "valueType": "array<Math::float3>",
+                                                            "value": []
+                                                        },
                                                         {
                                                             "valueName": "triangle_normal.triangle_index",
                                                             "valueType": "long",
@@ -2956,8 +2717,7 @@
                                                 }
                                             ],
                                             "forEachCompound": {
-                                                "ports": [],
-                                                "grainSize": "1"
+                                                "ports": []
                                             }
                                         }
                                     ],
@@ -3054,6 +2814,11 @@
                                             "valueName": "for_each_face.face_count",
                                             "valueType": "ulong",
                                             "value": "10"
+                                        },
+                                        {
+                                            "valueName": "for_each_face.positions",
+                                            "valueType": "array<Math::float3>",
+                                            "value": []
                                         },
                                         {
                                             "valueName": "set_geo_property.property",
@@ -3762,16 +3527,8 @@
                                                             ],
                                                             "connections": [
                                                                 {
-                                                                    "source": "value2.output.face",
-                                                                    "target": "get_from_array.index"
-                                                                },
-                                                                {
                                                                     "source": "get_current_face_edge.value",
                                                                     "target": "value2.value"
-                                                                },
-                                                                {
-                                                                    "source": "get_from_array.value",
-                                                                    "target": "add.first.value"
                                                                 },
                                                                 {
                                                                     "source": "add.output",
@@ -3786,16 +3543,24 @@
                                                                     "target": "get_from_array.array"
                                                                 },
                                                                 {
-                                                                    "source": ".face_data_state",
-                                                                    "target": "add.first.face_data_state"
-                                                                },
-                                                                {
                                                                     "source": ".point_face_adjacency",
                                                                     "target": "get_current_face_edge.array"
                                                                 },
                                                                 {
                                                                     "source": "get_from_array.value",
                                                                     "target": ".neighbor_face_data"
+                                                                },
+                                                                {
+                                                                    "source": ".face_data_state",
+                                                                    "target": "add.first.face_data_state"
+                                                                },
+                                                                {
+                                                                    "source": "get_from_array.value",
+                                                                    "target": "add.first.value"
+                                                                },
+                                                                {
+                                                                    "source": "value2.output.face",
+                                                                    "target": "get_from_array.index"
                                                                 },
                                                                 {
                                                                     "source": "value2.output.face",
@@ -3908,6 +3673,11 @@
                                                             "valueName": "sum_data_from_adjacent_faces.max_iterations",
                                                             "valueType": "long",
                                                             "value": "10"
+                                                        },
+                                                        {
+                                                            "valueName": "sum_data_from_adjacent_faces.point_face_adjacency",
+                                                            "valueType": "array<Geometry::Mesh::FaceEdge>",
+                                                            "value": []
                                                         }
                                                     ],
                                                     "reservedNodeNames": [
@@ -4006,8 +3776,7 @@
                                                 }
                                             ],
                                             "forEachCompound": {
-                                                "ports": [],
-                                                "grainSize": "1"
+                                                "ports": []
                                             }
                                         }
                                     ],
@@ -4138,6 +3907,16 @@
                                             "valueName": "for_each_point.max_iterations",
                                             "valueType": "long",
                                             "value": "10"
+                                        },
+                                        {
+                                            "valueName": "for_each_point.face_vertex_adjacent_edge",
+                                            "valueType": "array<Geometry::Mesh::FaceEdge>",
+                                            "value": []
+                                        },
+                                        {
+                                            "valueName": "for_each_point.point_face_adjacency",
+                                            "valueType": "array<Geometry::Mesh::FaceEdge>",
+                                            "value": []
                                         }
                                     ],
                                     "reservedNodeNames": [
@@ -4419,6 +4198,11 @@
                             ],
                             "values": [
                                 {
+                                    "valueName": "point_normals_from_face_normals.face_normal",
+                                    "valueType": "array<Math::float3>",
+                                    "value": []
+                                },
+                                {
                                     "valueName": "erase_face_vertex_normal.object",
                                     "valueType": "Amino::Object",
                                     "value": {}
@@ -4599,17 +4383,17 @@
                                                     "metaValue": "2"
                                                 },
                                                 {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-59.0129 3.61283"
+                                                },
+                                                {
                                                     "metaName": "io_ports",
                                                     "metadata": [
                                                         {
                                                             "metaName": "mesh"
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "-59.0129 3.61283"
                                                 }
                                             ]
                                         }
@@ -4722,24 +4506,24 @@
                                     "metaValue": "2"
                                 },
                                 {
-                                    "metaName": "valuenode_defaultvalue",
-                                    "metaType": "string",
-                                    "metaValue": "0"
-                                },
-                                {
-                                    "metaName": "valuenode_defaultvalue",
-                                    "metaType": "string",
-                                    "metaValue": "0"
-                                },
-                                {
-                                    "metaName": "valuenode_defaultvalue",
-                                    "metaType": "string",
-                                    "metaValue": "0"
-                                },
-                                {
                                     "metaName": "LayoutPos",
                                     "metaType": "string",
                                     "metaValue": "-23.6112 260.543"
+                                },
+                                {
+                                    "metaName": "valuenode_defaultvalue",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "valuenode_defaultvalue",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "valuenode_defaultvalue",
+                                    "metaType": "string",
+                                    "metaValue": "0"
                                 }
                             ]
                         },
@@ -4974,10 +4758,6 @@
                     "target": "prepare_diagnostic_geo.mesh"
                 },
                 {
-                    "source": "prepare_diagnostic_geo.diagnostic_strands",
-                    "target": "terminal.diagnostic.diagnostic_strands"
-                },
-                {
                     "source": ".mesh",
                     "target": "check_normals.mesh"
                 },
@@ -5008,6 +4788,10 @@
                 {
                     "source": "get_data.point_normal",
                     "target": "compute_mesh_curvature.point_normal"
+                },
+                {
+                    "source": "prepare_diagnostic_geo.diagnostic_strands",
+                    "target": "terminal.diagnostic.diagnostic_strands"
                 }
             ],
             "values": [
@@ -5025,6 +4809,21 @@
                     "valueName": "compute_mesh_curvature.max_iterations",
                     "valueType": "long",
                     "value": "10"
+                },
+                {
+                    "valueName": "compute_mesh_curvature.point_normal",
+                    "valueType": "array<Math::float3>",
+                    "value": []
+                },
+                {
+                    "valueName": "compute_mesh_curvature.face_normal",
+                    "valueType": "array<Math::float3>",
+                    "value": []
+                },
+                {
+                    "valueName": "compute_mesh_curvature.point_face_adjacency",
+                    "valueType": "array<Geometry::Mesh::FaceEdge>",
+                    "value": []
                 },
                 {
                     "valueName": "check_normals.mesh",

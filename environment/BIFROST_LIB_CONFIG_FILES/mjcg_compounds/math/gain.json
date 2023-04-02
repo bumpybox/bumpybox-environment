@@ -7,68 +7,12 @@
             }
         ]
     },
-    "dependencies": [
-        {
-            "uri": "file:///Math_types.json"
-        },
-        {
-            "uri": "file:///Math_long.json"
-        },
-        {
-            "uri": "file:///Math_float.json"
-        },
-        {
-            "uri": "file:///Math_double.json"
-        },
-        {
-            "uri": "file:///Math_char.json"
-        },
-        {
-            "uri": "file:///Math_int.json"
-        },
-        {
-            "uri": "file:///Math_short.json"
-        },
-        {
-            "uri": "file:///Math_uchar.json"
-        },
-        {
-            "uri": "file:///Math_uint.json"
-        },
-        {
-            "uri": "file:///Math_ulong.json"
-        },
-        {
-            "uri": "file:///Math_ushort.json"
-        },
-        {
-            "uri": "file:///riv_types.json"
-        },
-        {
-            "uri": "file:///bifrost_object_i.json"
-        },
-        {
-            "uri": "file:///point_types.json"
-        },
-        {
-            "uri": "file:///FCurve.json"
-        },
-        {
-            "uri": "file:///riv_ops.json"
-        },
-        {
-            "uri": "file:///twice_of.json"
-        },
-        {
-            "uri": "file:///bias.json"
-        }
-    ],
     "namespaces": [],
     "types": [],
     "compounds": [
         {
             "name": "MJCG::Core::Math::gain",
-            "uriImported": "file:///__duplicateCompoundURIHelper__",
+            "uriImported": "file:///gain.json",
             "metadata": [
                 {
                     "metaName": "documentation",
@@ -157,7 +101,7 @@
                 {
                     "metaName": "LayoutPos",
                     "metaType": "string",
-                    "metaValue": "-747.698 1845.95"
+                    "metaValue": "1121.35 410.265"
                 }
             ],
             "ports": [
@@ -168,7 +112,7 @@
                 {
                     "portName": "gain",
                     "portDirection": "input",
-                    "portType": "float",
+                    "portDefaultType": "float",
                     "portDefault": "0.5f"
                 },
                 {
@@ -234,11 +178,6 @@
                     "valueType": "float",
                     "metadata": [
                         {
-                            "metaName": "valuenode_defaultvalue",
-                            "metaType": "string",
-                            "metaValue": "0"
-                        },
-                        {
                             "metaName": "DisplayMode",
                             "metaType": "string",
                             "metaValue": "2"
@@ -247,6 +186,11 @@
                             "metaName": "LayoutPos",
                             "metaType": "string",
                             "metaValue": "219 578"
+                        },
+                        {
+                            "metaName": "valuenode_defaultvalue",
+                            "metaType": "string",
+                            "metaValue": "1"
                         }
                     ]
                 },
@@ -307,11 +251,6 @@
                     "valueType": "float",
                     "metadata": [
                         {
-                            "metaName": "valuenode_defaultvalue",
-                            "metaType": "string",
-                            "metaValue": "0"
-                        },
-                        {
                             "metaName": "DisplayMode",
                             "metaType": "string",
                             "metaValue": "2"
@@ -320,6 +259,11 @@
                             "metaName": "LayoutPos",
                             "metaType": "string",
                             "metaValue": "1154.81 -7.6988"
+                        },
+                        {
+                            "metaName": "valuenode_defaultvalue",
+                            "metaType": "string",
+                            "metaValue": "0.5"
                         }
                     ]
                 },
@@ -344,11 +288,6 @@
                     "valueType": "float",
                     "metadata": [
                         {
-                            "metaName": "valuenode_defaultvalue",
-                            "metaType": "string",
-                            "metaValue": "0"
-                        },
-                        {
                             "metaName": "DisplayMode",
                             "metaType": "string",
                             "metaValue": "2"
@@ -357,6 +296,11 @@
                             "metaName": "LayoutPos",
                             "metaType": "string",
                             "metaValue": "1141.52 -281.284"
+                        },
+                        {
+                            "metaName": "valuenode_defaultvalue",
+                            "metaType": "string",
+                            "metaValue": "2"
                         }
                     ]
                 },
@@ -473,11 +417,6 @@
                     "valueType": "float",
                     "metadata": [
                         {
-                            "metaName": "valuenode_defaultvalue",
-                            "metaType": "string",
-                            "metaValue": "0"
-                        },
-                        {
                             "metaName": "DisplayMode",
                             "metaType": "string",
                             "metaValue": "2"
@@ -486,6 +425,11 @@
                             "metaName": "LayoutPos",
                             "metaType": "string",
                             "metaValue": "1461.01 614.64"
+                        },
+                        {
+                            "metaName": "valuenode_defaultvalue",
+                            "metaType": "string",
+                            "metaValue": "2"
                         }
                     ]
                 }
@@ -502,18 +446,6 @@
                 {
                     "source": "if.output",
                     "target": ".output"
-                },
-                {
-                    "source": "value.output",
-                    "target": "subtract5.first.output1"
-                },
-                {
-                    "source": "value.output",
-                    "target": "subtract6.first.output1"
-                },
-                {
-                    "source": "value.output",
-                    "target": "add.first.output1"
                 },
                 {
                     "source": "divide1.output",
@@ -536,24 +468,8 @@
                     "target": "greater_or_equal.second"
                 },
                 {
-                    "source": "bias.output",
-                    "target": "divide.first.result"
-                },
-                {
-                    "source": "value3.output",
-                    "target": "divide.first.output1"
-                },
-                {
                     "source": "twice_of.double_value",
                     "target": "bias.value"
-                },
-                {
-                    "source": "twice_of1.double_value",
-                    "target": "subtract5.first.x"
-                },
-                {
-                    "source": "bias1.output",
-                    "target": "add.first.result"
                 },
                 {
                     "source": "subtract5.output",
@@ -562,14 +478,6 @@
                 {
                     "source": "subtract6.output",
                     "target": "bias1.bias"
-                },
-                {
-                    "source": "add.output",
-                    "target": "divide1.first.output1"
-                },
-                {
-                    "source": "value4.output",
-                    "target": "divide1.first.output2"
                 },
                 {
                     "source": ".value",
@@ -590,6 +498,42 @@
                 {
                     "source": ".value",
                     "target": "twice_of1.value"
+                },
+                {
+                    "source": "bias1.output",
+                    "target": "add.first.result"
+                },
+                {
+                    "source": "value.output",
+                    "target": "add.first.output1"
+                },
+                {
+                    "source": "value.output",
+                    "target": "subtract6.first.output1"
+                },
+                {
+                    "source": "twice_of1.double_value",
+                    "target": "subtract5.first.x"
+                },
+                {
+                    "source": "value.output",
+                    "target": "subtract5.first.output1"
+                },
+                {
+                    "source": "add.output",
+                    "target": "divide1.first.output1"
+                },
+                {
+                    "source": "value4.output",
+                    "target": "divide1.first.output2"
+                },
+                {
+                    "source": "bias.output",
+                    "target": "divide.first.result"
+                },
+                {
+                    "source": "value3.output",
+                    "target": "divide.first.output1"
                 },
                 {
                     "source": ".gain",
@@ -630,6 +574,14 @@
                     "valueName": "value4.value",
                     "valueType": "float",
                     "value": "2f"
+                }
+            ],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
                 }
             ]
         }

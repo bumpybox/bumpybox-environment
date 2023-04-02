@@ -7,347 +7,6 @@
             }
         ]
     },
-    "dependencies": [
-        {
-            "uri": "file:///bifrost_object_i.json"
-        },
-        {
-            "uri": "file:///Math_types.json"
-        },
-        {
-            "uri": "file:///bifrost_geometry_query_types.json"
-        },
-        {
-            "uri": "file:///geometry_types.json"
-        },
-        {
-            "uri": "file:///set_property_any.json"
-        },
-        {
-            "uri": "file:///set_property.json"
-        },
-        {
-            "uri": "file:///get_property_any.json"
-        },
-        {
-            "uri": "file:///get_property.json"
-        },
-        {
-            "uri": "file:///venation_node_type.json"
-        },
-        {
-            "uri": "file:///Math_array.json"
-        },
-        {
-            "uri": "file:///CoreArrayOps.json"
-        },
-        {
-            "uri": "file:///get_geo_property.json"
-        },
-        {
-            "uri": "file:///get_point_position.json"
-        },
-        {
-            "uri": "file:///get_geo_property_check.json"
-        },
-        {
-            "uri": "file:///get_sub_object.json"
-        },
-        {
-            "uri": "file:///get_point_count.json"
-        },
-        {
-            "uri": "file:///FCurve.json"
-        },
-        {
-            "uri": "file:///Math_conversion.json"
-        },
-        {
-            "uri": "file:///has_property.json"
-        },
-        {
-            "uri": "file:///create_volume_geo_prop.json"
-        },
-        {
-            "uri": "file:///is_a.json"
-        },
-        {
-            "uri": "file:///create_object_from_schema.json"
-        },
-        {
-            "uri": "file:///is_a_mesh.json"
-        },
-        {
-            "uri": "file:///is_a_strands.json"
-        },
-        {
-            "uri": "file:///is_a_points.json"
-        },
-        {
-            "uri": "file:///is_a_volume.json"
-        },
-        {
-            "uri": "file:///get_geo_schema_type.json"
-        },
-        {
-            "uri": "file:///switch_is_a.json"
-        },
-        {
-            "uri": "file:///get_target_component.json"
-        },
-        {
-            "uri": "file:///create_data_geo_prop.json"
-        },
-        {
-            "uri": "file:///get_geo_component_count.json"
-        },
-        {
-            "uri": "file:///set_geo_property.array.json"
-        },
-        {
-            "uri": "file:///set_geo_property.scalar.json"
-        },
-        {
-            "uri": "file:///add_points_to_points.json"
-        },
-        {
-            "uri": "file:///validate_points.json"
-        },
-        {
-            "uri": "file:///construct_points.json"
-        },
-        {
-            "uri": "file:///Math_float.json"
-        },
-        {
-            "uri": "file:///Math_double.json"
-        },
-        {
-            "uri": "file:///Math_long.json"
-        },
-        {
-            "uri": "file:///Math_char.json"
-        },
-        {
-            "uri": "file:///Math_int.json"
-        },
-        {
-            "uri": "file:///Math_short.json"
-        },
-        {
-            "uri": "file:///Math_uchar.json"
-        },
-        {
-            "uri": "file:///Math_uint.json"
-        },
-        {
-            "uri": "file:///Math_ulong.json"
-        },
-        {
-            "uri": "file:///Math_ushort.json"
-        },
-        {
-            "uri": "file:///riv_types.json"
-        },
-        {
-            "uri": "file:///point_types.json"
-        },
-        {
-            "uri": "file:///riv_ops.json"
-        },
-        {
-            "uri": "file:///jotun_rand.json"
-        },
-        {
-            "uri": "file:///increment_decrement.json"
-        },
-        {
-            "uri": "file:///random_value.json"
-        },
-        {
-            "uri": "file:///get_property_keys.json"
-        },
-        {
-            "uri": "file:///is_empty.json"
-        },
-        {
-            "uri": "file:///materials.json"
-        },
-        {
-            "uri": "file:///Math_bool.json"
-        },
-        {
-            "uri": "file:///erase_property.json"
-        },
-        {
-            "uri": "file:///set_point_shape.json"
-        },
-        {
-            "uri": "file:///set_point_size.json"
-        },
-        {
-            "uri": "file:///set_point_length.json"
-        },
-        {
-            "uri": "file:///Core_Constants_default_value.json"
-        },
-        {
-            "uri": "file:///int_filter.json"
-        },
-        {
-            "uri": "file:///get_array_indices.json"
-        },
-        {
-            "uri": "file:///get_strands_structure.json"
-        },
-        {
-            "uri": "file:///access_offset_array.json"
-        },
-        {
-            "uri": "file:///update_point_strand_index.json"
-        },
-        {
-            "uri": "file:///check_point_strand_index.json"
-        },
-        {
-            "uri": "file:///update_strands_ratio.json"
-        },
-        {
-            "uri": "file:///set_sub_object_property.json"
-        },
-        {
-            "uri": "file:///validate_strands.json"
-        },
-        {
-            "uri": "file:///construct_strands.json"
-        },
-        {
-            "uri": "file:///find_all_in_array.json"
-        },
-        {
-            "uri": "file:///remove_first_in_array.json"
-        },
-        {
-            "uri": "file:///Core_Array_flatten_nested_array.json"
-        },
-        {
-            "uri": "file:///set_strands_shape.json"
-        },
-        {
-            "uri": "file:///Math_lerp_with_clamp.json"
-        },
-        {
-            "uri": "file:///Core_Array_slice_array.json"
-        },
-        {
-            "uri": "file:///Math_constants.json"
-        },
-        {
-            "uri": "file:///Core_Array_array_bounds_impl.json"
-        },
-        {
-            "uri": "file:///Core_Array_array_bounds.json"
-        },
-        {
-            "uri": "file:///Core_Array_empty_array.json"
-        },
-        {
-            "uri": "file:///Core_Array_array_is_empty.json"
-        },
-        {
-            "uri": "file:///sort_array_and_remove_duplicates.json"
-        },
-        {
-            "uri": "file:///object_terminal.json"
-        },
-        {
-            "uri": "file:///processing_type.json"
-        },
-        {
-            "uri": "file:///delete_points_in_points.json"
-        },
-        {
-            "uri": "file:///Math_axis_angle_to_quaternion.json"
-        },
-        {
-            "uri": "file:///Math_degrees_to_radians.json"
-        },
-        {
-            "uri": "file:///Math_multiply_quaternions.json"
-        },
-        {
-            "uri": "file:///Math_rotate_by_quaternion.json"
-        },
-        {
-            "uri": "file:///build_closest_accelerator.json"
-        },
-        {
-            "uri": "file:///sample_closest_point_accelerator.json"
-        },
-        {
-            "uri": "file:///simulation_types.json"
-        },
-        {
-            "uri": "file:///simulation_nodedefs.json"
-        },
-        {
-            "uri": "file:///fluids_types.json"
-        },
-        {
-            "uri": "file:///volume_types.json"
-        },
-        {
-            "uri": "file:///fluids_nodedefs.json"
-        },
-        {
-            "uri": "file:///generate_venation_core.json"
-        },
-        {
-            "uri": "file:///get_geo_target_count.json"
-        },
-        {
-            "uri": "file:///CoreStringOps.json"
-        },
-        {
-            "uri": "file:///volume_nodedefs.json"
-        },
-        {
-            "uri": "file:///interpret_auto_port_as_scalar.json"
-        },
-        {
-            "uri": "file:///Profiler.json"
-        },
-        {
-            "uri": "file:///object_profiler.json"
-        },
-        {
-            "uri": "file:///Math_change_range.json"
-        },
-        {
-            "uri": "file:///set_strands_size_profile.json"
-        },
-        {
-            "uri": "file:///cumulative_sum_array.json"
-        },
-        {
-            "uri": "file:///get_strands_end_points.json"
-        },
-        {
-            "uri": "file:///set_strand_length.json"
-        },
-        {
-            "uri": "file:///sample_closest_in_radius_accelerator.json"
-        },
-        {
-            "uri": "file:///get_points_in_radius.json"
-        },
-        {
-            "uri": "file:///set_point_ratio.json"
-        },
-        {
-            "uri": "file:///delete_points.json"
-        }
-    ],
     "namespaces": [],
     "types": [],
     "compounds": [
@@ -719,7 +378,7 @@
                 {
                     "metaName": "ViewportRect",
                     "metaType": "string",
-                    "metaValue": "-577 692.846 2533 1614.31"
+                    "metaValue": "-577 739.648 2533 1520.7"
                 },
                 {
                     "metaName": "DisplayMode",
@@ -729,22 +388,21 @@
                 {
                     "metaName": "LayoutPos",
                     "metaType": "string",
-                    "metaValue": "-77.5 25"
+                    "metaValue": "-57.062 -44.4638"
+                }
+            ],
+            "terminalStates": [
+                {
+                    "name": "Core::Graph::terminal::final",
+                    "enabled": "false"
                 },
                 {
-                    "metaName": "terminal_node_disabled_flags",
-                    "metaType": "string",
-                    "metaValue": "Core::Graph::terminal::final"
+                    "name": "Core::Graph::terminal::proxy",
+                    "enabled": "false"
                 },
                 {
-                    "metaName": "terminal_node_disabled_flags",
-                    "metaType": "string",
-                    "metaValue": "Core::Graph::terminal::proxy"
-                },
-                {
-                    "metaName": "terminal_node_disabled_flags",
-                    "metaType": "string",
-                    "metaValue": "Core::Graph::terminal::diagnostic"
+                    "name": "Core::Graph::terminal::diagnostic",
+                    "enabled": "false"
                 }
             ],
             "ports": [
@@ -2170,32 +1828,12 @@
                             "target": "set_property.value"
                         },
                         {
-                            "source": "sequence_array.sequence",
-                            "target": "value1.value.index"
-                        },
-                        {
                             "source": ".seed_points",
                             "target": "init_node_properties.seeds"
                         },
                         {
                             "source": ".seed_points",
                             "target": "set_property.object"
-                        },
-                        {
-                            "source": "init_node_properties.point_position",
-                            "target": "value1.value.position"
-                        },
-                        {
-                            "source": "init_node_properties.point_position",
-                            "target": "value1.value.parent_position"
-                        },
-                        {
-                            "source": "init_node_properties.point_color",
-                            "target": "value1.value.color"
-                        },
-                        {
-                            "source": "init_node_properties.point_size",
-                            "target": "value1.value.size"
                         },
                         {
                             "source": "init_node_properties.point_count",
@@ -2218,36 +1856,12 @@
                             "target": "set_property3.object"
                         },
                         {
-                            "source": "sequence_array.sequence",
-                            "target": "value1.value.seed_index"
-                        },
-                        {
                             "source": "set_property3.out_object",
                             "target": ".veins"
                         },
                         {
-                            "source": "value3.output",
-                            "target": "value1.value.is_endpoint"
-                        },
-                        {
-                            "source": "sequence_array.sequence",
-                            "target": "value1.value.branch_index"
-                        },
-                        {
-                            "source": "value4.output",
-                            "target": "value1.value.branch_level"
-                        },
-                        {
                             "source": "value.output",
                             "target": "value2.value.node_count"
-                        },
-                        {
-                            "source": "numeric_max.numeric_max",
-                            "target": "value1.value.parent_index"
-                        },
-                        {
-                            "source": "numeric_max.numeric_max",
-                            "target": "value1.value.parent_branch_index"
                         },
                         {
                             "source": "sequence_array.sequence",
@@ -2268,6 +1882,50 @@
                         {
                             "source": "value4.output",
                             "target": "value2.value.child_count"
+                        },
+                        {
+                            "source": "sequence_array.sequence",
+                            "target": "value1.value.index"
+                        },
+                        {
+                            "source": "init_node_properties.point_position",
+                            "target": "value1.value.position"
+                        },
+                        {
+                            "source": "init_node_properties.point_position",
+                            "target": "value1.value.parent_position"
+                        },
+                        {
+                            "source": "init_node_properties.point_color",
+                            "target": "value1.value.color"
+                        },
+                        {
+                            "source": "init_node_properties.point_size",
+                            "target": "value1.value.size"
+                        },
+                        {
+                            "source": "sequence_array.sequence",
+                            "target": "value1.value.seed_index"
+                        },
+                        {
+                            "source": "value3.output",
+                            "target": "value1.value.is_endpoint"
+                        },
+                        {
+                            "source": "sequence_array.sequence",
+                            "target": "value1.value.branch_index"
+                        },
+                        {
+                            "source": "value4.output",
+                            "target": "value1.value.branch_level"
+                        },
+                        {
+                            "source": "numeric_max.numeric_max",
+                            "target": "value1.value.parent_index"
+                        },
+                        {
+                            "source": "numeric_max.numeric_max",
+                            "target": "value1.value.parent_branch_index"
                         }
                     ],
                     "values": [
@@ -3010,9 +2668,15 @@
                                     "output2"
                                 ]
                             },
-                            "deactivatedTerminals": [
-                                "Core::Graph::terminal::proxy",
-                                "Core::Graph::terminal::final"
+                            "terminalStates": [
+                                {
+                                    "name": "Core::Graph::terminal::proxy",
+                                    "enabled": "false"
+                                },
+                                {
+                                    "name": "Core::Graph::terminal::final",
+                                    "enabled": "false"
+                                }
                             ],
                             "metadata": [
                                 {
@@ -5972,26 +5636,6 @@
                                     "metaValue": "<NATIVE>../icons/LoopDo_While.svg"
                                 },
                                 {
-                                    "metaName": "icon",
-                                    "metaType": "string",
-                                    "metaValue": "<NATIVE>../icons/LoopDo_While.svg"
-                                },
-                                {
-                                    "metaName": "icon",
-                                    "metaType": "string",
-                                    "metaValue": "<NATIVE>../icons/LoopDo_While.svg"
-                                },
-                                {
-                                    "metaName": "icon",
-                                    "metaType": "string",
-                                    "metaValue": "<NATIVE>../icons/LoopDo_While.svg"
-                                },
-                                {
-                                    "metaName": "icon",
-                                    "metaType": "string",
-                                    "metaValue": "<NATIVE>../icons/LoopDo_While.svg"
-                                },
-                                {
                                     "metaName": "io_nodes",
                                     "metadata": [
                                         {
@@ -7390,7 +7034,7 @@
                         {
                             "metaName": "ViewportRect",
                             "metaType": "string",
-                            "metaValue": "-275 -25.3688 1451 924.738"
+                            "metaValue": "-275 13.4411 1451 871.118"
                         }
                     ],
                     "ports": [
@@ -8231,38 +7875,6 @@
                                     "target": "set_point_length.geometry"
                                 },
                                 {
-                                    "source": "value2.output.position",
-                                    "target": "construct_points.point_position"
-                                },
-                                {
-                                    "source": "value2.output.parent_branch_index",
-                                    "target": "set_point_properties.parent_branch_index"
-                                },
-                                {
-                                    "source": "value2.output.branch_index",
-                                    "target": "random_value1.index"
-                                },
-                                {
-                                    "source": "value2.output.branch_index",
-                                    "target": "set_point_properties.branch_index"
-                                },
-                                {
-                                    "source": "value2.output.seed_index",
-                                    "target": "set_point_properties.seed_index"
-                                },
-                                {
-                                    "source": "value2.output.branch_level",
-                                    "target": "set_point_properties.branch_level"
-                                },
-                                {
-                                    "source": "value2.output.size",
-                                    "target": "set_point_size.sizes"
-                                },
-                                {
-                                    "source": "value2.output.length",
-                                    "target": "set_point_length.lengths"
-                                },
-                                {
                                     "source": "set_point_properties.out_geometry",
                                     "target": "set_point_size.geometry"
                                 },
@@ -8287,10 +7899,6 @@
                                     "target": "equal.first"
                                 },
                                 {
-                                    "source": "value3.output.parent_node_index",
-                                    "target": "equal.second"
-                                },
-                                {
                                     "source": "equal.output",
                                     "target": "if.condition"
                                 },
@@ -8299,12 +7907,48 @@
                                     "target": "if.true_case"
                                 },
                                 {
+                                    "source": "if.output",
+                                    "target": "delete_points.point_indices"
+                                },
+                                {
                                     "source": "value3.output.first_node_index",
                                     "target": "if.false_case"
                                 },
                                 {
-                                    "source": "if.output",
-                                    "target": "delete_points.point_indices"
+                                    "source": "value3.output.parent_node_index",
+                                    "target": "equal.second"
+                                },
+                                {
+                                    "source": "value2.output.position",
+                                    "target": "construct_points.point_position"
+                                },
+                                {
+                                    "source": "value2.output.size",
+                                    "target": "set_point_size.sizes"
+                                },
+                                {
+                                    "source": "value2.output.seed_index",
+                                    "target": "set_point_properties.seed_index"
+                                },
+                                {
+                                    "source": "value2.output.branch_index",
+                                    "target": "random_value1.index"
+                                },
+                                {
+                                    "source": "value2.output.branch_index",
+                                    "target": "set_point_properties.branch_index"
+                                },
+                                {
+                                    "source": "value2.output.branch_level",
+                                    "target": "set_point_properties.branch_level"
+                                },
+                                {
+                                    "source": "value2.output.parent_branch_index",
+                                    "target": "set_point_properties.parent_branch_index"
+                                },
+                                {
+                                    "source": "value2.output.length",
+                                    "target": "set_point_length.lengths"
                                 }
                             ],
                             "values": [
@@ -8526,46 +8170,21 @@
                                                             "metaValue": "2"
                                                         },
                                                         {
-                                                            "metaName": "LayoutPos",
-                                                            "metaType": "string",
-                                                            "metaValue": "3615.11 2102.74"
-                                                        },
-                                                        {
                                                             "metaName": "io_ports",
                                                             "metadata": [
                                                                 {
                                                                     "metaName": "out_strands"
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            "metaName": "LayoutPos",
+                                                            "metaType": "string",
+                                                            "metaValue": "3575.3 2116.25"
                                                         }
                                                     ]
                                                 }
                                             ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "metaName": "backdrop",
-                                    "metadata": [
-                                        {
-                                            "metaName": "type",
-                                            "metaType": "string",
-                                            "metaValue": "backdrop"
-                                        },
-                                        {
-                                            "metaName": "color",
-                                            "metaType": "string",
-                                            "metaValue": "#6d4848"
-                                        },
-                                        {
-                                            "metaName": "text",
-                                            "metaType": "string",
-                                            "metaValue": "Sorting branches usinget_points_in_radius's internal sorting.\n\nThis is a temporary method until Bifrost offers an \nefficient node that returns the indices of a sorted array."
-                                        },
-                                        {
-                                            "metaName": "coords",
-                                            "metaType": "string",
-                                            "metaValue": "2688.16 1802.86 350.019 367.539"
                                         }
                                     ]
                                 },
@@ -8597,7 +8216,7 @@
                                 {
                                     "metaName": "ViewportRect",
                                     "metaType": "string",
-                                    "metaValue": "1807 1314 2112 1346"
+                                    "metaValue": "2327 1667.52 1594 956.969"
                                 }
                             ],
                             "ports": [
@@ -8701,10 +8320,10 @@
                                                                     "metaName": "io_ports",
                                                                     "metadata": [
                                                                         {
-                                                                            "metaName": "size_profile"
+                                                                            "metaName": "branches"
                                                                         },
                                                                         {
-                                                                            "metaName": "branches"
+                                                                            "metaName": "size_profile"
                                                                         }
                                                                     ]
                                                                 }
@@ -8765,14 +8384,14 @@
                                             "portType": "Amino::Object"
                                         },
                                         {
-                                            "portName": "size_profile",
-                                            "portDirection": "input",
-                                            "portType": "Amino::FCurve"
-                                        },
-                                        {
                                             "portName": "branches",
                                             "portDirection": "input",
                                             "portType": "array<MJCG::Venation::Branch>"
+                                        },
+                                        {
+                                            "portName": "size_profile",
+                                            "portDirection": "input",
+                                            "portType": "Amino::FCurve"
                                         }
                                     ],
                                     "compounds": [
@@ -9912,26 +9531,6 @@
                                                             "name": "compute_leonardo_sizes",
                                                             "uriImported": "file:///generate_venation.json",
                                                             "metadata": [
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
                                                                 {
                                                                     "metaName": "icon",
                                                                     "metaType": "string",
@@ -11427,26 +11026,6 @@
                                                                             "metaValue": "<NATIVE>../icons/LoopIterate.svg"
                                                                         },
                                                                         {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
                                                                             "metaName": "_recentNode_",
                                                                             "metaType": "string",
                                                                             "metaValue": "BifrostGraph,Core::Type_Conversion,to_unsigned_int"
@@ -11786,26 +11365,6 @@
                                                                             "metaValue": "<NATIVE>../icons/LoopIterate.svg"
                                                                         },
                                                                         {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
                                                                             "metaName": "_recentNode_",
                                                                             "metaType": "string",
                                                                             "metaValue": "BifrostGraph,Core::Array,resize_array"
@@ -12089,26 +11648,6 @@
                                                                     "name": "iterate3",
                                                                     "uriImported": "file:///generate_venation.json",
                                                                     "metadata": [
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
-                                                                        {
-                                                                            "metaName": "icon",
-                                                                            "metaType": "string",
-                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                        },
                                                                         {
                                                                             "metaName": "icon",
                                                                             "metaType": "string",
@@ -13137,21 +12676,6 @@
                                                                     "metaValue": "<NATIVE>../icons/LoopIterate.svg"
                                                                 },
                                                                 {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                },
-                                                                {
                                                                     "metaName": "_recentNode_",
                                                                     "metaType": "string",
                                                                     "metaValue": "BifrostGraph,Core::Array,build_array"
@@ -13864,21 +13388,6 @@
                                                                     "metaValue": "<NATIVE>../icons/LoopForEach.svg"
                                                                 },
                                                                 {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
-                                                                {
                                                                     "metaName": "ViewportRect",
                                                                     "metaType": "string",
                                                                     "metaValue": "-753.846 -676.321 3891.51 2480.1"
@@ -14540,10 +14049,6 @@
                                                                     "target": "get_from_array2.index"
                                                                 },
                                                                 {
-                                                                    "source": "value2.output.node_count",
-                                                                    "target": "convert_to_float.from"
-                                                                },
-                                                                {
                                                                     "source": ".counter",
                                                                     "target": "convert_to_float2.from"
                                                                 },
@@ -14570,6 +14075,10 @@
                                                                 {
                                                                     "source": ".branches",
                                                                     "target": "get_from_array.array"
+                                                                },
+                                                                {
+                                                                    "source": "value2.output.node_count",
+                                                                    "target": "convert_to_float.from"
                                                                 }
                                                             ],
                                                             "values": [
@@ -14637,29 +14146,13 @@
                                                                 }
                                                             ],
                                                             "forEachCompound": {
-                                                                "ports": [],
-                                                                "grainSize": "1"
+                                                                "ports": []
                                                             }
                                                         },
                                                         {
                                                             "name": "compute_relative_start_ratio",
                                                             "uriImported": "file:///generate_venation.json",
                                                             "metadata": [
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
-                                                                {
-                                                                    "metaName": "icon",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "<NATIVE>../icons/LoopForEach.svg"
-                                                                },
                                                                 {
                                                                     "metaName": "icon",
                                                                     "metaType": "string",
@@ -15242,26 +14735,6 @@
                                                                                     "name": "small_slice",
                                                                                     "uriImported": "file:///generate_venation.json",
                                                                                     "metadata": [
-                                                                                        {
-                                                                                            "metaName": "icon",
-                                                                                            "metaType": "string",
-                                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                                        },
-                                                                                        {
-                                                                                            "metaName": "icon",
-                                                                                            "metaType": "string",
-                                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                                        },
-                                                                                        {
-                                                                                            "metaName": "icon",
-                                                                                            "metaType": "string",
-                                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                                        },
-                                                                                        {
-                                                                                            "metaName": "icon",
-                                                                                            "metaType": "string",
-                                                                                            "metaValue": "<NATIVE>../icons/LoopIterate.svg"
-                                                                                        },
                                                                                         {
                                                                                             "metaName": "icon",
                                                                                             "metaType": "string",
@@ -16044,8 +15517,7 @@
                                                                 }
                                                             ],
                                                             "forEachCompound": {
-                                                                "ports": [],
-                                                                "grainSize": "1"
+                                                                "ports": []
                                                             }
                                                         }
                                                     ],
@@ -16248,6 +15720,11 @@
                                                             }
                                                         },
                                                         {
+                                                            "valueName": "compute_sizes.branches",
+                                                            "valueType": "array<MJCG::Venation::Branch>",
+                                                            "value": []
+                                                        },
+                                                        {
                                                             "valueName": "compute_relative_start_ratio.max_iterations",
                                                             "valueType": "long",
                                                             "value": "10"
@@ -16443,6 +15920,11 @@
                                                             }
                                                         ]
                                                     }
+                                                },
+                                                {
+                                                    "valueName": "compute_hierarchical_sizes.branches",
+                                                    "valueType": "array<MJCG::Venation::Branch>",
+                                                    "value": []
                                                 }
                                             ],
                                             "reservedNodeNames": [
@@ -16710,38 +16192,6 @@
                                             "target": "set_geo_property1.geometry"
                                         },
                                         {
-                                            "source": "value3.output.position",
-                                            "target": "construct_strands.point_position"
-                                        },
-                                        {
-                                            "source": "value3.output.color",
-                                            "target": "set_geo_property1.data"
-                                        },
-                                        {
-                                            "source": "value3.output.parent_branch_index",
-                                            "target": "set_index_properties.point_parent_strand_index"
-                                        },
-                                        {
-                                            "source": "value3.output.branch_index",
-                                            "target": "set_index_properties.point_strand_index"
-                                        },
-                                        {
-                                            "source": "value3.output.seed_index",
-                                            "target": "set_index_properties.point_seed_index"
-                                        },
-                                        {
-                                            "source": "value3.output.branch_level",
-                                            "target": "set_index_properties.point_branch_level"
-                                        },
-                                        {
-                                            "source": "value3.output.length",
-                                            "target": "set_length_properties.point_length"
-                                        },
-                                        {
-                                            "source": "value3.output.absolute_length",
-                                            "target": "set_length_properties.point_absolute_length"
-                                        },
-                                        {
                                             "source": "set_geo_property1.out_geometry",
                                             "target": "set_index_properties.strands"
                                         },
@@ -16778,32 +16228,64 @@
                                             "target": "compute_sizes.branches"
                                         },
                                         {
-                                            "source": "value3.output.counter",
-                                            "target": "compute_sizes.counter"
-                                        },
-                                        {
-                                            "source": "value3.output.parent_index",
-                                            "target": "compute_sizes.parent_index"
-                                        },
-                                        {
                                             "source": "value3.output.index",
                                             "target": "compute_sizes.index"
                                         },
                                         {
-                                            "source": "value3.output.parent_branch_index",
-                                            "target": "compute_sizes.parent_branch_index"
+                                            "source": "value3.output.position",
+                                            "target": "construct_strands.point_position"
                                         },
                                         {
-                                            "source": "value3.output.branch_index",
-                                            "target": "compute_sizes.branch_index"
+                                            "source": "value3.output.color",
+                                            "target": "set_geo_property1.data"
                                         },
                                         {
                                             "source": "value3.output.size",
                                             "target": "compute_sizes.vein_size"
                                         },
                                         {
+                                            "source": "value3.output.seed_index",
+                                            "target": "set_index_properties.point_seed_index"
+                                        },
+                                        {
+                                            "source": "value3.output.branch_index",
+                                            "target": "set_index_properties.point_strand_index"
+                                        },
+                                        {
+                                            "source": "value3.output.branch_index",
+                                            "target": "compute_sizes.branch_index"
+                                        },
+                                        {
+                                            "source": "value3.output.branch_level",
+                                            "target": "set_index_properties.point_branch_level"
+                                        },
+                                        {
                                             "source": "value3.output.branch_level",
                                             "target": "compute_sizes.branch_level"
+                                        },
+                                        {
+                                            "source": "value3.output.parent_index",
+                                            "target": "compute_sizes.parent_index"
+                                        },
+                                        {
+                                            "source": "value3.output.parent_branch_index",
+                                            "target": "set_index_properties.point_parent_strand_index"
+                                        },
+                                        {
+                                            "source": "value3.output.parent_branch_index",
+                                            "target": "compute_sizes.parent_branch_index"
+                                        },
+                                        {
+                                            "source": "value3.output.counter",
+                                            "target": "compute_sizes.counter"
+                                        },
+                                        {
+                                            "source": "value3.output.length",
+                                            "target": "set_length_properties.point_length"
+                                        },
+                                        {
+                                            "source": "value3.output.absolute_length",
+                                            "target": "set_length_properties.point_absolute_length"
                                         }
                                     ],
                                     "values": [
@@ -16957,6 +16439,11 @@
                                                     }
                                                 ]
                                             }
+                                        },
+                                        {
+                                            "valueName": "compute_sizes.branches",
+                                            "valueType": "array<MJCG::Venation::Branch>",
+                                            "value": []
                                         }
                                     ],
                                     "reservedNodeNames": [
@@ -16972,9 +16459,121 @@
                                     ]
                                 },
                                 {
-                                    "name": "sort_nodes_by_spatial_query",
+                                    "name": "sort_nodes",
                                     "uriImported": "file:///generate_venation.json",
                                     "metadata": [
+                                        {
+                                            "metaName": "io_nodes",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "io_inodes",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "input",
+                                                            "metadata": [
+                                                                {
+                                                                    "metaName": "DisplayMode",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "2"
+                                                                },
+                                                                {
+                                                                    "metaName": "io_ports",
+                                                                    "metadata": [
+                                                                        {
+                                                                            "metaName": "nodes"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "metaName": "LayoutPos",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "30.0734 91.629"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "metaName": "input1",
+                                                            "metadata": [
+                                                                {
+                                                                    "metaName": "DisplayMode",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "2"
+                                                                },
+                                                                {
+                                                                    "metaName": "io_ports",
+                                                                    "metadata": [
+                                                                        {
+                                                                            "metaName": "branches"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "metaName": "LayoutPos",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "311.013 441.622"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "io_onodes",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "output",
+                                                            "metadata": [
+                                                                {
+                                                                    "metaName": "DisplayMode",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "2"
+                                                                },
+                                                                {
+                                                                    "metaName": "io_ports",
+                                                                    "metadata": [
+                                                                        {
+                                                                            "metaName": "out_nodes"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "metaName": "LayoutPos",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "1088.77 67.4155"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "metaName": "output1",
+                                                            "metadata": [
+                                                                {
+                                                                    "metaName": "DisplayMode",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "2"
+                                                                },
+                                                                {
+                                                                    "metaName": "io_ports",
+                                                                    "metadata": [
+                                                                        {
+                                                                            "metaName": "out_counts"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "metaName": "LayoutPos",
+                                                                    "metaType": "string",
+                                                                    "metaValue": "842.869 431.243"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "_recentNode_",
+                                            "metaType": "string",
+                                            "metaValue": "BifrostGraph,Core::Array,sort_array_with_indices"
+                                        },
                                         {
                                             "metaName": "_recentNode_",
                                             "metaType": "string",
@@ -16996,121 +16595,9 @@
                                             "metaValue": "BifrostGraph,Core::Math,increment"
                                         },
                                         {
-                                            "metaName": "_recentNode_",
-                                            "metaType": "string",
-                                            "metaValue": "BifrostGraph,Core::Math,one_over"
-                                        },
-                                        {
-                                            "metaName": "io_nodes",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "io_inodes",
-                                                    "metadata": [
-                                                        {
-                                                            "metaName": "input",
-                                                            "metadata": [
-                                                                {
-                                                                    "metaName": "DisplayMode",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "2"
-                                                                },
-                                                                {
-                                                                    "metaName": "LayoutPos",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "-490.562 60.2938"
-                                                                },
-                                                                {
-                                                                    "metaName": "io_ports",
-                                                                    "metadata": [
-                                                                        {
-                                                                            "metaName": "nodes"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "metaName": "input1",
-                                                            "metadata": [
-                                                                {
-                                                                    "metaName": "DisplayMode",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "2"
-                                                                },
-                                                                {
-                                                                    "metaName": "LayoutPos",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "408.708 816.868"
-                                                                },
-                                                                {
-                                                                    "metaName": "io_ports",
-                                                                    "metadata": [
-                                                                        {
-                                                                            "metaName": "branches"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "metaName": "io_onodes",
-                                                    "metadata": [
-                                                        {
-                                                            "metaName": "output",
-                                                            "metadata": [
-                                                                {
-                                                                    "metaName": "DisplayMode",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "2"
-                                                                },
-                                                                {
-                                                                    "metaName": "LayoutPos",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "2131.39 63.1201"
-                                                                },
-                                                                {
-                                                                    "metaName": "io_ports",
-                                                                    "metadata": [
-                                                                        {
-                                                                            "metaName": "out_nodes"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "metaName": "output1",
-                                                            "metadata": [
-                                                                {
-                                                                    "metaName": "DisplayMode",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "2"
-                                                                },
-                                                                {
-                                                                    "metaName": "LayoutPos",
-                                                                    "metaType": "string",
-                                                                    "metaValue": "1007.4 793.561"
-                                                                },
-                                                                {
-                                                                    "metaName": "io_ports",
-                                                                    "metadata": [
-                                                                        {
-                                                                            "metaName": "out_counts"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
                                             "metaName": "ViewportRect",
                                             "metaType": "string",
-                                            "metaValue": "-571 -443.515 3008 1917.03"
+                                            "metaValue": "-70.5611 -175.436 1607.31 964.958"
                                         }
                                     ],
                                     "ports": [
@@ -17140,16 +16627,6 @@
                                             "nodeName": "value2",
                                             "valueType": "MJCG::Venation::Node",
                                             "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "-143.78 224.847"
-                                                },
                                                 {
                                                     "metaName": "PortExpandedState",
                                                     "metadata": [
@@ -17284,101 +16761,16 @@
                                                     "metaName": "valuenode_defaultvalue",
                                                     "metaType": "string",
                                                     "metaValue": "0"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "to_float",
-                                            "nodeType": "Core::Type_Conversion::to_float",
-                                            "metadata": [
+                                                },
                                                 {
                                                     "metaName": "DisplayMode",
                                                     "metaType": "string",
-                                                    "metaValue": "2"
+                                                    "metaValue": "1"
                                                 },
                                                 {
                                                     "metaName": "LayoutPos",
                                                     "metaType": "string",
-                                                    "metaValue": "141.21 370.222"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "construct_points",
-                                            "nodeType": "Geometry::Points::construct_points",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1278.35 354.504"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "scalar_to_vector3",
-                                            "nodeType": "Core::Conversion::scalar_to_vector3",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1006.96 321.293"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "get_points_in_radius",
-                                            "nodeType": "Geometry::Query::get_points_in_radius",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1607.94 152.165"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "value",
-                                            "valueType": "Math::float3",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1277.09 164.337"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "-0.5"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
+                                                    "metaValue": "310.699 209.301"
                                                 }
                                             ]
                                         },
@@ -17394,107 +16786,7 @@
                                                 {
                                                     "metaName": "LayoutPos",
                                                     "metaType": "string",
-                                                    "metaValue": "1878.68 36.9667"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "add",
-                                            "nodeType": "Core::Math::add",
-                                            "multiInPortNames": [
-                                                "float",
-                                                "output1"
-                                            ],
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "735.94 345.981"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "increment",
-                                            "nodeType": "Core::Math::increment",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1009.15 572.799"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "to_float2",
-                                            "nodeType": "Core::Type_Conversion::to_float",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "1276.48 550.041"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "array_size",
-                                            "nodeType": "Core::Array::array_size",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "737.558 597.291"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "change_range",
-                                            "nodeType": "Core::Math::change_range",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "413.679 488.787"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "nodeName": "array_bounds",
-                                            "nodeType": "Core::Array::array_bounds",
-                                            "metadata": [
-                                                {
-                                                    "metaName": "DisplayMode",
-                                                    "metaType": "string",
-                                                    "metaValue": "2"
-                                                },
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "141.315 607.664"
+                                                    "metaValue": "833.953 67.6986"
                                                 }
                                             ]
                                         },
@@ -17502,41 +16794,6 @@
                                             "nodeName": "value3",
                                             "valueType": "MJCG::Venation::Branch",
                                             "metadata": [
-                                                {
-                                                    "metaName": "LayoutPos",
-                                                    "metaType": "string",
-                                                    "metaValue": "736.184 792.271"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
-                                                {
-                                                    "metaName": "valuenode_defaultvalue",
-                                                    "metaType": "string",
-                                                    "metaValue": "0"
-                                                },
                                                 {
                                                     "metaName": "PortExpandedState",
                                                     "metadata": [
@@ -17551,70 +16808,65 @@
                                                     "metaName": "DisplayMode",
                                                     "metaType": "string",
                                                     "metaValue": "1"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "valuenode_defaultvalue",
+                                                    "metaType": "string",
+                                                    "metaValue": "0"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "577.3 426.316"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "nodeName": "sort_array_with_indices",
+                                            "nodeType": "Core::Array::sort_array_with_indices",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "569.1 184.106"
                                                 }
                                             ]
                                         }
                                     ],
                                     "connections": [
                                         {
-                                            "source": "value2.output.branch_index",
-                                            "target": "to_float.from"
-                                        },
-                                        {
-                                            "source": "value2.output.length",
-                                            "target": "array_bounds.array"
-                                        },
-                                        {
-                                            "source": "value2.output.length",
-                                            "target": "change_range.value"
-                                        },
-                                        {
-                                            "source": "to_float.float",
-                                            "target": "add.first.float"
-                                        },
-                                        {
-                                            "source": "construct_points.points",
-                                            "target": "get_points_in_radius.geometry"
-                                        },
-                                        {
-                                            "source": "scalar_to_vector3.vector3",
-                                            "target": "construct_points.point_position"
-                                        },
-                                        {
-                                            "source": "get_points_in_radius.point_indices",
-                                            "target": "get_from_array.index"
-                                        },
-                                        {
-                                            "source": "value.output",
-                                            "target": "get_points_in_radius.positions"
-                                        },
-                                        {
                                             "source": "get_from_array.value",
                                             "target": ".out_nodes"
-                                        },
-                                        {
-                                            "source": "add.output",
-                                            "target": "scalar_to_vector3.x"
-                                        },
-                                        {
-                                            "source": "increment.output",
-                                            "target": "to_float2.from"
-                                        },
-                                        {
-                                            "source": "to_float2.float",
-                                            "target": "get_points_in_radius.radius"
-                                        },
-                                        {
-                                            "source": "array_size.size",
-                                            "target": "increment.value"
-                                        },
-                                        {
-                                            "source": "change_range.result",
-                                            "target": "add.first.output1"
-                                        },
-                                        {
-                                            "source": "array_bounds.max_bound",
-                                            "target": "change_range.from_end"
                                         },
                                         {
                                             "source": ".nodes",
@@ -17626,15 +16878,19 @@
                                         },
                                         {
                                             "source": ".branches",
-                                            "target": "array_size.array"
-                                        },
-                                        {
-                                            "source": ".branches",
                                             "target": "value3.value"
                                         },
                                         {
                                             "source": "value3.output.node_count",
                                             "target": ".out_counts"
+                                        },
+                                        {
+                                            "source": "value2.output.branch_index",
+                                            "target": "sort_array_with_indices.array"
+                                        },
+                                        {
+                                            "source": "sort_array_with_indices.sorted_indices",
+                                            "target": "get_from_array.index"
                                         }
                                     ],
                                     "values": [
@@ -17675,55 +16931,6 @@
                                                 "is_endpoint": "false",
                                                 "has_child_branch": "false"
                                             }
-                                        },
-                                        {
-                                            "valueName": "get_points_in_radius.geometry",
-                                            "valueType": "Amino::Object",
-                                            "value": {}
-                                        },
-                                        {
-                                            "valueName": "get_points_in_radius.radius",
-                                            "valueType": "float",
-                                            "value": "100000f"
-                                        },
-                                        {
-                                            "valueName": "get_points_in_radius.enable_max_number",
-                                            "valueType": "bool",
-                                            "value": "false"
-                                        },
-                                        {
-                                            "valueName": "get_points_in_radius.max_number",
-                                            "valueType": "long",
-                                            "value": "8"
-                                        },
-                                        {
-                                            "valueName": "value.value",
-                                            "valueType": "Math::float3",
-                                            "value": {
-                                                "x": "-0.5f",
-                                                "y": "0f",
-                                                "z": "0f"
-                                            }
-                                        },
-                                        {
-                                            "valueName": "increment.by",
-                                            "valueType": "char",
-                                            "value": "2"
-                                        },
-                                        {
-                                            "valueName": "change_range.to_start",
-                                            "valueType": "float",
-                                            "value": "0f"
-                                        },
-                                        {
-                                            "valueName": "change_range.to_end",
-                                            "valueType": "float",
-                                            "value": "0.99000001f"
-                                        },
-                                        {
-                                            "valueName": "change_range.clamp",
-                                            "valueType": "bool",
-                                            "value": "true"
                                         },
                                         {
                                             "valueName": "value3.value",
@@ -17767,7 +16974,7 @@
                                         {
                                             "metaName": "LayoutPos",
                                             "metaType": "string",
-                                            "metaValue": "3364.11 2052.31"
+                                            "metaValue": "3314.34 2072.22"
                                         }
                                     ]
                                 },
@@ -17783,13 +16990,13 @@
                                         {
                                             "metaName": "LayoutPos",
                                             "metaType": "string",
-                                            "metaValue": "3095.87 2018.24"
+                                            "metaValue": "3053.92 2041.7"
                                         }
                                     ]
                                 },
                                 {
-                                    "nodeName": "sort_nodes_by_spatial_query",
-                                    "nodeType": "sort_nodes_by_spatial_query",
+                                    "nodeName": "sort_nodes",
+                                    "nodeType": "sort_nodes",
                                     "metadata": [
                                         {
                                             "metaName": "DisplayMode",
@@ -17799,7 +17006,7 @@
                                         {
                                             "metaName": "LayoutPos",
                                             "metaType": "string",
-                                            "metaValue": "2742.27 1889.68"
+                                            "metaValue": "2749.38 1899.63"
                                         }
                                     ]
                                 }
@@ -17810,20 +17017,20 @@
                                     "target": ".out_strands"
                                 },
                                 {
-                                    "source": "sort_nodes_by_spatial_query.out_nodes",
+                                    "source": "sort_nodes.out_nodes",
                                     "target": "construst_strands_from_nodes.nodes"
                                 },
                                 {
-                                    "source": "sort_nodes_by_spatial_query.out_counts",
+                                    "source": "sort_nodes.out_counts",
                                     "target": "construst_strands_from_nodes.counts"
                                 },
                                 {
                                     "source": ".nodes",
-                                    "target": "sort_nodes_by_spatial_query.nodes"
+                                    "target": "sort_nodes.nodes"
                                 },
                                 {
                                     "source": ".branches",
-                                    "target": "sort_nodes_by_spatial_query.branches"
+                                    "target": "sort_nodes.branches"
                                 },
                                 {
                                     "source": ".branches",
@@ -17858,6 +17065,16 @@
                                     "valueName": "set_strands_shape.default_size",
                                     "valueType": "float",
                                     "value": "1f"
+                                },
+                                {
+                                    "valueName": "construst_strands_from_nodes.nodes",
+                                    "valueType": "array<MJCG::Venation::Node>",
+                                    "value": []
+                                },
+                                {
+                                    "valueName": "construst_strands_from_nodes.branches",
+                                    "valueType": "array<MJCG::Venation::Branch>",
+                                    "value": []
                                 },
                                 {
                                     "valueName": "construst_strands_from_nodes.size_profile",
@@ -17899,8 +17116,13 @@
                                     }
                                 },
                                 {
-                                    "valueName": "sort_nodes_by_spatial_query.nodes",
+                                    "valueName": "sort_nodes.nodes",
                                     "valueType": "array<MJCG::Venation::Node>",
+                                    "value": []
+                                },
+                                {
+                                    "valueName": "sort_nodes.branches",
+                                    "valueType": "array<MJCG::Venation::Branch>",
                                     "value": []
                                 }
                             ],
@@ -18382,8 +17604,11 @@
                                 ],
                                 "diagnostic": []
                             },
-                            "deactivatedTerminals": [
-                                "Core::Graph::terminal::diagnostic"
+                            "terminalStates": [
+                                {
+                                    "name": "Core::Graph::terminal::diagnostic",
+                                    "enabled": "false"
+                                }
                             ],
                             "metadata": [
                                 {
@@ -18443,6 +17668,16 @@
                     ],
                     "values": [
                         {
+                            "valueName": "contruct_point_geometry.nodes",
+                            "valueType": "array<MJCG::Venation::Node>",
+                            "value": []
+                        },
+                        {
+                            "valueName": "contruct_point_geometry.branches",
+                            "valueType": "array<MJCG::Venation::Branch>",
+                            "value": []
+                        },
+                        {
                             "valueName": "contruct_strands_geometry.size_profile",
                             "valueType": "Amino::FCurve",
                             "value": {
@@ -18484,6 +17719,11 @@
                         {
                             "valueName": "contruct_strands_geometry.nodes",
                             "valueType": "array<MJCG::Venation::Node>",
+                            "value": []
+                        },
+                        {
+                            "valueName": "contruct_strands_geometry.branches",
+                            "valueType": "array<MJCG::Venation::Branch>",
                             "value": []
                         },
                         {
@@ -18554,6 +17794,16 @@
                 {
                     "nodeName": "prepare_diagnostic_geo",
                     "nodeType": "prepare_diagnostic_geo",
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::final",
+                            "enabled": "true"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::proxy",
+                            "enabled": "true"
+                        }
+                    ],
                     "metadata": [
                         {
                             "metaName": "DisplayMode",
@@ -18602,6 +17852,12 @@
                 {
                     "nodeName": "construct_geometry",
                     "nodeType": "construct_geometry",
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::diagnostic",
+                            "enabled": "true"
+                        }
+                    ],
                     "metadata": [
                         {
                             "metaName": "DisplayMode",
