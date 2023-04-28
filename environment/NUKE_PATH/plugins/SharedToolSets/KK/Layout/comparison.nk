@@ -1,0 +1,74 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0030/q0030_c0170/publish/render/layoutReviewCamera_A/v004/kensukes_kingdom_q0030_c0170_layoutReviewCamera_A_v004_h264.mp4
+ format "1920 804 0 0 1920 804 1 "
+ last 94
+ origlast 94
+ origset true
+ mov32_codec {{0} "H.264 Decoder (appl - avc1)"}
+ mov32_pixel_format {{0} "default (YCbCr  8-bit 422 (2vuy))" "RGBA  8-bit" "YCbCr  8-bit 422 (2vuy)"}
+ name Read12
+ selected true
+ xpos 1436
+ ypos 930
+}
+Reformat {
+ format "2578 1080 0 0 2578 1080 1 dfgfg"
+ name Reformat4
+ selected true
+ xpos 1436
+ ypos 1060
+}
+Transform {
+ translate {1547 648}
+ name Transform1
+ selected true
+ xpos 1436
+ ypos 1134
+}
+Transform {
+ translate {-1289 -540}
+ center {1289 540}
+ name Transform3
+ selected true
+ xpos 1436
+ ypos 1171
+}
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0030/q0030_c0170/publish/render/animationReviewMain/v003/kensukes_kingdom_q0030_c0170_animationReviewMain_v003_h264.mp4
+ format "1920 804 0 0 1920 804 1 "
+ last 94
+ origlast 94
+ origset true
+ mov32_codec {{0} "H.264 Decoder (appl - avc1)"}
+ mov32_pixel_format {{0} "default (YCbCr  8-bit 422 (2vuy))" "RGBA  8-bit" "YCbCr  8-bit 422 (2vuy)"}
+ name Read14
+ selected true
+ xpos 1241
+ ypos 1064
+}
+Reformat {
+ format "3094 1296 0 0 3094 1296 1 vcb"
+ name Reformat5
+ selected true
+ xpos 1241
+ ypos 1182
+}
+Transform {
+ center {1547 648}
+ name Transform2
+ selected true
+ xpos 1241
+ ypos 1262
+}
+Merge2 {
+ inputs 2
+ mix 0.23
+ name Merge2
+ selected true
+ xpos 1436
+ ypos 1262
+}

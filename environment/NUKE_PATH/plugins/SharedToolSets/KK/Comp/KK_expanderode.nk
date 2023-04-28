@@ -1,0 +1,151 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="2544" h="1361" screen="0">
+        <splitter orientation="1">
+            <split size="46"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1875" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1317"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                    <page id="DAG.3"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="2554" y="1" w="1915" h="989" screen="1">
+        <splitter orientation="2">
+            <split size="989"/>
+            <dock id="" activePageId="Viewer.2">
+                <page id="Viewer.3"/>
+                <page id="Viewer.2"/>
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/KK/Comp/KK_expanderode.nk"
+ frame 52
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Group {
+ inputs 0
+ name ExpandErode
+ knobChanged "import nuke\n\n\nnode=nuke.thisNode()\nf_knob=node\['filter']\nm=node\['method'].getValue()\n\nif int(m) == 1:\n    f_knob.setEnabled(True)\nelse:\n    f_knob.setEnabled(False)\n\nnode.begin()\nall=nuke.allNodes()\n\nfor n in all:\n    if n.Class() == 'FilterErode':\n        n\['filter'].setValue(int(f_knob.getValue()))\n\nnode.end()"
+ xpos -133
+ ypos -140
+ addUserKnob {20 size}
+ addUserKnob {4 method M {Simple Filter Blur}}
+ method Filter
+ addUserKnob {4 filter M {Box Triangle Quadratic Gaussian "" "" "" "" "" ""}}
+ filter Gaussian
+ addUserKnob {7 ExpandErodeSize l "Expand/Erode Size" R 0 50}
+ addUserKnob {41 size_1 l "Blur Size" T Blur1.size}
+ addUserKnob {26 ""}
+ addUserKnob {26 Description l "" +STARTLINE T "Use this to expand and errode by the same amount to fill in any gaps \nor holes in mattes and shapes"}
+}
+ Input {
+  inputs 0
+  name src
+  xpos -920
+  ypos 516
+ }
+set N8d8b8700 [stack 0]
+ Erode {
+  channels all
+  size {{-parent.ExpandErodeSize}}
+  blur -3
+  name Erode2
+  xpos -823
+  ypos 614
+ }
+ Erode {
+  channels all
+  size {{parent.ExpandErodeSize}}
+  name Erode1
+  xpos -823
+  ypos 658
+ }
+push $N8d8b8700
+ FilterErode {
+  channels all
+  size {{-(parent.ExpandErodeSize)}}
+  filter gaussian
+  name FilterErode2
+  selected true
+  xpos -920
+  ypos 614
+ }
+set Nf66d7880 [stack 0]
+ FilterErode {
+  channels all
+  size {{parent.ExpandErodeSize x1 3}}
+  filter gaussian
+  name FilterErode1
+  xpos -920
+  ypos 658
+ }
+push $N8d8b8700
+ Dilate {
+  size {{parent.ExpandErodeSize}}
+  name Dilate1
+  xpos -1030
+  ypos 610
+ }
+ Dilate {
+  size {{-(parent.ExpandErodeSize) x1 -8}}
+  name Dilate2
+  xpos -1030
+  ypos 656
+ }
+ Switch {
+  inputs 3
+  which {{parent.method}}
+  name Switch1
+  xpos -920
+  ypos 758
+  addUserKnob {20 User}
+ }
+ Blur {
+  name Blur1
+  xpos -920
+  ypos 848
+ }
+ Output {
+  name Output1
+  xpos -920
+  ypos 950
+ }
+push $Nf66d7880
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -721
+  ypos 531
+ }
+end_group

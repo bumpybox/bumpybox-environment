@@ -1,0 +1,13 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+push 0
+PSDMerge {
+ inputs 2
+ name PSDMerge5
+ note_font "Bitstream Vera Sans"
+ selected true
+ xpos 793
+ ypos 87
+ maskChannelInput none
+}

@@ -1,0 +1,525 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+BackdropNode {
+ inputs 0
+ name BackdropNode14
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x54565901
+ label PARTICLES
+ note_font_size 90
+ selected true
+ xpos -1365
+ ypos 15483
+ bdwidth 1630
+ bdheight 1962
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text PARTICLES
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 90
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 michael l "<img src=\"michael.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[155,186,196],'michael',None)"}
+ addUserKnob {22 kensuke l "<img src=\"kensuke.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[227,187,154],'kensuke',None)"}
+ addUserKnob {22 dad l "<img src=\"dad.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[163,185,159],'dad',None)"}
+ addUserKnob {22 mum l "<img src=\"mum.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[235,193,119],'mum',None)"}
+ addUserKnob {22 becky l "<img src=\"becky.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[156,135,176],'becky',None)"}
+ addUserKnob {22 stella l "<img src=\"stella.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[214,214,214],'stella',None)"}
+ addUserKnob {22 parrot l "<img src=\"parrot.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[14,117,136],'parrot',None)"}
+ addUserKnob {22 poacher l "<img src=\"poacher.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[103,84,52],'poacher',None)"}
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x -1420
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y 15460
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {1630 1962}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+Ramp {
+ inputs 0
+ p0 {1908.5 484.5}
+ p1 {{p0.x x28 367 1912} 106}
+ name Ramp11
+ selected true
+ xpos -700
+ ypos 17222
+}
+push 0
+Dot {
+ name Dot13
+ label "Underside of Water"
+ selected true
+ xpos -116
+ ypos 17130
+ hide_input true
+}
+push 0
+push $cut_paste_input
+Camera2 {
+ inputs 0
+ translate {0 0 90}
+ name Camera1
+ selected true
+ xpos -580
+ ypos 16290
+}
+Roto {
+ inputs 0
+ format "256 256 0 0 256 256 1 square_256"
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x44c16000 x44220000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {xc101e1e4 x41c24a50}
+        {x420af7ae x42f354c0}
+        {x41542148 xc21ea980}
+        {xc197818c x41478644}
+        {x42ad6a6f x424cffbb}
+        {x418d8978 xc13a6554}
+        {xc1c1cef8 xc13eef24}
+        {x432f4dba x4258f48b}
+        {x41a95af0 x4126d7e8}
+        {x3fa39c00 xc18418d0}
+        {x43686235 x43088adb}
+        {xbf54b100 x412bb8c0}
+        {xbfe66600 x41066670}
+        {x43838000 x4304999a}
+        {x3fe66600 xc1066670}
+        {x4194ccc8 x41066666}
+        {x43636666 x40accccd}
+        {xc194ccc8 xc1066666}
+        {x41bb3336 xc1900000}
+        {x4278cccd x40666666}
+        {xc1bb3334 x41900000}
+        {xc0000000 xc1433330}
+        {x40866666 x42decccd}
+        {x40000000 x41433330}}}     idem}
+     {tx 1 x4308b332 x429e4cce}
+     {a r xbe5e3d1d g x3db29670 b x3e04f1e5 osw x41200000 osf 0 str 1 spx x44c16000 spy x44220000 sb 1 tt x40800000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 tt 7 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {1547 648}
+ color {-0.21703 0.087201 0.129829 1}
+ color_panelDropped true
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto9
+ selected true
+ xpos -1140
+ ypos 16022
+}
+Grade {
+ white 0.49
+ name Grade11
+ selected true
+ xpos -1140
+ ypos 16070
+}
+Roto {
+ inputs 0
+ format "256 256 0 0 256 256 1 square_256"
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x44c16000 x44220000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {xc1f80000 x41633330}
+        {x41100000 x42e9999a}
+        {x41f80000 xc1633338}
+        {xc181283c xc1503950}
+        {x42a183a7 x433ad074}
+        {x418ea0ec x4165f160}
+        {xc1bd2498 x41a33330}
+        {x4330d7c6 x433a0000}
+        {x418a5ad0 xc16ec180}
+        {xc194ccd0 xc17cccd0}
+        {x437a6666 x4303cccd}
+        {x4194ccd0 x417cccd0}
+        {x41a66668 xc0666640}
+        {x434b999a x4374999a}
+        {xc1a66668 x40666640}
+        {x418cccca x404cccc0}
+        {x425f3333 x43723333}
+        {xc18ccccc xc04cccc0}}}     idem}
+     {tx 1 x43023bbb x433aaaab}
+     {a osw x41200000 osf 0 str 1 spx x44c16000 spy x44220000 sb 1 tt x40800000 a 0 b x3f6e0946 g x3f631f9b r x3f153d86}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 tt 7 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {1547 648}
+ color {0.58297 0.887201 0.929829 0}
+ color_panelDropped true
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto10
+ selected true
+ xpos -1140
+ ypos 15926
+}
+Roto {
+ format "256 256 0 0 256 256 1 square_256"
+ outputMask rgba.alpha
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44c16000 x44220000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Ellipse1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {xc27ce0d2 xc0730b48}
+        {x42fe67e2 x4192838e}
+        {x4283084e x407bdf50}
+        {0 xc27c9ff0}
+        {x43774b58 x4303d5d6}
+        {0 x427c9ff4}
+        {x428b981b xc120e6f0}
+        {x42fe67e5 x4363db3c}
+        {xc281ecf7 x4115d4d0}
+        {0 x427c9ff4}
+        {x41c4e457 x4303d5d6}
+        {0 xc27c9ff0}}}
+      {cc
+       {f 8192}
+       {px 1
+        {xc27ce0d2 xc0730b48}
+        {0 0}
+        {x4283084e x407bdf50}
+        {0 xc27c9ff0}
+        {0 0}
+        {0 x427c9ff4}
+        {x428b981b xc120e6f0}
+        {0 0}
+        {xc281ecf7 x4115d4d0}
+        {0 x427c9ff4}
+        {0 0}
+        {0 xc27c9ff0}}}}
+     {tx 1 x42e33334 x4323999a}
+     {a r xbc8b8274 g x3e930c01 b x3ea8df57 a 0 osw x41200000 osf 0 str 1 spx x44c16000 spy x44220000 sb 1 tt x40e00000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 tt 7 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {1547 648}
+ color {-0.01702997833 0.2872009575 0.3298289478 0}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto7
+ selected true
+ xpos -920
+ ypos 15830
+}
+set Ndf259180 [stack 0]
+push $Ndf259180
+Merge2 {
+ inputs 2
+ operation atop
+ name Merge36
+ selected true
+ xpos -920
+ ypos 15926
+}
+Merge2 {
+ inputs 2
+ operation atop
+ name Merge37
+ selected true
+ xpos -920
+ ypos 16070
+}
+set Ndf258a80 [stack 0]
+Card2 {
+ inputs 0
+ rows 5
+ columns 5
+ translate {-35.00000381 1.391668593e-05 70.49999237}
+ rotate {5 90.0000025 0}
+ scaling {1.021803379 1 1}
+ uniform_scale 100
+ control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+ name Card2
+ selected true
+ xpos -150
+ ypos 15878
+}
+push 0
+ParticleEmitter {
+ inputs 3
+ start_frame -1200
+ emit_from faces
+ rate 0.4
+ rate_variation 0.27
+ lifetime 1200
+ velocity 0.05
+ velocity_variation 0.6
+ rotation_velocity 0.5
+ rotation_velocity_variation 0.8
+ size 0.07
+ size_variation 1
+ frame_advance randomly
+ rotate {0 0 -90}
+ uniform_scale 0.18
+ name ParticleEmitter2
+ selected true
+ xpos -150
+ ypos 15974
+}
+push $Ndf258a80
+Card2 {
+ inputs 0
+ rows 5
+ columns 5
+ translate {-35.00000381 0 1.529879455e-06}
+ rotate {5 90.0000025 0}
+ scaling {0.3643929958 1 1}
+ uniform_scale 100
+ control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+ name Card1
+ selected true
+ xpos -370
+ ypos 15878
+}
+push 0
+ParticleEmitter {
+ inputs 3
+ start_frame -1200
+ emit_from faces
+ rate 1.8
+ rate_variation 0.27
+ lifetime 1200
+ velocity 0.05
+ velocity_variation 0.6
+ rotation_velocity 0.5
+ rotation_velocity_variation 0.8
+ size 0.05
+ size_variation 1
+ frame_advance randomly
+ rotate {0 0 -90}
+ uniform_scale 0.18
+ name ParticleEmitter1
+ selected true
+ xpos -370
+ ypos 16070
+}
+ParticleMerge {
+ inputs 2
+ name ParticleMerge1
+ selected true
+ xpos -370
+ ypos 16118
+}
+ParticleTurbulence {
+ strength {0 0.001166666667 0.0006666666667}
+ scale {1 3 2}
+ name ParticleTurbulence1
+ selected true
+ xpos -370
+ ypos 16208
+}
+push 0
+ScanlineRender {
+ inputs 3
+ conservative_shader_sampling false
+ shutteroffset centred
+ motion_vectors_type distance
+ name ScanlineRender1
+ selected true
+ xpos -370
+ ypos 16310
+}
+ZDefocus2 {
+ math depth
+ center 0.01098047849
+ focal_point {1541.540039 46.52000046}
+ dof 0.200000003
+ size 30
+ max_size {{size}}
+ legacy_resize_mode false
+ show_legacy_resize_mode false
+ name ZDefocus2
+ selected true
+ xpos -370
+ ypos 16448
+}
+Grade {
+ white {0.378924 1.222763 1.44 1.44}
+ white_panelDropped true
+ name Grade9
+ selected true
+ xpos -370
+ ypos 16790
+}
+Grade {
+ inputs 1+1
+ white 0.105
+ mix 0.625
+ name darkenOverMike
+ selected true
+ xpos -370
+ ypos 16886
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge41
+ selected true
+ xpos -370
+ ypos 16982
+}
+Multiply {
+ inputs 1+1
+ value 0.37
+ name Multiply1
+ label "\[value value]"
+ selected true
+ xpos -370
+ ypos 17113
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 depth.Z
+ name Copy7
+ selected true
+ xpos -370
+ ypos 17216
+}
+ZDefocus2 {
+ math far=1
+ size 7.5
+ max_size {{size}}
+ legacy_resize_mode false
+ show_legacy_resize_mode false
+ name ZDefocus3
+ selected true
+ xpos -370
+ ypos 17456
+}
+Dot {
+ name Dot48
+ selected true
+ xpos -336
+ ypos 17802
+}

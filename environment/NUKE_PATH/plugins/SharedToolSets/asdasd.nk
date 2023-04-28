@@ -1,0 +1,96 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0300/q0300_c0250/publish/render/renderCompositingMain/v018/kensukes_kingdom_q0300_c0250_renderCompositingMain_v018.0001.exr
+ origset true
+ name LoadImage_exr2
+ tile_color 0x4ecd25ff
+ selected true
+ xpos 36304
+ ypos 42471
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data T "Warning! Do not change following data!"}
+ addUserKnob {1 avalon:name l name}
+ avalon:name renderCompositingMain
+ addUserKnob {1 avalon:namespace l namespace}
+ avalon:namespace q0300_c0250
+ addUserKnob {26 avalon:loader l loader T LoadImage}
+ addUserKnob {26 avalon:representation l representation T 62b5937c108eac795a517643}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.container}
+ addUserKnob {26 avalon:schema l schema T avalon-core:container-2.0}
+ addUserKnob {26 avalon:frameStart l frameStart T 1}
+ addUserKnob {26 avalon:source l source T "\{root\}/kensukes_kingdom/episodes/film/q0300/q0300_c0250/work/compositing/kensukes_kingdom_q0300_c0250_compositing_v018.nk"}
+ addUserKnob {26 avalon:version l version T 18}
+ addUserKnob {26 avalon:objectName l objectName T LoadImage_exr}
+ addUserKnob {26 avalon:fps l fps T 24.0}
+ addUserKnob {26 avalon:author l author T jorda}
+ addUserKnob {26 avalon:colorspace l colorspace T None}
+ addUserKnob {26 avalon:frameEnd l frameEnd T 1}
+ addUserKnob {20 end l "Avalon data group" n -1}
+}
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0300/q0300_c0290/publish/render/renderCompositingMain/v021/kensukes_kingdom_q0300_c0290_renderCompositingMain_v021.0001.exr
+ origset true
+ name LoadImage_exr1
+ tile_color 0x4ecd25ff
+ selected true
+ xpos 36177
+ ypos 42445
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data T "Warning! Do not change following data!"}
+ addUserKnob {1 avalon:name l name}
+ avalon:name renderCompositingMain
+ addUserKnob {1 avalon:namespace l namespace}
+ avalon:namespace q0300_c0290
+ addUserKnob {26 avalon:loader l loader T LoadImage}
+ addUserKnob {26 avalon:representation l representation T 62b58bd24b2a887230230b01}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.container}
+ addUserKnob {26 avalon:schema l schema T avalon-core:container-2.0}
+ addUserKnob {26 avalon:frameStart l frameStart T 1}
+ addUserKnob {26 avalon:source l source T "\{root\}/kensukes_kingdom/episodes/film/q0300/q0300_c0290/work/compositing/kensukes_kingdom_q0300_c0290_compositing_v021.nk"}
+ addUserKnob {26 avalon:version l version T 21}
+ addUserKnob {26 avalon:objectName l objectName T LoadImage_exr}
+ addUserKnob {26 avalon:fps l fps T 24.0}
+ addUserKnob {26 avalon:author l author T jorda}
+ addUserKnob {26 avalon:colorspace l colorspace T None}
+ addUserKnob {26 avalon:frameEnd l frameEnd T 1}
+ addUserKnob {20 end l "Avalon data group" n -1}
+}
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0300/q0300_c0190/publish/render/renderCompositingMain/v018/kensukes_kingdom_q0300_c0190_renderCompositingMain_v018.0001.exr
+ origset true
+ version 7
+ name LoadImage_exr
+ tile_color 0x4ecd25ff
+ selected true
+ xpos 36435
+ ypos 42502
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data T "Warning! Do not change following data!"}
+ addUserKnob {1 avalon:name l name}
+ avalon:name renderCompositingMain
+ addUserKnob {1 avalon:namespace l namespace}
+ avalon:namespace q0300_c0190
+ addUserKnob {26 avalon:loader l loader T LoadImage}
+ addUserKnob {26 avalon:representation l representation T 62b5871e7cc96228a7fc914f}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.container}
+ addUserKnob {26 avalon:schema l schema T avalon-core:container-2.0}
+ addUserKnob {26 avalon:frameStart l frameStart T 1}
+ addUserKnob {26 avalon:source l source T "\{root\}/kensukes_kingdom/episodes/film/q0300/q0300_c0190/work/compositing/kensukes_kingdom_q0300_c0190_compositing_v018.nk"}
+ addUserKnob {26 avalon:version l version T 18}
+ addUserKnob {26 avalon:objectName l objectName T LoadImage_exr}
+ addUserKnob {26 avalon:fps l fps T 24.0}
+ addUserKnob {26 avalon:author l author T jorda}
+ addUserKnob {26 avalon:colorspace l colorspace T None}
+ addUserKnob {26 avalon:frameEnd l frameEnd T 1}
+ addUserKnob {20 end l "Avalon data group" n -1}
+}

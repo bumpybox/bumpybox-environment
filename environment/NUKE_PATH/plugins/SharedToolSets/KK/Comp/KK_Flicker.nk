@@ -1,0 +1,16 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+NoOp {
+ name flicker1
+ selected true
+ xpos 3144
+ ypos 6614
+ addUserKnob {20 User}
+ addUserKnob {7 wavelength R 2 6}
+ wavelength 3.5
+ addUserKnob {7 min}
+ min 0.7
+ addUserKnob {7 amount}
+ amount {{"random((frame)/flicker1.wavelength) * (1-flicker1.min) + flicker1.min"}}
+}

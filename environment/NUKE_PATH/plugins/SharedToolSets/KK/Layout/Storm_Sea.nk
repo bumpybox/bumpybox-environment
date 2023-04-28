@@ -1,0 +1,1410 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0110/q0110_c0250/publish/render/unreal/v05/StormMaster.####.exr
+ format "3094 1296 0 0 3094 1296 1 kensukes_kingdom"
+ first 0
+ last 116
+ origfirst 0
+ origlast 116
+ origset true
+ name Read4
+ selected true
+ xpos -63
+ ypos -773
+}
+set N802e8700 [stack 0]
+Dot {
+ name Dot1
+ selected true
+ xpos -29
+ ypos -633
+}
+set N802e8380 [stack 0]
+add_layer {FinalImageSceneDepth FinalImageSceneDepth.red FinalImageSceneDepth.green FinalImageSceneDepth.blue FinalImageSceneDepth.alpha}
+Shuffle {
+ in FinalImageSceneDepth
+ alpha blue
+ name Shuffle1
+ selected true
+ xpos -63
+ ypos -519
+ disable true
+}
+set N802e8000 [stack 0]
+CurveTool {
+ operation "Max Luma Pixel"
+ ROI {0 0 3094 1296}
+ autocropdata {773 324 2320 972}
+ intensitydata {{curve i}}
+ maxlumapixdata {{curve i 1744 1816 1816 1816 1817 1815 1285 1278 1268 1285 1280 1281 1278 1278 1276 1275 1888 1890 1891 1892 1127 1129 1131 1129 1132 1131 1134 1134 1119 1120 1117 1119 1121 1120 1119 626 616 617 613 628 628 627 623 621 619 614 722 722 720 718 718 1575 1570 1548 1557 1396 1614 1614 1416 1623 1552 1550 1552 1553 1552 1552 1552 1556 1558 1555 1554 1551 1548 998 983 953 952 955 953 952 956 957 958 961 960 977 1375 1374 1871 1078 1078 1868 1088 1088 1399 1094 1399 1093 1399 1400 1397 1403 1408 1409 1409 1409 1411 1412 1138 1140 1139 1147 1148 1147 1148 1149 1153} {curve i 979 985 985 985 986 985 972 972 972 977 978 980 981 983 984 986 999 1000 1001 1002 986 989 992 994 997 999 1002 1004 1004 1006 1007 1009 1011 1012 1013 997 998 1000 1001 1004 1005 1006 1006 1007 1007 1007 1016 1017 1017 1017 1017 977 977 978 979 967 980 981 972 984 987 988 990 992 993 994 996 997 998 1000 1001 1002 1003 981 982 983 985 988 990 992 994 996 998 1000 1001 1003 1018 1019 1016 1017 1018 1015 1020 1021 1022 1023 1022 1024 1022 1022 1021 1021 1021 1020 1019 1018 1017 1016 1027 1026 1025 1023 1022 1020 1018 1016 1014}}
+ maxlumapixvalue {{curve i 1.473027349 1.520717978 1.521143079 1.521431684 1.52162981 1.521731257 1.523140907 1.523672938 1.523730397 1.52352643 1.523624182 1.523953557 1.523765445 1.52430284 1.523236156 1.524050951 1.523658752 1.523821473 1.523957729 1.524007559 1.525933623 1.527364254 1.527933836 1.527871966 1.528527379 1.52854836 1.528761268 1.528792858 1.528797865 1.528908014 1.52877605 1.529010773 1.529048324 1.529194593 1.529216528 1.533090949 1.53387928 1.533462763 1.533405542 1.532684088 1.532281995 1.532085896 1.530000687 1.530005574 1.528326273 1.526651025 1.525173664 1.525304556 1.525459647 1.525657415 1.524857759 1.520816922 1.520271659 1.519709826 1.519798636 1.520009279 1.520559788 1.521023989 1.52109015 1.520476699 1.521223068 1.520876527 1.521272302 1.521021605 1.520918965 1.520003319 1.520020127 1.516656041 1.516328454 1.517384291 1.517808795 1.517845154 1.518015742 1.5182513 1.52074635 1.527850628 1.528230429 1.528705001 1.529092431 1.529304981 1.528620481 1.528418899 1.52848506 1.526011109 1.524968624 1.5171597 1.51665628 1.517233729 1.517145514 1.518671632 1.520700812 1.518904924 1.520381689 1.522667646 1.5231359 1.525828481 1.525245428 1.527151823 1.526356697 1.526758075 1.526877999 1.52729094 1.527311683 1.527342916 1.527343869 1.527344823 1.527332544 1.527270555 1.529251456 1.52981925 1.530293226 1.529296756 1.529296756 1.529823184 1.529820204 1.529425502 1.529257894} {curve i 1.473027349 1.520717978 1.521143079 1.521431684 1.52162981 1.521731257 1.523140907 1.523672938 1.523730397 1.52352643 1.523624182 1.523953557 1.523765445 1.52430284 1.523236156 1.524050951 1.523658752 1.523821473 1.523957729 1.524007559 1.525933623 1.527364254 1.527933836 1.527871966 1.528527379 1.52854836 1.528761268 1.528792858 1.528797865 1.528908014 1.52877605 1.529010773 1.529048324 1.529194593 1.529216528 1.533090949 1.53387928 1.533462763 1.533405542 1.532684088 1.532281995 1.532085896 1.530000687 1.530005574 1.528326273 1.526651025 1.525173664 1.525304556 1.525459647 1.525657415 1.524857759 1.520816922 1.520271659 1.519709826 1.519798636 1.520009279 1.520559788 1.521023989 1.52109015 1.520476699 1.521223068 1.520876527 1.521272302 1.521021605 1.520918965 1.520003319 1.520020127 1.516656041 1.516328454 1.517384291 1.517808795 1.517845154 1.518015742 1.5182513 1.52074635 1.527850628 1.528230429 1.528705001 1.529092431 1.529304981 1.528620481 1.528418899 1.52848506 1.526011109 1.524968624 1.5171597 1.51665628 1.517233729 1.517145514 1.518671632 1.520700812 1.518904924 1.520381689 1.522667646 1.5231359 1.525828481 1.525245428 1.527151823 1.526356697 1.526758075 1.526877999 1.52729094 1.527311683 1.527342916 1.527343869 1.527344823 1.527332544 1.527270555 1.529251456 1.52981925 1.530293226 1.529296756 1.529296756 1.529823184 1.529820204 1.529425502 1.529257894} {curve i 1.473027349 1.520717978 1.521143079 1.521431684 1.52162981 1.521731257 1.523140907 1.523672938 1.523730397 1.52352643 1.523624182 1.523953557 1.523765445 1.52430284 1.523236156 1.524050951 1.523658752 1.523821473 1.523957729 1.524007559 1.525933623 1.527364254 1.527933836 1.527871966 1.528527379 1.52854836 1.528761268 1.528792858 1.528797865 1.528908014 1.52877605 1.529010773 1.529048324 1.529194593 1.529216528 1.533090949 1.53387928 1.533462763 1.533405542 1.532684088 1.532281995 1.532085896 1.530000687 1.530005574 1.528326273 1.526651025 1.525173664 1.525304556 1.525459647 1.525657415 1.524857759 1.520816922 1.520271659 1.519709826 1.519798636 1.520009279 1.520559788 1.521023989 1.52109015 1.520476699 1.521223068 1.520876527 1.521272302 1.521021605 1.520918965 1.520003319 1.520020127 1.516656041 1.516328454 1.517384291 1.517808795 1.517845154 1.518015742 1.5182513 1.52074635 1.527850628 1.528230429 1.528705001 1.529092431 1.529304981 1.528620481 1.528418899 1.52848506 1.526011109 1.524968624 1.5171597 1.51665628 1.517233729 1.517145514 1.518671632 1.520700812 1.518904924 1.520381689 1.522667646 1.5231359 1.525828481 1.525245428 1.527151823 1.526356697 1.526758075 1.526877999 1.52729094 1.527311683 1.527342916 1.527343869 1.527344823 1.527332544 1.527270555 1.529251456 1.52981925 1.530293226 1.529296756 1.529296756 1.529823184 1.529820204 1.529425502 1.529257894}}
+ minlumapixdata {{curve i 1343 1334 1329 1327 1322 1304 1274 1265 1257 1257 1222 1210 1199 1190 1151 1147 1094 1084 1074 1105 1005 997 990 978 971 969 878 842 811 797 797 797 666 651 636 2279 2243 2241 2243 2222 2241 2226 2210 2227 2227 2226 2227 2067 2059 2059 2060 1411 1363 1344 1362 1356 1338 1339 1320 1323 1295 1260 1259 1259 1218 1217 1215 1068 1043 1025 1021 1011 999 987 929 928 914 922 876 856 832 820 824 731 722 707 2302 2301 2286 2281 608 599 2275 2272 2255 2254 2253 2251 2242 2240 2228 2178 2099 2100 2101 2100 2101 2095 2094 2090 2086 2077 2060 1956 1905 1905 1911} {curve i 969 970 971 971 972 973 973 974 975 977 976 975 975 975 975 977 979 980 982 985 986 986 986 986 989 992 994 994 994 994 994 996 998 998 998 997 997 997 996 996 994 993 992 990 989 988 989 989 988 986 984 969 969 968 966 965 965 963 963 964 966 967 969 971 973 975 977 979 981 981 980 982 983 984 984 983 985 987 989 990 990 990 992 991 990 991 991 991 992 993 992 993 993 993 993 992 991 990 990 989 988 988 988 986 984 982 980 978 976 975 974 974 973 974 972 970 970}}
+ minlumapixvalue {{curve 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve i 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve i 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}}
+ name CurveTool1
+ selected true
+ xpos 98
+ ypos -519
+ disable true
+}
+push $N802e8000
+Dot {
+ name Dot2
+ selected true
+ xpos -29
+ ypos -414
+}
+set N802e9880 [stack 0]
+Dot {
+ name Dot3
+ selected true
+ xpos -29
+ ypos -329
+}
+Grade {
+ channels rgba
+ blackpoint 0.41
+ whitepoint 1.02
+ name Grade3
+ selected true
+ xpos 98
+ ypos -333
+ disable true
+}
+push $N802e9880
+Grade {
+ channels rgba
+ blackpoint 0.17
+ whitepoint 1.533879
+ name Grade1
+ selected true
+ xpos 98
+ ypos -418
+ disable true
+}
+push $N802e8700
+add_layer {ActorHitProxyMask00 ActorHitProxyMask00.red ActorHitProxyMask00.green ActorHitProxyMask00.blue ActorHitProxyMask00.alpha}
+add_layer {ActorHitProxyMask01 ActorHitProxyMask01.red ActorHitProxyMask01.green ActorHitProxyMask01.blue ActorHitProxyMask01.alpha}
+add_layer {ActorHitProxyMask02 ActorHitProxyMask02.red ActorHitProxyMask02.green ActorHitProxyMask02.blue ActorHitProxyMask02.alpha}
+Cryptomatte {
+ name Cryptomatte1
+ selected true
+ xpos 278
+ ypos -743
+ matteOutput alpha
+ matteList "\"kensukes_kingdom_q0110_c0250_ocean_01__v001.GeometryCacheComponent\\\\\\\[-1.-1\\\\\\]\", \"kensukes_kingdom_q0110_c0250_ocean_02__v001.GeometryCacheComponent\\\\\\\[-1.-1\\\\\\]\""
+ cryptoLayer ActorHitProxyMask
+ expression "((ActorHitProxyMask00.red == 6.80480487936e+16 || ActorHitProxyMask00.red == 7.62605459546e+17) ? ActorHitProxyMask00.green : 0.0) + ((ActorHitProxyMask00.blue == 6.80480487936e+16 || ActorHitProxyMask00.blue == 7.62605459546e+17) ? ActorHitProxyMask00.alpha : 0.0) + ((ActorHitProxyMask01.red == 6.80480487936e+16 || ActorHitProxyMask01.red == 7.62605459546e+17) ? ActorHitProxyMask01.green : 0.0) + ((ActorHitProxyMask01.blue == 6.80480487936e+16 || ActorHitProxyMask01.blue == 7.62605459546e+17) ? ActorHitProxyMask01.alpha : 0.0) + ((ActorHitProxyMask02.red == 6.80480487936e+16 || ActorHitProxyMask02.red == 7.62605459546e+17) ? ActorHitProxyMask02.green : 0.0) + ((ActorHitProxyMask02.blue == 6.80480487936e+16 || ActorHitProxyMask02.blue == 7.62605459546e+17) ? ActorHitProxyMask02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(ActorHitProxyMask00.red)) * 1 % 0.25) * ActorHitProxyMask00.green + (mantissa(abs(ActorHitProxyMask00.blue)) * 1 % 0.25) * ActorHitProxyMask00.alpha + (mantissa(abs(ActorHitProxyMask01.red)) * 1 % 0.25) * ActorHitProxyMask01.green + (mantissa(abs(ActorHitProxyMask01.blue)) * 1 % 0.25) * ActorHitProxyMask01.alpha)"
+ previewExpression1 "((mantissa(abs(ActorHitProxyMask00.red)) * 16 % 0.25) * ActorHitProxyMask00.green + (mantissa(abs(ActorHitProxyMask00.blue)) * 16 % 0.25) * ActorHitProxyMask00.alpha + (mantissa(abs(ActorHitProxyMask01.red)) * 16 % 0.25) * ActorHitProxyMask01.green + (mantissa(abs(ActorHitProxyMask01.blue)) * 16 % 0.25) * ActorHitProxyMask01.alpha)"
+ previewExpression2 "((mantissa(abs(ActorHitProxyMask00.red)) * 64 % 0.25) * ActorHitProxyMask00.green + (mantissa(abs(ActorHitProxyMask00.blue)) * 64 % 0.25) * ActorHitProxyMask00.alpha + (mantissa(abs(ActorHitProxyMask01.red)) * 64 % 0.25) * ActorHitProxyMask01.green + (mantissa(abs(ActorHitProxyMask01.blue)) * 64 % 0.25) * ActorHitProxyMask01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 ActorHitProxyMask00
+ in01 ActorHitProxyMask01
+ in02 ActorHitProxyMask02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+}
+push $N802e8380
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy1
+ selected true
+ xpos 278
+ ypos -643
+}
+Grade {
+ inputs 1+1
+ white 0.5
+ name Grade2
+ selected true
+ xpos 278
+ ypos -418
+ disable true
+}
+Grade {
+ inputs 1+1
+ white 0.76
+ name Grade4
+ selected true
+ xpos 278
+ ypos -333
+ disable true
+}
+Premult {
+ name Premult1
+ selected true
+ xpos 278
+ ypos -113
+}
+Group {
+ name ColorSmear
+ note_font Verdana
+ selected true
+ xpos 278
+ ypos -53
+ addUserKnob {20 User}
+ addUserKnob {26 smearing l Smearing T ""}
+ addUserKnob {6 already_premulted l "Input is premultiplied?" t "Click checkbox \"on\" if image is already premulted" +STARTLINE}
+ already_premulted true
+ addUserKnob {7 pre_choke l Pre-choke R 0 30}
+ pre_choke 2.5
+ addUserKnob {7 pre_contrast l "Pre Contrast" R 0 0.5}
+ pre_contrast 0.084
+ addUserKnob {7 pre_blur l Pre-blur R 0 100}
+ pre_blur 8.5
+ addUserKnob {7 post_blur l "Post Blur" R 0 100}
+ post_blur 5.5
+ addUserKnob {26 ""}
+ addUserKnob {26 Masking}
+ addUserKnob {6 xor_edge_detect l "Use XOR edge detect method?" t "XOR edge detect will isolate edge mask to areas that are blurred. Regular edge detect method will apply smear evenly all the way around." +STARTLINE}
+ addUserKnob {7 dilate_mask l "Dilate Mask" R 0 30}
+ dilate_mask 2.8
+ addUserKnob {7 blur_mask l "Blur Mask" R 0 100}
+ blur_mask 3.5
+ addUserKnob {6 output_premulted l "Premultiply output" +STARTLINE}
+ output_premulted true
+ addUserKnob {26 ""}
+ addUserKnob {6 outputmask l "Output smear mask?" +STARTLINE}
+ outputmask true
+ addUserKnob {26 smearmask_description l " (uses 'smearmask.a' channel - handy for regraining later)" -STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {26 RestoreDetail l "Restore Detail"}
+ addUserKnob {7 sharpness l Sharpness R 0 10}
+ sharpness 10
+ addUserKnob {7 amount l Amount}
+ amount 0.1
+ addUserKnob {26 ""}
+ addUserKnob {26 credit l "" +STARTLINE T "Colour Smear v2.1 by Richard Frazer - www.richardfrazer.com"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x7171c600
+  label "Restore detail"
+  note_font Verdana
+  note_font_size 42
+  xpos -833
+  ypos 14
+  bdwidth 546
+  bdheight 976
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode18
+  tile_color 0x7171c600
+  label "unpremult / blur trick"
+  note_font Verdana
+  note_font_size 42
+  xpos 653
+  ypos 25
+  bdwidth 856
+  bdheight 999
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode19
+  tile_color 0x7171c600
+  label "mask to smear back over shot"
+  note_font Verdana
+  note_font_size 42
+  xpos -239
+  ypos 27
+  bdwidth 649
+  bdheight 976
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode20
+  tile_color 0x7171c600
+  label "colour smear\n<-- in here goes plate with alpha (unpremulted) "
+  note_font Verdana
+  note_font_size 42
+  xpos -1098
+  ypos -281
+  bdwidth 2603
+  bdheight 277
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote20
+  label "bigger blur will smear\ncolour out further\nbut may cause\nbleed\nin areas of high contrast"
+  note_font Verdana
+  note_font_size 31
+  xpos 1122
+  ypos 405
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote23
+  label "xor way \nisolates areas\nwith highest\namounts of blur\n(i.e\nmotion blur)"
+  note_font Verdana
+  note_font_size 31
+  xpos -338
+  ypos 288
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote25
+  label "tweak the \ndilate and \nblur to make\nnice"
+  note_font Verdana
+  xpos -1
+  ypos 581
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote24
+  label "choose which works best"
+  note_font Verdana
+  note_font_size 31
+  xpos -115
+  ypos 774
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote22
+  label "this way \nsmears evenly\naround all\nedges"
+  note_font Verdana
+  note_font_size 31
+  xpos 211
+  ypos 235
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote27
+  label "shuffle original alpha back in"
+  note_font Verdana
+  note_font_size 31
+  xpos -1369
+  ypos 1645
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote26
+  label "smear back over edges"
+  note_font Verdana
+  note_font_size 31
+  xpos -1057
+  ypos 1295
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote19
+  label "choke back alpha first\nso that no background\ncolour is bought in"
+  note_font Verdana
+  note_font_size 31
+  xpos 1131
+  ypos 229
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote1
+  label "mask input - \nareas with solid matte\nwill be excluded from \nbeing effected"
+  note_font Verdana
+  note_font_size 31
+  xpos 1716
+  ypos -149
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote21
+  label "just to soften areas\nwith hard edges"
+  note_font Verdana
+  note_font_size 31
+  xpos 682
+  ypos 670
+ }
+ Input {
+  inputs 0
+  name Input1
+  label "Your main image input"
+  note_font Verdana
+  xpos -1238
+  ypos -298
+ }
+ Dot {
+  name Dot29
+  note_font Verdana
+  xpos -1204
+  ypos -109
+ }
+set N9dfd6a80 [stack 0]
+ Dot {
+  name Dot7
+  xpos -1204
+  ypos 1270
+ }
+ Dot {
+  name Dot18
+  note_font Verdana
+  xpos -1204
+  ypos 1564
+ }
+set N9dfd6380 [stack 0]
+push $N9dfd6a80
+ Unpremult {
+  name Unpremult2
+  note_font Verdana
+  xpos -1073
+  ypos -108
+ }
+push $N9dfd6a80
+ Switch {
+  inputs 2
+  which {{"\[value parent.already_premulted]" i}}
+  name Switch1
+  note_font Verdana
+  xpos -1073
+  ypos -56
+ }
+ Dot {
+  name Dot30
+  note_font Verdana
+  xpos -901
+  ypos -52
+ }
+set N9e3f7880 [stack 0]
+ Dot {
+  name Dot5
+  xpos -562
+  ypos -52
+ }
+set N9e3f7500 [stack 0]
+ Dot {
+  name Dot17
+  note_font Verdana
+  xpos 42
+  ypos -52
+ }
+set N9e3f7180 [stack 0]
+ Dot {
+  name Dot38
+  note_font Verdana
+  xpos 42
+  ypos 122
+ }
+set N9e3f6e00 [stack 0]
+ Dot {
+  name Dot145
+  note_font Verdana
+  xpos -39
+  ypos 122
+ }
+set N9e3f6a80 [stack 0]
+ Dot {
+  name Dot138
+  note_font Verdana
+  xpos -92
+  ypos 185
+ }
+push $N9e3f6a80
+ Dot {
+  name Dot39
+  note_font Verdana
+  xpos 4
+  ypos 193
+ }
+ Merge2 {
+  inputs 2
+  operation xor
+  name Merge14
+  note_font Verdana
+  xpos -71
+  ypos 243
+ }
+ Dilate {
+  channels alpha
+  size {{"\[value parent.dilate_mask]" i}}
+  name Dilate2
+  note_font Verdana
+  xpos -71
+  ypos 319
+ }
+ Grade {
+  channels alpha
+  gamma 2
+  black_clamp false
+  name Grade16
+  note_font Verdana
+  xpos -71
+  ypos 394
+ }
+ Clamp {
+  name Clamp2
+  note_font Verdana
+  xpos -71
+  ypos 432
+ }
+ Blur {
+  size {{"\[value parent.blur_mask]" i}}
+  name Blur13
+  note_font Verdana
+  xpos -71
+  ypos 516
+ }
+ Dot {
+  name Dot156
+  note_font Verdana
+  xpos -37
+  ypos 659
+ }
+push $N9e3f6e00
+ Dot {
+  name Dot20
+  note_font Verdana
+  xpos 119
+  ypos 122
+ }
+ Dilate {
+  channels alpha
+  size {{"-\[value parent.dilate_mask]" i}}
+  name Dilate4
+  note_font Verdana
+  xpos 85
+  ypos 271
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.022
+  whitepoint 0.69
+  gamma 0.94
+  black_clamp false
+  name Grade18
+  note_font Verdana
+  xpos 85
+  ypos 344
+ }
+ Invert {
+  channels alpha
+  name Invert4
+  note_font Verdana
+  xpos 85
+  ypos 392
+ }
+ Clamp {
+  name Clamp8
+  note_font Verdana
+  xpos 85
+  ypos 430
+ }
+ Blur {
+  size {{"\[value parent.blur_mask]" i}}
+  name Blur17
+  note_font Verdana
+  xpos 85
+  ypos 510
+ }
+ Dot {
+  name Dot147
+  note_font Verdana
+  xpos 119
+  ypos 670
+ }
+ Switch {
+  inputs 2
+  which {{"\[value parent.xor_edge_detect]" i}}
+  name Switch3
+  note_font Verdana
+  xpos 7
+  ypos 747
+ }
+push $N9e3f7180
+ Dot {
+  name Dot71
+  note_font Verdana
+  xpos 1045
+  ypos -52
+ }
+ Dot {
+  name Dot1
+  note_font Verdana
+  xpos 1045
+  ypos 100
+ }
+set N9e482a80 [stack 0]
+push $N9e482a80
+ Input {
+  inputs 0
+  name mask
+  note_font Verdana
+  xpos 1582
+  ypos -260
+  number 1
+ }
+ Invert {
+  name Invert1
+  xpos 1582
+  ypos -160
+ }
+ Dot {
+  name Dot2
+  note_font Verdana
+  xpos 1616
+  ypos 50
+ }
+set N9e482000 [stack 0]
+ Merge2 {
+  inputs 2
+  operation out
+  name Merge1
+  note_font Verdana
+  xpos 1088
+  ypos 147
+ }
+ Switch {
+  inputs 2
+  name Switch4
+  note_font Verdana
+  xpos 1011
+  ypos 209
+ }
+ FilterErode {
+  channels alpha
+  size {{"\[value parent.pre_choke]" i}}
+  name FilterErode2
+  note_font Verdana
+  xpos 1011
+  ypos 280
+ }
+ Grade {
+  channels alpha
+  blackpoint {{"\[value parent.pre_contrast]"}}
+  whitepoint {{"1-\[value parent.pre_contrast]"}}
+  black_clamp false
+  name Grade19
+  note_font Verdana
+  xpos 1011
+  ypos 341
+ }
+ Clamp {
+  channels alpha
+  name Clamp4
+  note_font Verdana
+  xpos 1011
+  ypos 390
+ }
+ Premult {
+  name Premult3
+  note_font Verdana
+  xpos 1011
+  ypos 471
+ }
+ Blur {
+  size {{"\[value parent.pre_blur]" i}}
+  name Blur8
+  note_font Verdana
+  xpos 1011
+  ypos 560
+ }
+ Unpremult {
+  name Unpremult1
+  note_font Verdana
+  xpos 1011
+  ypos 643
+ }
+ Blur {
+  size {{"\[value parent.post_blur]" i}}
+  name Blur20
+  note_font Verdana
+  xpos 1011
+  ypos 704
+ }
+ Dot {
+  name Dot61
+  note_font Verdana
+  xpos 1045
+  ypos 795
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  note_font Verdana
+  xpos 7
+  ypos 901
+ }
+ Premult {
+  name Premult4
+  note_font Verdana
+  xpos 7
+  ypos 1045
+ }
+ Dot {
+  name Dot4
+  note_font Verdana
+  xpos 41
+  ypos 1122
+ }
+set N9e095180 [stack 0]
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge5
+  xpos -498
+  ypos 1611
+ }
+push $N9dfd6380
+push $N9e3f7500
+ Dot {
+  name Dot6
+  xpos -562
+  ypos 162
+ }
+set N9e094a80 [stack 0]
+push $N9e094a80
+ Blur {
+  size {{"\[value parent.sharpness]" i}}
+  name Blur1
+  xpos -728
+  ypos 211
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  name Merge3
+  xpos -596
+  ypos 283
+ }
+ ColorCorrect {
+  saturation 0
+  name ColorCorrect1
+  xpos -596
+  ypos 375
+ }
+ Dot {
+  name Dot8
+  xpos -554
+  ypos 1268
+ }
+push $N9e095180
+push $N9e095180
+push $N9e482000
+ Dot {
+  name Dot3
+  note_font Verdana
+  xpos 1616
+  ypos 967
+ }
+ Merge2 {
+  inputs 2
+  operation out
+  name Merge2
+  note_font Verdana
+  xpos 76
+  ypos 1192
+ }
+ Switch {
+  inputs 2
+  name Switch5
+  note_font Verdana
+  xpos 7
+  ypos 1253
+ }
+ Unpremult {
+  name Unpremult3
+  xpos -471
+  ypos 1330
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  mix {{"\[value parent.amount]"}}
+  name Merge4
+  xpos -588
+  ypos 1352
+ }
+ Premult {
+  name Premult1
+  xpos -588
+  ypos 1393
+ }
+push $N9e3f7880
+ Merge2 {
+  inputs 2
+  name Merge13
+  note_font Verdana
+  xpos -935
+  ypos 1393
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy2
+  note_font Verdana
+  xpos -1238
+  ypos 1725
+ }
+set N9e3cc000 [stack 0]
+ Premult {
+  name Premult10
+  note_font Verdana
+  xpos -1130
+  ypos 1789
+ }
+push $N9e3cc000
+ Switch {
+  inputs 2
+  which {{"\[value parent.output_premulted]" i}}
+  name Switch2
+  note_font Verdana
+  xpos -1238
+  ypos 1878
+ }
+ Dot {
+  name Dot9
+  xpos -1204
+  ypos 1996
+ }
+set N9e263500 [stack 0]
+add_layer {smearmask smearmask.red}
+ ShuffleCopy {
+  inputs 2
+  alpha alpha2
+  black alpha
+  out2 smearmask
+  name ShuffleCopy3
+  note_font Verdana
+  xpos -1140
+  ypos 2066
+ }
+push $N9e263500
+ Switch {
+  inputs 2
+  which {{"\[value parent.outputmask]"}}
+  name Switch6
+  note_font Verdana
+  xpos -1238
+  ypos 2141
+ }
+ Dot {
+  name Dot19
+  note_font Verdana
+  xpos -1204
+  ypos 2343
+ }
+ Output {
+  name Output1
+  note_font Verdana
+  xpos -1238
+  ypos 2422
+ }
+end_group
+Group {
+ name HighPasser
+ help "A lightweight Sharpen tool with a soft-clamp for low and high values, which is useful to avoid halos around high contrast areas. It should yield more elegant and even results than the default Sharpen node especially at high size numbers."
+ tile_color 0xff9432ff
+ selected true
+ xpos 278
+ ypos -3
+ addUserKnob {20 User}
+ addUserKnob {6 lowClamp l "low clamp" t "clamp negative values to 0.0 before processing" +STARTLINE}
+ lowClamp true
+ addUserKnob {6 highClamp l "high clamp" t "clamp overexposed values to 1.0 before processing" -STARTLINE}
+ highClamp true
+ addUserKnob {7 minimum t "Minimum value of the raw input vs the sharpened input.\nUseful for \"soft clamping\" low values"}
+ minimum 0.5
+ addUserKnob {7 maximum t "Maximum value of the raw input vs the sharpened input.\nUseful for \"soft clamping\" high values"}
+ maximum 1
+ addUserKnob {6 tint_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {6 tint_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {41 white l gain t "good for coloring only the sharpened frequencies. Leave at 1 to keep input color" T Grade3.white}
+ addUserKnob {7 amount t "usually you don't have to turn this above 1. Try finding the right frequencies instead. Or create several nodes for different frequencies."}
+ amount 1
+ addUserKnob {14 size t "choose frequencies to affect" R 0 100}
+ size 10
+ addUserKnob {41 filter -STARTLINE T Blur3.filter}
+ addUserKnob {26 dampen_info l <b>dampen t "Reduce effect on contrasted areas using sobel edge detection" T " - Reduce effect on contrasted areas using sobel edge detection"}
+ addUserKnob {7 dampenThresh l threshold t "Edge detect threshold (sobel)"}
+ dampenThresh 0.5
+ addUserKnob {6 dampenPreview l preview t "preview area that will be dampened" -STARTLINE}
+ addUserKnob {7 dampenErode l erode t "Increase/Decrease area affected by dampening" R -10 10}
+ dampenErode 1
+ addUserKnob {7 dampenSoftness l softness t "Blur dampened area for smoother mixing with the sharpened result" R 0 100}
+ addUserKnob {7 dampenMix l "damp mix" t "Mix the input over the sharpened image"}
+ addUserKnob {26 ""}
+ addUserKnob {7 mix t "dissolve between input at 0 and output at 1"}
+ mix 1
+ addUserKnob {26 ""}
+ addUserKnob {26 info l "" +STARTLINE T "HighPasser v1.0 - Fynn Laue 2021"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 1060
+  ypos -321
+ }
+ Dot {
+  name Dot21
+  xpos 1094
+  ypos -174
+ }
+set N9e262000 [stack 0]
+ Dot {
+  name Dot22
+  xpos 1094
+  ypos 258
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e29fc00 [stack 0]
+ Dot {
+  name Dot23
+  xpos 1094
+  ypos 594
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e29f880 [stack 0]
+ Dot {
+  name Dot2
+  xpos 984
+  ypos 594
+ }
+set N9e29f500 [stack 0]
+ EdgeDetectWrapper {
+  threshold {{parent.dampenThresh}}
+  erodesize {{-parent.dampenErode}}
+  name EdgeDetect1
+  xpos 950
+  ypos 633
+ }
+ FilterErode {
+  size {{-parent.dampenErode}}
+  filter quadratic
+  name FilterErode1
+  xpos 950
+  ypos 681
+ }
+ Blur {
+  size {{parent.dampenSoftness}}
+  name Blur1
+  xpos 950
+  ypos 729
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle1
+  xpos 950
+  ypos 807
+ }
+set N9e29e700 [stack 0]
+ Dot {
+  name Dot4
+  xpos 984
+  ypos 1170
+ }
+push $N9e29f880
+ Dot {
+  name Dot24
+  xpos 1094
+  ypos 930
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e29e000 [stack 0]
+push $N9e29e700
+push $N9e29f500
+ Dot {
+  name Dot6
+  xpos 764
+  ypos 594
+ }
+set N9e31bc00 [stack 0]
+ Dot {
+  name Dot7
+  xpos 544
+  ypos 594
+ }
+ Dot {
+  name Dot8
+  xpos 544
+  ypos 810
+ }
+push $N9e29fc00
+ Dot {
+  name Dot25
+  xpos 764
+  ypos 258
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e31b180 [stack 0]
+ Dot {
+  name Dot26
+  xpos 544
+  ypos 258
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+ Dot {
+  name Dot27
+  xpos 544
+  ypos 330
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e262000
+ Dot {
+  name Dot28
+  xpos 654
+  ypos -174
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e31a700 [stack 0]
+ Dot {
+  name Dot29
+  xpos 434
+  ypos -174
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e31a380 [stack 0]
+ Dot {
+  name Dot30
+  xpos 324
+  ypos -174
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e31a000 [stack 0]
+ Dot {
+  name Dot31
+  xpos 214
+  ypos -174
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+set N9e331c00 [stack 0]
+ Dot {
+  name Dot32
+  xpos 104
+  ypos -174
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+ Blur {
+  size {{parent.size.w} {parent.size.h}}
+  quality 5
+  name Blur3
+  label size
+  xpos 70
+  ypos -93
+ }
+push $N9e331c00
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge7
+  label "high Freq"
+  xpos 180
+  ypos -87
+ }
+ Dot {
+  name Dot33
+  xpos 214
+  ypos 90
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e31a000
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge12
+  xpos 290
+  ypos 87
+ }
+set N9e330a80 [stack 0]
+ Clamp {
+  maximum_enable false
+  mix {{parent.lowClamp}}
+  name Clamp1
+  label "low clamp"
+  xpos 290
+  ypos 123
+ }
+ Dot {
+  name Dot34
+  xpos 324
+  ypos 210
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e31a380
+ Merge2 {
+  inputs 2
+  operation min
+  mix {{1-parent.minimum}}
+  name Merge13
+  label minimum
+  xpos 400
+  ypos 201
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge14
+  xpos 400
+  ypos 327
+ }
+ Grade {
+  white 0.5
+  black_clamp false
+  enable_mix_luminance false
+  name Grade3
+  label tint
+  xpos 400
+  ypos 393
+ }
+ Dot {
+  name Dot35
+  xpos 434
+  ypos 450
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e31b180
+ Dot {
+  name Dot36
+  xpos 764
+  ypos 330
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e330a80
+ Dot {
+  name Dot37
+  xpos 544
+  ypos 90
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+ Clamp {
+  minimum_enable false
+  mix {{parent.highClamp}}
+  name Clamp2
+  label "high clamp"
+  xpos 510
+  ypos 123
+ }
+ Dot {
+  name Dot38
+  xpos 544
+  ypos 210
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e31a700
+ Merge2 {
+  inputs 2
+  operation max
+  mix {{parent.maximum}}
+  name Merge15
+  label maximum
+  xpos 620
+  ypos 201
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge16
+  xpos 620
+  ypos 327
+ }
+ Grade {
+  white {{parent.Grade3.white.r} {parent.Grade3.white.g} {parent.Grade3.white.r} 1}
+  black_clamp false
+  enable_mix_luminance false
+  name Grade1
+  label tint
+  xpos 620
+  ypos 393
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge17
+  xpos 620
+  ypos 447
+ }
+ Multiply {
+  value {{parent.amount}}
+  name Multiply1
+  xpos 620
+  ypos 515
+ }
+ Dot {
+  name Dot5
+  xpos 654
+  ypos 666
+ }
+push $N9e31bc00
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge18
+  xpos 730
+  ypos 663
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  mix {{parent.dampenMix}}
+  name Merge2
+  xpos 730
+  ypos 807
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy2
+  label "preserve alpha"
+  xpos 730
+  ypos 921
+ }
+ Dot {
+  name Dot39
+  xpos 764
+  ypos 1050
+  addUserKnob {20 User +INVISIBLE}
+  addUserKnob {1 parentNode +INVISIBLE}
+  addUserKnob {1 parentScript +INVISIBLE}
+  parentScript /mnt/nfs/riptor/users/fynnl/development/nuke/nodes/highPasser/highPasser_dev_v004.nk
+ }
+push $N9e29e000
+ Dissolve {
+  inputs 2
+  channels rgb
+  which {{parent.mix}}
+  name Dissolve2
+  label mix
+  xpos 1060
+  ypos 1041
+ }
+ Switch {
+  inputs 2
+  which {{parent.dampenPreview}}
+  name Switch1
+  label "preview dampen mask"
+  xpos 1060
+  ypos 1161
+ }
+ Output {
+  name Output1
+  xpos 1060
+  ypos 1287
+ }
+end_group
+TimeOffset {
+ time_offset -50
+ time ""
+ name TimeOffset1
+ selected true
+ xpos 278
+ ypos 51
+}
+Crop {
+ box {0 0 3094 1296}
+ name Crop1
+ selected true
+ xpos 278
+ ypos 123
+}
+set N9e223500 [stack 0]
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0110/q0110_c0240/reference/Aftereffects_mockup/renders/q0110_c0240_Sky_temp_dark.jpg
+ format "3094 1296 0 0 3094 1296 1 kensukes_kingdom"
+ origset true
+ name Read2
+ selected true
+ xpos 524
+ ypos -297
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ selected true
+ xpos 524
+ ypos 123
+}
+Crop {
+ box {0 0 3094 1296}
+ name Crop2
+ selected true
+ xpos 524
+ ypos 183
+}
+Group {
+ name renderLightingMain
+ tile_color 0xff0000ff
+ selected true
+ xpos 524
+ ypos 287
+ disable true
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:family l family T render}
+ addUserKnob {26 avalon:families l families T write}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.instance}
+ addUserKnob {1 avalon:asset l asset}
+ avalon:asset q0110_c0250
+ addUserKnob {1 avalon:subset l subset}
+ avalon:subset renderLightingMain
+ addUserKnob {26 avalon:active l active T True}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+ publish true
+ addUserKnob {26 ""}
+ addUserKnob {4 render l Render M {"Use existing frames" Local "On farm"}}
+ render "On farm"
+ addUserKnob {6 review l Review -STARTLINE}
+ review true
+ addUserKnob {26 ""}
+ addUserKnob {41 Render l "Render Local" T inside_renderLightingMain.Render}
+ addUserKnob {22 createReadNode l "\[ Create Read ]" T "import write_to_read;write_to_read.write_to_read(nuke.thisNode())" +STARTLINE}
+ addUserKnob {20 Deadline}
+ addUserKnob {3 deadlineChunkSize l "Chunk Size"}
+ deadlineChunkSize 10
+ addUserKnob {3 deadlinePriority l Priority}
+ deadlinePriority 60
+}
+ Input {
+  inputs 0
+  name Merge1
+  xpos 400
+  ypos -56
+ }
+ Write {
+  channels all
+  file Y://kensukes_kingdom/episodes/film/q0110/q0110_c0250/work/lighting/renders/nuke/renderLightingMain/renderLightingMain.####.exr
+  colorspace linear
+  file_type exr
+  autocrop true
+  compression DWAA
+  in_colorspace linear
+  out_colorspace linear
+  name inside_renderLightingMain
+  tile_color 0xff0000ff
+  xpos 400
+  ypos 16
+ }
+ Output {
+  name Output1
+  xpos 400
+  ypos 112
+ }
+end_group
+push $N9e223500
+Group {
+ name renderLightingSea
+ tile_color 0xff0000ff
+ selected true
+ xpos 278
+ ypos 227
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:family l family T render}
+ addUserKnob {26 avalon:families l families T write}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.instance}
+ addUserKnob {1 avalon:asset l asset}
+ avalon:asset q0110_c0250
+ addUserKnob {1 avalon:subset l subset}
+ avalon:subset renderLightingSea
+ addUserKnob {26 avalon:active l active T True}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {4 render l Render M {"Use existing frames" Local "On farm"}}
+ render "On farm"
+ addUserKnob {6 review l Review -STARTLINE}
+ review true
+ addUserKnob {26 ""}
+ addUserKnob {41 Render l "Render Local" T inside_renderLightingSea.Render}
+ addUserKnob {22 createReadNode l "\[ Create Read ]" T "import write_to_read;write_to_read.write_to_read(nuke.thisNode())" +STARTLINE}
+ addUserKnob {20 Deadline}
+ addUserKnob {3 deadlineChunkSize l "Chunk Size"}
+ deadlineChunkSize 10
+ addUserKnob {3 deadlinePriority l Priority}
+ deadlinePriority 60
+}
+ Input {
+  inputs 0
+  name Crop1
+  xpos 400
+  ypos -37
+ }
+ Write {
+  channels rgba
+  file Y://kensukes_kingdom/episodes/film/q0110/q0110_c0250/work/lighting/renders/nuke/renderLightingSea/renderLightingSea.####.exr
+  colorspace linear
+  file_type exr
+  autocrop true
+  compression DWAA
+  in_colorspace linear
+  out_colorspace linear
+  name inside_renderLightingSea
+  tile_color 0xff0000ff
+  xpos 400
+  ypos 16
+ }
+ Output {
+  name Output1
+  xpos 400
+  ypos 92
+ }
+end_group

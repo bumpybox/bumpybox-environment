@@ -1,0 +1,20 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Constant {
+ inputs 0
+ channels rgb
+ color 1
+ name Constant1
+ selected true
+ xpos 1942
+ ypos -848
+}
+push $cut_paste_input
+Merge2 {
+ inputs 2
+ mix 0.02
+ name Merge15
+ selected true
+ xpos 1757
+ ypos -699
+}

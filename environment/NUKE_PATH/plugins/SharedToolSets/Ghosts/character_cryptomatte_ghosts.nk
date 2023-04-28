@@ -1,0 +1,403 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1027" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1153" stretch="1"/>
+            <splitter orientation="2">
+                <split size="983"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="719"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="com.adrianpueyo.KnobScripterPane"/>
+                <page id="W_scaleTree.widget"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/Ghosts/character_cryptomatte_ghosts.nk"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name character_cryptomatte_backdrop_3
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x54544c01
+ label Cryptomatte
+ note_font_size 50
+ xpos 16688
+ ypos -1628
+ bdwidth 781
+ bdheight 1977
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text Cryptomatte
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 michael l "<img src=\"michael.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[155,186,196],'michael',None)"}
+ addUserKnob {22 kensuke l "<img src=\"kensuke.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[227,187,154],'kensuke',None)"}
+ addUserKnob {22 dad l "<img src=\"dad.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[163,185,159],'dad',None)"}
+ addUserKnob {22 mum l "<img src=\"mum.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[235,193,119],'mum',None)"}
+ addUserKnob {22 becky l "<img src=\"becky.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[156,135,176],'becky',None)"}
+ addUserKnob {22 stella l "<img src=\"stella.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[214,214,214],'stella',None)"}
+ addUserKnob {22 parrot l "<img src=\"parrot.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[14,117,136],'parrot',None)"}
+ addUserKnob {22 poacher l "<img src=\"poacher.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[103,84,52],'poacher',None)"}
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x 16688
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y -1628
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {781 1977}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+Dot {
+ inputs 0
+ name character_cryptomatte_input_4
+ label "\n\[value name]"
+ xpos 16824
+ ypos -1830
+}
+add_layer {crypto_asset00 crypto_asset00.red crypto_asset00.green crypto_asset00.blue crypto_asset00.alpha}
+add_layer {crypto_asset01 crypto_asset01.red crypto_asset01.green crypto_asset01.blue crypto_asset01.alpha}
+add_layer {crypto_asset02 crypto_asset02.red crypto_asset02.green crypto_asset02.blue crypto_asset02.alpha}
+Cryptomatte {
+ name character_cryptomatte_keyer_0
+ xpos 16790
+ ypos -1546
+ matteOutput alpha
+ matteList "/s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:eyebrows_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:l_eye_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:laceHoles_L_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:laceHoles_R_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:Laces_L_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:Laces_R_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:mouth_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:nose_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:r_eye_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:rubberSole_L_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:rubberSole_R_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:shoe_L_GEO, /s00e00_sh0030_06_:andrew_01_/s00e00_sh0030_06_:shoe_R_GEO, /s00e00_sh0030_08_:pointcacheAndrewfx/s00e00_sh0030_08_:body_GEO, /s00e00_sh0030_08_:pointcacheAndrewfx/s00e00_sh0030_08_:buttons_GEO, /s00e00_sh0030_08_:pointcacheAndrewfx/s00e00_sh0030_08_:poloShirt_GEO, /s00e00_sh0030_08_:pointcacheAndrewfx/s00e00_sh0030_08_:threads_GEO, /s00e00_sh0030_08_:pointcacheAndrewfx/s00e00_sh0030_08_:trousers_GEO"
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -9.34186596518e+19 || crypto_asset00.red == -3.29361588821e+19 || crypto_asset00.red == -0.000106353014417 || crypto_asset00.red == -1.12192147933e-11 || crypto_asset00.red == -1.10219798037e-14 || crypto_asset00.red == -3.83869637195e-22 || crypto_asset00.red == 2.90165169029e-37 || crypto_asset00.red == 5.18063584743e-37 || crypto_asset00.red == 4.64328798157e-26 || crypto_asset00.red == 9.52802528853e-21 || crypto_asset00.red == 5.933707994e-17 || crypto_asset00.red == 2.67561432565e-07 || crypto_asset00.red == 136639.90625 || crypto_asset00.red == 252768256 || crypto_asset00.red == 3163108608 || crypto_asset00.red == 1.55546117734e+12 || crypto_asset00.red == 2.46492817051e+15 || crypto_asset00.red == 1.64755959087e+17) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -9.34186596518e+19 || crypto_asset00.blue == -3.29361588821e+19 || crypto_asset00.blue == -0.000106353014417 || crypto_asset00.blue == -1.12192147933e-11 || crypto_asset00.blue == -1.10219798037e-14 || crypto_asset00.blue == -3.83869637195e-22 || crypto_asset00.blue == 2.90165169029e-37 || crypto_asset00.blue == 5.18063584743e-37 || crypto_asset00.blue == 4.64328798157e-26 || crypto_asset00.blue == 9.52802528853e-21 || crypto_asset00.blue == 5.933707994e-17 || crypto_asset00.blue == 2.67561432565e-07 || crypto_asset00.blue == 136639.90625 || crypto_asset00.blue == 252768256 || crypto_asset00.blue == 3163108608 || crypto_asset00.blue == 1.55546117734e+12 || crypto_asset00.blue == 2.46492817051e+15 || crypto_asset00.blue == 1.64755959087e+17) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -9.34186596518e+19 || crypto_asset01.red == -3.29361588821e+19 || crypto_asset01.red == -0.000106353014417 || crypto_asset01.red == -1.12192147933e-11 || crypto_asset01.red == -1.10219798037e-14 || crypto_asset01.red == -3.83869637195e-22 || crypto_asset01.red == 2.90165169029e-37 || crypto_asset01.red == 5.18063584743e-37 || crypto_asset01.red == 4.64328798157e-26 || crypto_asset01.red == 9.52802528853e-21 || crypto_asset01.red == 5.933707994e-17 || crypto_asset01.red == 2.67561432565e-07 || crypto_asset01.red == 136639.90625 || crypto_asset01.red == 252768256 || crypto_asset01.red == 3163108608 || crypto_asset01.red == 1.55546117734e+12 || crypto_asset01.red == 2.46492817051e+15 || crypto_asset01.red == 1.64755959087e+17) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -9.34186596518e+19 || crypto_asset01.blue == -3.29361588821e+19 || crypto_asset01.blue == -0.000106353014417 || crypto_asset01.blue == -1.12192147933e-11 || crypto_asset01.blue == -1.10219798037e-14 || crypto_asset01.blue == -3.83869637195e-22 || crypto_asset01.blue == 2.90165169029e-37 || crypto_asset01.blue == 5.18063584743e-37 || crypto_asset01.blue == 4.64328798157e-26 || crypto_asset01.blue == 9.52802528853e-21 || crypto_asset01.blue == 5.933707994e-17 || crypto_asset01.blue == 2.67561432565e-07 || crypto_asset01.blue == 136639.90625 || crypto_asset01.blue == 252768256 || crypto_asset01.blue == 3163108608 || crypto_asset01.blue == 1.55546117734e+12 || crypto_asset01.blue == 2.46492817051e+15 || crypto_asset01.blue == 1.64755959087e+17) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -9.34186596518e+19 || crypto_asset02.red == -3.29361588821e+19 || crypto_asset02.red == -0.000106353014417 || crypto_asset02.red == -1.12192147933e-11 || crypto_asset02.red == -1.10219798037e-14 || crypto_asset02.red == -3.83869637195e-22 || crypto_asset02.red == 2.90165169029e-37 || crypto_asset02.red == 5.18063584743e-37 || crypto_asset02.red == 4.64328798157e-26 || crypto_asset02.red == 9.52802528853e-21 || crypto_asset02.red == 5.933707994e-17 || crypto_asset02.red == 2.67561432565e-07 || crypto_asset02.red == 136639.90625 || crypto_asset02.red == 252768256 || crypto_asset02.red == 3163108608 || crypto_asset02.red == 1.55546117734e+12 || crypto_asset02.red == 2.46492817051e+15 || crypto_asset02.red == 1.64755959087e+17) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -9.34186596518e+19 || crypto_asset02.blue == -3.29361588821e+19 || crypto_asset02.blue == -0.000106353014417 || crypto_asset02.blue == -1.12192147933e-11 || crypto_asset02.blue == -1.10219798037e-14 || crypto_asset02.blue == -3.83869637195e-22 || crypto_asset02.blue == 2.90165169029e-37 || crypto_asset02.blue == 5.18063584743e-37 || crypto_asset02.blue == 4.64328798157e-26 || crypto_asset02.blue == 9.52802528853e-21 || crypto_asset02.blue == 5.933707994e-17 || crypto_asset02.blue == 2.67561432565e-07 || crypto_asset02.blue == 136639.90625 || crypto_asset02.blue == 252768256 || crypto_asset02.blue == 3163108608 || crypto_asset02.blue == 1.55546117734e+12 || crypto_asset02.blue == 2.46492817051e+15 || crypto_asset02.blue == 1.64755959087e+17) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+}
+Reformat {
+ name Reformat13
+ xpos 16790
+ ypos -1450
+}
+Dot {
+ name Dot107
+ xpos 16824
+ ypos -1350
+}
+set N11868380 [stack 0]
+Dot {
+ name Dot108
+ xpos 16824
+ ypos -1158
+}
+set N11868000 [stack 0]
+Dot {
+ name Dot110
+ xpos 16824
+ ypos -870
+}
+set N1189dc00 [stack 0]
+Dot {
+ name Dot113
+ xpos 16824
+ ypos -246
+}
+set N1189d880 [stack 0]
+Dot {
+ name Dot34
+ xpos 16824
+ ypos 90
+}
+Dot {
+ inputs 0
+ name character_beauty_input_4
+ label "\n\[value name]"
+ xpos 17264
+ ypos -1926
+}
+Dot {
+ name Dot119
+ xpos 17264
+ ypos -1350
+}
+set N1189d180 [stack 0]
+Dot {
+ name Dot48
+ xpos 17264
+ ypos -966
+}
+set N1189ce00 [stack 0]
+Dot {
+ name Dot49
+ xpos 17154
+ ypos -966
+}
+add_layer {features features.mouth features.eyebags features.beard features.alpha}
+Shuffle {
+ in features
+ green red
+ blue red
+ alpha red
+ name Shuffle16
+ xpos 17120
+ ypos -394
+}
+push $N1189d880
+Merge2 {
+ inputs 2
+ operation disjoint-over
+ name Merge13
+ xpos 17120
+ ypos -250
+}
+push $N11868000
+push $N11868380
+push $N1189d180
+Merge2 {
+ inputs 2
+ operation difference
+ name Merge53
+ xpos 17010
+ ypos -1354
+}
+Erode {
+ size -3.8
+ name Erode12
+ xpos 17010
+ ypos -1264
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge54
+ xpos 17010
+ ypos -1162
+}
+Erode {
+ name Erode13
+ xpos 17010
+ ypos -1120
+}
+Erode {
+ size -6.5
+ name Erode14
+ xpos 17010
+ ypos -1072
+}
+EdgeBlur {
+ size 6
+ name EdgeBlur9
+ xpos 17010
+ ypos -880
+}
+set N118bee00 [stack 0]
+Dot {
+ name Dot120
+ xpos 17044
+ ypos -822
+}
+push $N118bee00
+push $N1189dc00
+Erode {
+ inputs 1+1
+ size 1.3
+ name Erode15
+ xpos 16900
+ ypos -880
+}
+EdgeBlur {
+ inputs 1+1
+ size 1
+ name EdgeBlur10
+ xpos 16900
+ ypos -832
+}
+Dot {
+ name Dot121
+ xpos 16934
+ ypos -774
+}
+set N118be000 [stack 0]
+Dot {
+ name Dot122
+ xpos 16934
+ ypos -678
+}
+set N118f9c00 [stack 0]
+Dot {
+ name Dot123
+ xpos 16934
+ ypos -582
+}
+set N118f9880 [stack 0]
+Dot {
+ name Dot124
+ xpos 16934
+ ypos -438
+}
+push $N118f9880
+push $N118f9c00
+push $N118be000
+push $N1189ce00
+Unpremult {
+ name Unpremult3
+ xpos 17230
+ ypos -874
+}
+add_layer {body body.skin body.hair none body.alpha body.beard}
+Merge2 {
+ inputs 2
+ operation mask
+ Bchannels body
+ output body
+ name Merge55
+ label "\[value Achannels] -> \[value Bchannels]"
+ xpos 17230
+ ypos -791
+}
+add_layer {face face.brows face.nose face.eyes face.alpha none face.mouth face.eye_bags}
+Merge2 {
+ inputs 2
+ operation mask
+ Bchannels face
+ output face
+ name Merge56
+ label "\[value Achannels] -> \[value Bchannels]"
+ xpos 17230
+ ypos -695
+}
+add_layer {clothes clothes.top clothes.bottom clothes.shoes clothes.alpha}
+Merge2 {
+ inputs 2
+ operation mask
+ Bchannels clothes
+ output clothes
+ name Merge58
+ label "\[value Achannels] -> \[value Bchannels]"
+ xpos 17230
+ ypos -599
+}
+Dot {
+ name Dot33
+ xpos 17264
+ ypos -534
+}
+Merge2 {
+ inputs 2
+ operation mask
+ Bchannels features
+ output {-features.mouth features.eyebags features.beard features.alpha}
+ name Merge59
+ label "\[value Achannels] -> \[value Bchannels]"
+ xpos 17230
+ ypos -455
+}
+Dot {
+ name Dot32
+ xpos 17264
+ ypos -342
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy6
+ xpos 17230
+ ypos -256
+}
+Premult {
+ channels all
+ name Premult6
+ xpos 17230
+ ypos -160
+}
+Unpremult {
+ name Unpremult1
+ xpos 17230
+ ypos -58
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy2
+ xpos 17230
+ ypos 80
+}
+Premult {
+ name Premult2
+ xpos 17230
+ ypos 182
+}
+Dot {
+ name character_output_4
+ label "\[value name]"
+ xpos 17264
+ ypos 474
+}

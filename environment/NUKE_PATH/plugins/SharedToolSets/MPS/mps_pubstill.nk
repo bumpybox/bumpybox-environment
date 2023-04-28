@@ -1,0 +1,52 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+BackdropNode {
+ inputs 0
+ name BackdropNode4
+ tile_color 0xa06363ff
+ label "<center>Publicity Still"
+ note_font_size 42
+ selected true
+ xpos 511
+ ypos 183
+ bdwidth 381
+ bdheight 296
+ z_order 1
+ addUserKnob {20 User}
+ addUserKnob {6 publish l Publish -STARTLINE}
+}
+push $cut_paste_input
+Dot {
+ name Dot6
+ selected true
+ xpos 565
+ ypos 317
+}
+FrameHold {
+ first_frame 1047
+ name FrameHold2
+ selected true
+ xpos 663
+ ypos 307
+}
+Write {
+ channels rgba
+ file "\[python \{nuke.script_directory()\}]/workspace/\[python \{nuke.thisNode().name()\}]/\[python \{os.path.splitext(os.path.basename(nuke.scriptName()))\[0]\}]/\[python \{os.path.splitext(os.path.basename(nuke.scriptName()))\[0]\}]_\[python \{nuke.thisNode().name()\}].%04d.exr"
+ file_type exr
+ metadata "all metadata"
+ create_directories true
+ first 1001
+ last 1001
+ use_limit true
+ version 2
+ name pubstill
+ selected true
+ xpos 663
+ ypos 366
+ addUserKnob {20 User}
+ addUserKnob {6 process_local l "Process Local" -STARTLINE}
+ addUserKnob {6 publish l Publish -STARTLINE}
+ publish true
+ addUserKnob {6 review l Review -STARTLINE}
+ review true
+}

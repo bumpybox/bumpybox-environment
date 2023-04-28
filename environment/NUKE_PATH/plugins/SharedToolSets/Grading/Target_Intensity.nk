@@ -1,0 +1,12 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+NoOp {
+ name Target_Intensity
+ selected true
+ xpos 7195
+ ypos 554
+ addUserKnob {20 User}
+ addUserKnob {7 target_intensity l "Target Intensity"}
+ target_intensity 0.3
+}

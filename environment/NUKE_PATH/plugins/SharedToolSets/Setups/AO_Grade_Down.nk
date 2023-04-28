@@ -1,0 +1,58 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Group {
+name AO_Grade_Down1
+selected true
+xpos -1800
+ypos 902
+addUserKnob {20 User}
+addUserKnob {41 whitepoint T Grade1.whitepoint}
+}
+Constant {
+inputs 0
+color 1
+name Constant1
+selected true
+xpos -480
+ypos -225
+}
+Input {
+inputs 0
+name Input1
+xpos -230
+ypos -312
+}
+Grade {
+whitepoint 0.9
+name Grade1
+xpos -230
+ypos -272
+}
+Merge2 {
+inputs 2
+operation under
+name Merge7
+xpos -230
+ypos -202
+}
+Clamp {
+name Clamp1
+xpos -230
+ypos -86
+}
+set Na7455180 [stack 0]
+Output {
+name Output1
+xpos -230
+ypos 20
+}
+push $Na7455180
+Viewer {
+frame_range 1-83
+fps 25
+name Viewer1
+xpos 70
+ypos -10
+}
+end_group

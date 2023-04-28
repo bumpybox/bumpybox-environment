@@ -1,0 +1,125 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Group {
+ name typeWriterPro
+ onCreate "n = nuke.thisNode()\nrs = n\[\"reveal_s\"]\nrs.setFlag(0x10000000)\n"
+ knobChanged "n = nuke.thisNode()\nc = bool(n\[\"custom\"].getValue())\nrc =n\[\"reveal_c\"]\nrs = n\[\"reveal_s\"]\n\nrc.setVisible(c)\nrs.setVisible(not c)\n"
+ tile_color 0xf328ffff
+ selected true
+ xpos -5108
+ ypos 422
+ addUserKnob {20 Text}
+ addUserKnob {3 s_frame l "start frame" -STARTLINE}
+ addUserKnob {7 speed -STARTLINE R 0 2}
+ speed 1
+ addUserKnob {6 custom t "Use your own values or exprs to control the number of characters revealed" +STARTLINE}
+ addUserKnob {3 reveal_c l reveal t "number of chracters revealed" -STARTLINE +HIDDEN}
+ reveal_c 1000
+ addUserKnob {3 reveal_s l reveal t "number of characters revealed" -STARTLINE}
+ reveal_s {{"\[expr floor(\[expr \[frame]*\[value speed]])  - \[expr floor(\[expr \[value s_frame]*\[value speed]])]]" x1 1}}
+ addUserKnob {3 reveal l INVISIBLE -STARTLINE +INVISIBLE}
+ reveal {{"\[if \{\[value custom]\} \{\nreturn \[expr \[value reveal_c] - 1]\n\} else \{\nreturn \[value reveal_s]\n\}]"}}
+ addUserKnob {26 ""}
+ addUserKnob {6 cursor +STARTLINE}
+ cursor true
+ addUserKnob {26 ""}
+ addUserKnob {41 message T inputT.message}
+ addUserKnob {41 box T outputT.box}
+ addUserKnob {41 xjustify l justify T outputT.xjustify}
+ addUserKnob {41 yjustify l "" -STARTLINE T outputT.yjustify}
+ addUserKnob {26 ""}
+ addUserKnob {41 font T outputT.font}
+ addUserKnob {41 global_font_scale l "global font scale" T outputT.global_font_scale}
+ addUserKnob {26 ""}
+ addUserKnob {41 font_size l "font size" T outputT.font_size}
+ addUserKnob {41 font_width l "font width" T outputT.font_width}
+ addUserKnob {41 font_height l "font height" T outputT.font_height}
+ addUserKnob {41 kerning T outputT.kerning}
+ addUserKnob {41 tracking T outputT.tracking}
+ addUserKnob {41 baseline_shift l "baseline shift" T outputT.baseline_shift}
+ addUserKnob {41 leading T outputT.leading}
+ addUserKnob {20 "" l Color}
+ addUserKnob {41 ramp T outputT.ramp}
+ addUserKnob {41 color T outputT.color}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -590
+  ypos -634
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  tracking_toolbar 0.07800000161
+  message "\[join \[lrange \[split \[value inputT.message] \"\"] 0 \[value parent.reveal] ] \"\"]\[if \{\[value parent.cursor]\} \{return \"|\"\} else \{return \"\"\}]"
+  old_message {{81 117 105 99 107 32 97 115 32 97 32 102 108 97 115 104 32 70 108 117 102 102 121 32 99 108 105 109 98 101 100 32 117 112 32 116 104 101 32 116 114 101 101 46 32 84 111 112 115 121 32 108 124}
+    }
+  old_expression_markers {{0 51 52 52}
+    }
+  box {410.203125 978 2540 1366.800049}
+  transforms {{0 2}
+    }
+  tracking_values {{52 0.078}
+    }
+  cursor_position 135
+  font {{ Comic Sans MS : Bold : comicbd.ttf : 0 }}
+  global_font_scale 0.5
+  tracking 0.07800000161
+  leading 0.7
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{410.203125 1366.800049}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  shadow_opacity 1
+  shadow_angle 0
+  shadow_distance 0
+  shadow_size 0.75
+  name outputT
+  onCreate "n = nuke.thisNode()\nm = n\[\"message\"]\nm.setFlag(0x00000080)"
+  xpos -590
+  ypos -538
+  addUserKnob {20 User}
+  addUserKnob {3 length}
+  length {{"\[string length inputT.message]"}}
+ }
+ Output {
+  name Output1
+  xpos -590
+  ypos -394
+ }
+ Text2 {
+  inputs 0
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Quick as a flash Fluffy climbed up the tree. Topsy leapt up too, but he couldn't climb as well as Fluffy and kept up barking at her. Suddenly"
+  old_message {{81 117 105 99 107 32 97 115 32 97 32 102 108 97 115 104 32 70 108 117 102 102 121 32 99 108 105 109 98 101 100 32 117 112 32 116 104 101 32 116 114 101 101 46 32 84 111 112 115 121 32 108 101 97 112 116 32 117 112 32 116 111 111 44 32 98 117 116 32 104 101 32 99 111 117 108 100 110 39 116 32 99 108 105 109 98 32 97 115 32 119 101 108 108 32 97 115 32 70 108 117 102 102 121 32 97 110 100 32 107 101 112 116 32 117 112 32 98 97 114 107 105 110 103 32 97 116 32 104 101 114 46 32 83 117 100 100 101 110 108 121}
+    }
+  box {0 979 47581 1080}
+  transforms {{0 2}
+    }
+  cursor_position 141
+  center {960 540}
+  cursor_initialised true
+  initial_cursor_position {{0 1080}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name inputT
+  onCreate "n = nuke.thisNode()\nb = n\['box']\nb.setFlag(0x00000080)"
+  knobChanged "\n"
+  xpos -810
+  ypos -538
+ }
+end_group

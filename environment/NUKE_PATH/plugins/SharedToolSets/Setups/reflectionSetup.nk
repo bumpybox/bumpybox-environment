@@ -1,0 +1,87 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push 0
+Reformat {
+ name Reformat4
+ label alpha
+ selected true
+ xpos -150
+ ypos -400
+}
+Dot {
+ name Dot2
+ selected true
+ xpos -116
+ ypos -246
+}
+push $cut_paste_input
+Reformat {
+ name Reformat5
+ selected true
+ xpos 70
+ ypos -394
+}
+ShuffleCopy {
+ inputs 2
+ name ShuffleCopy1
+ selected true
+ xpos 70
+ ypos -250
+}
+ColorCorrect {
+ saturation 0.21
+ contrast 0.71
+ lookup {shadow {curve 1 s0 x0.03313725814 0 s0}
+   midtone {1-shadow-highlight}
+   highlight {curve x0.2450984716 0.00506913662 s0 x0.7470588684 1.005069137 s0}}
+ name ColorCorrect2
+ selected true
+ xpos 70
+ ypos -154
+}
+Blur {
+ size 6
+ name Blur2
+ selected true
+ xpos 70
+ ypos -112
+}
+Multiply {
+ value 0.6
+ name Multiply1
+ selected true
+ xpos 70
+ ypos 76
+}
+Dot {
+ name Dot1
+ selected true
+ xpos 104
+ ypos 138
+}
+set N933e9c00 [stack 0]
+Dot {
+ name Dot13
+ selected true
+ xpos 104
+ ypos 282
+}
+push $N933e9c00
+push 0
+Merge2 {
+ inputs 2
+ operation screen
+ mix 0.765
+ name Merge6
+ selected true
+ xpos 510
+ ypos 134
+}
+ColorCorrect {
+ inputs 1+1
+ gain 0.88
+ name ColorCorrect3
+ selected true
+ xpos 510
+ ypos 278
+}

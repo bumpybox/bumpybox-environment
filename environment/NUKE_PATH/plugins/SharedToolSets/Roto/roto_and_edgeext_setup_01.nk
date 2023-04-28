@@ -1,0 +1,1576 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x388e8e00
+ label Footage
+ note_font_size 42
+ selected true
+ xpos 3677
+ ypos 430
+ bdwidth 245
+ bdheight 135
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e388e00
+ label Roto
+ note_font_size 42
+ selected true
+ xpos 2110
+ ypos 452
+ bdwidth 870
+ bdheight 206
+}
+push $cut_paste_input
+Dot {
+ name Dot25
+ label "   Footage"
+ note_font_size 50
+ selected true
+ xpos 1840
+ ypos 219
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set Ned9e0380 [stack 0]
+Dot {
+ name Dot10
+ selected true
+ xpos 3801
+ ypos 219
+}
+Dot {
+ name Dot2
+ selected true
+ xpos 3801
+ ypos 656
+}
+Dot {
+ name Dot3
+ selected true
+ xpos 3801
+ ypos 844
+}
+set N838c7880 [stack 0]
+Dot {
+ name Dot4
+ selected true
+ xpos 3955
+ ypos 844
+}
+set N838c7500 [stack 0]
+Dot {
+ name Dot6
+ selected true
+ xpos 4112
+ ypos 844
+}
+Dot {
+ inputs 0
+ name Dot26
+ label "   Roto"
+ note_font_size 50
+ selected true
+ xpos 2908
+ ypos 693
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set Ned9e1180 [stack 0]
+Dot {
+ name Dot8
+ selected true
+ xpos 3525
+ ypos 693
+}
+Dot {
+ name Dot5
+ selected true
+ xpos 3525
+ ypos 944
+}
+set N838c6a80 [stack 0]
+Dot {
+ name Dot7
+ selected true
+ xpos 3525
+ ypos 1038
+}
+set N838c6700 [stack 0]
+Dot {
+ name Dot9
+ selected true
+ xpos 3525
+ ypos 1146
+}
+Group {
+ inputs 2
+ name Roto_checkup2
+ tile_color 0x7f01ff
+ label OVERLAY
+ selected true
+ xpos 4078
+ ypos 1136
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ display Overlay
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 0.2
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 0.2
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 0.2
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set Ndd021500 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set Ndd021180 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set Ndd020e00 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set Ndd020700 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $Ndd021500
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $Ndd021180
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set Nff617500 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $Ndd020e00
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set Nff616a80 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set Nff616000 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set N833f3180 [stack 0]
+push $Ndd020700
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $Nff616000
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set N833f2a80 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set N833f2700 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $N833f2a80
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $Nff617500
+push $N833f3180
+push $N833f2700
+push $Nff616a80
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+push $N838c7500
+push $N838c6700
+Group {
+ inputs 2
+ name Roto_checkup1
+ tile_color 0x7f01ff
+ label "ON GREY"
+ selected true
+ xpos 3921
+ ypos 1028
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ display "On grey"
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 1
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 1
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 1
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set Ndd3be700 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set Ndd3be380 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set Ndd3be000 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set N835cb880 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $Ndd3be700
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $Ndd3be380
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set N835ca700 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $Ndd3be000
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set Neaaf5c00 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set Neaaf5180 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set Neaaf4380 [stack 0]
+push $N835cb880
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $Neaaf5180
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set Ndce87c00 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set Ndce87880 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $Ndce87c00
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $N835ca700
+push $Neaaf4380
+push $Ndce87880
+push $Neaaf5c00
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+push $N838c7880
+push $N838c6a80
+Group {
+ inputs 2
+ name Roto_checkup
+ tile_color 0x7f01ff
+ label FOOTAGE
+ selected true
+ xpos 3767
+ ypos 934
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 1
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 1
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 1
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set Ndd4a5880 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set Ndd4a5500 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set Ndd4a5180 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set Ndd4a4a80 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $Ndd4a5880
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $Ndd4a5500
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set Ndd053880 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $Ndd4a5180
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set Ndd052e00 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set Ndd052380 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set Ndd277500 [stack 0]
+push $Ndd4a4a80
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $Ndd052380
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set Ndd276e00 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set Ndd276a80 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $Ndd276e00
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $Ndd053880
+push $Ndd277500
+push $Ndd276a80
+push $Ndd052e00
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+StickyNote {
+ inputs 0
+ name StickyNote3
+ label "     To cut edges in for Edge Extend     "
+ note_font_size 20
+ selected true
+ xpos 1965
+ ypos 748
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+StickyNote {
+ inputs 0
+ name StickyNote4
+ label "        To bring some dark information in on the edges         "
+ note_font_size 20
+ selected true
+ xpos 1913
+ ypos 994
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+StickyNote {
+ inputs 0
+ name StickyNote5
+ label "       Make your alpha adjustments here        "
+ note_font_size 20
+ selected true
+ xpos 1939
+ ypos 1117
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+StickyNote {
+ inputs 0
+ name StickyNote6
+ label "      Plug into main Comp    "
+ note_font_size 20
+ selected true
+ xpos 1372
+ ypos 1650
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+StickyNote {
+ inputs 0
+ name StickyNote7
+ label "             Plug CG in to restrict edge extend             \nonly till that area          "
+ note_font_size 20
+ selected true
+ xpos 755
+ ypos 1601
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push 0
+Grade {
+ channels alpha
+ whitepoint 0.1
+ white_clamp true
+ name Grade2
+ selected true
+ xpos 584
+ ypos 1551
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+FilterErode {
+ channels alpha
+ size -12
+ name FilterErode3
+ selected true
+ xpos 584
+ ypos 1609
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Blur {
+ channels alpha
+ size 10
+ name Blur1
+ selected true
+ xpos 584
+ ypos 1680
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $Ned9e1180
+Dot {
+ name Dot19
+ selected true
+ xpos 2908
+ ypos 817
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set Ned9e0e00 [stack 0]
+Dot {
+ name Dot20
+ selected true
+ xpos 2908
+ ypos 1180
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Blur {
+ channels alpha
+ size 2
+ name Blur4
+ selected true
+ xpos 2001
+ ypos 1170
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $Ned9e0380
+Dot {
+ name Dot21
+ selected true
+ xpos 1840
+ ypos 665
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set Ned9e0000 [stack 0]
+Dot {
+ name Dot22
+ selected true
+ xpos 1665
+ ypos 665
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot23
+ selected true
+ xpos 1665
+ ypos 1007
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $Ned9e0e00
+FilterErode {
+ channels alpha
+ size 0
+ name FilterErode4
+ selected true
+ xpos 2073
+ ypos 807
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $Ned9e0000
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy4
+ selected true
+ xpos 1806
+ ypos 807
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Group {
+ name edgeExtend1
+ knobChanged "\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n"
+ selected true
+ xpos 1806
+ ypos 898
+ addUserKnob {20 main}
+ addUserKnob {52 passKnobsChanged l "" +STARTLINE T "nuke.thisNode().knob('knobChanged').setValue('''\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n''')" +STARTLINE}
+ addUserKnob {7 initBlackpoint l blackpoint R 0 0.9999}
+ initBlackpoint 0.5
+ addUserKnob {7 initGammaOne l gamma R 0.02 1}
+ initGammaOne 1
+ addUserKnob {14 initErode l erode R 0 100}
+ addUserKnob {7 initGammaTwo l gamma R 0.02 1}
+ initGammaTwo 1
+ addUserKnob {26 ""}
+ addUserKnob {14 firstPassBlur R 0 100}
+ firstPassBlur 3.8
+ addUserKnob {14 firstPassErode R 0 100}
+ firstPassErode 2
+ addUserKnob {6 secondPass +STARTLINE}
+ secondPass true
+ addUserKnob {6 secondPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ secondPassStat true
+ addUserKnob {14 secondPassBlur l blur R 0 100}
+ secondPassBlur 6.5
+ addUserKnob {14 secondPassErode l erode R 0 100}
+ secondPassErode 3
+ addUserKnob {6 thirdPass +STARTLINE}
+ addUserKnob {6 thirdPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 thirdPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 thirdPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fourthPass +STARTLINE}
+ addUserKnob {6 fourthPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 fourthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fourthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fifthPass +STARTLINE}
+ addUserKnob {6 fifthPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {14 fifthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fifthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {14 softenEdge R 0 100}
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -350
+  ypos 154
+ }
+set Ndceace00 [stack 0]
+push $Ndceace00
+ Clamp {
+  channels alpha
+  name initClamp
+  xpos -350
+  ypos 199
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.initBlackpoint}}
+  gamma {{parent.initGammaOne}}
+  white_clamp true
+  name initBlackAndGamma
+  xpos -350
+  ypos 237
+ }
+set Ndceac700 [stack 0]
+ FilterErode {
+  size {{parent.initErode} {parent.initErode}}
+  filter gaussian
+  name initErode
+  xpos -227
+  ypos 237
+ }
+ Grade {
+  channels alpha
+  gamma {{parent.initGammaTwo}}
+  name initGammaErode
+  xpos -227
+  ypos 275
+ }
+push $Ndceac700
+ Merge2 {
+  inputs 2
+  operation min
+  name initMin
+  xpos -350
+  ypos 281
+ }
+ Grade {
+  add 0.1
+  name initColorOffset
+  xpos -350
+  ypos 307
+ }
+set Ndd317880 [stack 0]
+push $Ndd317880
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero1
+  xpos -350
+  ypos 364
+  disable true
+ }
+set Ndd317500 [stack 0]
+ Premult {
+  name edPremult1
+  xpos -475
+  ypos 364
+ }
+ Blur {
+  size {{parent.firstPassBlur} {parent.firstPassBlur}}
+  name edBlur1
+  xpos -475
+  ypos 413
+ }
+ Unpremult {
+  name edUnpremult1
+  xpos -475
+  ypos 459
+ }
+push $Ndd317500
+ FilterErode {
+  size {{parent.firstPassErode} {parent.firstPassErode}}
+  filter gaussian
+  name edErode1
+  xpos -240
+  ypos 401
+ }
+push $Ndd317500
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin1
+  xpos -350
+  ypos 407
+ }
+ Premult {
+  name edPremultEroded1
+  xpos -350
+  ypos 433
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder1
+  xpos -350
+  ypos 472
+ }
+set N8364b880 [stack 0]
+ Dot {
+  name secondPassDot
+  label secondPassDot
+  xpos -316
+  ypos 498
+ }
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero2
+  xpos -350
+  ypos 516
+ }
+set N8364b180 [stack 0]
+ Premult {
+  name edPremult2
+  xpos -475
+  ypos 516
+ }
+ Blur {
+  size {{parent.secondPassBlur} {parent.secondPassBlur}}
+  name edBlur2
+  xpos -475
+  ypos 565
+ }
+ Unpremult {
+  name edUnpremult2
+  xpos -475
+  ypos 611
+ }
+push $N8364b180
+ FilterErode {
+  size {{parent.secondPassErode} {parent.secondPassErode}}
+  filter gaussian
+  name edErode2
+  xpos -240
+  ypos 553
+ }
+push $N8364b180
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin2
+  xpos -350
+  ypos 559
+ }
+ Premult {
+  name edPremultEroded2
+  xpos -350
+  ypos 585
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder2
+  xpos -350
+  ypos 624
+ }
+ Dot {
+  name thirdPassDot
+  label thirdPassDot
+  xpos -316
+  ypos 696
+ }
+ Dot {
+  name fourthPassDot
+  label fourthPassDot
+  xpos -316
+  ypos 911
+ }
+ Dot {
+  name fifthPassDot
+  label fifthPassDot
+  xpos -316
+  ypos 1148
+ }
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero6
+  xpos -350
+  ypos 1295
+ }
+set Ndc96c700 [stack 0]
+ Blur {
+  channels alpha
+  size {{parent.softenEdge}}
+  name edSoftenEdge1
+  xpos -612
+  ypos 1289
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.95
+  gamma 0.98
+  white_clamp true
+  name Grade1
+  xpos -612
+  ypos 1353
+ }
+ FilterErode {
+  size {{-parent.edSoftenEdge1.size/4}}
+  filter gaussian
+  name FilterErode1
+  xpos -612
+  ypos 1411
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge2
+  xpos -480
+  ypos 1404
+ }
+push $Ndc96c700
+ ChannelMerge {
+  inputs 2
+  operation min
+  bbox B
+  name ChannelMerge1
+  xpos -350
+  ypos 1404
+  disable {{"edSoftenEdge1.size < 0.001"}}
+ }
+ Grade {
+  add -0.1
+  name endInvInitialGrade
+  xpos -350
+  ypos 1468
+ }
+ Premult {
+  name Premult1
+  xpos -350
+  ypos 1503
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos -350
+  ypos 1545
+ }
+ Output {
+  name Output1
+  xpos -350
+  ypos 1594
+ }
+ StickyNote {
+  inputs 0
+  name fifthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 1145
+ }
+ StickyNote {
+  inputs 0
+  name fourthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 908
+ }
+ StickyNote {
+  inputs 0
+  name thirdPassNote
+  note_font_size 22
+  xpos 14
+  ypos 693
+ }
+ StickyNote {
+  inputs 0
+  name secondPassNote
+  label " edMergeUnder2 edPremultEroded2 edMergeMin2 edErode2 edUnpremult2 edBlur2 edPremult2 edRedIsZero2"
+  note_font_size 22
+  xpos 14
+  ypos 495
+ }
+push $N8364b880
+ Viewer {
+  frame_range 1-1223
+  name Viewer1
+  xpos -350
+  ypos 333
+ }
+end_group
+Merge2 {
+ inputs 2
+ operation min
+ name Merge5
+ selected true
+ xpos 1806
+ ypos 1003
+ disable true
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy5
+ selected true
+ xpos 1806
+ ypos 1170
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Premult {
+ name Premult1
+ selected true
+ xpos 1806
+ ypos 1277
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot24
+ selected true
+ xpos 1840
+ ypos 1690
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push 0
+Merge2 {
+ inputs 2+1
+ bbox B
+ name Merge6
+ selected true
+ xpos 1224
+ ypos 1686
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}

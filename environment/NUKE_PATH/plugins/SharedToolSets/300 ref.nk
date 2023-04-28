@@ -1,0 +1,12 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Read {
+inputs 0
+file Y:/kensukes_kingdom/episodes/film/q0300/q0300_c0250/publish/render/renderCompositingMain/v005/kensukes_kingdom_q0300_c0250_renderCompositingMain_v005.0001.exr
+format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+origset true
+name Read2
+selected true
+xpos 2633
+ypos 20972
+}

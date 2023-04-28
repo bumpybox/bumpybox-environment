@@ -1,0 +1,87 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Expression {
+ inputs 0
+ expr0 x/width
+ expr1 y/height
+ name Expression1
+ selected true
+ xpos -2570
+ ypos -106
+}
+push $cut_paste_input
+Noise {
+ size 30
+ zoffset {{curve x1 0 x100 6.014999513}}
+ center {640 360}
+ name Noise1
+ selected true
+ xpos -2790
+ ypos -250
+}
+Dot {
+ name Dot5
+ selected true
+ xpos -2756
+ ypos -102
+}
+set N70687180 [stack 0]
+Blur {
+ size 1000
+ name Blur2
+ selected true
+ xpos -2680
+ ypos -112
+}
+Multiply {
+ value 2
+ name DoubleIt
+ selected true
+ xpos -2680
+ ypos -16
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ bbox A
+ name Merge4
+ selected true
+ xpos -2570
+ ypos -10
+}
+push $N70687180
+Dot {
+ name Dot6
+ selected true
+ xpos -2756
+ ypos 42
+}
+Merge2 {
+ inputs 2
+ operation from
+ bbox A
+ name Merge6
+ selected true
+ xpos -2570
+ ypos 38
+}
+push 0
+Copy {
+ inputs 2
+ from0 rgba.red
+ to0 forward.u
+ from1 rgba.green
+ to1 forward.v
+ name Copy2
+ selected true
+ xpos -2350
+ ypos 25
+}
+IDistort {
+ uv forward
+ uv_scale 100
+ name IDistort2
+ selected true
+ xpos -2350
+ ypos 176
+}

@@ -1,0 +1,279 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+push $cut_paste_input
+Group {
+ name edgeExtend
+ knobChanged "\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n"
+ selected true
+ xpos -995
+ ypos 567
+ addUserKnob {20 main}
+ addUserKnob {52 passKnobsChanged l "" +STARTLINE T "nuke.thisNode().knob('knobChanged').setValue('''\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n''')" +STARTLINE}
+ addUserKnob {7 initBlackpoint l blackpoint R 0 0.9999}
+ initBlackpoint 0.5
+ addUserKnob {7 initGammaOne l gamma R 0.02 1}
+ initGammaOne 1
+ addUserKnob {14 initErode l erode R 0 100}
+ addUserKnob {7 initGammaTwo l gamma R 0.02 1}
+ initGammaTwo 1
+ addUserKnob {26 ""}
+ addUserKnob {14 firstPassBlur R 0 100}
+ addUserKnob {14 firstPassErode R 0 100}
+ addUserKnob {6 secondPass +STARTLINE}
+ addUserKnob {6 secondPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {14 secondPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 secondPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 thirdPass +STARTLINE}
+ addUserKnob {6 thirdPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 thirdPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 thirdPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fourthPass +STARTLINE}
+ addUserKnob {6 fourthPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 fourthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fourthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fifthPass +STARTLINE}
+ addUserKnob {6 fifthPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {14 fifthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fifthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {14 softenEdge R 0 100}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -350
+  ypos 154
+ }
+set N32566000 [stack 0]
+push $N32566000
+ Clamp {
+  channels alpha
+  name initClamp
+  xpos -350
+  ypos 199
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.initBlackpoint}}
+  gamma {{parent.initGammaOne}}
+  white_clamp true
+  name initBlackAndGamma
+  xpos -350
+  ypos 237
+ }
+set N325db800 [stack 0]
+ FilterErode {
+  size {{parent.initErode} {parent.initErode}}
+  filter gaussian
+  name initErode
+  xpos -227
+  ypos 237
+ }
+ Grade {
+  channels alpha
+  gamma {{parent.initGammaTwo}}
+  name initGammaErode
+  xpos -227
+  ypos 275
+ }
+push $N325db800
+ Merge2 {
+  inputs 2
+  operation min
+  name initMin
+  xpos -350
+  ypos 281
+ }
+ Grade {
+  add 0.1
+  name initColorOffset
+  xpos -350
+  ypos 307
+ }
+set N325da800 [stack 0]
+push $N325da800
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero1
+  xpos -350
+  ypos 364
+  disable true
+ }
+set N325da400 [stack 0]
+ Premult {
+  name edPremult1
+  xpos -475
+  ypos 364
+ }
+ Blur {
+  size {{parent.firstPassBlur} {parent.firstPassBlur}}
+  name edBlur1
+  xpos -475
+  ypos 413
+ }
+ Unpremult {
+  name edUnpremult1
+  xpos -475
+  ypos 459
+ }
+push $N325da400
+ FilterErode {
+  size {{parent.firstPassErode} {parent.firstPassErode}}
+  filter gaussian
+  name edErode1
+  xpos -240
+  ypos 401
+ }
+push $N325da400
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin1
+  xpos -350
+  ypos 407
+ }
+ Premult {
+  name edPremultEroded1
+  xpos -350
+  ypos 433
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder1
+  xpos -350
+  ypos 472
+ }
+set N3afc6400 [stack 0]
+ Dot {
+  name secondPassDot
+  label secondPassDot
+  xpos -316
+  ypos 498
+ }
+ Dot {
+  name thirdPassDot
+  label thirdPassDot
+  xpos -316
+  ypos 696
+ }
+ Dot {
+  name fourthPassDot
+  label fourthPassDot
+  xpos -316
+  ypos 911
+ }
+ Dot {
+  name fifthPassDot
+  label fifthPassDot
+  xpos -316
+  ypos 1148
+ }
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero6
+  xpos -350
+  ypos 1295
+ }
+set N3affd000 [stack 0]
+ Blur {
+  channels alpha
+  size {{parent.softenEdge}}
+  name edSoftenEdge1
+  xpos -612
+  ypos 1289
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.95
+  gamma 0.98
+  white_clamp true
+  name Grade1
+  xpos -612
+  ypos 1353
+ }
+ FilterErode {
+  size {{-parent.edSoftenEdge1.size/4}}
+  filter gaussian
+  name FilterErode1
+  xpos -612
+  ypos 1411
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge2
+  xpos -480
+  ypos 1404
+ }
+push $N3affd000
+ ChannelMerge {
+  inputs 2
+  operation min
+  bbox B
+  name ChannelMerge1
+  xpos -350
+  ypos 1404
+  disable {{"edSoftenEdge1.size < 0.001"}}
+ }
+ Grade {
+  add -0.1
+  name endInvInitialGrade
+  xpos -350
+  ypos 1468
+ }
+ Premult {
+  name Premult1
+  xpos -350
+  ypos 1503
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos -350
+  ypos 1545
+ }
+ Output {
+  name Output1
+  xpos -350
+  ypos 1594
+ }
+ StickyNote {
+  inputs 0
+  name fifthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 1145
+ }
+ StickyNote {
+  inputs 0
+  name fourthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 908
+ }
+ StickyNote {
+  inputs 0
+  name thirdPassNote
+  note_font_size 22
+  xpos 14
+  ypos 693
+ }
+ StickyNote {
+  inputs 0
+  name secondPassNote
+  note_font_size 22
+  xpos 14
+  ypos 495
+ }
+push $N3afc6400
+ Viewer {
+  frame_range 1-1223
+  name Viewer1
+  xpos -350
+  ypos 333
+ }
+end_group

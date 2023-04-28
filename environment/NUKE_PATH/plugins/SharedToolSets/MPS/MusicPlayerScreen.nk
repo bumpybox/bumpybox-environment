@@ -1,0 +1,177 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Dot {
+ name Dot1
+ selected true
+ xpos 104
+ ypos 90
+}
+Read {
+ inputs 0
+ file Y:/my_petsaurus/episodes/s04e06_scratching_post/work/mouse-cursor-hand-pointer.png
+ format "763 573 0 0 763 573 1 "
+ origset true
+ version 1
+ name Read3
+ selected true
+ xpos -590
+ ypos -1048
+}
+Shuffle {
+ green red
+ blue red
+ alpha red
+ name Shuffle1
+ selected true
+ xpos -590
+ ypos -922
+}
+FilterErode {
+ channels rgba
+ size 1.2
+ name FilterErode1
+ selected true
+ xpos -590
+ ypos -832
+}
+Grade {
+ blackpoint {0.0116122365 0.0116122365 0.0116122365 0.0116122365}
+ name Grade2
+ selected true
+ xpos -590
+ ypos -736
+}
+Grade {
+ channels alpha
+ whitepoint {0 0 0 0.0116122365}
+ name Grade3
+ selected true
+ xpos -590
+ ypos -694
+}
+set N3279c380 [stack 0]
+push $N3279c380
+Transform {
+ translate {359.5 6}
+ scale 1.174999952
+ center {164 278}
+ filter Impulse
+ name Transform2
+ selected true
+ xpos -810
+ ypos -688
+}
+Switch {
+ inputs 2
+ which {{curve x90 0 1}}
+ name Switch1
+ selected true
+ xpos -590
+ ypos -544
+}
+Crop {
+ box {369.2000122 66.40000153 699.5999756 494.3999939}
+ name Crop2
+ selected true
+ xpos -590
+ ypos -442
+}
+Transform {
+ scale 0.09
+ center {381.5 286.5}
+ filter Impulse
+ name Transform3
+ selected true
+ xpos -590
+ ypos -394
+}
+Reformat {
+ format "2953 2126 0 0 2953 2126 1 "
+ filter Impulse
+ name Reformat2
+ selected true
+ xpos -590
+ ypos -304
+}
+Transform {
+ translate {{curve x50 -1330 x55 -460 x65 -460 x71 230 x80 230 x85 -210 x88 -332 x92 -4} {curve x50 102 x55 -308 x65 -308 x71 -782 x80 -782 x85 -914 x88 -758 x92 -506}}
+ center {1476.5 1063}
+ filter Impulse
+ shutter 0.14
+ shutteroffset centred
+ name Transform1
+ selected true
+ xpos -590
+ ypos -250
+}
+Read {
+ inputs 0
+ file Y:/my_petsaurus/episodes/s04e06_scratching_post/work/audioPlayer.psd
+ localizationPolicy on
+ format "2953 2126 0 0 2953 2126 1 "
+ origset true
+ name Read1
+ selected true
+ xpos -150
+ ypos -424
+}
+Merge2 {
+ inputs 2
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge4
+ selected true
+ xpos -150
+ ypos -250
+}
+Reformat {
+ resize distort
+ name Reformat1
+ selected true
+ xpos -150
+ ypos -154
+}
+CornerPin2D {
+ to1 {1235.800049 540.7000122}
+ to2 {1449.599976 247.1999969}
+ to3 {1729.400024 617.2000122}
+ to4 {1454.300049 852.5999756}
+ invert false
+ from1 {0 0}
+ from2 {1920 0}
+ from3 {1920 1080}
+ from4 {0 1080}
+ name CornerPin2D2
+ selected true
+ xpos -150
+ ypos -58
+}
+Unpremult {
+ name Unpremult1
+ selected true
+ xpos -150
+ ypos -10
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ mix 0.745
+ name Merge2
+ selected true
+ xpos -150
+ ypos 86
+}
+Premult {
+ name Premult1
+ selected true
+ xpos -150
+ ypos 182
+}
+push 0
+Merge2 {
+ inputs 2
+ name Merge1
+ selected true
+ xpos 180
+ ypos 182
+}

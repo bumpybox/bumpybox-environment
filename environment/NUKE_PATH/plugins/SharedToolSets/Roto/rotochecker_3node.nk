@@ -1,0 +1,977 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="1912" y="-8" w="1920" h="1017" maximized="1" screen="1">
+        <splitter orientation="1">
+            <split size="135"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1315" stretch="1"/>
+            <splitter orientation="2">
+                <split size="730"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                </dock>
+                <split size="239"/>
+                <dock id="" activePageId="DopeSheet.1">
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="462"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="0" y="0" w="1920" h="1080" maximized="1" fullscreen="1" screen="0">
+        <splitter orientation="2">
+            <split size="1080"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "Y:/my_petsaurus/work/comp/Nuke Tools/project_tools/roto_group.nk"
+ frame 178
+ first_frame 178
+ last_frame 342
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 my_petsaurus"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {26 ak:handle_end l handle_end T 0}
+ addUserKnob {26 ak:handle_start l handle_start T 0}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x388e8e00
+ label Footage
+ note_font_size 42
+ xpos -691
+ ypos -354
+ bdwidth 245
+ bdheight 135
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e388e00
+ label Roto
+ note_font_size 42
+ xpos -943
+ ypos -126
+ bdwidth 193
+ bdheight 125
+}
+Dot {
+ inputs 0
+ name Dot1
+ xpos -567
+ ypos -128
+}
+Dot {
+ name Dot2
+ xpos -567
+ ypos 60
+}
+set N4bc1b180 [stack 0]
+Dot {
+ name Dot4
+ xpos -413
+ ypos 60
+}
+set N4bc1ae00 [stack 0]
+Dot {
+ name Dot6
+ xpos -256
+ ypos 60
+}
+Dot {
+ inputs 0
+ name Dot8
+ xpos -843
+ ypos 74
+}
+Dot {
+ name Dot3
+ xpos -843
+ ypos 160
+}
+set N4bc1b880 [stack 0]
+Dot {
+ name Dot5
+ xpos -843
+ ypos 254
+}
+set N4bc1b500 [stack 0]
+Dot {
+ name Dot7
+ xpos -843
+ ypos 362
+}
+Group {
+ inputs 2
+ name Roto_checkup2
+ tile_color 0x7f01ff
+ label OVERLAY
+ xpos -290
+ ypos 352
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ display Overlay
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 0.2
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 0.2
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 0.2
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set N4bc32000 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set N4bc33c00 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set N4bc33880 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set N4bc33180 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $N4bc32000
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $N4bc33c00
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set N4bc5c700 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $N4bc33880
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set N4bc5dc00 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set N4bc89880 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set N4bc88a80 [stack 0]
+push $N4bc33180
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $N4bc89880
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set N4bc88380 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set N4bc88000 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $N4bc88380
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $N4bc5c700
+push $N4bc88a80
+push $N4bc88000
+push $N4bc5dc00
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+push $N4bc1ae00
+push $N4bc1b500
+Group {
+ inputs 2
+ name Roto_checkup1
+ tile_color 0x7f01ff
+ label "ON GREY"
+ xpos -447
+ ypos 244
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ display "On grey"
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 1
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 1
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 1
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set N4bcba000 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set N5972bc00 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set N5972b880 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set N5972b180 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $N4bcba000
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $N5972bc00
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set N5972a000 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $N5972b880
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set N59757500 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set N59756a80 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set N5977fc00 [stack 0]
+push $N5972b180
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $N59756a80
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set N5977f500 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set N5977f180 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $N5977f500
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $N5972a000
+push $N5977fc00
+push $N5977f180
+push $N59757500
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+push $N4bc1b180
+push $N4bc1b880
+Group {
+ inputs 2
+ name Roto_checkup
+ tile_color 0x7f01ff
+ label FOOTAGE
+ xpos -601
+ ypos 150
+ addUserKnob {20 main_Menu l "Main Menu"}
+ addUserKnob {4 display l Display t "Footage - display to roto over\nOn grey - to see roto on grey background\nOverlay - to see roto with RGB overlay on top" M {Footage "On grey" Overlay Alpha "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {41 grey_resolution l "Grey resolution" t "Make sure your constant resolution is the same as project settings" T Constant1.format}
+ addUserKnob {7 grey_mix l "Grey mix" t "To control lightness and darkness of the grey background"}
+ grey_mix 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 red_mix l "R mix" t "Red channel opacity"}
+ red_mix 1
+ addUserKnob {7 green_mix l "G mix" t "Green channel opacity"}
+ green_mix 1
+ addUserKnob {7 blue_mix l "B mix" t "Blue channel opacity"}
+ blue_mix 1
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x388e8e00
+  label "Roto Nodes"
+  note_font_size 42
+  xpos -820
+  ypos -39
+  bdwidth 662
+  bdheight 754
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x4168b4ff
+  label Footage
+  note_font_size 42
+  xpos 428
+  ypos -569
+  bdwidth 380
+  bdheight 328
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x60a8c1ff
+  label "See on Grey"
+  note_font_size 42
+  xpos 555
+  ypos 36
+  bdwidth 353
+  bdheight 254
+ }
+ Input {
+  inputs 0
+  name Roto_Blue
+  xpos -784
+  ypos 122
+  number 3
+ }
+set N597c3180 [stack 0]
+push 0
+ Input {
+  inputs 0
+  name Roto_Green
+  xpos -634
+  ypos 76
+  number 2
+ }
+set N597c2e00 [stack 0]
+ Input {
+  inputs 0
+  name Roto_Red
+  xpos -515
+  ypos 55
+ }
+set N597c2a80 [stack 0]
+ Merge2 {
+  inputs 3+1
+  name Merge1
+  xpos -317
+  ypos 143
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name alpha
+  xpos -317
+  ypos 182
+ }
+set N597c2380 [stack 0]
+ Dot {
+  name Dot5
+  xpos 270
+  ypos 185
+ }
+ Dot {
+  name Dot6
+  xpos 270
+  ypos 390
+ }
+push $N597c3180
+ Shuffle {
+  blue alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Blue_overlay
+  xpos -784
+  ypos 322
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{blue_mix}}
+  name blue_dissolve
+  xpos -784
+  ypos 603
+ }
+push $N597c2e00
+ Shuffle {
+  green alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Green_overlay
+  xpos -634
+  ypos 281
+ }
+set N597e5180 [stack 0]
+push 0
+ Dissolve {
+  inputs 2
+  which {{green_mix}}
+  name green_dissolve
+  xpos -634
+  ypos 493
+ }
+push $N597c2a80
+ Shuffle {
+  red alpha
+  black red
+  white green
+  red2 alpha
+  green2 alpha
+  name Red_overlay
+  xpos -515
+  ypos 185
+ }
+push 0
+ Dissolve {
+  inputs 2
+  which {{red_mix x1 0.03}}
+  name red_dissolve
+  xpos -515
+  ypos 411
+ }
+set N597e4700 [stack 0]
+ Input {
+  inputs 0
+  name Footage
+  xpos 565
+  ypos -373
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos 599
+  ypos -333
+ }
+ Dot {
+  name Dot2
+  xpos 599
+  ypos -180
+ }
+set N59813c00 [stack 0]
+ Dot {
+  name Dot22
+  xpos 51
+  ypos -180
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos 6
+  ypos 417
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  xpos 6
+  ypos 499
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos 6
+  ypos 609
+ }
+set N59812e00 [stack 0]
+push $N597c2380
+ Dot {
+  name Dot1
+  xpos -283
+  ypos 220
+ }
+push $N59813c00
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 565
+  ypos 211
+ }
+set N59812700 [stack 0]
+ Premult {
+  name Premult4
+  xpos 565
+  ypos 260
+ }
+set N59812380 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  color {{grey_mix}}
+  format {{{parent.parent.format}}}
+  name Constant1
+  xpos 818
+  ypos 109
+ }
+ Merge2 {
+  inputs 2
+  name Merge25
+  xpos 818
+  ypos 260
+ }
+push $N59812700
+ Dot {
+  name Dot4
+  xpos 736
+  ypos 220
+ }
+ Switch {
+  inputs 4
+  which {{display x1 3}}
+  name Switch1
+  xpos 818
+  ypos 609
+ }
+ Output {
+  name Output2
+  xpos 818
+  ypos 786
+ }
+push $N597e5180
+push $N59812e00
+push $N59812380
+push $N597e4700
+ Viewer {
+  inputs 4
+  input_process false
+  name Viewer1
+  xpos 785
+  ypos 998
+ }
+end_group
+Viewer {
+ inputs 3
+ frame_range 178-342
+ frame_range_lock true
+ fps 25
+ name Viewer1
+ xpos -601
+ ypos 710
+}
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "                             1) Plug Viewer 1 into Footage to see footage while drawing shape over.                               \n2) Plug Viewer 2 into On Grey to see Roto on Grey     \n                3) Plug Viewer 3 into Overlay to see with overlay on top, good for Motion Blur Check                   "
+ note_font_size 25
+ xpos 4
+ ypos 165
+}
+StickyNote {
+ inputs 0
+ name StickyNote1
+ label "   Roto Check Script   "
+ note_font_size 40
+ xpos 285
+ ypos 69
+}

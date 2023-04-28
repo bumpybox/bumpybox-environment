@@ -1,0 +1,1445 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1017" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1194" stretch="1"/>
+            <splitter orientation="2">
+                <split size="973"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="678"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="W_scaleTree.widget"/>
+                <page id="com.adrianpueyo.KnobScripterPane"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="-1920" y="0" w="1920" h="1080" fullscreen="1" screen="1">
+        <splitter orientation="2">
+            <split size="1080"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "Y:/my_petsaurus/work/comp/Nuke Tools/project_tools/mps_green_screen_cg_v001.nk"
+ frame 2689
+ first_frame 2689
+ last_frame 2711
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 my_petsaurus"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {26 ak:handle_end l handle_end T 0}
+ addUserKnob {26 ak:handle_start l handle_start T 0}
+ addUserKnob {20 begin l "Avalon data group" n -1}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode7
+ tile_color 0x388e8e00
+ label beauty
+ note_font_size 42
+ xpos 4380
+ ypos 5544
+ bdwidth 260
+ bdheight 568
+ z_order -1
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x8e388e00
+ label "move up"
+ note_font_size 42
+ xpos 4390
+ ypos 5824
+ bdwidth 240
+ bdheight 159
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e388e00
+ label "feet contact shadow"
+ note_font_size 42
+ xpos 4350
+ ypos 4598
+ bdwidth 540
+ bdheight 500
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x7171c600
+ label shadow
+ note_font_size 42
+ xpos 4239
+ ypos 3212
+ bdwidth 762
+ bdheight 1064
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode6
+ tile_color 0x4a7c6eff
+ label reflection
+ note_font_size 42
+ xpos 4194
+ ypos 2050
+ bdwidth 1209
+ bdheight 1025
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode4
+ tile_color 0x71c67cff
+ label "increase shadow"
+ note_font_size 42
+ xpos 4243
+ ypos 3849
+ bdwidth 535
+ bdheight 270
+ z_order 1
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode5
+ tile_color 0x8e388e00
+ label "chloe shadow cleanup"
+ note_font_size 42
+ xpos 4246
+ ypos 3435
+ bdwidth 528
+ bdheight 234
+ z_order 1
+}
+Reformat {
+ inputs 0
+ name Reformat6
+ xpos 4470
+ ypos 5750
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Transform {
+ translate {0 110}
+ center {960 540}
+ name Transform5
+ xpos 4470
+ ypos 5942
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set C77646700 [stack 0]
+Dot {
+ name Dot5
+ xpos 4504
+ ypos 6090
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ inputs 0
+ name Dot1
+ xpos 3294
+ ypos 5322
+}
+Roto {
+ inputs 0
+ output alpha
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x44700000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup OpenSpline4 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px x45281000
+        {{{0 -}}
+	 {{0 -}}}
+        {{a osw
+	  {{x45281000 1 -}}	 osf
+	  {{x45281000 x40a00000 -}}}
+	 {{x446f57ea 0 1 x3c310303 1}}
+	 {{x42a08c17 0 1 x3b9d599a 1}}}
+        {{{xc084b900 -}}
+	 {{x40da1800 -}}}
+        {{{x3ff76200 -}}
+	 {{xc0917880 -}}}
+        {{a osw
+	  {{x45281000 1 -}}	 osf
+	  {{x45281000 x40a00000 -}}}
+	 {{x446b76f5 0 1 x3c310303 1}}
+	 {{x42e4b350 0 1 x3b9d599a 1}}}
+        {{{0 -}}
+	 {{0 -}}}}}
+      {cc
+       {f 1056800}
+       {px x45281000
+        {0 0}
+        {{a osw
+	  {{x45281000 1}}	 osf
+	  {{x45281000 x40a00000}}}	0 0}
+        {xc084b900 x40da1800}
+        {x3ff76200 xc0917880}
+        {{a osw
+	  {{x45281000 1}}	 osf
+	  {{x45281000 x40a00000}}}	0 0}
+        {0 0}}}}
+     {tx x4532b000 x445b0f76 x42c712c0}
+     {a osbe 0 osee 0 osw x40000000 osf 0 str 1 ltn x4532b000 ltm x4532b000 tt x41200000 opc x3f23d70a}}
+    {curvegroup OpenSpline3 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px x45281000
+        {{{0 -}}
+	 {{0 -}}}
+        {{a osw
+	  {{x45281000 1 -}}	 osf
+	  {{x45281000 x40a00000 -}}}
+	 {{x44597326 0 1 x3d9d5969 1}}
+	 {{x42e4c854 0 1 xbb1d5a5a 1}}}
+        {{{xc04b5b00 -}}
+	 {{xc0ea2fa0 -}}}
+        {{{x40266700 -}}
+	 {{x40866670 -}}}
+        {{a osw
+	  {{x45281000 1 -}}	 osf
+	  {{x45281000 x40a00000 -}}}
+	 {{x44554292 0 1 x3d9d5969 1}}
+	 {{x42a1fb87 0 1 xbb1d5a5a 1}}}
+        {{{0 -}}
+	 {{0 -}}}}}
+      {cc
+       {f 1056800}
+       {px x45281000
+        {0 0}
+        {{a osw
+	  {{x45281000 1}}	 osf
+	  {{x45281000 x40a00000}}}	0 0}
+        {xc04b5b00 xc0ea2fa0}
+        {x40266700 x40866670}
+        {{a osw
+	  {{x45281000 1}}	 osf
+	  {{x45281000 x40a00000}}}	0 0}
+        {0 0}}}}
+     {tx x4532b000 x445b0f76 x42c712c0}
+     {a osbe 0 osee 0 osw x40000000 osf 0 str 1 ltn x4532b000 ltm x4532b000 tt x41200000 opc x3f23d70a}}
+    {curvegroup OpenSpline2 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px x45281000
+        {{{0 -}}
+	 {{0 -}}}
+        {{a osw
+	  {{x45281000 x3f000001 -}}	 osf
+	  {{x45281000 x405ae460 -}}}
+	 {{x444aae51 0 1 x3d9ae424 1}}
+	 {{x42906e80 0 1 xbc9d5969 1}}}
+        {{{x3fbde800 -}}
+	 {{xc031c0d0 -}}}
+        {{{xc199d8a0 -}}
+	 {{x3f35d200 -}}}
+        {{a osw
+	  {{x45281000 1 -}}	 osf
+	  {{x45281000 x40a00000 -}}}
+	 {{x444fc268 0 1 x3d9ae424 1}}
+	 {{x427bbede 0 1 xbc9d5975 1}}}
+        {{{x41937160 -}}
+	 {{xbf2e45c0 -}}}
+        {{{xc0000000 -}}
+	 {{xc0266660 -}}}
+        {{a osw
+	  {{x45281000 x34d20000 -}}	 osf
+	  {{x45281000 x404a4607 -}}}
+	 {{x4455138d 0 1 x3d9ae424 1}}
+	 {{x4291ef0f 0 1 xbc9d5969 1}}}
+        {{{0 -}}
+	 {{0 -}}}}}
+      {cc
+       {f 1056800}
+       {px x45281000
+        {0 0}
+        {{a osw
+	  {{x45281000 x3f000001}}	 osf
+	  {{x45281000 x405ae460}}}	0 0}
+        {x3fbde800 xc031c0c0}
+        {xc199d8a0 x3f35d200}
+        {{a osw
+	  {{x45281000 1}}	 osf
+	  {{x45281000 x40a00000}}}	0 0}
+        {x41937160 xbf2e45c0}
+        {xc0000000 xc0266660}
+        {{a osw
+	  {{x45281000 x34d20000}}	 osf
+	  {{x45281000 x404a4607}}}	0 0}
+        {0 0}}}}
+     {tx x4532b000 x44756ddb x42847747}
+     {a osbe 0 osee 0 osw x40000000 osf 0 str 1 ltn x4532b000 ltm x4532b000 tt x41200000}}
+    {curvegroup OpenSpline1 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw x3f000001 osf x405ae460}	x447078b3 x428b16c6}
+        {x409a6200 xc0699560}
+        {xc1363dc0 xbed9d200}
+        {{a osw 1 osf x40a00000}	x44755652 x427abe6a}
+        {x41516300 x3efa4000}
+        {xc0000000 xc0266660}
+        {{a osw x34d20000 osf x404a4607}	x447a31e4 x4293790d}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw x3f000001 osf x405ae460}}
+        {x409a6200 xc0699560}
+        {xc1363dc0 xbed9d200}
+        {{a osw 1 osf x40a00000}}
+        {x41516300 x3efa4000}
+        {xc0000000 xc0266660}
+        {{a osw x34d20000 osf x404a4607}}
+        {}}}}
+     {tx x4532b000 x44756ddb x42847747}
+     {a osbe 0 osee 0 osw x40000000 osf 0 str 1 ltn x4532b000 ltm x4532b000 tt x41200000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createOpenSpline str 1 ssx 1 ssy 1 sf 1 tt 10 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_openspline_width 2
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {320 240}
+ colorOverlay {0 0 0 0}
+ opacity 0.6399999857
+ lifetime_type "all frames"
+ lifetime_start 2859
+ lifetime_end 2859
+ motionblur_shutter_offset_type centred
+ openspline_width 2
+ name Roto9
+ xpos 4470
+ ypos 4688
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Blur {
+ size 3
+ name Blur2
+ xpos 4470
+ ypos 4784
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Transform {
+ translate {0 100}
+ center {960 540}
+ name Transform3
+ xpos 4470
+ ypos 4838
+ disable true
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0 0 0 1}
+ color_panelDropped true
+ name Constant4
+ xpos 4360
+ ypos 4911
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy5
+ xpos 4470
+ ypos 4928
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+clone $C77646700 {
+ xpos 4470
+ ypos 5078
+ selected false
+}
+Roto {
+ inputs 0
+ output alpha
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44700000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Ellipse1 512 bezier
+     {{cc
+       {f 8192}
+       {px x45281000
+        {xc29784e8 0}
+        {x44570188 xc1673cf0}
+        {x429784f0 0}
+        {0 xc2587ee0}
+        {x44794cba x42a71860}
+        {0 x42587ee0}
+        {x429784f0 0}
+        {x44570188 x43358c2f}
+        {xc29784e8 0}
+        {0 x42587ee0}
+        {x4434b656 x42a71860}
+        {0 xc2587ee0}}}
+      {cc
+       {f 8192}
+       {px x45281000
+        {xc29784e8 0}
+        {xc14db6c0 xc27e491c}
+        {x429784f0 0}
+        {xbe9fa000 xc3028c32}
+        {x427f1e60 xbfd55400}
+        {x3eae6000 x42bbe918}
+        {x429784f0 0}
+        {xbf36e000 x428d6db2}
+        {xc29784e8 0}
+        {0 x42587ee0}
+        {xc29d5258 x40649200}
+        {0 xc2587ee0}}}}
+     {tx x45281000 x44554000 x42ae0000}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x40e00000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 tt 7 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {960 540}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ lifetime_start 2689
+ lifetime_end 2689
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto10
+ xpos 4250
+ ypos 3632
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+RotoPaint {
+ inputs 0
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44700000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {cubiccurve Brush5 512 catmullrom
+     {cc
+      {f 2080}
+      {px x45281000
+       {x44718ccd x42820000 x3ec6318c}
+       {x4470f333 x42820000 x3ef1b9e3}
+       {x44708ccd x42820000 x3ef339e6}
+       {x4470199a x42820000 x3ef739ee}
+       {x446f999a x42820000 x3f001f00}
+       {x446f199a x42820000 x3f08a111}
+       {x446eb333 x4281999a x3f15252a}
+       {x446e4000 x4281999a x3f1fa73f}
+       {x446df333 x4281999a x3f296953}
+       {x446db333 x4280cccd x3f2eab5d}
+       {x446d7333 x42806666 x3f2feb60}
+       {x446d3333 x42800000 x3f316b63}
+       {x446cf333 x427ccccd x3f33eb68}
+       {x446d6666 x427c0000 x3f396d73}
+       {x446dc000 x427c0000 x3f3a6d75}
+       {x446e4ccd x427c0000 x3f3b6d77}
+       {x446ee666 x427c0000 x3f3bad77}
+       {x446f8ccd x427c0000 x3f3bad77}
+       {x44704000 x427b3333 x3f3bed78}
+       {x44710000 x4279999a x3f3c6d79}
+       {x4471c000 x4278cccd x3f3d6d7b}
+       {x44726666 x42773333 x3f3def7c}
+       {x4472f333 x4274cccd x3f3def7c}
+       {x44734ccd x42740000 x3f3e2f7c}
+       {x4473999a x4271999a x3f3e6f7d}
+       {x4473cccd x426ccccd x3f487191}
+       {x44738ccd x426b3333 x3f5373a7}
+       {x44733333 x42680000 x3f5a35b4}
+       {x4472f333 x42673333 x3f5bb5b7}
+       {x4472999a x4265999a x3f5cf5ba}
+       {x44730ccd x42680000 x3f5cb5b9}
+       {x44734ccd x4269999a x3f5cb5b9}
+       {x4473b333 x426c0000 x3f5cb5b9}
+       {x44740000 x426ccccd x3f5cb5b9}
+       {x44744ccd x426f3333 x3f5cb5b9}
+       {x44748ccd x42700000 x3f5cb5b9}
+       {x4474cccd x4270cccd x3f5cb5b9}
+       {x4474e666 x426c0000 x3f5d35ba}
+       {x4474c000 x42680000 x3f5d35ba}
+       {x44756666 x4260cccd x3f5cb5b9}
+       {x4475cccd x42600000 x3f5cf5ba}
+       {x44764000 x42600000 x3f5cf5ba}
+       {x4476e666 x4260cccd x3f5d35ba}
+       {x44778ccd x4261999a x3f5d75bb}
+       {x44784000 x42640000 x3f5d75bb}
+       {x4478f333 x4265999a x3f5cf5ba}
+       {x44798ccd x42680000 x3f5cf5ba}
+       {x447a199a x426b3333 x3f5cf5ba}
+       {x447a8000 x426ccccd x3f5cf5ba}
+       {x447acccd x426f3333 x3f5cf5ba}
+       {x447b0ccd x42740000 x3f5db5bb}
+       {x447b199a x4279999a x3f5eb5bd}
+       {x447b0ccd x427f3333 x3f5f77bf}
+       {x447acccd x4281999a x3f62f7c6}
+       {x447a8ccd x4282cccd x3f6ab9d5}
+       {x447a4ccd x4282cccd x3f6cb9d9}
+       {x447a0ccd x42826666 x3f6bf9d8}
+       {x4479cccd x4280cccd x3f6bb9d7}
+       {x4479999a x427ccccd x3f6b39d6}
+       {x4479b333 x4278cccd x3f6a39d4}
+       {x4479f333 x42780000 x3f69b9d3}
+       {x447a4000 x42780000 x3f69b9d3}
+       {x447ab333 x42780000 x3f6a39d4}
+       {x447b3333 x4279999a x3f6a39d4}
+       {x447bc000 x427c0000 x3f6a39d4}
+       {x447c4000 x427f3333 x3f6a39d4}
+       {x447cc000 x42806666 x3f6a39d4}
+       {x447d3333 x42820000 x3f6a39d4}
+       {x447d7333 x4283999a x3f69b9d3}
+       {x447db333 x4284cccd x3f69b9d3}
+       {x447dc000 x4286cccd x3f6a39d4}
+       {x447dc000 x428a0000 x3f6a39d4}
+       {x447db333 x428c0000 x3f69f9d4}
+       {x447d7333 x428ecccd x3f68f9d2}
+       {x447d0ccd x4290cccd x3f68f9d2}
+       {x447ccccd x4291999a x3f69b9d3}
+       {x447c8ccd x42900000 x3f6b39d6}
+       {x447c6666 x428c6666 x3f6b79d7}
+       {x447c4000 x428a6666 x3f6b79d7}
+       {x447c199a x42880000 x3f6b79d7}
+       {x447c0000 x4285999a x3f6bb9d7}
+       {x447be666 x4283999a x3f6bb9d7}
+       {x447bcccd x4280cccd x3f6bb9d7}
+       {x447bcccd x427c0000 x3f6b79d7}
+       {x447c0000 x4278cccd x3f6ab9d5}
+       {x447c6666 x427d999a x3f70fbe2}
+       {x447c999a x42806666 x3f717be3}
+       {x447ccccd x4282cccd x3f71bbe3}
+       {x447d0000 x4284cccd x3f71fbe4}
+       {x447d4000 x42880000 x3f71fbe4}
+       {x447d6666 x428acccd x3f71fbe4}
+       {x447d8ccd x428e6666 x3f71fbe4}
+       {x447db333 x4291999a x3f6fbbdf}
+       {x447dcccd x42946666 x3f6bf9d8}
+       {x447df333 x4296cccd x3f69f9d4}
+       {x447e0000 x4298cccd x3f68b9d1}
+       {x447e0ccd x429acccd x3f68b9d1}
+       {x447e199a x429d999a x3f6979d3}
+       {x447e199a x429f999a x3f69f9d4}
+       {x447e199a x42a1999a x3f6b39d6}
+       {x447e0ccd x429f999a x3f68f9d2}
+       {x447e0000 x429d999a x3f68f9d2}
+       {x447df333 x429acccd x3f6979d3}
+       {x447de666 x42980000 x3f69f9d4}
+       {x447dc000 x42946666 x3f6a39d4}
+       {x447d8ccd x42906666 x3f6a79d5}
+       {x447d6666 x428c6666 x3f6af9d6}
+       {x447d0ccd x42880000 x3f6af9d6}
+       {x447ccccd x42840000 x3f6bf9d8}
+       {x447c999a x42806666 x3f6d39da}
+       {x447c6666 x4279999a x3f6eb9dd}
+       {x447c199a x42740000 x3f6f7bdf}
+       {x447be666 x426f3333 x3f703be0}
+       {x447b8ccd x4269999a x3f703be0}
+       {x447b4000 x4265999a x3f70fbe2}
+       {x447acccd x42633333 x3f717be3}
+       {x447a6666 x425f3333 x3f71fbe4}
+       {x4479c000 x425b3333 x3f71fbe4}
+       {x44790ccd x42580000 x3f727be5}
+       {x44784ccd x4254cccd x3f72bbe5}
+       {x44778000 x42533333 x3f72bbe5}
+       {x4476c000 x4250cccd x3f72bbe5}
+       {x44760ccd x42500000 x3f723be4}
+       {x44758ccd x424f3333 x3f6ef9de}
+       {x4475199a x424d999a x3f6ab9d5}
+       {x4474999a x424c0000 x3f5633ac}
+       {x44746666 x42480000 x3f2b2956}
+       {x44743333 x42433333 x3e90a121}}}
+     {tx x45281000 x44781d69 x427e2e60}
+     {a ro 0 go 0 bo 0 ao 0 bs x41eccccd bu 1 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x41880000}}
+    {cubiccurve Brush4 512 catmullrom
+     {cc
+      {f 2080}
+      {px x45281000
+       {x44558000 x42740000 x3eb3a967}
+       {x44554ccd x42780000 x3f26694d}
+       {x44550ccd x4278cccd x3f376d6f}
+       {x4454999a x4278cccd x3f3b2d76}
+       {x44544ccd x42773333 x3f3e6f7d}
+       {x44540000 x4274cccd x3f41af83}
+       {x4453b333 x42733333 x3f43af87}
+       {x4453599a x42700000 x3f44ef8a}
+       {x4453199a x426d999a x3f456f8b}
+       {x4452cccd x4269999a x3f456f8b}
+       {x44530ccd x42673333 x3f42af85}
+       {x44534ccd x42680000 x3f42ef86}
+       {x44538ccd x4269999a x3f432f86}
+       {x4453cccd x426c0000 x3f432f86}
+       {x44540ccd x426d999a x3f42af85}
+       {x4454599a x4270cccd x3f42af85}
+       {x4453d99a x42700000 x3f47b18f}
+       {x44538000 x426d999a x3f487191}
+       {x44530ccd x426c0000 x3f49b193}
+       {x44528ccd x4268cccd x3f4af196}
+       {x44520000 x42673333 x3f4d319a}
+       {x44514ccd x42640000 x3f5073a1}
+       {x4450b333 x4261999a x3f5373a7}
+       {x44500000 x42600000 x3f5473a9}
+       {x444f4ccd x425f3333 x3f54f3aa}
+       {x444eb333 x425d999a x3f5533aa}
+       {x444e3333 x425d999a x3f5533aa}
+       {x444dcccd x425d999a x3f54f3aa}
+       {x444d8ccd x42600000 x3f4ef39e}
+       {x444d4ccd x4261999a x3f3f6f7f}
+       {x444d3333 x42680000 x3eac2958}}}
+     {tx x45281000 x445227a4 x426a94a7}
+     {a ro 0 go 0 bo 0 ao 0 bs x41eccccd bu 1 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x41880000}}
+    {cubiccurve Brush3 512 catmullrom
+     {cc
+      {f 2080}
+      {px x45281000
+       {x4455d99a x42860000 x3f09e114}
+       {x4455b333 x42880000 x3f1d273a}
+       {x4455b333 x428a6666 x3f1e273c}
+       {x4455f333 x428a6666 x3f21a743}
+       {x4455f333 x42880000 x3f29a953}
+       {x4455d99a x42840000 x3f3a2d74}
+       {x4455b333 x4281999a x3f422f84}
+       {x44557333 x427d999a x3f48b191}
+       {x4455199a x4278cccd x3f51b3a3}
+       {x4454c000 x42733333 x3f5c35b8}
+       {x4454599a x426d999a x3f5ff7c0}
+       {x44540ccd x4268cccd x3f62f7c6}
+       {x4453cccd x4264cccd x3f6437c8}
+       {x4453999a x4260cccd x3f6537ca}
+       {x4453999a x425ccccd x3f6cf9da}
+       {x4453b333 x4258cccd x3f6ab9d5}
+       {x4453f333 x4259999a x3f5633ac}
+       {x44543333 x425d999a x3f47318e}
+       {x4454599a x4260cccd x3f36ad6d}
+       {x44548ccd x42640000 x3f17a52f}
+       {x4454cccd x42673333 x3ea5294a}}}
+     {tx x45281000 x4454cea2 x4273c57e}
+     {a ro 0 go 0 bo 0 ao 0 bs x41eccccd bu 1 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x41880000}}
+    {cubiccurve Brush2 512 catmullrom
+     {cc
+      {f 2080}
+      {px x45281000
+       {x444a0000 x4269999a x3ee739ce}
+       {x444a999a x42673333 x3f27694f}
+       {x444af333 x4265999a x3f352b6a}
+       {x444b4ccd x4264cccd x3f3e6f7d}
+       {x444bcccd x42640000 x3f47318e}
+       {x444c7333 x42633333 x3f4d319a}
+       {x444d4000 x42633333 x3f5073a1}
+       {x444e199a x42633333 x3f53b3a7}
+       {x444f0ccd x42633333 x3f5433a8}
+       {x44500000 x42633333 x3f5473a9}
+       {x4450d99a x42640000 x3f5473a9}
+       {x4451999a x4264cccd x3f5473a9}
+       {x44524000 x42673333 x3f5473a9}
+       {x4452b333 x42680000 x3f54b3a9}
+       {x44530000 x4268cccd x3f54b3a9}
+       {x44534000 x4269999a x3f54b3a9}
+       {x44530000 x426d999a x3f5373a7}
+       {x4452b333 x426d999a x3f5373a7}
+       {x44523333 x426f3333 x3f5433a8}
+       {x4451b333 x426f3333 x3f57b5af}
+       {x44510ccd x426f3333 x3f5b75b7}
+       {x44504ccd x426d999a x3f6177c3}
+       {x444f8000 x426ccccd x3f6739ce}
+       {x444ec000 x426c0000 x3f6939d2}
+       {x444e0ccd x4269999a x3f69b9d3}
+       {x444d8ccd x4268cccd x3f6a79d5}
+       {x444d4000 x42673333 x3f6a79d5}
+       {x444d999a x4261999a x3f60b7c1}
+       {x444e0000 x4260cccd x3f5f77bf}
+       {x444e8000 x42600000 x3f5f77bf}
+       {x444f199a x425f3333 x3f5eb5bd}
+       {x44507333 x425f3333 x3f5cf5ba}
+       {x4451199a x425f3333 x3f5cf5ba}
+       {x4451d99a x425f3333 x3f5cf5ba}
+       {x44528ccd x425f3333 x3f5cb5b9}
+       {x44534000 x42600000 x3f59f5b4}
+       {x4453cccd x4260cccd x3f4bf198}
+       {x44544ccd x42633333 x3f49b193}
+       {x4454c000 x4264cccd x3f41ef84}
+       {x4455199a x42673333 x3f336b67}
+       {x44557333 x4268cccd x3f286951}
+       {x4455b333 x426b3333 x3f1ce73a}
+       {x4455f333 x426ccccd x3f13e328}
+       {x44563333 x4270cccd x3f0f631f}
+       {x44564ccd x4274cccd x3f142328}
+       {x44564ccd x4278cccd x3f192532}
+       {x44563333 x427ccccd x3f19a533}
+       {x4455d99a x427f3333 x3f17a52f}
+       {x44558000 x42806666 x3f0ee31e}
+       {x44553333 x4280cccd x3eb4a969}}}
+     {tx x45281000 x44513438 x42693f7c}
+     {a ro 0 go 0 bo 0 ao 0 bs x41eccccd bu 1 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x41880000}}
+    {cubiccurve Brush1 512 catmullrom
+     {cc
+      {f 2080}
+      {px x45281000
+       {x44498ccd x4264cccd x3ef93df2}
+       {x4449d99a x42600000 x3f3a2d74}
+       {x444a4ccd x425ccccd x3f42ef86}
+       {x444a8ccd x425b3333 x3f446f89}
+       {x444ad99a x4259999a x3f44ef8a}
+       {x444b3333 x42580000 x3f456f8b}
+       {x444b999a x42573333 x3f45af8b}
+       {x444c199a x4254cccd x3f45af8b}
+       {x444c999a x42540000 x3f426f85}
+       {x444d3333 x42533333 x3f3c2d78}
+       {x444dc000 x4250cccd x3f2a6955}
+       {x444e4000 x4250cccd x3f0b6117}
+       {x444eb333 x42500000 x3e91a123}}}
+     {tx x45281000 x444be275 x4257a17b}
+     {a ro 0 go 0 bo 0 ao 0 bs x41eccccd bu 1 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x41880000}}}}}}
+ toolbox {brush {
+  { selectAll bs 29.6 str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush bs 29.6 str 1 ssx 1 ssy 1 sf 1 sb 1 ltn 2689 ltm 2689 tt 17 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_size 29.60000038
+ toolbar_brush_hardness 0.200000003
+ toolbar_lifetime_type single
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {960 540}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ lifetime_start 2689
+ lifetime_end 2689
+ brush_size 29.60000038
+ brush_spacing 0.05000000075
+ brush_hardness 0.200000003
+ source_black_outside true
+ name RotoPaint2
+ xpos 4250
+ ypos 3542
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Transform {
+ inputs 0
+ scale 2
+ center {960 540}
+ name Transform6
+ xpos 4470
+ ypos 3398
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Blur {
+ inputs 1+1
+ size 4
+ name Blur4
+ xpos 4470
+ ypos 3536
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Multiply {
+ inputs 1+1
+ value 1.6
+ name Multiply1
+ xpos 4470
+ ypos 3632
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Reformat {
+ name Reformat5
+ xpos 4470
+ ypos 3734
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+clone $C77646700 {
+ xpos 4470
+ ypos 3782
+ selected false
+}
+Transform {
+ translate {0 100}
+ center {960 540}
+ name Transform1
+ xpos 4470
+ ypos 3926
+ disable true
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set N17879c00 [stack 0]
+Invert {
+ name Invert2
+ xpos 4580
+ ypos 3920
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot6
+ xpos 4614
+ ypos 4026
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $N17879c00
+Defocus {
+ defocus 80
+ name Defocus1
+ xpos 4250
+ ypos 3920
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+ColorLookup {
+ lut {master {}
+   red {}
+   green {}
+   blue {}
+   alpha {curve C 0.6395522356 0.9788556695}}
+ maskChannelInput rgba.alpha
+ name ColorLookup1
+ xpos 4250
+ ypos 4016
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $N17879c00
+Merge2 {
+ inputs 2+1
+ name Merge5
+ xpos 4470
+ ypos 4022
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot4
+ xpos 4504
+ ypos 4122
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Roto {
+ inputs 0
+ output alpha
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44700000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px x45281000
+        {x41b80000 x41180000}
+        {x444aa000 x43540000}
+        {xc1b80000 xc1180000}
+        {xc2600000 x41a80000}
+        {x443f6000 x42e20000}
+        {x42600000 xc1a80000}
+        {xc19c0000 xc1c80000}
+        {x4482e000 x42c90000}
+        {x419c0000 x41c80000}
+        {x41cc0000 xc1080000}
+        {x44827000 x43584924}
+        {xc1cc0000 x41080000}}}     idem}
+     {tx x45281000 x44657800 x4320a000}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 ltn x45281000 ltm x45281000 tt x40800000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {960 540}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ lifetime_start 2689
+ lifetime_end 2689
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto11
+ xpos 5240
+ ypos 2816
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push 0
+Ramp {
+ inputs 1+1
+ p0 {750.2000122 137}
+ p1 {750.4000244 175.800003}
+ name Ramp1
+ xpos 5020
+ ypos 2822
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Invert {
+ name Invert1
+ xpos 5020
+ ypos 2960
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+GridWarp3 {
+ inputs 0
+ toolbar_visibility_src false
+ source_grid_col   {
+    1 5 4 4 1 0
+    {default }
+    {
+      { {2 863 158} { {2 0 12.4167}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 894.25 158} { {2 0 12.4167}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 925.5 158} { {2 0 12.4167}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 956.75 158} { {2 0 12.4167}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 988 158} { {2 0 12.4167}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 863 195.25} { {2 0 16.6543}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 894.25 195.25} { {2 0 16.6543}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 925.5 195.25} { {2 0 16.6543}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 956.75 195.25} { {2 0 16.6543}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 988 195.25} { {2 0 16.6543}  {2 0 -12.4167}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 863 253.737} { {2 0 20.3552}  {2 -0 -16.6543}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 894.25 253.737} { {2 0 20.3552}  {2 -0 -16.6543}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 925.5 253.737} { {2 0 20.3552}  {2 -0 -16.6543}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 956.75 253.737} { {2 0 20.3552}  {2 -0 -16.6543}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 988 253.737} { {2 0 20.3552}  {2 -0 -16.6543}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 863 307} { {2 0 12.4167}  {2 0 -6.82917}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 894.25 307} { {2 0 12.4167}  {2 0 -6.82917}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 925.5 307} { {2 0 12.4167}  {2 0 -6.82917}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 956.75 307} { {2 0 12.4167}  {2 0 -6.82917}  {2 10.4167 0}  {2 -10.4167 0} } } 
+      { {2 988 307} { {2 0 12.4167}  {2 0 -6.82917}  {2 10.4167 0}  {2 -10.4167 0} } } 
+    }
+  }
+ destination_grid_col   {
+    1 5 4 4 1 0
+    {default }
+    {
+      { {1 {curve L x2689 862.770813} {curve L x2689 147.7708435}} { {1 {curve L x2689 0} {curve L x2689 12.41670036}}  {1 {curve L x2689 0} {curve L x2689 -12.41670036}}  {1 {curve L x2689 10.41670036} {curve L x2689 0}}  {1 {curve L x2689 -10.41670036} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 894.020813} {curve L x2689 147.7708435}} { {1 {curve L x2689 0} {curve L x2689 12.41670036}}  {1 {curve L x2689 0} {curve L x2689 -12.41670036}}  {1 {curve L x2689 10.41670036} {curve L x2689 0}}  {1 {curve L x2689 -10.41670036} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 925.270813} {curve L x2689 147.7708435}} { {1 {curve L x2689 0} {curve L x2689 12.41670036}}  {1 {curve L x2689 0} {curve L x2689 -12.41670036}}  {1 {curve L x2689 10.41670036} {curve L x2689 0}}  {1 {curve L x2689 -10.41670036} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 956.520813} {curve L x2689 147.7708435}} { {1 {curve L x2689 0} {curve L x2689 12.41670036}}  {1 {curve L x2689 0} {curve L x2689 -12.41670036}}  {1 {curve L x2689 10.41670036} {curve L x2689 0}}  {1 {curve L x2689 -10.41670036} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 987.770813} {curve L x2689 147.7708435}} { {1 {curve L x2689 0} {curve L x2689 12.41670036}}  {1 {curve L x2689 0} {curve L x2689 -12.41670036}}  {1 {curve L x2689 10.41670036} {curve L x2689 0}}  {1 {curve L x2689 -10.41670036} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 857.6318359} {curve L x2689 198.0492706}} { {1 {curve L x2689 0} {curve L x2689 16.65425682}}  {1 {curve L x2689 0} {curve L x2689 -12.41666698}}  {1 {curve L x2689 10.41666698} {curve L x2689 0}}  {1 {curve L x2689 -10.41666698} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 888.8818359} {curve L x2689 198.0492706}} { {1 {curve L x2689 0} {curve L x2689 16.65425682}}  {1 {curve L x2689 0} {curve L x2689 -12.41666698}}  {1 {curve L x2689 10.41666698} {curve L x2689 0}}  {1 {curve L x2689 -10.41666698} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 925.9650879} {curve L x2689 198.8825836}} { {1 {curve L x2689 0} {curve L x2689 16.65425682}}  {1 {curve L x2689 0} {curve L x2689 -12.41666698}}  {1 {curve L x2689 10.41666698} {curve L x2689 0}}  {1 {curve L x2689 -10.41666698} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 957.2150879} {curve L x2689 198.8825836}} { {1 {curve L x2689 0} {curve L x2689 16.65425682}}  {1 {curve L x2689 0} {curve L x2689 -12.41666698}}  {1 {curve L x2689 10.41666698} {curve L x2689 0}}  {1 {curve L x2689 -10.41666698} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 988.333313} {curve L x2689 196.8833466}} { {1 {curve L x2689 0} {curve L x2689 16.65425682}}  {1 {curve L x2689 0} {curve L x2689 -12.41666698}}  {1 {curve L x2689 10.41666698} {curve L x2689 0}}  {1 {curve L x2689 -10.41666698} {curve L x2689 0}} } } 
+      { {1 {curve x2689 847.0188599} {curve x2689 289.9902039}} { {1 {curve x2689 0} {curve x2689 20.35521698}}  {1 {curve x2689 0} {curve x2689 -16.65425682}}  {1 {curve x2689 11.98382568} {curve x2689 0}}  {1 {curve x2689 -11.98388672} {curve x2689 0}} } } 
+      { {1 {curve x2689 882.970459} {curve x2689 289.9902039}} { {1 {curve x2689 0} {curve x2689 20.35521698}}  {1 {curve x2689 0} {curve x2689 -16.65425682}}  {1 {curve x2689 11.98382568} {curve x2689 0}}  {1 {curve x2689 -11.98388672} {curve x2689 0}} } } 
+      { {1 {curve x2689 924.755249} {curve x2689 290.8235168}} { {1 {curve x2689 0} {curve x2689 20.35521698}}  {1 {curve x2689 0} {curve x2689 -16.65425682}}  {1 {curve x2689 18.84472656} {curve x2689 0.07647705078}}  {1 {curve x2689 -21.85534668} {curve x2689 0.02975463867}} } } 
+      { {1 {curve x2689 962.8734741} {curve x2689 290.1568604}} { {1 {curve x2689 0} {curve x2689 20.35521698}}  {1 {curve x2689 0} {curve x2689 -16.65425682}}  {1 {curve x2689 11.98388672} {curve x2689 0}}  {1 {curve x2689 -11.98388672} {curve x2689 0}} } } 
+      { {1 {curve x2689 998.8250732} {curve x2689 290.1568604}} { {1 {curve x2689 0} {curve x2689 20.35521698}}  {1 {curve x2689 0} {curve x2689 -16.65425682}}  {1 {curve x2689 11.98388672} {curve x2689 0}}  {1 {curve x2689 -11.98388672} {curve x2689 0}} } } 
+      { {1 {curve L x2689 848.7376099} {curve L x2689 303.8304443}} { {1 {curve L x2689 0} {curve L x2689 12.41666698}}  {1 {curve L x2689 0} {curve L x2689 -6.829169273}}  {1 {curve L x2689 11.98386669} {curve L x2689 0}}  {1 {curve L x2689 -11.98386669} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 884.689209} {curve L x2689 303.8304443}} { {1 {curve L x2689 0} {curve L x2689 12.41666698}}  {1 {curve L x2689 0} {curve L x2689 -6.829169273}}  {1 {curve L x2689 11.98386669} {curve L x2689 0}}  {1 {curve L x2689 -11.98392773} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 926.473999} {curve L x2689 304.6637573}} { {1 {curve L x2689 0} {curve L x2689 12.41666698}}  {1 {curve L x2689 0} {curve L x2689 -6.829169273}}  {1 {curve L x2689 11.98392773} {curve L x2689 0}}  {1 {curve L x2689 -11.98386669} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 964.5922241} {curve L x2689 303.9971008}} { {1 {curve L x2689 0} {curve L x2689 12.41666698}}  {1 {curve L x2689 0} {curve L x2689 -6.829169273}}  {1 {curve L x2689 11.98392773} {curve L x2689 0}}  {1 {curve L x2689 -11.98386669} {curve L x2689 0}} } } 
+      { {1 {curve L x2689 1000.543823} {curve L x2689 303.9971008}} { {1 {curve L x2689 0} {curve L x2689 12.41666698}}  {1 {curve L x2689 0} {curve L x2689 -6.829169273}}  {1 {curve L x2689 11.98386669} {curve L x2689 0}}  {1 {curve L x2689 -11.98386669} {curve L x2689 0}} } } 
+    }
+  }
+ grids_manually_moved true
+ source_grid_transform_center {925.5 232.5}
+ destination_grid_transform_center {925.5 232.5}
+ name GridWarp3_1
+ xpos 4470
+ ypos 2288
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Multiply {
+ channels rgba
+ value 3
+ name Multiply2
+ xpos 4470
+ ypos 2438
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Transform {
+ scale 2
+ center {960 540}
+ name Transform4
+ xpos 4470
+ ypos 2534
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Reformat {
+ name Reformat4
+ xpos 4470
+ ypos 2584
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+clone $C77646700 {
+ xpos 4470
+ ypos 2678
+ selected false
+}
+EdgeBlur {
+ size 10
+ name EdgeBlur2
+ xpos 4470
+ ypos 2816
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Defocus {
+ defocus 5
+ name Defocus2
+ xpos 4470
+ ypos 2864
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Blur {
+ size 3
+ name Blur3
+ xpos 4470
+ ypos 2912
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot13
+ xpos 4504
+ ypos 2970
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push 0
+Merge2 {
+ inputs 2+1
+ operation plus
+ name Merge17
+ xpos 4800
+ ypos 2966
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 4800
+ ypos 4118
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ mix 0.815
+ name Merge8
+ xpos 4800
+ ypos 5078
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge9
+ xpos 4800
+ ypos 5318
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ xpos 4800
+ ypos 6086
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Crop {
+ box {0 0 1920 1080}
+ name Crop5
+ xpos 4800
+ ypos 6374
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Dot {
+ name Dot14
+ xpos 4834
+ ypos 6570
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set N17a32000 [stack 0]
+Crop {
+ box {0 0 1920 1080}
+ name Crop3
+ xpos 4800
+ ypos 6806
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $N17a32000
+Dot {
+ name Dot15
+ xpos 5274
+ ypos 6570
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+set N17a6ae00 [stack 0]
+Constant {
+ inputs 0
+ color 1
+ name Constant3
+ xpos 5460
+ ypos 6687
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge6
+ xpos 5240
+ ypos 6710
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Crop {
+ box {0 0 1920 1080}
+ name Crop2
+ xpos 5240
+ ypos 6806
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+push $N17a6ae00
+Dot {
+ name Dot16
+ xpos 5714
+ ypos 6570
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Read {
+ inputs 0
+ file Y:/my_petsaurus/work/GreenScreenBG.png
+ format "1920 1080 0 0 1920 1080 1 my_petsaurus"
+ origset true
+ name Read3
+ xpos 5900
+ ypos 6680
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge20
+ xpos 5680
+ ypos 6710
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}
+Crop {
+ box {0 0 1920 1080}
+ name Crop4
+ xpos 5680
+ ypos 6806
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 d1}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 d2}
+ addUserKnob {20 begin_1 l "Avalon data group" n -1}
+}

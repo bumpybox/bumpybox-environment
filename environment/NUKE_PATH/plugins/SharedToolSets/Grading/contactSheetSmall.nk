@@ -1,0 +1,260 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push 0
+push $cut_paste_input
+Group {
+ inputs 2
+ name contactSheetSmall
+ selected true
+ xpos 5555
+ ypos 2236
+}
+ Input {
+  inputs 0
+  name ref
+  xpos 997
+  ypos 120
+  number 1
+ }
+ Text2 {
+  font_size_toolbar 70
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message REF
+  old_message {{82 69 70}
+    }
+  box {0 984.5 1920 1055.5}
+  xjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 70 1 70 2 70 0 90}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  font_size 70
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{815 1055.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  name Text5
+  xpos 997
+  ypos 263
+ }
+ Dot {
+  name Dot4
+  xpos 1031
+  ypos 365
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 509
+  ypos 42
+ }
+ Dot {
+  name Dot53
+  xpos 543
+  ypos 124
+ }
+set Nfe04a700 [stack 0]
+ Dot {
+  name Dot50
+  xpos 653
+  ypos 124
+ }
+set Nfe04a380 [stack 0]
+ Dot {
+  name Dot51
+  xpos 763
+  ypos 124
+ }
+set Nfe04a000 [stack 0]
+ Dot {
+  name Dot52
+  xpos 873
+  ypos 124
+ }
+ TimeOffset {
+  time_offset {{frame/2 x50 0}}
+  time ""
+  name TimeOffset26
+  xpos 839
+  ypos 169
+ }
+ Text2 {
+  font_size_toolbar 70
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "HALF WAY"
+  old_message {{72 65 76 70 32 87 65 89}
+    }
+  box {0 984.5 1920 1055.5}
+  xjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 70 1 70 2 70 3 70 4 70 5 70 6 70 7 70 0 90}
+    }
+  cursor_position 8
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  font_size 70
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{815 1055.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  name Text4
+  xpos 839
+  ypos 260
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input1]"}}
+  name Switch1
+  xpos 839
+  ypos 361
+ }
+ Dot {
+  name Dot1
+  xpos 873
+  ypos 445
+ }
+push $Nfe04a000
+ TimeOffset {
+  time_offset -3
+  time ""
+  name TimeOffset27
+  xpos 729
+  ypos 167
+ }
+ Text2 {
+  font_size_toolbar 70
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message NEXT
+  old_message {{78 69 88 84}
+    }
+  box {0 984.5 1920 1055.5}
+  xjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 70 1 70 2 70 3 70 0 90}
+    }
+  cursor_position 4
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  font_size 70
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{815 1055.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  name Text3
+  xpos 729
+  ypos 257
+ }
+ Dot {
+  name Dot2
+  xpos 763
+  ypos 340
+ }
+push $Nfe04a380
+ TimeOffset {
+  time_offset 3
+  time ""
+  name TimeOffset28
+  xpos 619
+  ypos 171
+ }
+ Text2 {
+  font_size_toolbar 70
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message PREVIOUS
+  old_message {{80 82 69 86 73 79 85 83}
+    }
+  box {0 984.5 1920 1055.5}
+  xjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 70 1 70 2 70 3 70 4 70 5 70 6 70 7 70 0 90}
+    }
+  cursor_position 8
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  font_size 70
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{815 1055.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  name Text2
+  xpos 619
+  ypos 261
+ }
+ Dot {
+  name Dot3
+  xpos 653
+  ypos 340
+ }
+push $Nfe04a700
+ Text2 {
+  font_size_toolbar 70
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message CURRENT
+  old_message {{67 85 82 82 69 78 84}
+    }
+  box {0 984.5 1920 1055.5}
+  xjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 70 1 70 2 70 3 70 4 70 5 70 6 70 0 90 1 90 2 90 3 90 4 90 5 90 6 90}
+    }
+  cursor_position 7
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  font_size 70
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{815 1055.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  name Text1
+  xpos 509
+  ypos 260
+ }
+ ContactSheet {
+  inputs 4
+  width 3840
+  height 2160
+  rows 2
+  columns 2
+  roworder TopBottom
+  name ContactSheet1
+  xpos 509
+  ypos 454
+ }
+ Output {
+  name Output1
+  xpos 509
+  ypos 531
+ }
+end_group

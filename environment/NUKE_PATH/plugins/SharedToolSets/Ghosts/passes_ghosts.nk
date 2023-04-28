@@ -1,0 +1,876 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1904" h="1001" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1241" stretch="1"/>
+            <splitter orientation="2">
+                <split size="559"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="394"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/Ghosts/passes_ghosts.nk"
+ last_frame 65
+ lock_range true
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 ghosts"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:handleEnd l handleEnd T 0}
+ addUserKnob {26 avalon:handleStart l handleStart T 0}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+}
+Dot {
+ inputs 0
+ name crypto_input_0
+ label "\[value name]"
+ xpos -226
+ ypos -4998
+}
+Dot {
+ name Dot75
+ xpos -226
+ ypos -4854
+}
+set Nf7baa700 [stack 0]
+Dot {
+ name Dot79
+ xpos -226
+ ypos -4806
+}
+set Nf7baa380 [stack 0]
+Dot {
+ name Dot4
+ xpos -226
+ ypos -4566
+}
+set Nf7bab180 [stack 0]
+Dot {
+ name Dot2
+ xpos -226
+ ypos -4518
+}
+set Nf7baae00 [stack 0]
+Dot {
+ name Dot5
+ xpos -226
+ ypos -4470
+}
+set Nf7baaa80 [stack 0]
+Dot {
+ name Dot3
+ xpos -226
+ ypos -4278
+}
+set Nf7babc00 [stack 0]
+Dot {
+ name Dot8
+ xpos -226
+ ypos -4230
+}
+set Nf7bab880 [stack 0]
+Dot {
+ name Dot10
+ xpos -226
+ ypos -4182
+}
+set Nf7bab500 [stack 0]
+Dot {
+ name Dot6
+ xpos -226
+ ypos -3846
+}
+set Nf7bc0e00 [stack 0]
+Dot {
+ name Dot7
+ xpos -226
+ ypos -3798
+}
+set Nf7bc0a80 [stack 0]
+Dot {
+ name Dot74
+ xpos -226
+ ypos -3750
+}
+set Nf7bc0700 [stack 0]
+Dot {
+ name crypto_output_0
+ label "\n\[value name]"
+ xpos -226
+ ypos -3462
+}
+push $Nf7bc0700
+Cryptomatte { name clothes_shoes_0
+ xpos -40
+ ypos -3756
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -4.00041260613e+30 || crypto_asset00.red == -5.71583916857e+21 || crypto_asset00.red == -2.14307566938e+15 || crypto_asset00.red == -280360672 || crypto_asset00.red == -7010.45117188 || crypto_asset00.red == -5227.22265625 || crypto_asset00.red == -0.217147231102 || crypto_asset00.red == -7.49178652768e-05 || crypto_asset00.red == -2.0598443297e-30 || crypto_asset00.red == -2.79988110012e-37 || crypto_asset00.red == -2.15749993203e-38 || crypto_asset00.red == 2.6867016087e-36 || crypto_asset00.red == 1.74095106767e-32 || crypto_asset00.red == 2.07692270156e-29 || crypto_asset00.red == 8.75475933166e-29 || crypto_asset00.red == 3.58834909822e-28 || crypto_asset00.red == 2.19517776894e-13 || crypto_asset00.red == 2.15558287664e-07 || crypto_asset00.red == 1.68718281657e-06 || crypto_asset00.red == 2.97799624605e-06 || crypto_asset00.red == 8.99679253052e-06 || crypto_asset00.red == 0.000241571469815 || crypto_asset00.red == 0.0191332381219 || crypto_asset00.red == 0.887835681438 || crypto_asset00.red == 250.798233032 || crypto_asset00.red == 177844.65625 || crypto_asset00.red == 637473536 || crypto_asset00.red == 2.01305995124e+20 || crypto_asset00.red == 1.16786740253e+24 || crypto_asset00.red == 2.86872031705e+26 || crypto_asset00.red == 6.8738598484e+31 || crypto_asset00.red == 7.52436007503e+36) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -4.00041260613e+30 || crypto_asset00.blue == -5.71583916857e+21 || crypto_asset00.blue == -2.14307566938e+15 || crypto_asset00.blue == -280360672 || crypto_asset00.blue == -7010.45117188 || crypto_asset00.blue == -5227.22265625 || crypto_asset00.blue == -0.217147231102 || crypto_asset00.blue == -7.49178652768e-05 || crypto_asset00.blue == -2.0598443297e-30 || crypto_asset00.blue == -2.79988110012e-37 || crypto_asset00.blue == -2.15749993203e-38 || crypto_asset00.blue == 2.6867016087e-36 || crypto_asset00.blue == 1.74095106767e-32 || crypto_asset00.blue == 2.07692270156e-29 || crypto_asset00.blue == 8.75475933166e-29 || crypto_asset00.blue == 3.58834909822e-28 || crypto_asset00.blue == 2.19517776894e-13 || crypto_asset00.blue == 2.15558287664e-07 || crypto_asset00.blue == 1.68718281657e-06 || crypto_asset00.blue == 2.97799624605e-06 || crypto_asset00.blue == 8.99679253052e-06 || crypto_asset00.blue == 0.000241571469815 || crypto_asset00.blue == 0.0191332381219 || crypto_asset00.blue == 0.887835681438 || crypto_asset00.blue == 250.798233032 || crypto_asset00.blue == 177844.65625 || crypto_asset00.blue == 637473536 || crypto_asset00.blue == 2.01305995124e+20 || crypto_asset00.blue == 1.16786740253e+24 || crypto_asset00.blue == 2.86872031705e+26 || crypto_asset00.blue == 6.8738598484e+31 || crypto_asset00.blue == 7.52436007503e+36) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -4.00041260613e+30 || crypto_asset01.red == -5.71583916857e+21 || crypto_asset01.red == -2.14307566938e+15 || crypto_asset01.red == -280360672 || crypto_asset01.red == -7010.45117188 || crypto_asset01.red == -5227.22265625 || crypto_asset01.red == -0.217147231102 || crypto_asset01.red == -7.49178652768e-05 || crypto_asset01.red == -2.0598443297e-30 || crypto_asset01.red == -2.79988110012e-37 || crypto_asset01.red == -2.15749993203e-38 || crypto_asset01.red == 2.6867016087e-36 || crypto_asset01.red == 1.74095106767e-32 || crypto_asset01.red == 2.07692270156e-29 || crypto_asset01.red == 8.75475933166e-29 || crypto_asset01.red == 3.58834909822e-28 || crypto_asset01.red == 2.19517776894e-13 || crypto_asset01.red == 2.15558287664e-07 || crypto_asset01.red == 1.68718281657e-06 || crypto_asset01.red == 2.97799624605e-06 || crypto_asset01.red == 8.99679253052e-06 || crypto_asset01.red == 0.000241571469815 || crypto_asset01.red == 0.0191332381219 || crypto_asset01.red == 0.887835681438 || crypto_asset01.red == 250.798233032 || crypto_asset01.red == 177844.65625 || crypto_asset01.red == 637473536 || crypto_asset01.red == 2.01305995124e+20 || crypto_asset01.red == 1.16786740253e+24 || crypto_asset01.red == 2.86872031705e+26 || crypto_asset01.red == 6.8738598484e+31 || crypto_asset01.red == 7.52436007503e+36) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -4.00041260613e+30 || crypto_asset01.blue == -5.71583916857e+21 || crypto_asset01.blue == -2.14307566938e+15 || crypto_asset01.blue == -280360672 || crypto_asset01.blue == -7010.45117188 || crypto_asset01.blue == -5227.22265625 || crypto_asset01.blue == -0.217147231102 || crypto_asset01.blue == -7.49178652768e-05 || crypto_asset01.blue == -2.0598443297e-30 || crypto_asset01.blue == -2.79988110012e-37 || crypto_asset01.blue == -2.15749993203e-38 || crypto_asset01.blue == 2.6867016087e-36 || crypto_asset01.blue == 1.74095106767e-32 || crypto_asset01.blue == 2.07692270156e-29 || crypto_asset01.blue == 8.75475933166e-29 || crypto_asset01.blue == 3.58834909822e-28 || crypto_asset01.blue == 2.19517776894e-13 || crypto_asset01.blue == 2.15558287664e-07 || crypto_asset01.blue == 1.68718281657e-06 || crypto_asset01.blue == 2.97799624605e-06 || crypto_asset01.blue == 8.99679253052e-06 || crypto_asset01.blue == 0.000241571469815 || crypto_asset01.blue == 0.0191332381219 || crypto_asset01.blue == 0.887835681438 || crypto_asset01.blue == 250.798233032 || crypto_asset01.blue == 177844.65625 || crypto_asset01.blue == 637473536 || crypto_asset01.blue == 2.01305995124e+20 || crypto_asset01.blue == 1.16786740253e+24 || crypto_asset01.blue == 2.86872031705e+26 || crypto_asset01.blue == 6.8738598484e+31 || crypto_asset01.blue == 7.52436007503e+36) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -4.00041260613e+30 || crypto_asset02.red == -5.71583916857e+21 || crypto_asset02.red == -2.14307566938e+15 || crypto_asset02.red == -280360672 || crypto_asset02.red == -7010.45117188 || crypto_asset02.red == -5227.22265625 || crypto_asset02.red == -0.217147231102 || crypto_asset02.red == -7.49178652768e-05 || crypto_asset02.red == -2.0598443297e-30 || crypto_asset02.red == -2.79988110012e-37 || crypto_asset02.red == -2.15749993203e-38 || crypto_asset02.red == 2.6867016087e-36 || crypto_asset02.red == 1.74095106767e-32 || crypto_asset02.red == 2.07692270156e-29 || crypto_asset02.red == 8.75475933166e-29 || crypto_asset02.red == 3.58834909822e-28 || crypto_asset02.red == 2.19517776894e-13 || crypto_asset02.red == 2.15558287664e-07 || crypto_asset02.red == 1.68718281657e-06 || crypto_asset02.red == 2.97799624605e-06 || crypto_asset02.red == 8.99679253052e-06 || crypto_asset02.red == 0.000241571469815 || crypto_asset02.red == 0.0191332381219 || crypto_asset02.red == 0.887835681438 || crypto_asset02.red == 250.798233032 || crypto_asset02.red == 177844.65625 || crypto_asset02.red == 637473536 || crypto_asset02.red == 2.01305995124e+20 || crypto_asset02.red == 1.16786740253e+24 || crypto_asset02.red == 2.86872031705e+26 || crypto_asset02.red == 6.8738598484e+31 || crypto_asset02.red == 7.52436007503e+36) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -4.00041260613e+30 || crypto_asset02.blue == -5.71583916857e+21 || crypto_asset02.blue == -2.14307566938e+15 || crypto_asset02.blue == -280360672 || crypto_asset02.blue == -7010.45117188 || crypto_asset02.blue == -5227.22265625 || crypto_asset02.blue == -0.217147231102 || crypto_asset02.blue == -7.49178652768e-05 || crypto_asset02.blue == -2.0598443297e-30 || crypto_asset02.blue == -2.79988110012e-37 || crypto_asset02.blue == -2.15749993203e-38 || crypto_asset02.blue == 2.6867016087e-36 || crypto_asset02.blue == 1.74095106767e-32 || crypto_asset02.blue == 2.07692270156e-29 || crypto_asset02.blue == 8.75475933166e-29 || crypto_asset02.blue == 3.58834909822e-28 || crypto_asset02.blue == 2.19517776894e-13 || crypto_asset02.blue == 2.15558287664e-07 || crypto_asset02.blue == 1.68718281657e-06 || crypto_asset02.blue == 2.97799624605e-06 || crypto_asset02.blue == 8.99679253052e-06 || crypto_asset02.blue == 0.000241571469815 || crypto_asset02.blue == 0.0191332381219 || crypto_asset02.blue == 0.887835681438 || crypto_asset02.blue == 250.798233032 || crypto_asset02.blue == 177844.65625 || crypto_asset02.blue == 637473536 || crypto_asset02.blue == 2.01305995124e+20 || crypto_asset02.blue == 1.16786740253e+24 || crypto_asset02.blue == 2.86872031705e+26 || crypto_asset02.blue == 6.8738598484e+31 || crypto_asset02.blue == 7.52436007503e+36) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -3754
+ selected false
+ disable false
+}
+push $Nf7bc0a80
+Cryptomatte { name clothes_bottom_0
+ xpos -40
+ ypos -3804
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -1.66763236936e+34 || crypto_asset00.red == -2.30839209438e-21 || crypto_asset00.red == 6.2594396268e-23 || crypto_asset00.red == 120627814400 || crypto_asset00.red == 1.76145243199e+38) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -1.66763236936e+34 || crypto_asset00.blue == -2.30839209438e-21 || crypto_asset00.blue == 6.2594396268e-23 || crypto_asset00.blue == 120627814400 || crypto_asset00.blue == 1.76145243199e+38) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -1.66763236936e+34 || crypto_asset01.red == -2.30839209438e-21 || crypto_asset01.red == 6.2594396268e-23 || crypto_asset01.red == 120627814400 || crypto_asset01.red == 1.76145243199e+38) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -1.66763236936e+34 || crypto_asset01.blue == -2.30839209438e-21 || crypto_asset01.blue == 6.2594396268e-23 || crypto_asset01.blue == 120627814400 || crypto_asset01.blue == 1.76145243199e+38) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -1.66763236936e+34 || crypto_asset02.red == -2.30839209438e-21 || crypto_asset02.red == 6.2594396268e-23 || crypto_asset02.red == 120627814400 || crypto_asset02.red == 1.76145243199e+38) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -1.66763236936e+34 || crypto_asset02.blue == -2.30839209438e-21 || crypto_asset02.blue == 6.2594396268e-23 || crypto_asset02.blue == 120627814400 || crypto_asset02.blue == 1.76145243199e+38) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -3802
+ selected false
+ disable false
+}
+push $Nf7bc0e00
+Cryptomatte { name clothes_top_0
+ xpos -40
+ ypos -3852
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -40001495040 || crypto_asset00.red == -584953088 || crypto_asset00.red == -9.45113098894e-10 || crypto_asset00.red == -4.06011267202e-33 || crypto_asset00.red == 5.10645545852e-33 || crypto_asset00.red == 5.96199388383e-05 || crypto_asset00.red == 0.0207692310214) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -40001495040 || crypto_asset00.blue == -584953088 || crypto_asset00.blue == -9.45113098894e-10 || crypto_asset00.blue == -4.06011267202e-33 || crypto_asset00.blue == 5.10645545852e-33 || crypto_asset00.blue == 5.96199388383e-05 || crypto_asset00.blue == 0.0207692310214) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -40001495040 || crypto_asset01.red == -584953088 || crypto_asset01.red == -9.45113098894e-10 || crypto_asset01.red == -4.06011267202e-33 || crypto_asset01.red == 5.10645545852e-33 || crypto_asset01.red == 5.96199388383e-05 || crypto_asset01.red == 0.0207692310214) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -40001495040 || crypto_asset01.blue == -584953088 || crypto_asset01.blue == -9.45113098894e-10 || crypto_asset01.blue == -4.06011267202e-33 || crypto_asset01.blue == 5.10645545852e-33 || crypto_asset01.blue == 5.96199388383e-05 || crypto_asset01.blue == 0.0207692310214) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -40001495040 || crypto_asset02.red == -584953088 || crypto_asset02.red == -9.45113098894e-10 || crypto_asset02.red == -4.06011267202e-33 || crypto_asset02.red == 5.10645545852e-33 || crypto_asset02.red == 5.96199388383e-05 || crypto_asset02.red == 0.0207692310214) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -40001495040 || crypto_asset02.blue == -584953088 || crypto_asset02.blue == -9.45113098894e-10 || crypto_asset02.blue == -4.06011267202e-33 || crypto_asset02.blue == 5.10645545852e-33 || crypto_asset02.blue == 5.96199388383e-05 || crypto_asset02.blue == 0.0207692310214) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -3850
+ selected false
+ disable false
+}
+Shuffle {
+ in alpha
+ green black
+ blue black
+ alpha black
+ name Shuffle12
+ label "\[value in] -> \[value out]"
+ xpos 180
+ ypos -3856
+}
+ShuffleCopy {
+ inputs 2
+ green alpha
+ blue black
+ name ShuffleCopy13
+ xpos 180
+ ypos -3802
+}
+ShuffleCopy {
+ inputs 2
+ blue alpha
+ name ShuffleCopy14
+ xpos 180
+ ypos -3754
+}
+Expression {
+ channel0 alpha
+ expr0 r+b+g
+ channel1 none
+ channel2 none
+ name Expression2
+ xpos 180
+ ypos -3706
+}
+Reformat {
+ name Reformat9
+ xpos 180
+ ypos -3658
+}
+push $Nf7bab500
+Cryptomatte { name features_beard_0
+ xpos -40
+ ypos -4186
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -1.29131112332e+16 || crypto_asset00.red == -1.2673420886e+14 || crypto_asset00.red == -0.0018208718393 || crypto_asset00.red == -9.84538577392e-29 || crypto_asset00.red == 1.38258244773e-27 || crypto_asset00.red == 1.23308865403e+16 || crypto_asset00.red == 5.33933635406e+17 || crypto_asset00.red == 6.13871987282e+19 || crypto_asset00.red == 2.665496152e+23 || crypto_asset00.red == 7.01917427684e+25) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -1.29131112332e+16 || crypto_asset00.blue == -1.2673420886e+14 || crypto_asset00.blue == -0.0018208718393 || crypto_asset00.blue == -9.84538577392e-29 || crypto_asset00.blue == 1.38258244773e-27 || crypto_asset00.blue == 1.23308865403e+16 || crypto_asset00.blue == 5.33933635406e+17 || crypto_asset00.blue == 6.13871987282e+19 || crypto_asset00.blue == 2.665496152e+23 || crypto_asset00.blue == 7.01917427684e+25) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -1.29131112332e+16 || crypto_asset01.red == -1.2673420886e+14 || crypto_asset01.red == -0.0018208718393 || crypto_asset01.red == -9.84538577392e-29 || crypto_asset01.red == 1.38258244773e-27 || crypto_asset01.red == 1.23308865403e+16 || crypto_asset01.red == 5.33933635406e+17 || crypto_asset01.red == 6.13871987282e+19 || crypto_asset01.red == 2.665496152e+23 || crypto_asset01.red == 7.01917427684e+25) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -1.29131112332e+16 || crypto_asset01.blue == -1.2673420886e+14 || crypto_asset01.blue == -0.0018208718393 || crypto_asset01.blue == -9.84538577392e-29 || crypto_asset01.blue == 1.38258244773e-27 || crypto_asset01.blue == 1.23308865403e+16 || crypto_asset01.blue == 5.33933635406e+17 || crypto_asset01.blue == 6.13871987282e+19 || crypto_asset01.blue == 2.665496152e+23 || crypto_asset01.blue == 7.01917427684e+25) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -1.29131112332e+16 || crypto_asset02.red == -1.2673420886e+14 || crypto_asset02.red == -0.0018208718393 || crypto_asset02.red == -9.84538577392e-29 || crypto_asset02.red == 1.38258244773e-27 || crypto_asset02.red == 1.23308865403e+16 || crypto_asset02.red == 5.33933635406e+17 || crypto_asset02.red == 6.13871987282e+19 || crypto_asset02.red == 2.665496152e+23 || crypto_asset02.red == 7.01917427684e+25) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -1.29131112332e+16 || crypto_asset02.blue == -1.2673420886e+14 || crypto_asset02.blue == -0.0018208718393 || crypto_asset02.blue == -9.84538577392e-29 || crypto_asset02.blue == 1.38258244773e-27 || crypto_asset02.blue == 1.23308865403e+16 || crypto_asset02.blue == 5.33933635406e+17 || crypto_asset02.blue == 6.13871987282e+19 || crypto_asset02.blue == 2.665496152e+23 || crypto_asset02.blue == 7.01917427684e+25) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4186
+ selected false
+ disable false
+}
+push $Nf7bab880
+Cryptomatte { name features_eyebags_0
+ xpos -40
+ ypos -4234
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -151423942656 || crypto_asset00.red == -182.00982666 || crypto_asset00.red == 1.65243075945e-32 || crypto_asset00.red == 1.77156092412e-20 || crypto_asset00.red == 2.30424659214e-17 || crypto_asset00.red == 7.04183540617e-16 || crypto_asset00.red == 236434.078125 || crypto_asset00.red == 5.82668938551e+17 || crypto_asset00.red == 1.71197133795e+30 || crypto_asset00.red == 1.08998531212e+38) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -151423942656 || crypto_asset00.blue == -182.00982666 || crypto_asset00.blue == 1.65243075945e-32 || crypto_asset00.blue == 1.77156092412e-20 || crypto_asset00.blue == 2.30424659214e-17 || crypto_asset00.blue == 7.04183540617e-16 || crypto_asset00.blue == 236434.078125 || crypto_asset00.blue == 5.82668938551e+17 || crypto_asset00.blue == 1.71197133795e+30 || crypto_asset00.blue == 1.08998531212e+38) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -151423942656 || crypto_asset01.red == -182.00982666 || crypto_asset01.red == 1.65243075945e-32 || crypto_asset01.red == 1.77156092412e-20 || crypto_asset01.red == 2.30424659214e-17 || crypto_asset01.red == 7.04183540617e-16 || crypto_asset01.red == 236434.078125 || crypto_asset01.red == 5.82668938551e+17 || crypto_asset01.red == 1.71197133795e+30 || crypto_asset01.red == 1.08998531212e+38) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -151423942656 || crypto_asset01.blue == -182.00982666 || crypto_asset01.blue == 1.65243075945e-32 || crypto_asset01.blue == 1.77156092412e-20 || crypto_asset01.blue == 2.30424659214e-17 || crypto_asset01.blue == 7.04183540617e-16 || crypto_asset01.blue == 236434.078125 || crypto_asset01.blue == 5.82668938551e+17 || crypto_asset01.blue == 1.71197133795e+30 || crypto_asset01.blue == 1.08998531212e+38) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -151423942656 || crypto_asset02.red == -182.00982666 || crypto_asset02.red == 1.65243075945e-32 || crypto_asset02.red == 1.77156092412e-20 || crypto_asset02.red == 2.30424659214e-17 || crypto_asset02.red == 7.04183540617e-16 || crypto_asset02.red == 236434.078125 || crypto_asset02.red == 5.82668938551e+17 || crypto_asset02.red == 1.71197133795e+30 || crypto_asset02.red == 1.08998531212e+38) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -151423942656 || crypto_asset02.blue == -182.00982666 || crypto_asset02.blue == 1.65243075945e-32 || crypto_asset02.blue == 1.77156092412e-20 || crypto_asset02.blue == 2.30424659214e-17 || crypto_asset02.blue == 7.04183540617e-16 || crypto_asset02.blue == 236434.078125 || crypto_asset02.blue == 5.82668938551e+17 || crypto_asset02.blue == 1.71197133795e+30 || crypto_asset02.blue == 1.08998531212e+38) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4234
+ selected false
+ disable false
+}
+Dot {
+ name Dot11
+ xpos 104
+ ypos -4230
+}
+set N43bb0000 [stack 0]
+push $Nf7babc00
+Cryptomatte { name features_mouth_0
+ xpos -40
+ ypos -4282
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -5.73384478506e+22 || crypto_asset00.red == -1.02987921279e+17 || crypto_asset00.red == -260103072 || crypto_asset00.red == -0.24454164505 || crypto_asset00.red == -1.27328758026e-06 || crypto_asset00.red == -1.22742802978e-29) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -5.73384478506e+22 || crypto_asset00.blue == -1.02987921279e+17 || crypto_asset00.blue == -260103072 || crypto_asset00.blue == -0.24454164505 || crypto_asset00.blue == -1.27328758026e-06 || crypto_asset00.blue == -1.22742802978e-29) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -5.73384478506e+22 || crypto_asset01.red == -1.02987921279e+17 || crypto_asset01.red == -260103072 || crypto_asset01.red == -0.24454164505 || crypto_asset01.red == -1.27328758026e-06 || crypto_asset01.red == -1.22742802978e-29) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -5.73384478506e+22 || crypto_asset01.blue == -1.02987921279e+17 || crypto_asset01.blue == -260103072 || crypto_asset01.blue == -0.24454164505 || crypto_asset01.blue == -1.27328758026e-06 || crypto_asset01.blue == -1.22742802978e-29) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -5.73384478506e+22 || crypto_asset02.red == -1.02987921279e+17 || crypto_asset02.red == -260103072 || crypto_asset02.red == -0.24454164505 || crypto_asset02.red == -1.27328758026e-06 || crypto_asset02.red == -1.22742802978e-29) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -5.73384478506e+22 || crypto_asset02.blue == -1.02987921279e+17 || crypto_asset02.blue == -260103072 || crypto_asset02.blue == -0.24454164505 || crypto_asset02.blue == -1.27328758026e-06 || crypto_asset02.blue == -1.22742802978e-29) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4282
+ selected false
+ disable false
+}
+Shuffle {
+ in alpha
+ green black
+ blue black
+ alpha black
+ name Shuffle1
+ label "\[value in] -> \[value out]"
+ xpos 180
+ ypos -4288
+}
+ShuffleCopy {
+ inputs 2
+ green alpha
+ blue black
+ name ShuffleCopy7
+ xpos 180
+ ypos -4234
+}
+ShuffleCopy {
+ inputs 2
+ blue alpha
+ name ShuffleCopy8
+ xpos 180
+ ypos -4186
+}
+Expression {
+ channel0 alpha
+ expr0 r+b+g
+ channel1 none
+ channel2 none
+ name Expression4
+ xpos 180
+ ypos -4138
+}
+Reformat {
+ name Reformat10
+ xpos 180
+ ypos -4090
+}
+push $N43bb0000
+push $Nf7baaa80
+Cryptomatte { name face_eyes_0
+ xpos -40
+ ypos -4474
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -1.29131112332e+16 || crypto_asset00.red == -1.2673420886e+14 || crypto_asset00.red == -0.0018208718393 || crypto_asset00.red == -9.84538577392e-29 || crypto_asset00.red == 1.38258244773e-27 || crypto_asset00.red == 1.23308865403e+16 || crypto_asset00.red == 5.33933635406e+17 || crypto_asset00.red == 6.13871987282e+19 || crypto_asset00.red == 2.665496152e+23 || crypto_asset00.red == 7.01917427684e+25) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -1.29131112332e+16 || crypto_asset00.blue == -1.2673420886e+14 || crypto_asset00.blue == -0.0018208718393 || crypto_asset00.blue == -9.84538577392e-29 || crypto_asset00.blue == 1.38258244773e-27 || crypto_asset00.blue == 1.23308865403e+16 || crypto_asset00.blue == 5.33933635406e+17 || crypto_asset00.blue == 6.13871987282e+19 || crypto_asset00.blue == 2.665496152e+23 || crypto_asset00.blue == 7.01917427684e+25) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -1.29131112332e+16 || crypto_asset01.red == -1.2673420886e+14 || crypto_asset01.red == -0.0018208718393 || crypto_asset01.red == -9.84538577392e-29 || crypto_asset01.red == 1.38258244773e-27 || crypto_asset01.red == 1.23308865403e+16 || crypto_asset01.red == 5.33933635406e+17 || crypto_asset01.red == 6.13871987282e+19 || crypto_asset01.red == 2.665496152e+23 || crypto_asset01.red == 7.01917427684e+25) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -1.29131112332e+16 || crypto_asset01.blue == -1.2673420886e+14 || crypto_asset01.blue == -0.0018208718393 || crypto_asset01.blue == -9.84538577392e-29 || crypto_asset01.blue == 1.38258244773e-27 || crypto_asset01.blue == 1.23308865403e+16 || crypto_asset01.blue == 5.33933635406e+17 || crypto_asset01.blue == 6.13871987282e+19 || crypto_asset01.blue == 2.665496152e+23 || crypto_asset01.blue == 7.01917427684e+25) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -1.29131112332e+16 || crypto_asset02.red == -1.2673420886e+14 || crypto_asset02.red == -0.0018208718393 || crypto_asset02.red == -9.84538577392e-29 || crypto_asset02.red == 1.38258244773e-27 || crypto_asset02.red == 1.23308865403e+16 || crypto_asset02.red == 5.33933635406e+17 || crypto_asset02.red == 6.13871987282e+19 || crypto_asset02.red == 2.665496152e+23 || crypto_asset02.red == 7.01917427684e+25) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -1.29131112332e+16 || crypto_asset02.blue == -1.2673420886e+14 || crypto_asset02.blue == -0.0018208718393 || crypto_asset02.blue == -9.84538577392e-29 || crypto_asset02.blue == 1.38258244773e-27 || crypto_asset02.blue == 1.23308865403e+16 || crypto_asset02.blue == 5.33933635406e+17 || crypto_asset02.blue == 6.13871987282e+19 || crypto_asset02.blue == 2.665496152e+23 || crypto_asset02.blue == 7.01917427684e+25) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4474
+ selected false
+ disable false
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge1
+ xpos 70
+ ypos -4474
+}
+push $Nf7baae00
+Cryptomatte { name face_nose_0
+ xpos -40
+ ypos -4522
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -151423942656 || crypto_asset00.red == -182.00982666 || crypto_asset00.red == 1.65243075945e-32 || crypto_asset00.red == 1.77156092412e-20 || crypto_asset00.red == 2.30424659214e-17 || crypto_asset00.red == 7.04183540617e-16 || crypto_asset00.red == 236434.078125 || crypto_asset00.red == 5.82668938551e+17 || crypto_asset00.red == 1.71197133795e+30 || crypto_asset00.red == 1.08998531212e+38) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -151423942656 || crypto_asset00.blue == -182.00982666 || crypto_asset00.blue == 1.65243075945e-32 || crypto_asset00.blue == 1.77156092412e-20 || crypto_asset00.blue == 2.30424659214e-17 || crypto_asset00.blue == 7.04183540617e-16 || crypto_asset00.blue == 236434.078125 || crypto_asset00.blue == 5.82668938551e+17 || crypto_asset00.blue == 1.71197133795e+30 || crypto_asset00.blue == 1.08998531212e+38) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -151423942656 || crypto_asset01.red == -182.00982666 || crypto_asset01.red == 1.65243075945e-32 || crypto_asset01.red == 1.77156092412e-20 || crypto_asset01.red == 2.30424659214e-17 || crypto_asset01.red == 7.04183540617e-16 || crypto_asset01.red == 236434.078125 || crypto_asset01.red == 5.82668938551e+17 || crypto_asset01.red == 1.71197133795e+30 || crypto_asset01.red == 1.08998531212e+38) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -151423942656 || crypto_asset01.blue == -182.00982666 || crypto_asset01.blue == 1.65243075945e-32 || crypto_asset01.blue == 1.77156092412e-20 || crypto_asset01.blue == 2.30424659214e-17 || crypto_asset01.blue == 7.04183540617e-16 || crypto_asset01.blue == 236434.078125 || crypto_asset01.blue == 5.82668938551e+17 || crypto_asset01.blue == 1.71197133795e+30 || crypto_asset01.blue == 1.08998531212e+38) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -151423942656 || crypto_asset02.red == -182.00982666 || crypto_asset02.red == 1.65243075945e-32 || crypto_asset02.red == 1.77156092412e-20 || crypto_asset02.red == 2.30424659214e-17 || crypto_asset02.red == 7.04183540617e-16 || crypto_asset02.red == 236434.078125 || crypto_asset02.red == 5.82668938551e+17 || crypto_asset02.red == 1.71197133795e+30 || crypto_asset02.red == 1.08998531212e+38) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -151423942656 || crypto_asset02.blue == -182.00982666 || crypto_asset02.blue == 1.65243075945e-32 || crypto_asset02.blue == 1.77156092412e-20 || crypto_asset02.blue == 2.30424659214e-17 || crypto_asset02.blue == 7.04183540617e-16 || crypto_asset02.blue == 236434.078125 || crypto_asset02.blue == 5.82668938551e+17 || crypto_asset02.blue == 1.71197133795e+30 || crypto_asset02.blue == 1.08998531212e+38) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4522
+ selected false
+ disable false
+}
+push $Nf7bab180
+Cryptomatte { name face_brows_0
+ xpos -40
+ ypos -4570
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -5.73384478506e+22 || crypto_asset00.red == -1.02987921279e+17 || crypto_asset00.red == -260103072 || crypto_asset00.red == -0.24454164505 || crypto_asset00.red == -1.27328758026e-06 || crypto_asset00.red == -1.22742802978e-29) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -5.73384478506e+22 || crypto_asset00.blue == -1.02987921279e+17 || crypto_asset00.blue == -260103072 || crypto_asset00.blue == -0.24454164505 || crypto_asset00.blue == -1.27328758026e-06 || crypto_asset00.blue == -1.22742802978e-29) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -5.73384478506e+22 || crypto_asset01.red == -1.02987921279e+17 || crypto_asset01.red == -260103072 || crypto_asset01.red == -0.24454164505 || crypto_asset01.red == -1.27328758026e-06 || crypto_asset01.red == -1.22742802978e-29) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -5.73384478506e+22 || crypto_asset01.blue == -1.02987921279e+17 || crypto_asset01.blue == -260103072 || crypto_asset01.blue == -0.24454164505 || crypto_asset01.blue == -1.27328758026e-06 || crypto_asset01.blue == -1.22742802978e-29) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -5.73384478506e+22 || crypto_asset02.red == -1.02987921279e+17 || crypto_asset02.red == -260103072 || crypto_asset02.red == -0.24454164505 || crypto_asset02.red == -1.27328758026e-06 || crypto_asset02.red == -1.22742802978e-29) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -5.73384478506e+22 || crypto_asset02.blue == -1.02987921279e+17 || crypto_asset02.blue == -260103072 || crypto_asset02.blue == -0.24454164505 || crypto_asset02.blue == -1.27328758026e-06 || crypto_asset02.blue == -1.22742802978e-29) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4570
+ selected false
+ disable false
+}
+Shuffle {
+ in alpha
+ green black
+ blue black
+ alpha black
+ name Shuffle11
+ label "\[value in] -> \[value out]"
+ xpos 180
+ ypos -4576
+}
+ShuffleCopy {
+ inputs 2
+ green alpha
+ blue black
+ name ShuffleCopy5
+ xpos 180
+ ypos -4522
+}
+ShuffleCopy {
+ inputs 2
+ blue alpha
+ name ShuffleCopy4
+ xpos 180
+ ypos -4474
+}
+Expression {
+ channel0 alpha
+ expr0 r+b+g
+ channel1 none
+ channel2 none
+ name Expression1
+ xpos 180
+ ypos -4426
+}
+Reformat {
+ name Reformat7
+ xpos 180
+ ypos -4378
+}
+push $Nf7baa380
+Cryptomatte { name body_hair_0
+ xpos -40
+ ypos -4810
+ matteOutput alpha
+ matteList "/s00e00_sh0130_02_:fade_01_/:hair_GEO, /s00e00_sh0130_03_:shorty_01_/s00e00_sh0130_03_:hair_GEO"
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == 1.52018939576e-24 || crypto_asset00.red == 0.0034490947146) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == 1.52018939576e-24 || crypto_asset00.blue == 0.0034490947146) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == 1.52018939576e-24 || crypto_asset01.red == 0.0034490947146) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == 1.52018939576e-24 || crypto_asset01.blue == 0.0034490947146) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == 1.52018939576e-24 || crypto_asset02.red == 0.0034490947146) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == 1.52018939576e-24 || crypto_asset02.blue == 0.0034490947146) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4810
+ selected false
+ disable false
+}
+push $Nf7baa700
+Cryptomatte { name body_skin_0
+ xpos -40
+ ypos -4858
+ matteOutput alpha
+ matteList ""
+ useWildcards true
+ cryptoLayer crypto_asset
+ expression "((crypto_asset00.red == -3.0552753445e-18 || crypto_asset00.red == -1.15099192138e-23 || crypto_asset00.red == 5.95947166863e-35 || crypto_asset00.red == 0.273981183767 || crypto_asset00.red == 5.8543930928e+18) ? crypto_asset00.green : 0.0) + ((crypto_asset00.blue == -3.0552753445e-18 || crypto_asset00.blue == -1.15099192138e-23 || crypto_asset00.blue == 5.95947166863e-35 || crypto_asset00.blue == 0.273981183767 || crypto_asset00.blue == 5.8543930928e+18) ? crypto_asset00.alpha : 0.0) + ((crypto_asset01.red == -3.0552753445e-18 || crypto_asset01.red == -1.15099192138e-23 || crypto_asset01.red == 5.95947166863e-35 || crypto_asset01.red == 0.273981183767 || crypto_asset01.red == 5.8543930928e+18) ? crypto_asset01.green : 0.0) + ((crypto_asset01.blue == -3.0552753445e-18 || crypto_asset01.blue == -1.15099192138e-23 || crypto_asset01.blue == 5.95947166863e-35 || crypto_asset01.blue == 0.273981183767 || crypto_asset01.blue == 5.8543930928e+18) ? crypto_asset01.alpha : 0.0) + ((crypto_asset02.red == -3.0552753445e-18 || crypto_asset02.red == -1.15099192138e-23 || crypto_asset02.red == 5.95947166863e-35 || crypto_asset02.red == 0.273981183767 || crypto_asset02.red == 5.8543930928e+18) ? crypto_asset02.green : 0.0) + ((crypto_asset02.blue == -3.0552753445e-18 || crypto_asset02.blue == -1.15099192138e-23 || crypto_asset02.blue == 5.95947166863e-35 || crypto_asset02.blue == 0.273981183767 || crypto_asset02.blue == 5.8543930928e+18) ? crypto_asset02.alpha : 0.0) + 0"
+ keyedName ""
+ manifestKey ""
+ previewExpression0 "((mantissa(abs(crypto_asset00.red)) * 1 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 1 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 1 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 1 % 0.25) * crypto_asset01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_asset00.red)) * 16 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 16 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 16 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 16 % 0.25) * crypto_asset01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_asset00.red)) * 64 % 0.25) * crypto_asset00.green + (mantissa(abs(crypto_asset00.blue)) * 64 % 0.25) * crypto_asset00.alpha + (mantissa(abs(crypto_asset01.red)) * 64 % 0.25) * crypto_asset01.green + (mantissa(abs(crypto_asset01.blue)) * 64 % 0.25) * crypto_asset01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_asset00
+ in01 crypto_asset01
+ in02 crypto_asset02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+ in08 none
+ in09 none
+ in10 none
+ in11 none
+
+ xpos -40
+ ypos -4858
+ selected false
+ disable false
+}
+Shuffle {
+ in alpha
+ green black
+ blue black
+ alpha black
+ name Shuffle13
+ label "\[value in] -> \[value out]"
+ xpos 180
+ ypos -4864
+}
+ShuffleCopy {
+ inputs 2
+ green alpha
+ blue black
+ name ShuffleCopy17
+ xpos 180
+ ypos -4810
+}
+Expression {
+ channel0 alpha
+ expr0 r+b+g
+ channel1 none
+ channel2 none
+ name Expression3
+ xpos 180
+ ypos -4714
+}
+Reformat {
+ name Reformat2
+ xpos 180
+ ypos -4666
+}
+Dot {
+ inputs 0
+ name beauty_input_0
+ label "\n\[value name]"
+ xpos 214
+ ypos -5430
+}
+Reformat {
+ name Reformat1
+ xpos 180
+ ypos -5386
+}
+Dot {
+ name Dot67
+ xpos 214
+ ypos -5286
+}
+Dot {
+ inputs 0
+ name specular_input_0
+ label "\n\[value name]"
+ xpos 214
+ ypos -5958
+}
+Reformat {
+ name Reformat3
+ xpos 180
+ ypos -5914
+}
+Dot {
+ name Dot66
+ xpos 214
+ ypos -5814
+}
+Dot {
+ inputs 0
+ name ratio_input_0
+ label "\n\[value name]"
+ xpos 214
+ ypos -6438
+}
+Reformat {
+ name Reformat4
+ xpos 180
+ ypos -6394
+}
+Grade {
+ black -0.23
+ name Grade29
+ xpos 180
+ ypos -6346
+}
+Dot {
+ name Dot9
+ xpos 214
+ ypos -6294
+}
+Dot {
+ inputs 0
+ name normal_input_0
+ label "\n\[value name]"
+ xpos 214
+ ypos -7014
+}
+Reformat {
+ name Reformat5
+ xpos 180
+ ypos -6970
+}
+Dot {
+ name Dot1
+ xpos 214
+ ypos -6870
+}
+Dot {
+ inputs 0
+ name diffuse_input_0
+ label "\[value name]"
+ xpos 434
+ ypos -7926
+}
+Reformat {
+ name Reformat6
+ xpos 400
+ ypos -7786
+}
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue diffuse.alpha}
+Shuffle {
+ black red
+ white green
+ red2 blue
+ green2 alpha
+ out2 diffuse
+ name Shuffle2
+ label "\[value in] -> \[value out]"
+ xpos 400
+ ypos -7648
+}
+add_layer {normal normal.red normal.green normal.blue normal.alpha}
+ShuffleCopy {
+ inputs 2
+ red red
+ green green
+ blue blue
+ out normal
+ name ShuffleCopy1
+ label "\[value in] -> \[value out]"
+ xpos 400
+ ypos -6880
+}
+add_layer {facing_ratio facing_ratio.red facing_ratio.green facing_ratio.blue facing_ratio.alpha}
+ShuffleCopy {
+ inputs 2
+ red red
+ green green
+ blue blue
+ out facing_ratio
+ name ShuffleCopy2
+ label "\[value in] -> \[value out]"
+ xpos 400
+ ypos -6304
+}
+add_layer {specular specular.red specular.green specular.blue specular.alpha}
+ShuffleCopy {
+ inputs 2
+ red red
+ green green
+ blue blue
+ out specular
+ name ShuffleCopy3
+ label "\[value in] -> \[value out]"
+ xpos 400
+ ypos -5824
+}
+ShuffleCopy {
+ inputs 2
+ name ShuffleCopy6
+ label "\[value in] -> \[value out]"
+ xpos 400
+ ypos -5296
+}
+Dot {
+ name Dot22
+ xpos 434
+ ypos -5094
+}
+add_layer {body body.skin body.hair body.beard body.alpha}
+ShuffleCopy {
+ inputs 2
+ in2 none
+ red red
+ green green
+ blue blue
+ out body
+ name ShuffleCopy19
+ label "\[value out]"
+ xpos 400
+ ypos -4672
+}
+add_layer {face face.brows face.nose face.eyes face.alpha face.eye_bags}
+ShuffleCopy {
+ inputs 2
+ in2 none
+ red red
+ green green
+ blue blue
+ out face
+ name ShuffleCopy12
+ label "\[value out]"
+ xpos 400
+ ypos -4384
+}
+add_layer {features features.mouth features.eyebags features.beard features.alpha}
+ShuffleCopy {
+ inputs 2
+ in2 none
+ red red
+ green green
+ blue blue
+ out features
+ name ShuffleCopy9
+ label "\[value out]"
+ xpos 400
+ ypos -4096
+}
+add_layer {clothes clothes.top clothes.bottom clothes.shoes clothes.alpha}
+ShuffleCopy {
+ inputs 2
+ in2 none
+ red red
+ green green
+ blue blue
+ out clothes
+ name ShuffleCopy15
+ label "\[value out]"
+ xpos 400
+ ypos -3664
+}
+Dot {
+ name beauty_output_0
+ label "\n\[value name]"
+ xpos 434
+ ypos -3558
+}

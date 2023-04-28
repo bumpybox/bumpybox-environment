@@ -1,0 +1,43 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Ramp {
+inputs 0
+p0 {1576 392}
+p1 {{p0.x} 1304}
+name Ramp1
+selected true
+xpos 1093
+ypos -6538
+}
+push $cut_paste_input
+Expression {
+expr0 (x+0.5)/width
+expr1 (y+0.5)/height
+name STMap_colours1
+label "\n"
+selected true
+xpos 1203
+ypos -6617
+}
+TransformMasked {
+inputs 1+1
+scale {{1+(frame/68/10*speed)-(frame/68/10*speed*2*direction) x1 1 x71 1}}
+center {1547 648}
+name Transform2
+selected true
+xpos 1203
+ypos -6544
+addUserKnob {20 User}
+addUserKnob {7 speed}
+speed 0.5
+addUserKnob {6 direction l "direction away" +STARTLINE}
+}
+push 0
+STMap {
+inputs 2
+uv rgba
+name STMap3
+selected true
+xpos 1390
+ypos -6544
+}

@@ -1,0 +1,663 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1027" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1153" stretch="1"/>
+            <splitter orientation="2">
+                <split size="983"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="719"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="com.adrianpueyo.KnobScripterPane"/>
+                <page id="W_scaleTree.widget"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="1912" y="0" w="1920" h="1057" maximized="1" screen="1">
+        <splitter orientation="2">
+            <split size="1057"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/KK/Comp/KK_Gobos_v01.nk"
+ last_frame 2
+ lock_range true
+ format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:handleEnd l handleEnd T 0}
+ addUserKnob {26 avalon:handleStart l handleStart T 0}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+}
+Group {
+ inputs 0
+ name Gobo_Texture
+ label "\[value texture]"
+ xpos -40
+ ypos -10
+ addUserKnob {20 User}
+ addUserKnob {68 texture M {Canopy Leaves01 Leaves02 Leaves03 Leaves04 Leaves05 Leaves06 Noise01 Noise02 Noise03 Noise04 Palms01 Palms02 Palms03 Lupus01 Lupus02 Lupus03 Lupus04 "" "" "" ""}}
+ texture Lupus02
+ addUserKnob {26 Info l "" +STARTLINE T "\n\nMost textures are at 3840 x 1608\nLupus texture are  \tLupus01 - 3960 x 3015\n\t       \tLupus02 - 4450 x 3210\n\t\tLupus03 - 4200 x 2640\n\t\tLupus04 - 5300 x 3430"}
+}
+ Reformat {
+  inputs 0
+  format "9765 6006 0 0 9765 6006 1 "
+  resize none
+  name Reformat6
+  xpos 217
+  ypos -582
+ }
+set N952b0380 [stack 0]
+ Roto {
+  output alpha
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44f00000 x44490000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {x416e1600 0}
+        {x45938de8 x453c1ccb}
+        {xc16e1400 0}
+        {xc2a3ae00 x422747c0}
+        {x45838307 x45124adf}
+        {x42a3ae00 xc2274780}
+        {0 0}
+        {x458c1d45 x44a1e5be}
+        {0 0}
+        {xc1b28f00 xc0df0a40}
+        {x4589ca11 x42dc8f01}
+        {x41b29000 x40df0a40}
+        {x4285eb80 xc319570c}
+        {x4616d9d6 x4379ade8}
+        {xc285ec00 x4319570c}
+        {x40ee1800 0}
+        {x46151064 x454fd614}
+        {xc0ee1000 0}
+        {x4214cd00 xc1a74780}
+        {x45e68e8c x454a0d6f}
+        {xc214cd00 x41a74800}
+        {x42328f00 0}
+        {x45ced782 x455da7d6}
+        {xc2328f00 0}
+        {x416e1400 x41df0a00}
+        {x45b93826 x4544d332}
+        {xc16e1400 xc1df0a80}}}     idem}
+     {tx 1 x451031c7 x44129c72}
+     {a osw x41200000 osf 0 str 1 spx x44f00000 spy x44490000 sb 1 tt x40800000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {1920 804}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name Roto4
+  xpos 569
+  ypos -526
+ }
+ Read {
+  inputs 0
+  file y:/kensukes_kingdom/library/gobos/gobos_fromLupus/gobos.tif
+  format "9765 6006 0 0 9765 6006 1 "
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read15
+  xpos 448
+  ypos -836
+ }
+set N952b0e00 [stack 0]
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge4
+  xpos 621
+  ypos -482
+ }
+ Transform {
+  translate {-1825 1105}
+  center {6805 1835}
+  name Transform4
+  xpos 621
+  ypos -456
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle4
+  xpos 621
+  ypos -334
+ }
+ Crop {
+  box {2450 1100 7750 4530}
+  reformat true
+  crop false
+  name Crop4
+  xpos 621
+  ypos -308
+ }
+push $N952b0380
+ Roto {
+  output alpha
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44f00000 x44490000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {0 xc14eea00}
+        {x435feb18 x45355da3}
+        {0 x414ee900}
+        {xc2bcaa00 x428151e0}
+        {x430db1d8 x4437ba1e}
+        {x42bca9f0 xc28151f0}
+        {xc32f3020 x41cee960}
+        {x453de42f x43b02e1c}
+        {x432f3020 xc1cee980}
+        {x41a1b600 xc28151f0}
+        {x4585dc34 x44546a41}
+        {xc1a1b600 x428151e8}
+        {x40d79800 xc28e4080}
+        {x458247d6 x451412b9}
+        {xc0d7a000 x428e4080}
+        {0 xc24ee980}
+        {x4525cedd x4538d938}
+        {0 x424ee980}}}     idem}
+     {tx 1 x449acaab x43efd555}
+     {a osw x41200000 osf 0 str 1 spx x44f00000 spy x44490000 sb 1 tt x40800000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {1920 804}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name Roto3
+  xpos 446
+  ypos -521
+ }
+push $N952b0e00
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge3
+  xpos 506
+  ypos -479
+ }
+ Transform {
+  translate {2585 1175}
+  center {2280 1865}
+  name Transform3
+  xpos 506
+  ypos -453
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle3
+  xpos 506
+  ypos -377
+ }
+ Crop {
+  box {2730 1610 6930 4250}
+  reformat true
+  crop false
+  name Crop3
+  xpos 506
+  ypos -351
+ }
+set N9531c000 [stack 0]
+push $N952b0380
+ Roto {
+  output alpha
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44f00000 x44490000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {xc1ae8700 xc1a9ba00}
+        {x4579a5f4 x45a9ce13}
+        {x41ae8700 x41a9bb00}
+        {0 x41e24e00}
+        {x4580ea25 x4541bffd}
+        {0 xc1e24d80}
+        {xc1ae8700 0}
+        {x45bb5160 x453f8a3b}
+        {x41ae8700 0}
+        {0 0}
+        {x45d0adec x45599e33}
+        {0 0}
+        {xc0e8b000 0}
+        {x45f7fe5e x45423124}
+        {x40e8b800 0}
+        {x41e8b400 0}
+        {x46051639 x45a9ce13}
+        {xc1e8b400 0}
+        {0 0}
+        {x45b388cc x45b97a13}
+        {0 0}}}     idem}
+     {tx 1 x450bdb6e x448eedb7}
+     {a osw x41200000 osf 0 str 1 spx x44f00000 spy x44490000 sb 1 tt x40800000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {1920 804}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name Roto2
+  xpos 341
+  ypos -518
+ }
+push $N952b0e00
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge2
+  xpos 394
+  ypos -477
+ }
+ Transform {
+  translate {-1100 -1270}
+  center {6120 4440}
+  name Transform2
+  xpos 394
+  ypos -451
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle2
+  xpos 394
+  ypos -405
+ }
+ Crop {
+  box {2830 1500 7280 4710}
+  reformat true
+  crop false
+  name Crop2
+  xpos 394
+  ypos -379
+ }
+push $N952b0380
+ Roto {
+  output alpha
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44f00000 x44490000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {x41648b00 0}
+        {x44e9f862 x45a971e1}
+        {xc1648b00 0}
+        {xc1648c00 x42b3f900}
+        {x443d6708 x459f0fd4}
+        {x41648b00 xc2b3f8c0}
+        {x422b6880 x431848c0}
+        {x4440f934 x4570af0c}
+        {xc22b6880 xc31848b0}
+        {xc3b61f00 x42793140}
+        {x44712e94 x454d3562}
+        {x43b61ef8 xc2793140}
+        {xc307b2c0 xc2f93120}
+        {x45438c11 x4549bf5e}
+        {x4307b2a0 x42f93120}
+        {x429d1fc0 xc3bae4e0}
+        {x456258d5 x458b609d}
+        {xc29d1fc0 x43bae4e0}}}     idem}
+     {tx 1 x448bd555 x44926aab}
+     {a osw x41200000 osf 0 str 1 spx x44f00000 spy x44490000 sb 1 tt x40800000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {1920 804}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name Roto1
+  xpos 217
+  ypos -515
+ }
+push $N952b0e00
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge1
+  xpos 285
+  ypos -476
+ }
+ Transform {
+  translate {2495 -1290}
+  center {2090 4385}
+  name Transform1
+  xpos 285
+  ypos -450
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle1
+  xpos 285
+  ypos -431
+ }
+ Crop {
+  box {3015 1595 6975 4610}
+  reformat true
+  crop false
+  name Crop1
+  xpos 285
+  ypos -405
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_palms_v03.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read1
+  xpos -206
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_palms_v02.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read14
+  xpos -316
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_palms_v01_highres.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read13
+  xpos -426
+  ypos -658
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_noise_v04.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read12
+  xpos -865
+  ypos -663
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_noise_v03.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read11
+  xpos -976
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_noise_v02.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read10
+  xpos -1086
+  ypos -662
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_noise_v01.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read9
+  xpos -1196
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v06_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read8
+  xpos -1526
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v05_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read7
+  xpos -1634
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v04_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read6
+  xpos -1746
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v03_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read5
+  xpos -1856
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v02_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read4
+  xpos -1966
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_leaves_v01_.001.exr
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read3
+  xpos -2076
+  ypos -661
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/gobos/publish/fusion_renders/gobo_canopytexture_v01.001.exr
+  format "2918 1140 0 0 2918 1140 1 "
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read2
+  xpos -2406
+  ypos -661
+ }
+ Reformat {
+  format "3840 1608 0 0 3840 1608 1 kensukes_kingdom"
+  resize height
+  name Reformat1
+  xpos -2406
+  ypos -575
+ }
+ Switch {
+  inputs 18
+  which {{texture}}
+  name Switch1
+  xpos -1305
+  ypos -228
+ }
+ Output {
+  name Output1
+  xpos -1305
+  ypos -122
+ }
+push $N9531c000
+ Viewer {
+  frame 1
+  frame_range 1-2
+  name Viewer1
+  xpos -426
+  ypos -572
+ }
+end_group

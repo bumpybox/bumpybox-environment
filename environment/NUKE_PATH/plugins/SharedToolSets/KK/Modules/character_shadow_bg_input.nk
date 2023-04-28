@@ -1,0 +1,112 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1027" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1153" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1004"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="719"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="com.adrianpueyo.KnobScripterPane"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/KK/Modules/character_shadow_bg_input.nk"
+ last_frame 87
+ lock_range true
+ format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:handleEnd l handleEnd T 0}
+ addUserKnob {26 avalon:handleStart l handleStart T 0}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+}
+Dot {
+ inputs 0
+ name char_shadow_highlight_input_0
+ label " Background Highlights"
+ note_font_size 21
+ xpos 7474
+ ypos 1002
+}
+set Nabdb0700 [stack 0]
+Dot {
+ inputs 0
+ name char_shadow_bg_input_0
+ label "   Background"
+ note_font_size 21
+ xpos 7914
+ ypos 1002
+}
+Dot {
+ name Dot3
+ xpos 7914
+ ypos 1146
+}
+set Nabdb1180 [stack 0]
+PSDMerge {
+ inputs 2
+ name PSD_Merge
+ note_font "Bitstream Vera Sans"
+ xpos 7330
+ ypos 1143
+ maskChannelInput -rgba.alpha
+}
+Dot {
+ name full_bg_output_0
+ xpos 7254
+ ypos 1146
+}
+push $Nabdb0700
+Merge2 {
+ operation stencil
+ name end_stencil_0
+ xpos 7440
+ ypos 3398
+}
+push $Nabdb1180
+PSDMerge {
+ inputs 2
+ name end_psdmerge_0
+ note_font "Bitstream Vera Sans"
+ xpos 7880
+ ypos 3399
+ maskChannelInput none
+}
+StickyNote {
+ inputs 0
+ name end_sticky_0
+ label "Cuts out the shadow shape from\nLIGHTLAYER"
+ xpos 7291
+ ypos 2912
+}

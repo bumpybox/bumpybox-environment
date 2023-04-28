@@ -1,0 +1,716 @@
+set cut_paste_input [stack 0]
+version 10.5 v7
+BackdropNode {
+ inputs 0
+ name BackdropNode5
+ tile_color 0x648caaff
+ label "<center>CG Structure"
+ note_font_size 42
+ selected true
+ xpos -1739
+ ypos -1472
+ bdwidth 2265
+ bdheight 1089
+}
+StickyNote {
+ inputs 0
+ name StickyNote1
+ label "   Adjust per shot   "
+ note_font_size 30
+ selected true
+ xpos -1121
+ ypos -1227
+}
+Read {
+ inputs 0
+ file Y:/projects/my_petsaurus/publish/episodes/ep0204_poorly/sh0420/lighting/v0002/output/ep0204_poorly_sh0420_lighting_beauty_v0002/ep0204_poorly_sh0420_lighting_beauty_v0002.%04d.exr
+ first 1001
+ last 1063
+ origfirst 1001
+ origlast 1063
+ origset true
+ name lighting_beauty_main
+ note_font_color 0x14a14aff
+ selected true
+ xpos -1275
+ ypos -677
+ addUserKnob {20 ftracktab l ftrack}
+ addUserKnob {1 fcompname l componentName}
+ fcompname sequence
+ addUserKnob {1 componentId}
+ componentId ftrack://a279df55-1f89-4160-970d-56f7a6d7773a?entityType=component
+ addUserKnob {1 componentName}
+ componentName main
+ addUserKnob {1 assetVersionId}
+ assetVersionId ftrack://74370056-d139-42aa-be71-291f77e6b156?entityType=asset_version
+ addUserKnob {1 assetVersion}
+ assetVersion 2
+ addUserKnob {1 assetName}
+ assetName lighting_beauty
+ addUserKnob {1 assetType}
+ assetType img
+ addUserKnob {1 assetId}
+ assetId 7b384722-8180-4ebf-bb40-093d9d188a89
+}
+Dot {
+ name Dot4
+ selected true
+ xpos -1241
+ ypos -532
+}
+set Nf533c00 [stack 0]
+add_layer {crypto_material00 crypto_material00.red crypto_material00.green crypto_material00.blue crypto_material00.alpha}
+add_layer {crypto_material01 crypto_material01.red crypto_material01.green crypto_material01.blue crypto_material01.alpha}
+add_layer {crypto_material02 crypto_material02.red crypto_material02.green crypto_material02.blue crypto_material02.alpha}
+Cryptomatte {
+ name Cryptomatte1
+ selected true
+ xpos -1275
+ ypos -452
+ matteOutput alpha
+ unpremultiply true
+ matteList "body_mat, bottom_teeth_mat, claws_mat, collar_mat, corneas_mat, eyes_mat, gums_mat, horns_mat, tag_mat, tongue_mat, top_teeth_mat"
+ cryptoLayer crypto_material
+ expression "((crypto_material00.red == -2.65823193464e+32 || crypto_material00.red == 5.65189624247e+17 || crypto_material00.red == -1.22039200593e+15 || crypto_material00.red == -1.02946182543e+36 || crypto_material00.red == 58949967872.0 || crypto_material00.red == -1.61344529859e-15 || crypto_material00.red == -2.39859780306e+33 || crypto_material00.red == -1.72362148914e-33 || crypto_material00.red == -4.69434443747e+24 || crypto_material00.red == 3.81022787555e-31 || crypto_material00.red == 56.2799377441) ? crypto_material00.green : 0.0) + ((crypto_material00.blue == -2.65823193464e+32 || crypto_material00.blue == 5.65189624247e+17 || crypto_material00.blue == -1.22039200593e+15 || crypto_material00.blue == -1.02946182543e+36 || crypto_material00.blue == 58949967872.0 || crypto_material00.blue == -1.61344529859e-15 || crypto_material00.blue == -2.39859780306e+33 || crypto_material00.blue == -1.72362148914e-33 || crypto_material00.blue == -4.69434443747e+24 || crypto_material00.blue == 3.81022787555e-31 || crypto_material00.blue == 56.2799377441) ? crypto_material00.alpha : 0.0) + ((crypto_material01.red == -2.65823193464e+32 || crypto_material01.red == 5.65189624247e+17 || crypto_material01.red == -1.22039200593e+15 || crypto_material01.red == -1.02946182543e+36 || crypto_material01.red == 58949967872.0 || crypto_material01.red == -1.61344529859e-15 || crypto_material01.red == -2.39859780306e+33 || crypto_material01.red == -1.72362148914e-33 || crypto_material01.red == -4.69434443747e+24 || crypto_material01.red == 3.81022787555e-31 || crypto_material01.red == 56.2799377441) ? crypto_material01.green : 0.0) + ((crypto_material01.blue == -2.65823193464e+32 || crypto_material01.blue == 5.65189624247e+17 || crypto_material01.blue == -1.22039200593e+15 || crypto_material01.blue == -1.02946182543e+36 || crypto_material01.blue == 58949967872.0 || crypto_material01.blue == -1.61344529859e-15 || crypto_material01.blue == -2.39859780306e+33 || crypto_material01.blue == -1.72362148914e-33 || crypto_material01.blue == -4.69434443747e+24 || crypto_material01.blue == 3.81022787555e-31 || crypto_material01.blue == 56.2799377441) ? crypto_material01.alpha : 0.0) + ((crypto_material02.red == -2.65823193464e+32 || crypto_material02.red == 5.65189624247e+17 || crypto_material02.red == -1.22039200593e+15 || crypto_material02.red == -1.02946182543e+36 || crypto_material02.red == 58949967872.0 || crypto_material02.red == -1.61344529859e-15 || crypto_material02.red == -2.39859780306e+33 || crypto_material02.red == -1.72362148914e-33 || crypto_material02.red == -4.69434443747e+24 || crypto_material02.red == 3.81022787555e-31 || crypto_material02.red == 56.2799377441) ? crypto_material02.green : 0.0) + ((crypto_material02.blue == -2.65823193464e+32 || crypto_material02.blue == 5.65189624247e+17 || crypto_material02.blue == -1.22039200593e+15 || crypto_material02.blue == -1.02946182543e+36 || crypto_material02.blue == 58949967872.0 || crypto_material02.blue == -1.61344529859e-15 || crypto_material02.blue == -2.39859780306e+33 || crypto_material02.blue == -1.72362148914e-33 || crypto_material02.blue == -4.69434443747e+24 || crypto_material02.blue == 3.81022787555e-31 || crypto_material02.blue == 56.2799377441) ? crypto_material02.alpha : 0.0) + 0"
+ keyedName ""
+ previewExpression0 "((mantissa(abs(crypto_material00.red)) * 1 % 0.25) * crypto_material00.green + (mantissa(abs(crypto_material00.blue)) * 1 % 0.25) * crypto_material00.alpha + (mantissa(abs(crypto_material01.red)) * 1 % 0.25) * crypto_material01.green + (mantissa(abs(crypto_material01.blue)) * 1 % 0.25) * crypto_material01.alpha)"
+ previewExpression1 "((mantissa(abs(crypto_material00.red)) * 16 % 0.25) * crypto_material00.green + (mantissa(abs(crypto_material00.blue)) * 16 % 0.25) * crypto_material00.alpha + (mantissa(abs(crypto_material01.red)) * 16 % 0.25) * crypto_material01.green + (mantissa(abs(crypto_material01.blue)) * 16 % 0.25) * crypto_material01.alpha)"
+ previewExpression2 "((mantissa(abs(crypto_material00.red)) * 64 % 0.25) * crypto_material00.green + (mantissa(abs(crypto_material00.blue)) * 64 % 0.25) * crypto_material00.alpha + (mantissa(abs(crypto_material01.red)) * 64 % 0.25) * crypto_material01.green + (mantissa(abs(crypto_material01.blue)) * 64 % 0.25) * crypto_material01.alpha)"
+ previewExpression3 ""
+ previewChannel none
+ in00 crypto_material00
+ in01 crypto_material01
+ in02 crypto_material02
+ in03 none
+ in04 none
+ in05 none
+ in06 none
+ in07 none
+}
+push $Nf533c00
+Dot {
+ name Dot5
+ selected true
+ xpos -1117
+ ypos -532
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge7
+ selected true
+ xpos -1151
+ ypos -452
+}
+Reformat {
+ filter Impulse
+ name Reformat3
+ selected true
+ xpos -1049
+ ypos -452
+}
+add_layer {matte01 matte01.red matte01.green matte01.blue matte01.alpha}
+Shuffle {
+ in alpha
+ out matte01
+ name Shuffle4
+ selected true
+ xpos -889
+ ypos -452
+}
+Read {
+ inputs 0
+ file Y:/projects/my_petsaurus/publish/episodes/ep0204_poorly/sh0420/lighting/v0002/output/ep0204_poorly_sh0420_lighting_shadow_v0002/ep0204_poorly_sh0420_lighting_shadow_v0002.%04d.exr
+ first 1001
+ last 1063
+ origfirst 1001
+ origlast 1063
+ origset true
+ name lighting_shadow_main
+ note_font_color 0x14a14aff
+ selected true
+ xpos -532
+ ypos -724
+ addUserKnob {20 ftracktab l ftrack}
+ addUserKnob {1 fcompname l componentName}
+ fcompname sequence
+ addUserKnob {1 componentId}
+ componentId ftrack://15957c96-f544-40fa-867f-582a1a35c1f7?entityType=component
+ addUserKnob {1 componentName}
+ componentName main
+ addUserKnob {1 assetVersionId}
+ assetVersionId ftrack://9631eb52-57dc-4c47-be84-d2d5c11b8682?entityType=asset_version
+ addUserKnob {1 assetVersion}
+ assetVersion 2
+ addUserKnob {1 assetName}
+ assetName lighting_shadow
+ addUserKnob {1 assetType}
+ assetType img
+ addUserKnob {1 assetId}
+ assetId a8f4f8e8-192e-4ff4-8af2-1570e405b432
+}
+Reformat {
+ filter Impulse
+ name Reformat4
+ selected true
+ xpos -532
+ ypos -615
+}
+Ramp {
+ inputs 0
+ invert_mask true
+ p0 {1025 30}
+ p1 {1010 241}
+ name Ramp1
+ selected true
+ xpos -79
+ ypos -1054
+}
+set N2e2c1c00 [stack 0]
+push $N2e2c1c00
+Read {
+ inputs 0
+ file Y:/projects/my_petsaurus/publish/episodes/ep0204_poorly/sh0250/lighting/v0001/output/ep0204_poorly_sh0250_lighting_reflection_v0001/ep0204_poorly_sh0250_lighting_reflection_v0001.%04d.exr
+ first 1001
+ last 1070
+ origfirst 1001
+ origlast 1070
+ origset true
+ name lighting_reflection_main1
+ note_font_color 0x14a14aff
+ selected true
+ xpos -1630
+ ypos -1095
+ addUserKnob {20 ftracktab l ftrack}
+ addUserKnob {1 fcompname l componentName}
+ fcompname sequence
+ addUserKnob {1 componentId}
+ componentId ftrack://4dc74183-57a5-41ed-8982-abb3b2421698?entityType=component
+ addUserKnob {1 componentName}
+ componentName main
+ addUserKnob {1 assetVersionId}
+ assetVersionId ftrack://422fc051-57d6-43b5-8ecc-98d680de0aa9?entityType=asset_version
+ addUserKnob {1 assetVersion}
+ assetVersion 1
+ addUserKnob {1 assetName}
+ assetName lighting_reflection
+ addUserKnob {1 assetType}
+ assetType img
+ addUserKnob {1 assetId}
+ assetId fca10b02-45d9-47d6-8b7c-c41130c44c5b
+}
+Reformat {
+ filter Impulse
+ name Reformat2
+ selected true
+ xpos -1630
+ ypos -938
+}
+set N2e2c1400 [stack 0]
+Keyer {
+ operation "luminance key"
+ range {0.008190205802 0.01552104752 1 1}
+ name Keyer1
+ selected true
+ xpos -1434
+ ypos -1104
+}
+push $N2e2c1400
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge3
+ selected true
+ xpos -1434
+ ypos -938
+}
+set N2e2c0800 [stack 0]
+EdgeDetectWrapper {
+ channels alpha
+ threshold 0.55
+ erodesize -4.4
+ blursize 9
+ name EdgeDetect1
+ selected true
+ xpos -1175
+ ypos -1031
+}
+Blur {
+ size 18
+ name Blur2
+ selected true
+ xpos -1175
+ ypos -982
+}
+push $N2e2c0800
+Grade {
+ blackpoint 0.18
+ whitepoint 1.6
+ black 0.04
+ white {1.15 1.15 1.15 0.95}
+ white_panelDropped true
+ multiply 0.8
+ gamma {1 1.05 1 1}
+ gamma_panelDropped true
+ name Grade2
+ selected true
+ xpos -1297
+ ypos -938
+}
+Blur {
+ inputs 1+1
+ size 4
+ name Blur3
+ selected true
+ xpos -1175
+ ypos -944
+}
+Group {
+ name edgeExtend2
+ knobChanged "\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n"
+ selected true
+ xpos -1014
+ ypos -938
+ addUserKnob {20 main}
+ addUserKnob {52 passKnobsChanged l "" +STARTLINE T "nuke.thisNode().knob('knobChanged').setValue('''\nimport nuke\nnode = nuke.thisNode()\npassNr = nuke.thisKnob().name()\nif (\n    node.knob(passNr).value() == True and\n    node.knob(passNr+ 'Stat').value() == False):\n    node.begin()\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    list = \['edRedIsZero1','edPremult1','edErode1','edBlur1','edUnpremult1','edMergeMin1','edPremultEroded1','edMergeUnder1']\n    for n in list:\n        nuke.toNode(n).setSelected(True)\n    nuke.nodeCopy(\"%clipboard%\")\n    for n in nuke.selectedNodes():\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Dot').setSelected(True)\n    nuke.nodePaste(\"%clipboard%\")\n    string = \"\"\n    for n in nuke.selectedNodes():\n        string = string + ' ' + n.knob('name').value()\n        if n.Class() == 'Blur':\n            n.knob('size').setExpression('parent.' + passNr + 'Blur')\n        else: pass\n        if n.Class() == 'FilterErode':\n            n.knob('size').setExpression('parent.' + passNr + 'Erode')\n        else: pass\n        if n.Class() == 'Expression':\n            n.knob('disable').setValue(False)\n        else: pass\n        n.setSelected(False)\n    nuke.toNode(passNr + 'Note').knob('label').setValue(string)\n    node.end()\n    node.knob(passNr + 'Stat').setValue(True)\n    node.knob(passNr + 'Blur').setEnabled(True)\n    node.knob(passNr + 'Erode').setEnabled(True)\nelse:\n    pass\nif (node.knob(passNr).value() == False and\n    node.knob(passNr + 'Stat').value() == True):\n    node.begin()\n    list = nuke.toNode(passNr + 'Note').knob('label').value().split()\n    for n in list:\n        nuke.delete(nuke.toNode(n))\n    nuke.toNode(passNr + 'Note').knob('label').setValue('')\n    node.end()\n    node.knob(passNr + 'Stat').setValue(False)\n    node.knob(passNr + 'Blur').setEnabled(False)\n    node.knob(passNr + 'Erode').setEnabled(False)\nelse:\n    pass\n''')" +STARTLINE}
+ addUserKnob {7 initBlackpoint l blackpoint R 0 0.9999}
+ initBlackpoint 0.5
+ addUserKnob {7 initGammaOne l gamma R 0.02 1}
+ initGammaOne 1
+ addUserKnob {14 initErode l erode R 0 100}
+ addUserKnob {7 initGammaTwo l gamma R 0.02 1}
+ initGammaTwo 1
+ addUserKnob {26 ""}
+ addUserKnob {14 firstPassBlur R 0 100}
+ firstPassBlur 31
+ addUserKnob {14 firstPassErode R 0 100}
+ firstPassErode 12
+ addUserKnob {6 secondPass +STARTLINE}
+ addUserKnob {6 secondPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {14 secondPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 secondPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 thirdPass +STARTLINE}
+ addUserKnob {6 thirdPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 thirdPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 thirdPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fourthPass +STARTLINE}
+ addUserKnob {6 fourthPassStat +INVISIBLE +STARTLINE}
+ addUserKnob {14 fourthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fourthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {6 fifthPass +STARTLINE}
+ addUserKnob {6 fifthPassStat l INVISIBLE +INVISIBLE +STARTLINE}
+ addUserKnob {14 fifthPassBlur l blur +DISABLED R 0 100}
+ addUserKnob {14 fifthPassErode l erode +DISABLED R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {14 softenEdge R 0 100}
+ addUserKnob {6 lut l Lut -STARTLINE}
+ addUserKnob {6 gizmo l Gizmo -STARTLINE}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -350
+  ypos 154
+ }
+set N706ab400 [stack 0]
+push $N706ab400
+ Clamp {
+  channels alpha
+  name initClamp
+  xpos -350
+  ypos 199
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.initBlackpoint}}
+  gamma {{parent.initGammaOne}}
+  white_clamp true
+  name initBlackAndGamma
+  xpos -350
+  ypos 237
+ }
+set N706aac00 [stack 0]
+ FilterErode {
+  size {{parent.initErode} {parent.initErode}}
+  filter gaussian
+  name initErode
+  xpos -227
+  ypos 237
+ }
+ Grade {
+  channels alpha
+  gamma {{parent.initGammaTwo}}
+  name initGammaErode
+  xpos -227
+  ypos 275
+ }
+push $N706aac00
+ Merge2 {
+  inputs 2
+  operation min
+  name initMin
+  xpos -350
+  ypos 281
+ }
+ Grade {
+  add 0.1
+  name initColorOffset
+  xpos -350
+  ypos 307
+ }
+set N70701c00 [stack 0]
+push $N70701c00
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero1
+  xpos -350
+  ypos 364
+  disable true
+ }
+set N70701800 [stack 0]
+ Premult {
+  name edPremult1
+  xpos -475
+  ypos 364
+ }
+ Blur {
+  size {{parent.firstPassBlur} {parent.firstPassBlur}}
+  name edBlur1
+  xpos -475
+  ypos 413
+ }
+ Unpremult {
+  name edUnpremult1
+  xpos -475
+  ypos 459
+ }
+push $N70701800
+ FilterErode {
+  size {{parent.firstPassErode} {parent.firstPassErode}}
+  filter gaussian
+  name edErode1
+  xpos -240
+  ypos 401
+ }
+push $N70701800
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin1
+  xpos -350
+  ypos 407
+ }
+ Premult {
+  name edPremultEroded1
+  xpos -350
+  ypos 433
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder1
+  xpos -350
+  ypos 472
+ }
+set N70737800 [stack 0]
+ Dot {
+  name secondPassDot
+  label secondPassDot
+  xpos -316
+  ypos 498
+ }
+ Dot {
+  name thirdPassDot
+  label thirdPassDot
+  xpos -316
+  ypos 696
+ }
+ Dot {
+  name fourthPassDot
+  label fourthPassDot
+  xpos -316
+  ypos 911
+ }
+ Dot {
+  name fifthPassDot
+  label fifthPassDot
+  xpos -316
+  ypos 1148
+ }
+ Expression {
+  channel0 alpha
+  expr0 r==0?0:1
+  name edRedIsZero6
+  xpos -350
+  ypos 1295
+ }
+set N70736400 [stack 0]
+ Blur {
+  channels alpha
+  size {{parent.softenEdge}}
+  name edSoftenEdge1
+  xpos -612
+  ypos 1289
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.95
+  gamma 0.98
+  white_clamp true
+  name Grade1
+  xpos -612
+  ypos 1353
+ }
+ FilterErode {
+  size {{-parent.edSoftenEdge1.size/4}}
+  filter gaussian
+  name FilterErode1
+  xpos -612
+  ypos 1411
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge2
+  xpos -480
+  ypos 1404
+ }
+push $N70736400
+ ChannelMerge {
+  inputs 2
+  operation min
+  bbox B
+  name ChannelMerge1
+  xpos -350
+  ypos 1404
+  disable {{"edSoftenEdge1.size < 0.001"}}
+ }
+ Grade {
+  add -0.1
+  name endInvInitialGrade
+  xpos -350
+  ypos 1468
+ }
+ Premult {
+  name Premult1
+  xpos -350
+  ypos 1503
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos -350
+  ypos 1545
+ }
+ Output {
+  name Output1
+  xpos -350
+  ypos 1594
+ }
+ StickyNote {
+  inputs 0
+  name fifthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 1145
+ }
+ StickyNote {
+  inputs 0
+  name fourthPassNote
+  note_font_size 22
+  xpos 14
+  ypos 908
+ }
+ StickyNote {
+  inputs 0
+  name thirdPassNote
+  note_font_size 22
+  xpos 14
+  ypos 693
+ }
+ StickyNote {
+  inputs 0
+  name secondPassNote
+  note_font_size 22
+  xpos 14
+  ypos 495
+ }
+push $N70737800
+ Viewer {
+  frame_range 1-1223
+  name Viewer1
+  xpos -350
+  ypos 333
+ }
+end_group
+set N6c689180 [stack 0]
+Dot {
+ name Dot2
+ selected true
+ xpos -980
+ ypos -1044
+}
+Dot {
+ name Dot3
+ selected true
+ xpos -576
+ ypos -1044
+}
+Dot {
+ inputs 0
+ name Dot7
+ selected true
+ xpos 317
+ ypos -1274
+}
+set N8cd4dc00 [stack 0]
+Dot {
+ name Dot1
+ selected true
+ xpos -841
+ ypos -1269
+}
+ColorCorrect {
+ saturation 0
+ contrast 1.4
+ gamma 1.05
+ gain 1.75
+ offset -0.08
+ name ColorCorrect2
+ selected true
+ xpos -875
+ ypos -1229
+}
+Grade {
+ white 1.5
+ gamma 4.6
+ name Grade3
+ selected true
+ xpos -875
+ ypos -1203
+}
+Blur {
+ size 12
+ name Blur6
+ selected true
+ xpos -875
+ ypos -1177
+}
+Shuffle {
+ alpha blue
+ name Shuffle2
+ selected true
+ xpos -875
+ ypos -1111
+}
+push $N6c689180
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy3
+ selected true
+ xpos -875
+ ypos -944
+}
+IDistort {
+ uv alpha
+ uv_scale 9
+ blur_scale 7.5
+ name IDistort1
+ selected true
+ xpos -744
+ ypos -944
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy2
+ selected true
+ xpos -610
+ ypos -944
+}
+Blur {
+ size 5
+ name Blur4
+ selected true
+ xpos -402
+ ypos -944
+}
+Premult {
+ name Premult1
+ selected true
+ xpos -292
+ ypos -938
+}
+Blur {
+ inputs 1+1
+ size 20
+ invert_mask true
+ name Blur5
+ selected true
+ xpos -79
+ ypos -944
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge5
+ selected true
+ xpos 62
+ ypos -938
+}
+set N7081f400 [stack 0]
+Dot {
+ name Dot6
+ selected true
+ xpos 96
+ ypos -817
+}
+push $N7081f400
+push $N8cd4dc00
+Merge2 {
+ inputs 2
+ operation screen
+ mix 0.4
+ name Merge4
+ selected true
+ xpos 283
+ ypos -938
+}
+Merge2 {
+ inputs 2
+ mix 0.4
+ name Merge6
+ selected true
+ xpos 283
+ ypos -821
+}
+Merge2 {
+ inputs 2
+ name Merge8
+ selected true
+ xpos 283
+ ypos -615
+}
+Merge2 {
+ inputs 2
+ also_merge matte01
+ name Merge9
+ selected true
+ xpos 283
+ ypos -452
+}
+Shuffle {
+ in matte01
+ alpha black
+ out alpha
+ name Shuffle5
+ label "CG Matte"
+ selected true
+ xpos 283
+ ypos -340
+}

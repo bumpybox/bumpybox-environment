@@ -1,0 +1,11 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Constant {
+ inputs 0
+ channels rgb
+ color {0.3724914789 0.3772259653 0.3652715385 1}
+ name Constant26
+ selected true
+ xpos 6666
+ ypos -2741
+}

@@ -1,0 +1,71 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Dot {
+name Dot80
+label "Garbage Matte"
+selected true
+xpos -226
+ypos -7494
+}
+Dot {
+name Dot81
+selected true
+xpos -226
+ypos -7398
+}
+set N8aa74700 [stack 0]
+FrameBlend {
+numframes 10
+name FrameBlend1
+selected true
+xpos -150
+ypos -7408
+}
+set Nfc31b500 [stack 0]
+push $Nfc31b500
+TimeOffset {
+time_offset {{FrameBlend1.numframes*-1}}
+time ""
+name TimeOffset3
+selected true
+xpos -40
+ypos -7402
+}
+ChannelMerge {
+inputs 2
+name ChannelMerge8
+selected true
+xpos -150
+ypos -7271
+}
+Grade {
+channels alpha
+blackpoint {0 0 0 0.09}
+name Grade5
+selected true
+xpos -150
+ypos -7168
+}
+Blur {
+size 17
+name Blur5
+selected true
+xpos -150
+ypos -7072
+}
+push $N8aa74700
+Blur {
+size 24.5
+name Blur6
+selected true
+xpos -260
+ypos -7216
+}
+ChannelMerge {
+inputs 2
+name ChannelMerge9
+selected true
+xpos -260
+ypos -7079
+}

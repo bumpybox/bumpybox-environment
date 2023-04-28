@@ -1,0 +1,11 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Transform {
+ skewX {{frame*0.0007}}
+ center {1566 396}
+ name skyMove
+ selected true
+ xpos 2490
+ ypos 7174
+}

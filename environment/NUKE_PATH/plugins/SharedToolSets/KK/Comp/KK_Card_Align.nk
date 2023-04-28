@@ -1,0 +1,118 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push 0
+push $cut_paste_input
+Group {
+ inputs 2
+ name KK_Card_Align
+ selected true
+ xpos 70
+ ypos 2486
+}
+ Input {
+  inputs 0
+  name Warped_Card
+  xpos 70
+  ypos -538
+ }
+ Dot {
+  name Dot8
+  xpos 104
+  ypos -467
+ }
+set N82236380 [stack 0]
+ Input {
+  inputs 0
+  name Painted_Card
+  xpos 180
+  ypos -442
+  number 1
+ }
+ Dot {
+  name Dot6
+  xpos 214
+  ypos -371
+ }
+set N99f7bc00 [stack 0]
+ ChannelMerge {
+  inputs 2
+  operation stencil
+  name ChannelMerge1
+  xpos -40
+  ypos -388
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {1 0 0 0}
+  color_panelDropped true
+  name Constant1
+  xpos -260
+  ypos -302
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos -40
+  ypos -285
+ }
+ Premult {
+  name Premult1
+  xpos -40
+  ypos -183
+ }
+push $N82236380
+ Dot {
+  name Dot9
+  xpos 104
+  ypos -83
+ }
+push $N99f7bc00
+ Dot {
+  name Dot7
+  xpos 214
+  ypos 13
+ }
+ ChannelMerge {
+  inputs 2
+  operation xor
+  name ChannelMerge2
+  xpos -260
+  ypos -4
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 0 0}
+  color_panelDropped true
+  name Constant3
+  xpos -473
+  ypos 130
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy4
+  xpos -260
+  ypos 147
+ }
+ Premult {
+  name Premult2
+  xpos -260
+  ypos 249
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos -40
+  ypos 249
+ }
+ Output {
+  name Output1
+  xpos -40
+  ypos 349
+ }
+end_group

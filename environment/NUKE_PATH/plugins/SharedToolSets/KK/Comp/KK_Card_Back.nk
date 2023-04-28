@@ -1,0 +1,105 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0280/q0280_c0060/publish/image/imagepencil_edge/v002/kensukes_kingdom_q0280_c0060_imagepencil_edge_v002.png
+ localizationPolicy on
+ origset true
+ name LoadImage_png7
+ tile_color 0x4ecd25ff
+ selected true
+ xpos -590
+ ypos 1496
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {1 avalon:name l name}
+ avalon:name imagepencil_edge
+ addUserKnob {1 avalon:namespace l namespace}
+ avalon:namespace q0280_c0060
+ addUserKnob {26 avalon:loader l loader T LoadImage}
+ addUserKnob {26 avalon:representation l representation T 62fba23193cf7073e5668089}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.container}
+ addUserKnob {26 avalon:schema l schema T avalon-core:container-2.0}
+ addUserKnob {26 avalon:frameStart l frameStart T 1}
+ addUserKnob {26 avalon:source l source T "\{root\}/kensukes_kingdom/episodes/film/q0280/q0280_c0060/work/photo_back/kensukes_kingdom_q0280_c0060_photo_back_v002.psd"}
+ addUserKnob {26 avalon:version l version T 2}
+ addUserKnob {26 avalon:objectName l objectName T LoadImage_png}
+ addUserKnob {26 avalon:fps l fps T 24.0}
+ addUserKnob {26 avalon:author l author T maellevesvrotte}
+ addUserKnob {26 avalon:colorspace l colorspace T None}
+ addUserKnob {26 avalon:frameEnd l frameEnd T 1}
+ addUserKnob {20 end l "Avalon data group" n -1}
+}
+Shuffle {
+ red black
+ green black
+ blue black
+ name Shuffle10
+ selected true
+ xpos -590
+ ypos 1622
+}
+Premult {
+ name Premult3
+ selected true
+ xpos -590
+ ypos 1862
+}
+Read {
+ inputs 0
+ file Y:/kensukes_kingdom/episodes/film/q0280/q0280_c0060/publish/image/imageBack_of_photo/v001/kensukes_kingdom_q0280_c0060_imageBack_of_photo_v001.png
+ localizationPolicy on
+ origset true
+ name LoadImage_png8
+ tile_color 0x4ecd25ff
+ selected true
+ xpos -370
+ ypos 1496
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {1 avalon:name l name}
+ avalon:name imageBack_of_photo
+ addUserKnob {1 avalon:namespace l namespace}
+ avalon:namespace q0280_c0060
+ addUserKnob {26 avalon:loader l loader T LoadImage}
+ addUserKnob {26 avalon:representation l representation T 62fba23293cf7073e566808f}
+ addUserKnob {26 avalon:id l id T pyblish.avalon.container}
+ addUserKnob {26 avalon:schema l schema T avalon-core:container-2.0}
+ addUserKnob {26 avalon:frameStart l frameStart T 1}
+ addUserKnob {26 avalon:source l source T "\{root\}/kensukes_kingdom/episodes/film/q0280/q0280_c0060/work/photo_back/kensukes_kingdom_q0280_c0060_photo_back_v002.psd"}
+ addUserKnob {26 avalon:version l version T 1}
+ addUserKnob {26 avalon:objectName l objectName T LoadImage_png}
+ addUserKnob {26 avalon:fps l fps T 24.0}
+ addUserKnob {26 avalon:author l author T maellevesvrotte}
+ addUserKnob {26 avalon:colorspace l colorspace T None}
+ addUserKnob {26 avalon:frameEnd l frameEnd T 1}
+ addUserKnob {20 end l "Avalon data group" n -1}
+}
+Merge2 {
+ inputs 2
+ name Merge24
+ selected true
+ xpos -370
+ ypos 1862
+}
+Crop {
+ box {382.5 596.5999756 3995 5082}
+ reformat true
+ crop false
+ name Crop4
+ selected true
+ xpos -370
+ ypos 1958
+}
+Shuffle {
+ red white
+ out mask
+ name Shuffle11
+ selected true
+ xpos -370
+ ypos 2006
+}

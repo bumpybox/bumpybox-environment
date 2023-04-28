@@ -1,0 +1,18 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+CurveTool {
+ ROI {0 0 1920 1080}
+ autocropdata {480 270 1440 810}
+ intensitydata {0 0 0 1}
+ name CurveToolToGrade
+ tile_color 0xff00ff
+ selected true
+ xpos 1997
+ ypos 563
+ addUserKnob {20 User}
+ addUserKnob {7 average_intensity}
+ average_intensity {{"\[python (nuke.thisNode()\\\[\\\"intensitydata\\\"\\].getValue()\\\[0\\]+nuke.thisNode()\\\[\\\"intensitydata\\\"\\].getValue()\\\[1\\]+nuke.thisNode()\\\[\\\"intensitydata\\\"\\].getValue()\\\[2\\])\\ /\\ 3]"}}
+ addUserKnob {41 go_1 l Go! T CurveToolToGrade.go}
+ addUserKnob {22 createGrade l "Create Grade" -STARTLINE T "import nuke\nnode = nuke.thisNode()\nselected = nuke.selectedNodes()\n\nTI = nuke.toNode(\"Target_Intensity\")\n\nif TI:\n    average_intensity = 0\n    keys = 0\n    for channel in node\[\"intensitydata\"].animations():\n        for key in channel.keys():\n            average_intensity += key.y\n            keys += 1\n    \n    average_intensity /= keys\n    \n    #unselected any other nodes\n    for select in selected:\n        select\['selected'].setValue(False)\n    #make sure curve is selected only\n    node\['selected'].setValue(True)\n    \n    # Create per shot grade node.\n    per_shot_node = nuke.createNode(\"Grade\")\n    per_shot_node\[\"selected\"].setValue(False)\n    per_shot_node\[\"white\"].setValue(TI\[\"target_intensity\"].value() / average_intensity)\n    per_shot_node\['tile_color'].setValue( int('%02x%02x%02x%02x' % (0,255,0,1),16))\n\nelse:\n    nuke.message(\"Can't find target intensity node!\")\n\n"}
+}

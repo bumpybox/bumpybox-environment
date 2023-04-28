@@ -1,0 +1,1721 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1027" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1153" stretch="1"/>
+            <splitter orientation="2">
+                <split size="983"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="719"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="com.adrianpueyo.KnobScripterPane"/>
+                <page id="W_scaleTree.widget"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="1912" y="0" w="1920" h="1057" maximized="1" screen="1">
+        <splitter orientation="2">
+            <split size="1057"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/Ghosts/creative_grade.nk"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode14
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x4f359901
+ label "levels 1"
+ note_font_size 50
+ xpos -2457
+ ypos 8570
+ bdwidth 295
+ bdheight 332
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "levels 1"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 michael l "<img src=\"michael.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[155,186,196],'michael',None)"}
+ addUserKnob {22 kensuke l "<img src=\"kensuke.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[227,187,154],'kensuke',None)"}
+ addUserKnob {22 dad l "<img src=\"dad.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[163,185,159],'dad',None)"}
+ addUserKnob {22 mum l "<img src=\"mum.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[235,193,119],'mum',None)"}
+ addUserKnob {22 becky l "<img src=\"becky.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[156,135,176],'becky',None)"}
+ addUserKnob {22 stella l "<img src=\"stella.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[214,214,214],'stella',None)"}
+ addUserKnob {22 parrot l "<img src=\"parrot.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[14,117,136],'parrot',None)"}
+ addUserKnob {22 poacher l "<img src=\"poacher.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[103,84,52],'poacher',None)"}
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x -70
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y -706
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {295 332}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode15
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x606d3301
+ label "levels 2"
+ note_font_size 50
+ xpos -2457
+ ypos 9050
+ bdwidth 295
+ bdheight 332
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "levels 2"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 michael l "<img src=\"michael.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[155,186,196],'michael',None)"}
+ addUserKnob {22 kensuke l "<img src=\"kensuke.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[227,187,154],'kensuke',None)"}
+ addUserKnob {22 dad l "<img src=\"dad.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[163,185,159],'dad',None)"}
+ addUserKnob {22 mum l "<img src=\"mum.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[235,193,119],'mum',None)"}
+ addUserKnob {22 becky l "<img src=\"becky.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[156,135,176],'becky',None)"}
+ addUserKnob {22 stella l "<img src=\"stella.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[214,214,214],'stella',None)"}
+ addUserKnob {22 parrot l "<img src=\"parrot.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[14,117,136],'parrot',None)"}
+ addUserKnob {22 poacher l "<img src=\"poacher.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[103,84,52],'poacher',None)"}
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x -147
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y -358
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {295 332}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode16
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x344042ff
+ label "color balance"
+ note_font_size 50
+ xpos -2480
+ ypos 9559
+ bdwidth 340
+ bdheight 370
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "color balance"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 michael l "<img src=\"michael.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[155,186,196],'michael',None)"}
+ addUserKnob {22 kensuke l "<img src=\"kensuke.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[227,187,154],'kensuke',None)"}
+ addUserKnob {22 dad l "<img src=\"dad.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[163,185,159],'dad',None)"}
+ addUserKnob {22 mum l "<img src=\"mum.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[235,193,119],'mum',None)"}
+ addUserKnob {22 becky l "<img src=\"becky.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[156,135,176],'becky',None)"}
+ addUserKnob {22 stella l "<img src=\"stella.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[214,214,214],'stella',None)"}
+ addUserKnob {22 parrot l "<img src=\"parrot.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[14,117,136],'parrot',None)"}
+ addUserKnob {22 poacher l "<img src=\"poacher.png\">" -STARTLINE T "import oz_backdrop\noz_backdrop.setCharacter(\[103,84,52],'poacher',None)"}
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x -170
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y -26
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {340 370}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+Dot {
+ inputs 0
+ name Dot99
+ label " Plate"
+ note_font_size 20
+ xpos -2316
+ ypos 8154
+}
+Dot {
+ name Dot101
+ xpos -2316
+ ypos 8538
+}
+set Nf5851c00 [stack 0]
+Dot {
+ name Dot102
+ xpos -2536
+ ypos 8538
+}
+Dot {
+ name Dot103
+ xpos -2536
+ ypos 11178
+}
+Dot {
+ name Dot104
+ xpos -2756
+ ypos 11178
+}
+set Nf5872e00 [stack 0]
+Keyer {
+ operation "luminance key"
+ range {0.2601512588 0.3111285068 1 1}
+ name Keyer8
+ xpos -2790
+ ypos 11216
+}
+set Nf5872a80 [stack 0]
+Dot {
+ name Dot105
+ xpos -3086
+ ypos 11226
+}
+Dilate {
+ channels alpha
+ size 2.4
+ name Dilate5
+ xpos -3120
+ ypos 11456
+}
+Group {
+ name EdgeDetectPRO4
+ tile_color 0xcc804e00
+ xpos -3120
+ ypos 11792
+ addUserKnob {20 EdgeDetect}
+ addUserKnob {41 channels T CTRL.channels}
+ addUserKnob {26 IN l "" +STARTLINE T "<b><font color=\"SandyBrown\">IN</font></b>"}
+ addUserKnob {26 line l "" -STARTLINE}
+ addUserKnob {7 in_erode l "IN erode" R -100 100}
+ in_erode 6.5
+ addUserKnob {7 in_blur l "IN blur" R 0 50}
+ addUserKnob {26 OUT l "" +STARTLINE T "<b><font color=\"SandyBrown\">OUT</font></b>"}
+ addUserKnob {26 line2 l "" -STARTLINE}
+ addUserKnob {7 out_erode l "OUT erode" R -100 100}
+ out_erode -0.5
+ addUserKnob {7 out_blur l "OUT blur" R 0 50}
+ addUserKnob {26 OVERALL l "" +STARTLINE T "<b><font color=\"SandyBrown\">OVERALL</font></b>"}
+ addUserKnob {26 line03 l "" -STARTLINE}
+ addUserKnob {41 size l Dilate T Dilate1.size}
+ addUserKnob {41 size_1 l Blur T BlurOverall.size}
+ addUserKnob {41 value l Gain T MultiplyOverall.value}
+ addUserKnob {6 clamp -STARTLINE}
+ clamp true
+ addUserKnob {26 ""}
+ addUserKnob {6 enableRotate l "" +STARTLINE +STARTLINE}
+ addUserKnob {41 which l rotate -STARTLINE T Switch1.which}
+ addUserKnob {26 ""}
+ addUserKnob {20 filters l Filters n 1}
+ filters 0
+ addUserKnob {41 filter l "filter erode" T FilterErodeIN.filter}
+ addUserKnob {41 filter_1 l "filter blur" T BlurIN.filter}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 email l @}
+ addUserKnob {26 email_1 l "" +STARTLINE T "<b><font color=\"SandyBrown\">EdgeDetect PRO v2.0</font></b><br>\n<font size=“1”><i>by Andrea Geremia</i><br>\n<br>\nandrea.geremia89@gmail.com<br>\nwww.andreageremia.it</font>"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x56705aff
+  label rotate
+  note_font_size 42
+  xpos -2496
+  ypos -223
+  bdwidth 2029
+  bdheight 509
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 149
+  ypos -285
+ }
+ Dilate {
+  channels {{{parent.CTRL.channels}}}
+  name Dilate1
+  label "\[value size]"
+  xpos 147
+  ypos -234
+ }
+ Dot {
+  name Dot4
+  xpos 181
+  ypos -143
+ }
+set Nf5873500 [stack 0]
+ Dot {
+  name Dot21
+  xpos -176
+  ypos -143
+ }
+set Nf5873180 [stack 0]
+ Dot {
+  name Dot16
+  xpos -525
+  ypos -143
+ }
+set Nf589f500 [stack 0]
+ Matrix {
+  matrix {
+      {0 1 1}
+      {-1 0 1}
+      {-1 -1 0}
+    }
+  name Matrix15
+  xpos -557
+  ypos -29
+ }
+push $Nf589f500
+ Dot {
+  name Dot5
+  xpos -658
+  ypos -143
+ }
+set Nf589ee00 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 1}
+      {-1 0 1}
+      {-1 -1 -1}
+    }
+  name Matrix14
+  xpos -690
+  ypos -31
+ }
+push $Nf589ee00
+ Dot {
+  name Dot14
+  xpos -788
+  ypos -143
+ }
+set Nf589e700 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 1}
+      {0 0 0}
+      {-1 -1 -1}
+    }
+  name Matrix13
+  xpos -820
+  ypos -29
+ }
+push $Nf589e700
+ Dot {
+  name Dot13
+  xpos -934
+  ypos -143
+ }
+set Nf589e000 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 1}
+      {1 0 -1}
+      {-1 -1 -1}
+    }
+  name Matrix12
+  xpos -966
+  ypos -29
+ }
+push $Nf589e000
+ Dot {
+  name Dot12
+  xpos -1068
+  ypos -143
+ }
+set Nf589f880 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 0}
+      {1 0 -1}
+      {0 -1 -1}
+    }
+  name Matrix11
+  xpos -1100
+  ypos -31
+ }
+push $Nf589f880
+ Dot {
+  name Dot11
+  xpos -1219
+  ypos -143
+ }
+set Nf58c7880 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 -1}
+      {0 0 0}
+      {1 -1 -1}
+    }
+  name Matrix10
+  xpos -1251
+  ypos -32
+ }
+push $Nf58c7880
+ Dot {
+  name Dot10
+  xpos -1351
+  ypos -143
+ }
+set Nf58c7180 [stack 0]
+ Matrix {
+  matrix {
+      {1 1 -1}
+      {1 0 -1}
+      {1 -1 -1}
+    }
+  name Matrix9
+  xpos -1385
+  ypos -34
+ }
+push $Nf58c7180
+ Dot {
+  name Dot9
+  xpos -1500
+  ypos -143
+ }
+set Nf58c6a80 [stack 0]
+ Matrix {
+  matrix {
+      {1 0 -1}
+      {1 0 -1}
+      {1 0 -1}
+    }
+  name Matrix8
+  xpos -1534
+  ypos -31
+ }
+push $Nf58c6a80
+ Dot {
+  name Dot8
+  xpos -1640
+  ypos -143
+ }
+set Nf58c6380 [stack 0]
+ Matrix {
+  matrix {
+      {1 -1 -1}
+      {1 0 -1}
+      {1 1 -1}
+    }
+  name Matrix7
+  xpos -1674
+  ypos -31
+ }
+push $Nf58c6380
+ Dot {
+  name Dot15
+  xpos -1745
+  ypos -143
+ }
+set Nf58efc00 [stack 0]
+ Matrix {
+  matrix {
+      {0 -1 -1}
+      {1 0 -1}
+      {1 1 0}
+    }
+  name Matrix6
+  xpos -1779
+  ypos -32
+ }
+push $Nf58efc00
+ Dot {
+  name Dot7
+  xpos -1851
+  ypos -143
+ }
+set Nf58ef500 [stack 0]
+ Matrix {
+  matrix {
+      {-1 -1 -1}
+      {1 0 -1}
+      {1 1 1}
+    }
+  name Matrix5
+  xpos -1885
+  ypos -31
+ }
+push $Nf58ef500
+ Dot {
+  name Dot6
+  xpos -1961
+  ypos -143
+ }
+set Nf58eee00 [stack 0]
+ Matrix {
+  matrix {
+      {-1 -1 -1}
+      {0 0 0}
+      {1 1 1}
+    }
+  name Matrix4
+  xpos -1995
+  ypos -32
+ }
+push $Nf58eee00
+ Dot {
+  name Dot17
+  xpos -2082
+  ypos -143
+ }
+set Nf58ee700 [stack 0]
+ Matrix {
+  matrix {
+      {-1 -1 -1}
+      {-1 0 1}
+      {1 1 1}
+    }
+  name Matrix3
+  xpos -2116
+  ypos -32
+ }
+push $Nf58ee700
+ Dot {
+  name Dot18
+  xpos -2203
+  ypos -143
+ }
+set Nf58ee000 [stack 0]
+ Matrix {
+  matrix {
+      {-1 -1 0}
+      {-1 0 1}
+      {0 1 1}
+    }
+  name Matrix2
+  xpos -2237
+  ypos -31
+ }
+push $Nf58ee000
+ Dot {
+  name Dot19
+  xpos -2319
+  ypos -143
+ }
+set N92359880 [stack 0]
+ Matrix {
+  matrix {
+      {-1 -1 1}
+      {-1 0 1}
+      {-1 1 1}
+    }
+  name Matrix1
+  xpos -2353
+  ypos -31
+ }
+push $N92359880
+ Dot {
+  name Dot20
+  xpos -2452
+  ypos -143
+ }
+ Matrix {
+  matrix {
+      {-1 0 1}
+      {-1 0 1}
+      {-1 0 1}
+    }
+  name Matrix0
+  xpos -2486
+  ypos -31
+ }
+ Switch {
+  inputs 16
+  name Switch1
+  xpos -1534
+  ypos 258
+ }
+push $Nf5873180
+ Matrix {
+  channels {{{parent.CTRL.channels}}}
+  matrix {
+      {{"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(0,0)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(0,1)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(0,2)]"}}
+      {{"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(1,0)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(1,1)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(1,2)]"}}
+      {{"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(2,0)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(2,1)]"} {"\[python nuke.toNode('Matrix'\\ +\\nstr(int(nuke.toNode('Switch1').knob('which').value()))).knob('matrix').value(2,2)]"}}
+    }
+  name MatrixSUPER
+  xpos -208
+  ypos 68
+ }
+ FilterErode {
+  channels {{{parent.CTRL.channels}}}
+  size {{(abs(parent.FilterErodeOUT.size)+abs(parent.FilterErodeIN.size)+parent.BlurOUT.size+parent.BlurIN.size+10)*-1}}
+  name FilterErode1
+  label "\[value size]"
+  xpos -208
+  ypos 215
+ }
+push $Nf5873500
+ Dot {
+  name Dot2
+  label IN
+  note_font_size 30
+  xpos 239
+  ypos -96
+ }
+ FilterErode {
+  channels {{{parent.CTRL.channels}}}
+  size {{parent.in_erode}}
+  name FilterErodeIN
+  label "\[value size]"
+  xpos 205
+  ypos -44
+ }
+ Blur {
+  channels {{{parent.CTRL.channels}}}
+  size {{parent.in_blur}}
+  name BlurIN
+  label "\[value size]"
+  xpos 205
+  ypos 14
+ }
+ Dot {
+  name Dot3
+  xpos 239
+  ypos 169
+ }
+push $Nf5873500
+ Dot {
+  name Dot1
+  label OUT
+  note_font_size 30
+  xpos 106
+  ypos -93
+ }
+ FilterErode {
+  channels {{{parent.CTRL.channels}}}
+  size {{parent.out_erode}}
+  filter {{FilterErodeIN.filter}}
+  name FilterErodeOUT
+  label "\[value size]"
+  xpos 72
+  ypos -39
+ }
+ Blur {
+  channels {{{parent.CTRL.channels}}}
+  size {{parent.out_blur}}
+  filter {{BlurIN.filter}}
+  name BlurOUT
+  label "\[value size]"
+  xpos 72
+  ypos 15
+ }
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge1
+  xpos 72
+  ypos 166
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge2
+  label ROTATE
+  xpos 72
+  ypos 215
+  disable {{!parent.enableRotate}}
+ }
+ Blur {
+  channels {{{parent.CTRL.channels}}}
+  name BlurOverall
+  label "\[value size]"
+  xpos 72
+  ypos 286
+ }
+ Multiply {
+  channels {{{parent.CTRL.channels}}}
+  name MultiplyOverall
+  label "\[value value]"
+  xpos 72
+  ypos 340
+ }
+ Clamp {
+  channels {{{parent.CTRL.channels}}}
+  name Clamp1
+  xpos 72
+  ypos 383
+  disable {{!parent.clamp}}
+ }
+ Output {
+  name Output1
+  xpos 72
+  ypos 432
+ }
+ FilterErode {
+  inputs 0
+  channels alpha
+  size 0
+  name CTRL
+  label "\[value size]"
+  xpos 385
+  ypos -166
+ }
+end_group
+push $Nf5872e00
+Keyer {
+ operation "saturation key"
+ range {0.1803047903 0.2474937502 1 1}
+ name Keyer9
+ xpos -2900
+ ypos 11168
+}
+Erode {
+ size -1.5
+ name Erode4
+ xpos -2900
+ ypos 11264
+}
+Blur {
+ size 10
+ name Blur12
+ xpos -2900
+ ypos 11360
+}
+Dot {
+ name Dot106
+ xpos -2866
+ ypos 11466
+}
+push $Nf5872a80
+Merge2 {
+ inputs 2
+ operation stencil
+ name Merge23
+ xpos -2790
+ ypos 11462
+}
+ColorWheel {
+ inputs 0
+ format "256 256 0 0 256 256 1 square_256"
+ edgeSaturation 0
+ gamma 0.45
+ name ColorWheel4
+ xpos -3010
+ ypos 11439
+}
+push 0
+Group {
+ inputs 2
+ name DotMatrix5
+ xpos -3010
+ ypos 11654
+ addUserKnob {20 dotMatrix l "Dot Matrix"}
+ addUserKnob {41 useGPUIfAvailable l "Use GPU if available" T BlinkScript1.useGPUIfAvailable}
+ addUserKnob {26 ""}
+ addUserKnob {12 translate t "offset for the tiled texture pattern"}
+ addUserKnob {14 gap t "gap between the tiled elements" R 0 100}
+ gap 1
+ addUserKnob {41 scale t "scale of the texture input" T Reformat2.scale}
+ addUserKnob {68 view_mode l view M {"final result" pixelate}}
+ addUserKnob {20 antialiasing n 1}
+ antialiasing 0
+ addUserKnob {41 DotMatrixDisplay_center_bias l "central weighting" t "The image is subsampled using the four corners and center point of each texture tile. Increasing the center bias can reduce the apparent blurriness introduced by subsampling." T BlinkScript1.DotMatrixDisplay_center_bias}
+ addUserKnob {41 DotMatrixDisplay_smoothSubsample l "subsample src image" -STARTLINE T BlinkScript1.DotMatrixDisplay_smoothSubsample}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {26 tag l "" +STARTLINE T "Mitchell Kehn - 4 August 2018"}
+}
+ Input {
+  inputs 0
+  name tex
+  xpos -315
+  ypos 72
+  number 1
+ }
+ Dot {
+  name Dot6
+  xpos -281
+  ypos 398
+ }
+ ColorWheel {
+  inputs 0
+  format "256 256 0 0 256 256 1 square_256"
+  edgeSaturation 0
+  gamma 0.45
+  name ColorWheel1
+  xpos -133
+  ypos 273
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input1] ? 1 : 0"}}
+  name Switch1
+  xpos -133
+  ypos 394
+ }
+ Reformat {
+  type scale
+  scale 0.012
+  name Reformat2
+  xpos -133
+  ypos 441
+ }
+ Crop {
+  box {0 0 {input.format.w} {input.format.h}}
+  name Crop1
+  xpos -133
+  ypos 491
+ }
+ Dot {
+  name Dot1
+  xpos -99
+  ypos 583
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color 1
+  name Constant1
+  xpos 143
+  ypos 264
+ }
+ Input {
+  inputs 0
+  name src
+  xpos 33
+  ypos 66
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input] ? 0 : 1"}}
+  name Switch2
+  xpos 33
+  ypos 287
+ }
+ BlinkScript {
+  inputs 2
+  ProgramGroup 1
+  KernelDescription "2 \"DotMatrixDisplay\" iterate pixelWise 326c60ddc10bf77fd3bdc3531074bb6222c42efb0ce68daa9ac4ddea88f53034 3 \"src\" Read Random \"tex\" Read Random \"dst\" Write Point 5 \"gap\" Float 2 AAAAAAAAAAA= \"translate\" Float 2 AAAAAAAAAAA= \"pixelateOnly\" Bool 1 AA== \"center_bias\" Int 1 AAAAAA== \"smoothSubsample\" Bool 1 AA== 5 \"gap\" 2 1 \"translate\" 2 1 \"pixelateOnly\" 1 1 \"center_bias\" 1 1 \"smoothSubsample\" 1 1 3 \"texSize\" Float 2 1 AAAAAAAAAAA= \"format\" Float 2 1 AAAAAAAAAAA= \"patternSize\" Float 2 1 AAAAAAAAAAA="
+  kernelSource "kernel DotMatrixDisplay : ImageComputationKernel <ePixelWise>\n\{\n    Image <eRead, eAccessRandom, eEdgeClamped> src;\n    Image <eRead, eAccessRandom, eEdgeNone> tex;\n    Image <eWrite> dst;\n\n    local:\n        float2 texSize;\n        float2 format;\n        float2 patternSize;\n\n    param:\n        float2 gap;\n        float2 translate;\n        bool pixelateOnly;\n        int center_bias;\n        bool smoothSubsample;\n\n    void init() \{\n        format = float2(src.bounds.x2, src.bounds.y2);\n        texSize = float2(tex.bounds.x2, tex.bounds.y2);\n        patternSize = texSize + gap;\n    \}\n\n    void define() \{\n        defineParam(translate, \"translate\", float2(0, 0));\n    \}\n\n    void process(int2 pos) \{\n        float2 pos2d = float2(pos.x, pos.y);\n\n        float2 texSamplePos = fmod(fmod((pos2d - translate), patternSize) + patternSize, patternSize);  // position within texture for sample\n\n        float2 srcSamplePos = pos2d - texSamplePos + texSize/2;\n\n        // sample the color behind this texture tile\n        float4 colorsample;\n        if (smoothSubsample) \{\n            colorsample = (bilinear(src, srcSamplePos.x, srcSamplePos.y) * (1 + center_bias)\n                              + bilinear(src, srcSamplePos.x - texSize.x/2, srcSamplePos.y - texSize.y/2)\n                              + bilinear(src, srcSamplePos.x - texSize.x/2, srcSamplePos.y + texSize.y/2)\n                              + bilinear(src, srcSamplePos.x + texSize.x/2, srcSamplePos.y - texSize.y/2)\n                              + bilinear(src, srcSamplePos.x + texSize.x/2, srcSamplePos.y + texSize.y/2)\n                          )/(5 + center_bias);\n\n        \}  else \{\n            colorsample = bilinear(src, srcSamplePos.x, srcSamplePos.y);\n        \}\n\n\n        if (pixelateOnly) \{  // only show the pixelated color\n            dst() = colorsample;\n\n        \}  else \{  // show texture multiplied by the pixelated color\n            if ((texSamplePos.x < texSize.x) && (texSamplePos.y < texSize.y)) \{\n                dst() = bilinear(tex, texSamplePos.x, texSamplePos.y) * colorsample;\n            \}  else \{dst() = 0;\}\n        \}\n    \}\n\};\n"
+  rebuild ""
+  DotMatrixDisplay_gap {{parent.gap.w} {parent.gap.h}}
+  DotMatrixDisplay_translate {{parent.translate.x} {parent.translate.y}}
+  DotMatrixDisplay_pixelateOnly {{parent.view_mode}}
+  rebuild_finalise ""
+  name BlinkScript1
+  xpos 33
+  ypos 573
+ }
+ Output {
+  name Output1
+  xpos 33
+  ypos 808
+ }
+end_group
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge24
+ xpos -2790
+ ypos 11654
+}
+Group {
+ inputs 2
+ name Chromatic_Abberation8
+ xpos -2790
+ ypos 11798
+ addUserKnob {20 User}
+ addUserKnob {41 translate l "translate red" T TransformRed.translate}
+ addUserKnob {41 translate_1 l "translate green" T TransformGreen.translate}
+ addUserKnob {41 translate_2 l "translate blue" T TransformBlue.translate}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 180
+  ypos 182
+  number 1
+ }
+ Constant {
+  inputs 0
+  channels alpha
+  color 1
+  name Constant1
+  xpos -40
+  ypos 248
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input1]"}}
+  name Switch1
+  xpos 180
+  ypos 278
+ }
+ Dot {
+  name Dot8
+  xpos 214
+  ypos 570
+ }
+set N923eea80 [stack 0]
+ Dot {
+  name Dot4
+  xpos 214
+  ypos 714
+ }
+set N923ee700 [stack 0]
+ Dot {
+  name Dot9
+  xpos 214
+  ypos 954
+ }
+ Expression {
+  inputs 0
+  expr0 (x+0.5)/width
+  expr1 (y+0.5)/height
+  name Expression1
+  xpos -150
+  ypos 518
+ }
+set N923ee000 [stack 0]
+ Dot {
+  name Dot1
+  xpos -116
+  ypos 618
+ }
+set N92427880 [stack 0]
+ Dot {
+  name Dot5
+  xpos -116
+  ypos 714
+ }
+set N92427500 [stack 0]
+ Dot {
+  name Dot2
+  xpos -116
+  ypos 810
+ }
+set N92427180 [stack 0]
+ Dot {
+  name Dot6
+  xpos -116
+  ypos 906
+ }
+set N92426e00 [stack 0]
+ Dot {
+  name Dot3
+  xpos -116
+  ypos 1002
+ }
+push $N92426e00
+ Transform {
+  center {960 540}
+  name TransformBlue
+  xpos 70
+  ypos 902
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name MergeBlue
+  xpos 70
+  ypos 998
+ }
+push $N923ee700
+push $N92427180
+push $N92427500
+ Transform {
+  center {960 540}
+  name TransformGreen
+  xpos 70
+  ypos 710
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name Merge2
+  xpos 70
+  ypos 806
+ }
+push $N923eea80
+push $N92427880
+push $N923ee000
+ Transform {
+  translate {-2 0}
+  center {960 540}
+  name TransformRed
+  xpos 70
+  ypos 518
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name Merge1
+  xpos 70
+  ypos 614
+ }
+ Input {
+  inputs 0
+  name src
+  xpos 290
+  ypos 182
+ }
+ STMap {
+  inputs 2
+  channels {rgba.red -rgba.green -rgba.blue none}
+  uv rgb
+  name STMap1
+  xpos 290
+  ypos 614
+ }
+ STMap {
+  inputs 2
+  channels {-rgba.red rgba.green -rgba.blue none}
+  uv rgb
+  name STMap2
+  xpos 290
+  ypos 806
+ }
+ STMap {
+  inputs 2
+  channels {-rgba.red -rgba.green rgba.blue none}
+  uv rgb
+  name STMap3
+  xpos 290
+  ypos 998
+ }
+set N925d2700 [stack 0]
+ Dot {
+  name Dot7
+  xpos 324
+  ypos 1242
+ }
+ Output {
+  name Output1
+  xpos 290
+  ypos 1334
+ }
+push $N925d2700
+ Viewer {
+  frame_range 0-2833
+  fps 25
+  name Viewer1
+  xpos 426
+  ypos 1125
+ }
+end_group
+Constant {
+ inputs 0
+ channels alpha
+ color 1
+ name Constant5
+ xpos -2020
+ ypos 10472
+}
+Transform {
+ scale {0.96 0.96}
+ center {960 540}
+ name Transform13
+ xpos -2020
+ ypos 10598
+}
+Blur {
+ size 29
+ name Blur13
+ xpos -2020
+ ypos 10688
+}
+Dot {
+ inputs 0
+ name Dot100
+ label " Mask"
+ note_font_size 20
+ xpos -1766
+ ypos 8874
+}
+Blur {
+ size 200
+ name Blur14
+ xpos -1800
+ ypos 9056
+}
+Dot {
+ name Dot107
+ xpos -1766
+ ypos 9162
+}
+set N9260ea80 [stack 0]
+Dot {
+ name Dot108
+ xpos -1766
+ ypos 9258
+}
+set N9260e700 [stack 0]
+Dot {
+ name Dot109
+ xpos -1766
+ ypos 9834
+}
+set N9260e380 [stack 0]
+Dot {
+ name Dot110
+ xpos -1766
+ ypos 10362
+}
+set N9260e000 [stack 0]
+Dot {
+ name Dot111
+ xpos -1766
+ ypos 10794
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge26
+ xpos -2020
+ ypos 10790
+}
+push $N9260e000
+push $N9260e380
+Invert {
+ name Invert4
+ xpos -2020
+ ypos 9824
+}
+Grade {
+ channels alpha
+ whitepoint 1.38
+ name Grade20
+ xpos -2130
+ ypos 9824
+}
+push $N9260e700
+push $N9260ea80
+push $Nf5851c00
+Grade {
+ blackpoint {0.001626713783 0.001690341742 0.002054065699 1}
+ whitepoint {0.850227 0.643344 0.606429 1}
+ whitepoint_panelDropped true
+ black {0.0002289817785 0.0001868277614 0.0002073596552 0}
+ white {0.9999998808 0.9999998808 1 0}
+ name Grade21
+ xpos -2350
+ ypos 8726
+}
+Grade {
+ blackpoint 0.006
+ whitepoint 0.98
+ white 1.13
+ multiply 1.06
+ gamma 0.8
+ mix 0.74
+ name Grade22
+ xpos -2350
+ ypos 8774
+}
+Grade {
+ blackpoint {-0.001441 -0.005441 0.000559 0}
+ blackpoint_panelDropped true
+ whitepoint {0.79 0.99 1.2 1}
+ whitepoint_panelDropped true
+ white {1 0.9 0.905482 1}
+ white_panelDropped true
+ gamma {0.974677 0.949354 1 1}
+ gamma_panelDropped true
+ name Grade23
+ xpos -2350
+ ypos 8822
+}
+ColorCorrect {
+ contrast 1.1
+ name ColorCorrect16
+ xpos -2350
+ ypos 8870
+}
+Grade {
+ inputs 1+1
+ blackpoint 0.003
+ whitepoint 0.93
+ multiply 1.1
+ gamma 0.9
+ name Grade24
+ xpos -2350
+ ypos 9158
+}
+ColorCorrect {
+ inputs 1+1
+ saturation 0.8
+ gain 0.9
+ midtones.gain {1.093462348 1.203694 1.29 1.159999967}
+ name ColorCorrect17
+ xpos -2350
+ ypos 9254
+}
+ColorCorrect {
+ contrast 1.1
+ gain {0.800604 0.79736 0.925 1}
+ gain_panelDropped true
+ name ColorCorrect18
+ xpos -2350
+ ypos 9686
+}
+ColorCorrect {
+ inputs 1+1
+ gain {1.093336 0.843336 1.093336 1.01}
+ gain_panelDropped true
+ name ColorCorrect19
+ xpos -2350
+ ypos 9830
+}
+Group {
+ name blow_out_fixer1
+ xpos -2350
+ ypos 10022
+ addUserKnob {20 User}
+ addUserKnob {41 gamma T ColorCorrect79.gamma}
+ addUserKnob {41 dilate_size l "dilate size" T Dilate1.size}
+ addUserKnob {41 blur_size l "blur size" T Blur2.size}
+ addUserKnob {41 wp l Whitepoint T Group2.wp}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 497
+  ypos 114
+ }
+ Dot {
+  name Dot189
+  xpos 531
+  ypos 154
+ }
+set N92692e00 [stack 0]
+ Dot {
+  name Dot190
+  xpos 723
+  ypos 154
+ }
+ ColorCorrect {
+  saturation 0
+  name ColorCorrect79
+  xpos 689
+  ypos 176
+ }
+ Clamp {
+  name Clamp1
+  xpos 689
+  ypos 202
+ }
+ Dilate {
+  name Dilate1
+  xpos 689
+  ypos 240
+ }
+ Blur {
+  name Blur2
+  xpos 689
+  ypos 288
+ }
+push $N92692e00
+ Dot {
+  name Dot191
+  xpos 401
+  ypos 154
+ }
+ Group {
+  name Group2
+  xpos 367
+  ypos 220
+  mapsize {0.1159793814 0.7559055118}
+  addUserKnob {20 Tonemapper l TONEMAPPER}
+  addUserKnob {4 tonemap l "Choose tonemapper" M {"Simple *automatic*" "Whitepoint Tonemap" "Key Value Tonemap" "Key Value + Simple Tonemap" "Key Value + Whitepoint Tonemap" "" "" ""}}
+  tonemap "Whitepoint Tonemap"
+  addUserKnob {7 wp l Whitepoint R 1 50}
+  wp {{curve x2201 1 2.2 x2293 2.2 x2294 1}}
+  addUserKnob {7 key l "Key Value" R 0.001 0.25}
+  key 0.18
+  addUserKnob {7 gain l Gain R 0 25}
+  gain 1
+  addUserKnob {7 gamma l Gamma R 0 5}
+  gamma 1
+  addUserKnob {26 usage l Usage: T " Global tone mappin:\n\n Simple global just puts all values in image\n between 0-1.\n\n Whitepoint tonemapper uses white point to\n limit the effect of the tone mapping. The\n higher the whitepoint, the closer it gets to the\n simple global. The values above whitepoint \n are preserved.\n\n Key Value represents a \"grey point\" weighted\n tone mapping. It will affect\n dark areas more the closer it gets to 00001.\n This is quite strong effect on the image.\n\n Key value + Simple is key value and\n followed with the simple tonemapper. \n\n Key Value + Whitepoint use also the\n Whitepoint mapper after the key value\n mapper to fix the image, the key value can\n wash the image out if used extensively.\n\n Use Gain 1 and over to brighten the image,\n Gamma can be used to fine-tune the gamma.\n\n Avoid high values. Gain can have high values.\n\n-Lazy Laszlo"}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -330
+   ypos -143
+  }
+  Grade {
+   white {{parent.knob.gain i}}
+   gamma {{parent.knob.gamma i}}
+   name Grade1
+   xpos -330
+   ypos -55
+  }
+  Dot {
+   name Dot1
+   xpos -296
+   ypos 40
+  }
+  Colorspace {
+   colorspace_out CIE-Yxy
+   name Colorspace4
+   xpos -330
+   ypos 78
+  }
+set N92734a80 [stack 0]
+push $N92734a80
+  Expression {
+   expr0 (r/parent.knob.key)*r
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 (g/parent.knob.key)*g
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 (b/parent.knob.key)*b
+   expr3 a
+   name Tonemap_key_value2
+   xpos 99
+   ypos 204
+  }
+  Expression {
+   expr0 "(r*(1+(r/(parent.knob.wp**2))) ) / (1+r)"
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 "(g*(1+(g/(parent.knob.wp**2))) ) / (1+g)"
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 "(b*(1+(b/(parent.knob.wp**2))) ) / (1+b)"
+   expr3 a
+   name Tonemap_complex1
+   xpos 99
+   ypos 249
+  }
+push $N92734a80
+  Expression {
+   expr0 (r/parent.knob.key)*r
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 (g/parent.knob.key)*g
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 (b/parent.knob.key)*b
+   expr3 a
+   name Tonemap_key_value1
+   xpos -57
+   ypos 215
+  }
+  Expression {
+   expr0 r/(r+1)
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 g/(g+1)
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 b/(b+1)
+   expr3 a
+   name Tonemap_global1
+   xpos -57
+   ypos 239
+  }
+push $N92734a80
+  Expression {
+   expr0 (r/parent.knob.key)*r
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 (g/parent.knob.key)*g
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 (b/parent.knob.key)*b
+   expr3 a
+   name Tonemap_key_value
+   xpos -209
+   ypos 217
+  }
+push $N92734a80
+  Expression {
+   expr0 "(r*(1+(r/(parent.knob.wp**2))) ) / (1+r)"
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 "(g*(1+(g/(parent.knob.wp**2))) ) / (1+g)"
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 "(b*(1+(b/(parent.knob.wp**2))) ) / (1+b)"
+   expr3 a
+   name Tonemap_whitepoint
+   xpos -341
+   ypos 215
+  }
+push $N92734a80
+  Expression {
+   expr0 r/(r+1)
+   channel1 {-rgba.red -rgba.green -rgba.blue none}
+   expr1 g/(g+1)
+   channel2 {-rgba.red -rgba.green -rgba.blue none}
+   expr2 b/(b+1)
+   expr3 a
+   name Tonemap_global
+   xpos -463
+   ypos 216
+  }
+  Switch {
+   inputs 6
+   which {{parent.knob.tonemap i}}
+   name Switch1
+   xpos -336
+   ypos 349
+  }
+  Colorspace {
+   colorspace_in CIE-Yxy
+   name Colorspace3
+   xpos -336
+   ypos 408
+  }
+  Dot {
+   name Dot2
+   xpos -302
+   ypos 515
+  }
+  Output {
+   name Output1
+   xpos -336
+   ypos 756
+  }
+ end_group
+ Dot {
+  name Dot192
+  xpos 401
+  ypos 298
+ }
+push $N92692e00
+ Merge2 {
+  inputs 2+1
+  maskChannelMask rgba.red
+  name Merge254
+  xpos 497
+  ypos 294
+ }
+ Output {
+  name Output1
+  xpos 497
+  ypos 394
+ }
+end_group
+Dot {
+ name Dot112
+ xpos -2316
+ ypos 10266
+}
+set N927b1c00 [stack 0]
+Transform {
+ translate {-7 0}
+ center {960 540}
+ name Transform14
+ xpos -2240
+ ypos 10262
+}
+push $N927b1c00
+Merge2 {
+ inputs 2+1
+ operation average
+ mix 0.5
+ name Merge27
+ xpos -2350
+ ypos 10358
+}
+Group {
+ inputs 2
+ name Chromatic_Abberation9
+ xpos -2350
+ ypos 10790
+ addUserKnob {20 User}
+ addUserKnob {41 translate l "translate red" T TransformRed.translate}
+ addUserKnob {41 translate_1 l "translate green" T TransformGreen.translate}
+ addUserKnob {41 translate_2 l "translate blue" T TransformBlue.translate}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 180
+  ypos 182
+  number 1
+ }
+ Constant {
+  inputs 0
+  channels alpha
+  color 1
+  name Constant1
+  xpos -40
+  ypos 248
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input1]"}}
+  name Switch1
+  xpos 180
+  ypos 278
+ }
+ Dot {
+  name Dot8
+  xpos 214
+  ypos 570
+ }
+set N927b0700 [stack 0]
+ Dot {
+  name Dot4
+  xpos 214
+  ypos 714
+ }
+set N927b0380 [stack 0]
+ Dot {
+  name Dot9
+  xpos 214
+  ypos 954
+ }
+ Expression {
+  inputs 0
+  expr0 (x+0.5)/width
+  expr1 (y+0.5)/height
+  name Expression1
+  xpos -150
+  ypos 518
+ }
+set N927d7c00 [stack 0]
+ Dot {
+  name Dot1
+  xpos -116
+  ypos 618
+ }
+set N927d7500 [stack 0]
+ Dot {
+  name Dot5
+  xpos -116
+  ypos 714
+ }
+set N927d7180 [stack 0]
+ Dot {
+  name Dot2
+  xpos -116
+  ypos 810
+ }
+set N927d6e00 [stack 0]
+ Dot {
+  name Dot6
+  xpos -116
+  ypos 906
+ }
+set N927d6a80 [stack 0]
+ Dot {
+  name Dot3
+  xpos -116
+  ypos 1002
+ }
+push $N927d6a80
+ Transform {
+  translate {1 0}
+  center {960 540}
+  name TransformBlue
+  xpos 70
+  ypos 902
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name MergeBlue
+  xpos 70
+  ypos 998
+ }
+push $N927b0380
+push $N927d6e00
+push $N927d7180
+ Transform {
+  translate {-2 0}
+  center {960 540}
+  name TransformGreen
+  xpos 70
+  ypos 710
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name Merge2
+  xpos 70
+  ypos 806
+ }
+push $N927b0700
+push $N927d7500
+push $N927d7c00
+ Transform {
+  translate {-11 0}
+  center {960 540}
+  name TransformRed
+  xpos 70
+  ypos 518
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  invert_mask true
+  name Merge1
+  xpos 70
+  ypos 614
+ }
+ Input {
+  inputs 0
+  name src
+  xpos 290
+  ypos 182
+ }
+ STMap {
+  inputs 2
+  channels {rgba.red -rgba.green -rgba.blue none}
+  uv rgb
+  name STMap1
+  xpos 290
+  ypos 614
+ }
+ STMap {
+  inputs 2
+  channels {-rgba.red rgba.green -rgba.blue none}
+  uv rgb
+  name STMap2
+  xpos 290
+  ypos 806
+ }
+ STMap {
+  inputs 2
+  channels {-rgba.red -rgba.green rgba.blue none}
+  uv rgb
+  name STMap3
+  xpos 290
+  ypos 998
+ }
+set N92810380 [stack 0]
+ Dot {
+  name Dot7
+  xpos 324
+  ypos 1242
+ }
+ Output {
+  name Output1
+  xpos 290
+  ypos 1334
+ }
+push $N92810380
+ Viewer {
+  frame_range 0-2833
+  fps 25
+  name Viewer1
+  xpos 426
+  ypos 1125
+ }
+end_group
+Crop {
+ box {0 0 1920 1080}
+ name Crop10
+ xpos -2350
+ ypos 10982
+}
+Merge2 {
+ inputs 2
+ mix 0.815
+ name Merge28
+ xpos -2350
+ ypos 11798
+}
+Dot {
+ name Dot113
+ xpos -2316
+ ypos 12042
+}

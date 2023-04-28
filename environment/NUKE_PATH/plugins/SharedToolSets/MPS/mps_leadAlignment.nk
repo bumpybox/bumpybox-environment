@@ -1,0 +1,2431 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Transform {
+ center {{parent.leadAlignment1.cg_top_p.x x1 0 x6 0 x9 0 x11 0 x12 0 x15 0 x19 0 x21 0 x22 0 x25 0 x26 0 0 0 0 0 x104 0 x106 0 x110 0 x111 0 0 x114 0 x115 0 0 0 0 0 x122 0 x123 0 0 x127 0 0 x132 0 x133 0 x135 0 0 x140 0 x142 0 x143 0 0 x147 0 x148 0 x152 0 x153 0 x166 0 x167 0 0 0 0 x173 0 x174 0 0 0 0 0 0 0 0 x183 0 x184 0 0 0 0 0 0 0 0 0 0 0 0 0 x200 0 x201 0 x209 0 x210 0 0 0 0 0 0 0 0 0} {parent.leadAlignment1.cg_top_p.y x1 0 x6 0 x9 0 x11 0 x12 0 x15 0 x19 0 x21 0 x22 0 x25 0 x26 0 0 0 0 0 x104 0 x106 0 x110 0 x111 0 0 x114 0 x115 0 0 0 0 0 x122 0 x123 0 0 x127 0 0 x132 0 x133 0 x135 0 0 x140 0 x142 0 x143 0 0 x147 0 x148 0 x152 0 x153 0 x166 0 x167 0 0 0 0 x173 0 x174 0 0 0 0 0 0 0 0 x183 0 x184 0 0 0 0 0 0 0 0 0 0 0 0 0 x200 0 x201 0 x209 0 x210 0 0 0 0 0 0 0 0 0}}
+ name targetPosition1
+ tile_color 0xff00ff
+ selected true
+ xpos -1030
+ ypos -1210
+}
+Group {
+ inputs 0
+ name leadAlignment1
+ onCreate "n=nuke.thisNode()\nn\['cg_top_p'].setFlag(0x00008000)\nn\['cg_top_2_p'].setFlag(0x00008000)\nn\['cg_bottom_p'].setFlag(0x00008000)"
+ tile_color 0xff9000ff
+ selected true
+ xpos -920
+ ypos -1210
+ addUserKnob {20 User}
+ addUserKnob {26 cg l "CG Tracks"}
+ addUserKnob {12 cg_top_p l "top position"}
+ addUserKnob {12 cg_top_2_p l "top 2 position" t "This should be a position a little bit further down from the top. This is used to calucate the angle of the CG lead at the top."}
+ addUserKnob {12 cg_bottom_p l "bottom position" t "The position of the CG lead at the bottom or where it intersects with the character. Probably actually about half way donw the lead."}
+ addUserKnob {26 target l "target position"}
+ addUserKnob {41 translate l INVISIBLE +INVISIBLE T IRL_Tracked.translate}
+ addUserKnob {41 rotate l INVISIBLE +INVISIBLE T IRL_Tracked.rotate}
+ addUserKnob {7 rotate_offset R -180 180}
+ addUserKnob {7 width l "increase width" R 0 20}
+ addUserKnob {7 width_d l "decrease width" R 0 20}
+ addUserKnob {41 whitepoint l smoothing t "Decreases the strength of the rotation." T Grade1.whitepoint}
+ addUserKnob {26 mask}
+ addUserKnob {6 show_mask l "show mask" +STARTLINE}
+ addUserKnob {7 mask_top_p l "mask top position"}
+ addUserKnob {7 mask_bottom_p l "mask bottom position"}
+ addUserKnob {20 help_1 l "How To"}
+ addUserKnob {26 howto l "" +STARTLINE T "1) Put this node underneather the CG\n2) Load the scene camera\n3) Load the lead geo (fxPointcloud)\n4) Use animatedSnap3D to animate axis points to the top, just under top and bottom of the lead.\n5) Use Reconcile3DPro to turn axis points into 2D tracks.\n6) Attach your top track animation to leadAlignment top position.\n7) Attach your just under top track animation to leadAlignment top 2 position.\n8) Attach your bottom track animation to leadAlignment bottom position.\n9) Use targetPosition node to move the lead to the correct position and rotation.\n11) Adjust mask bottom to shift the warping higher up the lead.\n10) Drink a nice cold beer because it's probably Friday evening by the time you've fixed this bloody lead. "}
+}
+ NoOp {
+  inputs 0
+  name NoOp1
+  xpos -150
+  ypos -682
+  addUserKnob {20 User}
+  addUserKnob {7 absolute_angle R 0 360}
+  absolute_angle {{degrees(atan2(parent.cg_top_p.x-parent.cg_top_2_p.x,parent.cg_top_p.y-parent.cg_top_2_p.y))}}
+ }
+ Ramp {
+  inputs 0
+  output {rgba.red -rgba.green -rgba.blue rgba.alpha}
+  p0 {{parent.cg_bottom_p+((parent.cg_top_p-parent.cg_bottom_p)*parent.mask_bottom_p) x1 1459.85791 1453.820557 1453.453857 1459.270508 1464.185425 1469.613647 1471.557373 1472.023315 1471.530884 1473.470215 1470.34668 1462.095459 1455.494263 1449.308594 1444.705933 1440.848145 1432.403076 1420.628052 1406.775879 1389.840332 1372.664429 1353.556763 1334.149536 1313.584961 1294.86145 1277.691284 1257.463135 1237.151489 1222.061768 1206.290405 1189.488281 1176.859131 1162.659058 1146.728027 1134.079712 1122.78479 1108.511108 1093.83667 1078.757202 1064.751099 1051.627197 1040.599121 1029.230103 1024.117798 1017.695801 1008.094727 997.5733643 988.7352905 978.2131348 966.3101807 955.3167725 945.4499512 937.7318115 931.6213379 926.7828979 918.9807129 909.6221313 901.0529175 893.4985962 883.7980957 872.6245728 863.12854 854.3824463 844.704834 836.2625732 827.8330688 822.303894 817.6913452 812.5197754 810.0444336 807.2041016 804.9342041 804.3392944 803.5255737 803.1348267 802.8626709 804.4924316 806.0939331 804.4128418 803.4751587 803.199585 801.7549438 799.5646362 796.4225464 793.1172485 788.3470459 784.4695435 783.4417725 784.3883057 785.6129761 785.5970459 784.6671143 783.7052002 781.8086548 780.5250854 780.1292114 780.8722534 782.3275146 783.4595337 785.2246094 786.1056519 786.600647 789.3543701 794.0036011 799.9032593 800.9208374 799.0331421 796.7319946 792.6014404 792.3198242 794.3482056 795.7302246 795.1796265 791.4154053 787.7188721 780.899292 774.8705444 771.7263794 769.6704102 768.5666504 764.232605 757.2472534 750.5151367 742.4569092 736.8554077 733.1930542 732.2316284 733.9511108 734.3971558 736.4331055 733.0057373 729.5563965 725.7614746 722.4493408 723.1665649 722.9540405 719.2094116 713.4594727 703.755249 695.9827271 689.5601807 685.1645508 687.4746094 696.2636108 701.6620483 691.4146118 676.00177 667.5963135 666.3660889 664.7719727 674.0129395 679.729248 668.9591064 656.6154175 658.5198975 656.2001953 660.2356567 663.1084595 661.0083618 662.6963501 675.7600098 685.7958984 705.0817261 721.8884277 743.3837891 769.1055908 793.0272217 814.7185059 831.3191528 845.7503052 860.4428711 875.8290405 889.690979 901.546875 912.9522705 921.6011353 929.4135132 938.5838623 949.0998535 959.9653931 966.3690186 970.1884155 975.1143799 977.6019897 980.1713257 983.1031494 986.0203247 988.9303589 991.6245728 995.4308472 996.8638916 997.8187866 1001.632629 1004.695984 1007.90033 1011.773621 1015.980713 1019.441833 1022.330261 1025.216919 1028.111328 1030.964111 1033.078735 1034.112793 1034.505127 1035.081177 1035.943604 1037.092529 1039.87561 1041.7948 1044.064331 1045.695679 1046.626709 1046.806274 1047.202515 1046.722046 1045.949463 1044.799927 1043.743164 1042.936523 1041.883545 1040.569824 1039.740601 1038.619385 1037.39563 1037.078979 1036.52832 1036.591553 1036.071167 1035.042847 1034.177368 1030.160645 1023.628052 1020.228088 1014.427795 1011.109924 1011.97937 1010.937134 1005.126465 1004.290527 1000.893005} {parent.cg_bottom_p+((parent.cg_top_p-parent.cg_bottom_p)*parent.mask_bottom_p) x1 589.9319458 588.0610962 580.3815918 579.5361938 581.6872559 582.3197021 584.6952515 586.1463013 579.9537964 570.0072632 568.4085693 566.1535645 564.8029175 563.6747437 561.0905151 558.6047363 559.7713013 563.7930908 564.5307007 560.3152466 552.1519165 547.7505493 554.3955688 558.1195679 559.9335327 563.1555786 563.9978027 561.814209 560.9395752 560.5270996 557.8716431 551.4440918 546.8200684 551.7775269 554.675293 555.4793701 558.0015869 555.7849121 551.0023804 541.9313354 532.3808594 531.9190674 532.8017578 527.0257568 526.0888672 532.0373535 532.6378174 531.7720947 534.1507568 535.2044678 534.5795898 535.7142334 536.7229004 536.3442993 538.8286743 538.7855835 540.4537964 538.644043 535.0007324 532.4262085 531.7097168 530.7045898 526.553894 524.6328125 524.4160156 520.9216309 518.1478882 516.1056519 513.1084595 513.5038452 512.3813477 513.6732788 511.9377747 507.1582947 506.2738037 508.1339417 507.0327759 506.6832275 507.7004395 507.4969482 505.9681396 503.8603821 502.307312 501.0014648 498.5296631 494.9744263 495.1879578 495.2410583 493.6037903 491.6891479 490.3408813 487.9266052 486.1621094 485.5811768 485.6017456 483.7389221 480.0509949 476.5807495 474.0010071 472.8078613 472.1034546 474.0804138 473.4512024 470.8236694 470.0796814 472.3226318 472.8083496 471.678833 470.4714355 468.1860046 463.216217 456.8434753 450.4454651 447.155426 447.4320068 447.8589172 452.2947693 452.019989 449.4312134 446.5726318 445.839386 443.92099 440.2954407 437.3540344 433.6043396 427.8046875 420.2583313 412.7073364 411.1329956 413.8494263 414.6140137 418.9333191 424.0063782 424.9546509 420.2395325 413.2281799 409.8133545 408.2654114 412.3317871 417.2679138 418.2280579 414.9880676 401.4140625 382.7345276 373.0194092 382.8977051 409.8941345 432.0526428 430.1940002 416.6789246 386.8834534 371.7220764 379.2510681 394.382782 401.6247253 391.2767334 371.6334839 360.7206726 361.6169739 362.9508972 350.7512512 330.0430603 311.1999817 305.4115295 303.2577209 299.290741 294.1760254 288.8380432 285.3398743 282.2848816 278.2695618 273.6767273 272.7844543 273.5079651 275.9960327 277.6585388 282.5315247 287.4915161 287.428772 288.0115051 291.2666931 292.501709 291.9354858 290.9483948 289.1308899 287.2249756 285.1203003 283.495575 283.4262695 285.6106262 288.9107361 294.3310242 298.0059509 301.1702576 306.538269 310.737854 314.099762 316.5718994 319.3022156 321.118988 323.3283691 325.3199158 327.5019226 329.9450073 332.45224 334.8504639 337.3109741 340.0035706 342.8165894 345.0512695 347.1746521 349.7519226 352.1026001 354.1578674 355.6940613 356.4324646 357.2814941 358.1753235 358.6824341 359.3755798 359.4176025 359.5797424 359.3353882 358.4190369 357.6842651 356.0726929 354.1476746 352.6495056 350.537384 348.9668884 347.6088257 344.9402466 340.9708557 337.5451355 331.5285034 328.7858582 324.0967407 311.3442688 310.583313 309.3424072 305.3726501}}
+  p1 {{parent.cg_top_p+((parent.cg_bottom_p-parent.cg_top_p)*parent.mask_top_p) x1 1453.988159 1449.378418 1449.194458 1452.016113 1457.078125 1463.051636 1465.514404 1467.654053 1473.659302 1473.168091 1465.000122 1455.175415 1450.604736 1447.273193 1444.922363 1441.310181 1432.732788 1420.791016 1407.061157 1392.164307 1376.889893 1360.819458 1345.28125 1330.509033 1315.389038 1299.262451 1283.139526 1268.501099 1255.858032 1243.627563 1231.052002 1218.96521 1206.208008 1193.344971 1180.761841 1167.289673 1152.907593 1138.160278 1123.915039 1109.455444 1094.484131 1082.105713 1074.352905 1067.661011 1059.786011 1051.473999 1042.425537 1033.596802 1024.669678 1014.697998 1004.32605 995.651062 989.5579834 985.4103394 980.9078369 974.2554932 965.703064 956.6704712 947.1824951 936.7763062 926.642395 917.6027832 909.5196533 901.5413818 894.4073486 888.0031738 882.9447021 878.5776367 874.2990723 870.7495728 868.2165527 866.5941772 865.4989624 864.2705688 862.421814 861.4014893 864.1724243 867.362915 868.9626465 870.2824097 870.9181519 870.1715698 868.0111084 864.758606 859.668335 854.0453491 849.9125366 848.0872192 847.4865723 847.4677124 848.449707 849.8206177 850.4053345 851.4789429 852.8051147 854.5847778 856.7802734 858.8825073 861.0123291 863.0485229 865.2844238 867.4538574 869.6088867 872.5592651 876.1911011 878.9335938 878.9797363 877.3234863 876.7996216 879.6643066 884.1752319 886.6501465 884.9978027 881.1917114 875.5484009 869.2652588 864.0919189 859.0822144 854.4451904 850.1727905 845.7353516 840.5289917 835.020874 830.2470093 826.9497681 824.7230225 823.6627808 824.5359497 826.7699585 828.7034912 828.6546021 826.1278076 822.2407837 817.6912842 813.8131714 811.0617676 808.354126 805.5559692 802.9935913 800.6149292 798.0194702 795.1401978 792.4331665 789.6938477 786.9661255 784.2368164 780.1697998 774.553894 768.3674316 762.3795776 756.6940308 751.286377 746.201416 742.4412231 738.9473267 740.2338867 740.2819214 737.1028442 731.3408813 729.5147705 730.1455078 735.2963867 747.9404907 763.6781616 785.1974487 812.2891235 841.0626831 866.6305542 887.8088989 906.5116577 923.4784546 939.842041 955.5665283 969.2410278 979.4885864 987.1587524 993.7437134 999.6122437 1005.863281 1012.29834 1018.783142 1024.296631 1031.192505 1037.402832 1042.251221 1047.546875 1052.591797 1057.376099 1061.463501 1064.712036 1066.911255 1068.793823 1070.771973 1073.060913 1075.608276 1078.882935 1082.284058 1085.602661 1088.688843 1092.392822 1095.816772 1098.780029 1101.039063 1102.05127 1102.415405 1103.150513 1104.453369 1106.19165 1108.871338 1112.310913 1115.260742 1117.669922 1119.317627 1119.990112 1120.7948 1120.564575 1119.980835 1118.956543 1118.056396 1117.260254 1116.151489 1115.058838 1114.282471 1113.383545 1112.035767 1111.104492 1110.341064 1109.813477 1108.763428 1107.85083 1108.161987 1106.849854 1106.111694 1106.147827 1106.381104 1106.803955 1108.0979 1109.521729 1110.712769 1111.667603 1113.047729} {parent.cg_top_p+((parent.cg_bottom_p-parent.cg_top_p)*parent.mask_top_p) x1 605.9685669 604.3744507 602.6174316 600.968689 599.3753662 597.62323 597.6130981 596.6708984 591.9820557 588.9960327 586.0249634 583.1374512 580.9838867 579.6908569 579.5305786 580.0977173 582.5919189 584.3130493 581.4093628 575.8724976 570.635376 568.6738892 572.8100586 580.8103638 588.1259155 592.9118652 595.9278564 596.2424927 594.5780029 591.7313843 586.4984741 580.1832886 576.6793213 578.8359375 584.6350708 589.0610352 590.2394409 590.3692017 589.4328613 583.4931641 573.2426147 566.1496582 563.3292236 561.185791 562.295166 565.1791992 567.4091797 570.1122437 572.5130005 574.6439209 576.6831055 578.4510498 579.9835205 581.7017822 583.0367432 582.9626465 581.5805054 579.4002686 576.9031982 574.463501 572.2664185 570.2537231 568.7436523 567.7028198 566.9169312 566.0706787 564.6220093 562.9680176 561.218689 559.675293 558.1152344 555.7181396 552.7017212 550.5485229 550.1864624 550.8604126 551.3378296 551.7406616 552.7781372 554.2987671 554.9151611 554.7275391 554.2979126 552.6655273 548.4863892 543.0565796 539.727478 538.8327026 538.4050903 537.6658325 535.0665283 532.2670898 531.7437134 532.5170898 533.3826294 532.8848267 530.9790649 528.8610229 526.5576782 523.718689 520.831543 518.5927734 517.1247559 517.3406372 518.9760742 520.3416138 520.8326416 520.819458 519.6443481 516.7199707 512.4076538 507.9527283 503.8717346 500.7090149 499.1311035 497.9914551 497.4495544 497.5628662 497.9526367 497.414978 495.480011 492.2276306 488.4393005 484.3363953 479.7870178 475.0054626 470.7829895 467.9069214 466.5186157 466.2786865 466.3345032 467.3740234 469.733551 471.5926819 470.3779297 466.6517334 462.5389404 458.3998718 454.6383362 450.9194946 447.6306458 445.1149597 443.0649109 441.7296753 440.967926 440.158783 439.5422058 438.1427307 435.3396606 431.9399719 428.602356 425.8953247 423.8475342 421.6867065 419.665741 419.5339661 418.467926 417.9484863 415.1094055 408.0550537 396.3414001 383.4371643 368.7961426 358.5412292 353.9874878 350.5088196 348.109375 345.561676 343.3115234 341.2466431 339.7030029 339.3196106 340.3414612 341.3602905 341.8953857 342.1424866 344.0032349 346.2728882 348.4857178 350.3274231 351.2276001 352.0815125 352.7612305 353.5888977 354.1049805 353.740448 353.392395 353.6844788 355.3013916 357.8826904 360.7094421 363.3762817 366.1907043 368.7510986 371.0552673 373.236969 375.4354553 377.4024353 379.4950867 381.5131226 383.8734436 385.8683167 388.2604065 390.9467163 393.6263123 396.1878052 398.8464661 401.7911072 404.5020447 406.958313 408.887146 411.2657166 413.4819641 415.3364868 416.8120728 417.776123 418.9411621 420.0245972 420.4389343 420.6856689 420.4196167 420.3323364 419.6437378 418.4321594 417.2783203 415.8193359 414.1108704 412.1415405 410.3805847 409.014801 408.3102722 406.6268311 405.2738037 403.9762573 402.5077209 400.5162048 397.8302612 395.0992432 392.4980469 389.9028015 387.3881836}}
+  type smooth0
+  name Ramp2
+  xpos -40
+  ypos -592
+ }
+set N74c38000 [stack 0]
+ Grade {
+  channels alpha
+  name Grade1
+  xpos -40
+  ypos -496
+ }
+set N36b0dc00 [stack 0]
+ Dot {
+  name Dot2
+  xpos -6
+  ypos 378
+ }
+set N36b0d880 [stack 0]
+ Dot {
+  name Dot4
+  xpos -6
+  ypos 810
+ }
+push 0
+push $N36b0d880
+push $N36b0dc00
+push $N74c38000
+ Expression {
+  inputs 0
+  expr0 (x+0.5)/width
+  expr1 (y+0.6)/height
+  name Expression1
+  xpos 180
+  ypos -760
+ }
+set N36b0d180 [stack 0]
+ Dot {
+  name Dot60
+  xpos 214
+  ypos -678
+ }
+set N36b0ca80 [stack 0]
+ Transform {
+  translate {{parent.IRL_Tracked.translate x241 0} {parent.IRL_Tracked.translate x241 0}}
+  center {{parent.cg_top_p.x x241 0} {parent.cg_top_p.y x241 0}}
+  name correctionTranslate
+  gl_color 0xffffffff
+  xpos 70
+  ypos -682
+ }
+push $N36b0ca80
+ Keymix {
+  inputs 3
+  name Keymix1
+  xpos 180
+  ypos -592
+ }
+set N36b0c380 [stack 0]
+ Transform {
+  rotate {{IRL_Tracked.rotate-NoOp1.absolute_angle+parent.rotate_offset x1 -12.97005272}}
+  center {{parent.correctionTranslate.center+correctionTranslate.translate.x x1 0 x231 0} {parent.correctionTranslate.center+correctionTranslate.translate.y x1 0 x231 0}}
+  name correctionRotate
+  xpos 70
+  ypos -346
+ }
+push $N36b0c380
+ Keymix {
+  inputs 3
+  name Keymix2
+  xpos 180
+  ypos -352
+ }
+ Dot {
+  name Dot61
+  xpos 214
+  ypos -6
+ }
+push $N36b0d180
+ Transform {
+  translate {{parent.parent.targetPosition1.translate} {parent.parent.targetPosition1.translate}}
+  rotate {{parent.parent.targetPosition1.rotate}}
+  scale {{parent.rotate_offset}}
+  center {{parent.correctionTranslate.center x22 0 x231 0 x241 0} {parent.correctionTranslate.center x22 0 x231 0 x241 0}}
+  name IRL_Tracked
+  tile_color 0xff00ff
+  xpos 389
+  ypos -346
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 620
+  ypos -442
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 620
+  ypos -346
+  disable true
+ }
+set N12d06e00 [stack 0]
+push $N74c38000
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge2
+  xpos 510
+  ypos -202
+ }
+push $N12d06e00
+ Switch {
+  inputs 2
+  which {{parent.show_mask}}
+  name Switch1
+  xpos 620
+  ypos -202
+ }
+ STMap {
+  inputs 2
+  uv rgba
+  filter Keys
+  name STMap1
+  xpos 620
+  ypos -16
+ }
+ Dot {
+  name Dot1
+  xpos 654
+  ypos 234
+ }
+set N12d06000 [stack 0]
+ Erode {
+  size 2.2
+  name Erode1
+  xpos 510
+  ypos 224
+ }
+ Expression {
+  inputs 0
+  expr0 (x+0.5)/width
+  expr1 (y+0.6)/height
+  name Expression2
+  xpos 400
+  ypos 134
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 400
+  ypos 224
+ }
+ Group {
+  inputs 2
+  name Edge_Expand
+  help "Expand edges to fix fringing on keys.\nUse after a premult is preferred, but can also help on some other inputs."
+  knobChanged "\nnode = nuke.thisNode()\nknob = nuke.thisKnob()\n\nif knob.name() in \['method']:\n    if knob.value() == 'Dilate':\n        node\['size_extend'].clearFlag(nuke.INVISIBLE)\n        node\['samples'].clearFlag(nuke.INVISIBLE)\n        node\['size_warp'].setFlag(nuke.INVISIBLE)\n        node\['warp_amount'].setFlag(nuke.INVISIBLE)\n        node\['warp_normal'].setFlag(nuke.INVISIBLE)\n        node\['size_distort'].setFlag(nuke.INVISIBLE)\n        node\['distort_amount'].setFlag(nuke.INVISIBLE)\n        node\['blur'].clearFlag(nuke.INVISIBLE)\n    elif knob.value() == 'Extend':\n        node\['size_extend'].clearFlag(nuke.INVISIBLE)\n        node\['samples'].clearFlag(nuke.INVISIBLE)\n        node\['size_warp'].setFlag(nuke.INVISIBLE)\n        node\['warp_amount'].setFlag(nuke.INVISIBLE)\n        node\['warp_normal'].setFlag(nuke.INVISIBLE)\n        node\['size_distort'].setFlag(nuke.INVISIBLE)\n        node\['distort_amount'].setFlag(nuke.INVISIBLE)\n        node\['blur'].clearFlag(nuke.INVISIBLE)\n    elif knob.value() == 'Warp':\n        node\['size_extend'].setFlag(nuke.INVISIBLE)\n        node\['samples'].setFlag(nuke.INVISIBLE)\n        node\['size_warp'].clearFlag(nuke.INVISIBLE)\n        node\['warp_amount'].clearFlag(nuke.INVISIBLE)\n        node\['warp_normal'].clearFlag(nuke.INVISIBLE)\n        node\['size_distort'].setFlag(nuke.INVISIBLE)\n        node\['distort_amount'].setFlag(nuke.INVISIBLE)\n        node\['blur'].clearFlag(nuke.INVISIBLE)\n    elif knob.value() == 'Distort':\n        node\['size_extend'].setFlag(nuke.INVISIBLE)\n        node\['samples'].setFlag(nuke.INVISIBLE)\n        node\['size_warp'].setFlag(nuke.INVISIBLE)\n        node\['warp_amount'].setFlag(nuke.INVISIBLE)\n        node\['warp_normal'].setFlag(nuke.INVISIBLE)\n        node\['size_distort'].clearFlag(nuke.INVISIBLE)\n        node\['distort_amount'].clearFlag(nuke.INVISIBLE)\n        node\['blur'].setFlag(nuke.INVISIBLE)\n\nelif knob.name() in \['samples']:\n    if knob.value() > 10:\n        knob.setValue(10)\n    elif knob.value() < 1:\n        knob.setValue(1)\n"
+  tile_color 0xef7033ff
+  label "(\[value method])"
+  xpos 400
+  ypos 368
+  addUserKnob {20 User}
+  addUserKnob {4 method l Method t "Dilate: Multiple iterations of Blur and Unpremult of the same input.\nExtend: Recursive iterations of Blur and Unpremult.\nWarp: A vector based method to stretch the edges.\nDistort: A wide distortion which \"grows\" the subject into its matte." M {Dilate Extend Warp Distort}}
+  method Warp
+  addUserKnob {6 in_premult l "Input is Premultiplied" -STARTLINE}
+  addUserKnob {26 ""}
+  addUserKnob {7 erode t "Erodes the original alpha to get rid of edges." R 0 15}
+  erode 1.4
+  addUserKnob {14 edgeblur l "edge blur" t "Use this to soften the transition between the extended area and the core." R 0 100}
+  edgeblur 1.7
+  addUserKnob {26 ""}
+  addUserKnob {14 size_extend l size t "Controls the size of the expansion." +INVISIBLE R 0 100}
+  size_extend 15
+  addUserKnob {3 samples t "Controls the amount of samples for the Dilate or Extend Methods. (min:1 max:10)" +INVISIBLE}
+  samples 10
+  addUserKnob {14 size_warp l size t "Controls the size of the Warp" R 0 100}
+  size_warp {{parent.knob.width x121 7}}
+  addUserKnob {7 warp_amount l "warp amount" R 0.5 1}
+  warp_amount 0.542
+  addUserKnob {7 warp_normal l "warp normal" t "Rotates the angle of the vector extension." R -90 90}
+  addUserKnob {14 size_distort l size t "Controls the size of the distort." +INVISIBLE R 0 100}
+  size_distort 5
+  addUserKnob {7 distort_amount l "distort amount" +INVISIBLE R 0.5 1}
+  distort_amount 1
+  addUserKnob {14 blur l "blur expansion" R 0 100}
+  blur 11.2
+  addUserKnob {26 ""}
+  addUserKnob {7 mix_luma l "mix luma"}
+  mix_luma 1
+  addUserKnob {7 mix_chroma l "mix chroma"}
+  mix_chroma 1
+  addUserKnob {22 shuffle_edge l "shuffle edge matte" T "node = nuke.thisNode()\nfullName = 'root.' + node.fullName()\nparent_group = fullName.rsplit('.', 1)\[0]\nwith nuke.toNode(parent_group):\n    shuffle = nuke.createNode(\"Shuffle\", 'in edge red alpha green alpha blue alpha label \"Edge Matte\"', inpanel=False)\n    shuffle.setXpos(node.xpos() + 100)\n    shuffle.setYpos(node.ypos())\n    shuffle.setInput(0, node)\n\n" +STARTLINE}
+  addUserKnob {6 premult l "premult output" t "Check this box to get the final result of the expension with the original matte.\nUncheck this box to see the result of the expension with a new expended alpha." -STARTLINE}
+  addUserKnob {26 spin_copyright_div l "" +STARTLINE}
+  addUserKnob {26 spin_copyright l "" t "© <b>SPIN<span style=\"color:#b32026\">VFX</span></b>\nEdge_Expand\nVersion 1.0\n2018" +STARTLINE T "<span style=\"color:#aaa;font-family:sans-serif;font-size:8pt\"><b>SPIN<span style=\"color:#b32026\">VFX</span></b> - Version 1.0 - 2018 - <a href=\"https://github.com/SpinVFX/spin_nuke_gizmos/\" style=\"color:#aaa\">Github Page</a></span>"}
+ }
+  Input {
+   inputs 0
+   name Inputmask
+   xpos -33
+   ypos 1325
+   number 1
+  }
+  Input {
+   inputs 0
+   name Input
+   xpos -175
+   ypos -347
+  }
+  Dot {
+   name Dot13
+   tile_color 0xcccccc00
+   xpos -141
+   ypos -279
+  }
+set N13236700 [stack 0]
+  Unpremult {
+   name Unpremult2
+   xpos -175
+   ypos -226
+   disable {{!parent.in_premult}}
+  }
+set N13236380 [stack 0]
+  Erode {
+   size {{parent.erode}}
+   name Erode1
+   xpos -175
+   ypos -137
+  }
+set N13236000 [stack 0]
+  Dot {
+   name Dot1
+   tile_color 0xcc804e00
+   xpos -259
+   ypos -127
+  }
+  Erode {
+   size {{parent.edgeblur} {parent.edgeblur}}
+   blur 1
+   name Erode2
+   xpos -293
+   ypos -93
+  }
+push $N13236000
+  ChannelMerge {
+   inputs 2
+   operation min
+   name ChannelMerge1
+   xpos -175
+   ypos -100
+  }
+  Dot {
+   name Dot16
+   tile_color 0x4b5ec600
+   xpos -141
+   ypos -22
+  }
+set N131c5180 [stack 0]
+push $N13236700
+  Dot {
+   name Dot15
+   tile_color 0xcccccc00
+   xpos -438
+   ypos -279
+  }
+set N131c4e00 [stack 0]
+  ChannelMerge {
+   inputs 2
+   operation from
+   name ChannelMerge2
+   xpos -472
+   ypos -38
+  }
+push $N131c4e00
+  Dot {
+   name Dot7
+   tile_color 0xcccccc00
+   xpos -605
+   ypos -279
+  }
+add_layer {edge edge.red edge.green edge.blue edge.alpha}
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 edge.alpha
+   bbox B
+   name Copy5
+   xpos -639
+   ypos -31
+  }
+  Dot {
+   name Dot20
+   tile_color 0x9e3c6300
+   xpos -605
+   ypos 641
+  }
+set N131c4000 [stack 0]
+  Dot {
+   name Dot23
+   tile_color 0x9e3c6300
+   xpos -612
+   ypos 1151
+  }
+set N365f9c00 [stack 0]
+  Dot {
+   name Dot24
+   tile_color 0x9e3c6300
+   xpos -612
+   ypos 1329
+  }
+set N365f9880 [stack 0]
+push $N365f9c00
+push $N131c5180
+  Premult {
+   name Premult2
+   xpos -175
+   ypos 51
+  }
+  Dot {
+   name Dot2
+   tile_color 0xcccccc00
+   xpos -141
+   ypos 108
+  }
+set N365f9180 [stack 0]
+  Dot {
+   name Dot11
+   tile_color 0xcccccc00
+   xpos -302
+   ypos 108
+  }
+  Dot {
+   name Dot12
+   tile_color 0xcccccc00
+   xpos -302
+   ypos 561
+  }
+push $N131c5180
+  Dot {
+   name Dot14
+   tile_color 0x4b5ec600
+   xpos 253
+   ypos -22
+  }
+  Dot {
+   name Dot6
+   tile_color 0x4b5ec600
+   xpos 253
+   ypos 92
+  }
+set N365f8380 [stack 0]
+push $N13236380
+  Dot {
+   name Dot8
+   tile_color 0xcccccc00
+   xpos 121
+   ypos -222
+  }
+set N365f8000 [stack 0]
+  Dot {
+   name Dot5
+   tile_color 0xcccccc00
+   xpos 367
+   ypos -222
+  }
+  Group {
+   inputs 2
+   name Distort
+   xpos 333
+   ypos 153
+   addUserKnob {20 User}
+   addUserKnob {14 size R 0 100}
+   size {{parent.size_distort} {parent.size_distort}}
+   addUserKnob {7 distort}
+   distort {{parent.distort_amount}}
+  }
+   Input {
+    inputs 0
+    name Inputcontrol_mask
+    xpos 236
+    ypos -303
+    number 1
+   }
+   Shuffle {
+    red alpha
+    green alpha
+    blue alpha
+    name Shuffle1
+    label "in \[value in]-->out \[value out]"
+    xpos 235
+    ypos -248
+   }
+set N3dca9500 [stack 0]
+   Blur {
+    size {{parent.size*10} {parent.size*10}}
+    quality {{int(parent.size*8)}}
+    name Blur2
+    label "size \[value size]"
+    xpos 360
+    ypos -121
+   }
+push $N3dca9500
+   Blur {
+    size {{parent.size} {parent.size}}
+    quality 50
+    name Blur1
+    xpos 235
+    ypos -117
+   }
+   Merge2 {
+    inputs 2
+    operation multiply
+    bbox B
+    name Merge2
+    xpos 234
+    ypos 5
+   }
+   Grade {
+    gamma 0.415
+    name Grade5
+    xpos 234
+    ypos 57
+   }
+set N3dca8700 [stack 0]
+   Invert {
+    name Invert1
+    xpos 61
+    ypos 51
+   }
+   Multiply {
+    value {{parent.size*2}}
+    name Multiply1
+    xpos 61
+    ypos 178
+   }
+   Dot {
+    name Dot1
+    tile_color 0x7aa9ff00
+    xpos 95
+    ypos 441
+   }
+push $N3dca8700
+   Dot {
+    name Dot2
+    tile_color 0x7aa9ff00
+    xpos 269
+    ypos 123
+   }
+set N13165880 [stack 0]
+   Matrix {
+    matrix {
+        {1 0 -1}
+        {2 0 -2}
+        {1 0 -1}
+      }
+    name Matrix1
+    xpos 235
+    ypos 204
+   }
+push $N13165880
+   Dot {
+    name Dot3
+    tile_color 0x7aa9ff00
+    xpos 379
+    ypos 123
+   }
+   Matrix {
+    channels rgb
+    matrix {
+        {-1 -2 -1}
+        {0 0 0}
+        {1 2 1}
+      }
+    name Matrix2
+    xpos 345
+    ypos 205
+   }
+   Dot {
+    name Dot4
+    xpos 379
+    ypos 260
+   }
+   ShuffleCopy {
+    inputs 2
+    red red
+    blue black
+    alpha black
+    name ShuffleCopy1
+    xpos 236
+    ypos 256
+   }
+   Expression {
+    temp_name0 mag
+    temp_expr0 sqrt(pow(r,2)+pow(g,2)+pow(b,2))
+    expr0 mag!=0?r/mag:0
+    expr1 mag!=0?g/mag:0
+    expr2 mag!=0?b/mag:0
+    name Normalize
+    xpos 236
+    ypos 321
+   }
+   Multiply {
+    value -1
+    name Multiply2
+    xpos 236
+    ypos 358
+   }
+   Merge2 {
+    inputs 2
+    operation multiply
+    bbox B
+    name Merge1
+    xpos 236
+    ypos 437
+   }
+   Input {
+    inputs 0
+    name Input
+    xpos 536
+    ypos -112
+   }
+   Copy {
+    inputs 2
+    from0 rgba.red
+    to0 forward.u
+    from1 rgba.green
+    to1 forward.v
+    name Copy1
+    xpos 536
+    ypos 425
+   }
+   IDistort {
+    uv forward
+    uv_scale {{parent.distort}}
+    name IDistort1
+    xpos 536
+    ypos 497
+   }
+   Output {
+    name Output1
+    xpos 536
+    ypos 566
+   }
+  end_group
+  Dot {
+   name Dot4
+   tile_color 0xcccccc00
+   xpos 367
+   ypos 217
+  }
+push $N365f8380
+push $N365f8000
+  Group {
+   inputs 2
+   name Warp
+   xpos 87
+   ypos 154
+   addUserKnob {20 User}
+   addUserKnob {14 size R 0 100}
+   size {{parent.size_warp} {parent.size_warp}}
+   addUserKnob {7 distort}
+   distort {{parent.warp_amount}}
+   addUserKnob {7 normal R -90 90}
+   normal {{parent.warp_normal}}
+  }
+   Input {
+    inputs 0
+    name Inputcontrol_mask
+    xpos 235
+    ypos -176
+    number 1
+   }
+   Shuffle {
+    red alpha
+    green alpha
+    blue alpha
+    name Shuffle1
+    xpos 235
+    ypos -150
+   }
+   Clamp {
+    name Clamp1
+    xpos 235
+    ypos -78
+   }
+   Blur {
+    size {{parent.size/parent.distort} {parent.size/parent.distort}}
+    quality 50
+    name Blur1
+    label "size \[value size]"
+    xpos 235
+    ypos -27
+   }
+   Grade {
+    whitepoint 0.5
+    white_clamp true
+    name Grade2
+    xpos 235
+    ypos 81
+   }
+set N130a1500 [stack 0]
+   Invert {
+    name Invert1
+    xpos 61
+    ypos 75
+   }
+   Multiply {
+    value {{parent.size}}
+    name Multiply1
+    xpos 61
+    ypos 113
+   }
+   Dot {
+    name Dot1
+    tile_color 0x7aa9ff00
+    xpos 95
+    ypos 441
+   }
+push $N130a1500
+   Dot {
+    name Dot2
+    tile_color 0x7aa9ff00
+    xpos 269
+    ypos 123
+   }
+set N130a0700 [stack 0]
+   Matrix {
+    matrix {
+        {1 0 -1}
+        {2 0 -2}
+        {1 0 -1}
+      }
+    name Matrix1
+    xpos 235
+    ypos 206
+   }
+push $N130a0700
+   Dot {
+    name Dot3
+    tile_color 0x7aa9ff00
+    xpos 379
+    ypos 123
+   }
+   Matrix {
+    matrix {
+        {-1 -2 -1}
+        {0 0 0}
+        {1 2 1}
+      }
+    name Matrix2
+    xpos 345
+    ypos 205
+   }
+   Dot {
+    name Dot4
+    xpos 379
+    ypos 260
+   }
+   ShuffleCopy {
+    inputs 2
+    red red
+    blue black
+    alpha black
+    name ShuffleCopy1
+    xpos 236
+    ypos 256
+   }
+   Expression {
+    temp_name0 mag
+    temp_expr0 sqrt(pow(r,2)+pow(g,2)+pow(b,2))
+    expr0 mag!=0?r/mag:0
+    expr1 mag!=0?g/mag:0
+    expr2 mag!=0?b/mag:0
+    name Normalize
+    xpos 236
+    ypos 301
+   }
+   Multiply {
+    value -1
+    name Multiply2
+    xpos 236
+    ypos 327
+   }
+   Group {
+    name Vectors_Rotation
+    help "Edit the direction of motion vectors"
+    xpos 236
+    ypos 380
+    addUserKnob {20 VecRot l "Vectors Rotation"}
+    addUserKnob {7 rotation t "Rotates the vectors direction" R -90 90}
+    rotation {{parent.normal}}
+   }
+    Input {
+     inputs 0
+     name Input
+     xpos -303
+     ypos 144
+    }
+    Expression {
+     temp_name0 angleRad
+     temp_expr0 radians(parent.rotation)
+     expr0 "r * cos(angleRad) - g * sin(angleRad)"
+     expr1 "r * sin(angleRad) + g * cos(angleRad)"
+     name Direction
+     xpos -303
+     ypos 217
+    }
+    Output {
+     name Output1
+     xpos -303
+     ypos 291
+    }
+   end_group
+   Merge2 {
+    inputs 2
+    operation multiply
+    bbox B
+    name Merge1
+    xpos 236
+    ypos 437
+   }
+   Input {
+    inputs 0
+    name Input
+    xpos 536
+    ypos -176
+   }
+   Copy {
+    inputs 2
+    from0 rgba.red
+    to0 forward.u
+    from1 rgba.green
+    to1 forward.v
+    name Copy1
+    xpos 536
+    ypos 425
+   }
+   IDistort {
+    uv forward
+    uv_scale {{parent.distort}}
+    name IDistort1
+    xpos 536
+    ypos 497
+   }
+   Output {
+    name Output1
+    xpos 536
+    ypos 607
+   }
+  end_group
+  Dot {
+   name Dot9
+   tile_color 0xcccccc00
+   xpos 121
+   ypos 220
+  }
+push $N365f9180
+  Dot {
+   name Dot3
+   tile_color 0xcccccc00
+   xpos -9
+   ypos 108
+  }
+  Group {
+   name Recursive_Extend
+   xpos -43
+   ypos 153
+   addUserKnob {20 User}
+   addUserKnob {14 size R 0 100}
+   size {{parent.size_extend} {parent.size_extend}}
+   addUserKnob {3 samples}
+   samples {{parent.samples}}
+   addUserKnob {26 ""}
+   addUserKnob {7 threshold t "Used to eliminate ugly edges due to small precision error." R 0 0.001}
+   threshold 0.0002
+  }
+   Input {
+    inputs 0
+    name Input1
+    xpos 185
+    ypos -5
+   }
+   Clamp {
+    channels alpha
+    name Clamp1
+    xpos 185
+    ypos 46
+   }
+   Dot {
+    name Dot1
+    tile_color 0x7aa9ff00
+    xpos 219
+    ypos 123
+   }
+set N13035880 [stack 0]
+   Dot {
+    name Dot2
+    tile_color 0x7aa9ff00
+    xpos 396
+    ypos 123
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur1
+    xpos 362
+    ypos 187
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult1
+    xpos 362
+    ypos 225
+   }
+push $N13035880
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge1
+    xpos 185
+    ypos 225
+   }
+   Dot {
+    name Dot4
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 325
+   }
+set N13034380 [stack 0]
+   Dot {
+    name Dot5
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 325
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur2
+    xpos 362
+    ypos 384
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult2
+    xpos 362
+    ypos 422
+   }
+push $N13034380
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge2
+    xpos 185
+    ypos 422
+    disable {{parent.samples<2}}
+   }
+   Dot {
+    name Dot6
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 527
+   }
+set N13116e00 [stack 0]
+   Dot {
+    name Dot7
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 527
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur3
+    xpos 362
+    ypos 586
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult3
+    xpos 362
+    ypos 624
+   }
+push $N13116e00
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge3
+    xpos 185
+    ypos 624
+    disable {{parent.samples<3}}
+   }
+   Dot {
+    name Dot8
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 729
+   }
+set N12903880 [stack 0]
+   Dot {
+    name Dot9
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 729
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur4
+    xpos 362
+    ypos 788
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult4
+    xpos 362
+    ypos 826
+   }
+push $N12903880
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge4
+    xpos 185
+    ypos 826
+    disable {{parent.samples<4}}
+   }
+   Dot {
+    name Dot10
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 931
+   }
+set N12902380 [stack 0]
+   Dot {
+    name Dot11
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 931
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur5
+    xpos 362
+    ypos 990
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult5
+    xpos 362
+    ypos 1028
+   }
+push $N12902380
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge5
+    xpos 185
+    ypos 1028
+    disable {{parent.samples<5}}
+   }
+   Dot {
+    name Dot12
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 1133
+   }
+set N3394ee00 [stack 0]
+   Dot {
+    name Dot13
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 1133
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur6
+    xpos 362
+    ypos 1192
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult6
+    xpos 362
+    ypos 1230
+   }
+push $N3394ee00
+   Merge2 {
+    inputs 2
+    operation under
+    bbox B
+    name Merge6
+    xpos 185
+    ypos 1230
+    disable {{parent.samples<6}}
+   }
+   Dot {
+    name Dot14
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 1335
+   }
+set N36683880 [stack 0]
+   Dot {
+    name Dot15
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 1335
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur7
+    xpos 362
+    ypos 1394
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult7
+    xpos 362
+    ypos 1432
+   }
+push $N36683880
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge7
+    xpos 185
+    ypos 1432
+    disable {{parent.samples<7}}
+   }
+   Dot {
+    name Dot16
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 1537
+   }
+set N36682380 [stack 0]
+   Dot {
+    name Dot17
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 1537
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur8
+    xpos 362
+    ypos 1596
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult8
+    xpos 362
+    ypos 1634
+   }
+push $N36682380
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge8
+    xpos 185
+    ypos 1634
+    disable {{parent.samples<8}}
+   }
+   Dot {
+    name Dot18
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 1739
+   }
+set N12ff2e00 [stack 0]
+   Dot {
+    name Dot19
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 1739
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur9
+    xpos 362
+    ypos 1798
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult9
+    xpos 362
+    ypos 1836
+   }
+push $N12ff2e00
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge9
+    xpos 185
+    ypos 1836
+    disable {{parent.samples<9}}
+   }
+   Dot {
+    name Dot20
+    tile_color 0x4b5ec600
+    xpos 219
+    ypos 1941
+   }
+set N1285f880 [stack 0]
+   Dot {
+    name Dot21
+    tile_color 0x4b5ec600
+    xpos 396
+    ypos 1943
+   }
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur10
+    xpos 362
+    ypos 2000
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult10
+    xpos 362
+    ypos 2038
+   }
+push $N1285f880
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge10
+    xpos 185
+    ypos 2038
+    disable {{parent.samples<10}}
+   }
+   Output {
+    name Output1
+    xpos 185
+    ypos 2281
+   }
+  end_group
+  Dot {
+   name Dot10
+   tile_color 0xcccccc00
+   xpos -9
+   ypos 216
+  }
+push $N365f9180
+  Group {
+   name Dilate
+   xpos -175
+   ypos 152
+   addUserKnob {20 User}
+   addUserKnob {14 size R 0 100}
+   size {{parent.size_extend} {parent.size_extend}}
+   addUserKnob {3 samples}
+   samples {{parent.samples}}
+   addUserKnob {7 blending}
+   blending 1
+   addUserKnob {26 ""}
+   addUserKnob {7 threshold t "Used to eliminate ugly edges due to small precision error." R 0 0.001}
+   threshold 0.0001
+  }
+   Input {
+    inputs 0
+    name Input1
+    xpos 0
+    ypos -3
+   }
+   Clamp {
+    channels alpha
+    name Clamp1
+    xpos 0
+    ypos 48
+   }
+   Dot {
+    name Dot3
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 123
+   }
+set N13091500 [stack 0]
+   Dot {
+    name Dot22
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 323
+   }
+set N13091180 [stack 0]
+   Dot {
+    name Dot23
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 525
+   }
+set N13090e00 [stack 0]
+   Dot {
+    name Dot24
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 727
+   }
+set N13090a80 [stack 0]
+   Dot {
+    name Dot10
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 931
+   }
+set N13090700 [stack 0]
+   Dot {
+    name Dot12
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 1133
+   }
+set N13090380 [stack 0]
+   Dot {
+    name Dot14
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 1333
+   }
+set N13090000 [stack 0]
+   Dot {
+    name Dot16
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 1535
+   }
+set N130c1c00 [stack 0]
+   Dot {
+    name Dot18
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 1737
+   }
+set N130c1880 [stack 0]
+   Dot {
+    name Dot20
+    tile_color 0x7aa9ff00
+    xpos 34
+    ypos 1941
+   }
+   Dot {
+    name Dot21
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 1941
+   }
+   Blur {
+    size {{parent.size/parent.samples*10} {parent.size/parent.samples*10}}
+    name Blur10
+    xpos 209
+    ypos 1998
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult10
+    xpos 209
+    ypos 2036
+   }
+push $N130c1880
+   Dot {
+    name Dot19
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 1737
+   }
+   Blur {
+    size {{parent.size/parent.samples*9} {parent.size/parent.samples*9}}
+    name Blur9
+    xpos 209
+    ypos 1796
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult9
+    xpos 209
+    ypos 1834
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode3
+    xpos 209
+    ypos 1860
+   }
+   Premult {
+    name Premult9
+    xpos 209
+    ypos 1898
+   }
+push $N130c1c00
+   Dot {
+    name Dot17
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 1535
+   }
+   Blur {
+    size {{parent.size/parent.samples*8} {parent.size/parent.samples*8}}
+    name Blur8
+    xpos 209
+    ypos 1594
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult8
+    xpos 209
+    ypos 1632
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode4
+    xpos 209
+    ypos 1658
+   }
+   Premult {
+    name Premult8
+    xpos 209
+    ypos 1696
+   }
+push $N13090000
+   Dot {
+    name Dot15
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 1333
+   }
+   Blur {
+    size {{parent.size/parent.samples*7} {parent.size/parent.samples*7}}
+    name Blur7
+    xpos 209
+    ypos 1392
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult7
+    xpos 209
+    ypos 1430
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode5
+    xpos 209
+    ypos 1456
+   }
+   Premult {
+    name Premult7
+    xpos 209
+    ypos 1494
+   }
+push $N13090380
+   Dot {
+    name Dot13
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 1133
+   }
+   Blur {
+    size {{parent.size/parent.samples*6} {parent.size/parent.samples*6}}
+    name Blur6
+    xpos 209
+    ypos 1190
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult6
+    xpos 209
+    ypos 1228
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode6
+    xpos 209
+    ypos 1254
+   }
+   Premult {
+    name Premult6
+    xpos 209
+    ypos 1292
+   }
+push $N13090700
+   Dot {
+    name Dot11
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 931
+   }
+   Blur {
+    size {{parent.size/parent.samples*5} {parent.size/parent.samples*5}}
+    name Blur5
+    xpos 209
+    ypos 988
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult5
+    xpos 209
+    ypos 1026
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode7
+    xpos 209
+    ypos 1052
+   }
+   Premult {
+    name Premult5
+    xpos 209
+    ypos 1090
+   }
+push $N13090a80
+   Dot {
+    name Dot9
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 729
+   }
+   Blur {
+    size {{parent.size/parent.samples*4} {parent.size/parent.samples*4}}
+    name Blur4
+    xpos 209
+    ypos 788
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult4
+    xpos 209
+    ypos 826
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode8
+    xpos 209
+    ypos 852
+   }
+   Premult {
+    name Premult4
+    xpos 209
+    ypos 890
+   }
+push $N13090e00
+   Dot {
+    name Dot7
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 527
+   }
+   Blur {
+    size {{parent.size/parent.samples*3} {parent.size/parent.samples*3}}
+    name Blur3
+    xpos 209
+    ypos 586
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult3
+    xpos 209
+    ypos 624
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode9
+    xpos 209
+    ypos 650
+   }
+   Premult {
+    name Premult3
+    xpos 209
+    ypos 688
+   }
+push $N13091180
+   Dot {
+    name Dot5
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 325
+   }
+   Blur {
+    size {{parent.size/parent.samples*2} {parent.size/parent.samples*2}}
+    name Blur2
+    xpos 209
+    ypos 384
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult2
+    xpos 209
+    ypos 422
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode10
+    xpos 209
+    ypos 448
+   }
+   Premult {
+    name Premult2
+    xpos 209
+    ypos 486
+   }
+push $N13091500
+   Dot {
+    name Dot25
+    tile_color 0x7aa9ff00
+    xpos 243
+    ypos 123
+   }
+set N128d1880 [stack 0]
+   Blur {
+    size {{parent.size/parent.samples} {parent.size/parent.samples}}
+    name Blur1
+    xpos 209
+    ypos 187
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult1
+    xpos 209
+    ypos 225
+   }
+   FilterErode {
+    size {{(parent.size/parent.samples)*parent.blending} {(parent.size/parent.samples)*parent.blending}}
+    filter gaussian
+    name FilterErode1
+    xpos 209
+    ypos 251
+   }
+   Premult {
+    name Premult1
+    xpos 209
+    ypos 289
+   }
+push $N128d1880
+   Dot {
+    name Dot1
+    tile_color 0x7aa9ff00
+    xpos 434
+    ypos 123
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge1
+    xpos 400
+    ypos 289
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge2
+    xpos 400
+    ypos 486
+    disable {{parent.samples<2}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge3
+    xpos 400
+    ypos 688
+    disable {{parent.samples<3}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge4
+    xpos 400
+    ypos 890
+    disable {{parent.samples<4}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge5
+    xpos 400
+    ypos 1090
+    disable {{parent.samples<5}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge6
+    xpos 400
+    ypos 1292
+    disable {{parent.samples<6}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge7
+    xpos 400
+    ypos 1494
+    disable {{parent.samples<7}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge8
+    xpos 400
+    ypos 1696
+    disable {{parent.samples<8}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge9
+    xpos 400
+    ypos 1898
+    disable {{parent.samples<9}}
+   }
+   Merge2 {
+    inputs 2
+    operation under
+    name Merge10
+    xpos 400
+    ypos 2036
+    disable {{parent.samples<10}}
+   }
+   Expression {
+    temp_name0 tres
+    temp_expr0 parent.threshold
+    expr0 a>tres?r/a:r
+    expr1 a>tres?g/a:g
+    expr2 a>tres?b/a:b
+    expr3 a>tres?a/a:0
+    name All_unpremult11
+    xpos 400
+    ypos 2062
+   }
+   Output {
+    name Output1
+    xpos 400
+    ypos 2120
+   }
+  end_group
+  Switch {
+   inputs 4
+   which {{parent.method}}
+   name Switch1
+   xpos -175
+   ypos 296
+  }
+  Blur {
+   size {{parent.blur} {parent.blur}}
+   name Blur1
+   xpos -175
+   ypos 410
+   disable {{parent.method==3}}
+  }
+  Merge2 {
+   inputs 2
+   bbox B
+   name Merge1
+   xpos -175
+   ypos 557
+   disable {{parent.method==3}}
+  }
+  Dot {
+   name Dot26
+   tile_color 0x4b5ec600
+   xpos -141
+   ypos 747
+  }
+set N3dc1a700 [stack 0]
+push $N131c4000
+  Dot {
+   name Dot19
+   tile_color 0x9e3c6300
+   xpos -489
+   ypos 641
+  }
+  Unpremult {
+   name Unpremult1
+   xpos -523
+   ypos 666
+   disable {{!parent.in_premult}}
+  }
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -523
+   ypos 743
+  }
+  Colorspace {
+   colorspace_out YCbCr
+   name Colorspace1
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos -523
+   ypos 820
+  }
+  Dot {
+   name Dot21
+   tile_color 0xcccccc00
+   xpos -489
+   ypos 884
+  }
+set N3dc45500 [stack 0]
+  Dot {
+   name Dot22
+   tile_color 0xcccccc00
+   xpos -489
+   ypos 953
+  }
+push $N3dc45500
+push $N3dc1a700
+  Colorspace {
+   colorspace_out YCbCr
+   name Colorspace3
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos -175
+   ypos 796
+  }
+  Copy {
+   inputs 2
+   from0 rgba.red
+   to0 rgba.red
+   bbox B
+   mix {{1-parent.mix_luma}}
+   name Copy2
+   xpos -175
+   ypos 872
+  }
+  Copy {
+   inputs 2
+   from0 rgba.green
+   to0 rgba.green
+   bbox B
+   mix {{1-parent.mix_chroma}}
+   name Copy3
+   xpos -175
+   ypos 943
+  }
+  Colorspace {
+   colorspace_in YCbCr
+   name Colorspace2
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos -175
+   ypos 994
+  }
+  Dot {
+   name Dot17
+   tile_color 0xcccccc00
+   xpos -141
+   ypos 1151
+  }
+set N3dc44000 [stack 0]
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 rgba.alpha
+   bbox A
+   name Copy1
+   xpos -327
+   ypos 1141
+  }
+  Premult {
+   name Premult1
+   xpos -327
+   ypos 1179
+  }
+  Dot {
+   name Dot18
+   tile_color 0xcccccc00
+   xpos -293
+   ypos 1249
+  }
+push $N3dc44000
+  Switch {
+   inputs 2
+   which {{parent.premult}}
+   name Switch2
+   xpos -175
+   ypos 1245
+  }
+  Keymix {
+   inputs 3
+   channels rgba
+   invertMask true
+   name Keymix1
+   xpos -175
+   ypos 1325
+   disable {{"!\[exists parent.input1] "}}
+  }
+  Dot {
+   name Dot25
+   tile_color 0x4b5ec600
+   xpos -141
+   ypos 1421
+  }
+push $N365f9880
+  Copy {
+   inputs 2
+   from0 rgba.red
+   to0 rgba.red
+   from1 rgba.green
+   to1 rgba.green
+   bbox A
+   name Copy4
+   xpos -646
+   ypos 1398
+   disable {{"!\[exists parent.input0] "}}
+  }
+  Output {
+   name Output1
+   xpos -646
+   ypos 1525
+  }
+ end_group
+push $N12d06000
+ STMap {
+  inputs 2
+  uv rgba
+  filter Keys
+  name STMap2
+  xpos 620
+  ypos 368
+ }
+ Dot {
+  name Dot3
+  xpos 654
+  ypos 666
+ }
+set N3dbf7c00 [stack 0]
+ Invert {
+  name Invert1
+  xpos 400
+  ypos 656
+ }
+ Expression {
+  inputs 0
+  expr0 (x+0.5)/width
+  expr1 (y+0.6)/height
+  name Expression3
+  xpos 290
+  ypos 566
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy2
+  xpos 290
+  ypos 656
+ }
+ Group {
+  inputs 3
+  name apEdgePush
+  help "Distort the edges of your image outwards through its alpha, useful to hide edges with background influence showing up.\n\napEdgePush v1.2 by Adrian Pueyo.\nadrianpueyo.com, 2016"
+  tile_color 0x8a8a8aff
+  xpos 290
+  ypos 806
+  addUserKnob {20 apEdgePush}
+  addUserKnob {41 channels T IDistort.channels}
+  addUserKnob {4 theOutput l output t "By setting this output to distortion matte setup you'll have visual control of the following knobs. Then switch back to result and refine the \nvalues." M {result "distortion matte setup" ""}}
+  addUserKnob {6 crop_to_format l "crop to format" -STARTLINE}
+  crop_to_format true
+  addUserKnob {6 premultiplied l "(un)premult rgb" t "Unpremult rgb before applying the distortion and premultiply it back after." -STARTLINE}
+  addUserKnob {7 value t "Strength of the distortion." R 0 100}
+  value {{parent.width_d}}
+  addUserKnob {14 soft t "Pre-blur of the distortion matte." R 0 100}
+  soft 36.5
+  addUserKnob {7 falloff t "Falloff of the distortion/gamma of the distortion map."}
+  falloff 0.022
+  addUserKnob {14 maxIndent l "max indent" t "Maximum distance in pixels from the edge where this tool can apply distortion (use this to limit the inside distortion when using high values)." R 0 100}
+  maxIndent 10
+  addUserKnob {26 ""}
+  addUserKnob {41 matte t "Channel from the matte input to use as a distortion matte. If nothing is pluged, alpha from the img layer is used." T Copy2.from0}
+  addUserKnob {6 invert_matte l invert -STARTLINE}
+  addUserKnob {41 maskChannel l mask T Keymix1.maskChannel}
+  addUserKnob {41 invertMask l invert -STARTLINE T Keymix1.invertMask}
+  addUserKnob {7 mix}
+  mix 1
+  addUserKnob {26 version_author l "" t "apEdgePush v1.2\n2016" +STARTLINE T "<span style=\"color:#666\"><br/><b>apEdgePush v1.2</b> - <a href=\"http://www.adrianpueyo.com\" style=\"color:#666;text-decoration: none;\">adrianpueyo.com</a>, 2014-2016</span>"}
+ }
+  Input {
+   inputs 0
+   name Inputimg
+   xpos 131
+   ypos 237
+  }
+  Shuffle {
+   name Shuffle
+   xpos 131
+   ypos 261
+  }
+set N3dbf6700 [stack 0]
+  Dot {
+   name Dot27
+   xpos 165
+   ypos 929
+  }
+set N3dbf6380 [stack 0]
+  Dot {
+   name Dot1
+   xpos 165
+   ypos 1085
+  }
+set N3dbf6000 [stack 0]
+  Dot {
+   name Dot13
+   xpos 165
+   ypos 1117
+  }
+set N3e567c00 [stack 0]
+  Dot {
+   name Dot14
+   xpos 165
+   ypos 1145
+  }
+push $N3e567c00
+  Input {
+   inputs 0
+   name Inputmask
+   xpos 822
+   ypos 1054
+   number 2
+  }
+  Invert {
+   name Invert5
+   xpos 822
+   ypos 1078
+  }
+push $N3dbf6000
+  Input {
+   inputs 0
+   name Inputmatte
+   xpos 351
+   ypos 192
+   number 1
+  }
+  Expression {
+   expr3 1
+   name Expression1
+   xpos 351
+   ypos 216
+   disable {{"\[exists parent.input1]"}}
+  }
+push $N3dbf6700
+  Remove {
+   operation keep
+   channels alpha
+   name Remove2
+   xpos 241
+   ypos 257
+  }
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 rgba.alpha
+   name Copy2
+   xpos 351
+   ypos 257
+   disable {{"!\[exists parent.input1]"}}
+  }
+  Invert {
+   channels alpha
+   name InvertAlpha
+   xpos 351
+   ypos 289
+   disable {{!parent.invert_matte}}
+  }
+  Dot {
+   name Dot12
+   xpos 385
+   ypos 348
+  }
+set N3e589880 [stack 0]
+  Dot {
+   name Dot25
+   xpos 385
+   ypos 595
+  }
+set N3e589500 [stack 0]
+  Dot {
+   name Dot26
+   xpos 385
+   ypos 874
+  }
+set N3e589180 [stack 0]
+  FilterErode {
+   size {{parent.maxIndent} {parent.maxIndent}}
+   filter gaussian
+   name FilterErodeMaxI
+   label MaxIndent
+   xpos 455
+   ypos 862
+  }
+push $N3e589500
+push $N3e589880
+  Dot {
+   name Dot11
+   xpos 648
+   ypos 348
+  }
+set N3e588a80 [stack 0]
+  Matrix {
+   channels alpha
+   matrix {
+       {0.33 0 -0.33}
+       {1 0 -1}
+       {0.33 0 -0.33}
+     }
+   name hGrad
+   xpos 614
+   ypos 398
+  }
+push $N3e588a80
+  Dot {
+   name Dot3
+   xpos 756
+   ypos 348
+  }
+  Matrix {
+   channels alpha
+   matrix {
+       {-0.33 -1 -0.33}
+       {0 0 0}
+       {0.33 1 0.33}
+     }
+   name vGrad
+   xpos 722
+   ypos 398
+  }
+  Dot {
+   name Dot8
+   xpos 756
+   ypos 470
+  }
+  MergeExpression {
+   inputs 2
+   expr0 Aa
+   expr1 Ba
+   expr2 0
+   name MergeExpressionHV
+   xpos 614
+   ypos 467
+  }
+  Merge2 {
+   inputs 2
+   operation stencil
+   name Merge1
+   xpos 614
+   ypos 592
+  }
+  Blur {
+   channels rgba
+   size {{parent.soft} {parent.soft}}
+   name BlurAlpha
+   xpos 614
+   ypos 627
+  }
+  Dot {
+   name Dot28
+   xpos 648
+   ypos 663
+  }
+set N3e5b0a80 [stack 0]
+  Dot {
+   name Dot10
+   xpos 742
+   ypos 663
+  }
+  Expression {
+   expr0 -min(r,0)
+   expr1 -min(g,0)
+   name NegativeValues
+   xpos 708
+   ypos 693
+  }
+  Invert {
+   channels rgb
+   name Invert1
+   xpos 708
+   ypos 717
+  }
+  Gamma {
+   channels rgb
+   value {{parent.Gamma2.value}}
+   name Gamma1
+   xpos 708
+   ypos 741
+  }
+  Invert {
+   channels rgb
+   name Invert4
+   xpos 708
+   ypos 765
+  }
+  Dot {
+   name Dot9
+   xpos 742
+   ypos 826
+  }
+push $N3e5b0a80
+  Expression {
+   expr0 max(r,0)
+   expr1 max(g,0)
+   name PositiveValues
+   xpos 614
+   ypos 693
+  }
+  Invert {
+   channels rgb
+   name Invert2
+   xpos 614
+   ypos 717
+  }
+  Gamma {
+   channels rgb
+   value {{parent.falloff}}
+   name Gamma2
+   xpos 614
+   ypos 741
+  }
+  Invert {
+   channels rgb
+   name Invert3
+   xpos 614
+   ypos 765
+  }
+  MergeExpression {
+   inputs 2
+   expr0 Br-Ar
+   expr1 Bg-Ag
+   expr2 0
+   name MergeExpression7
+   xpos 614
+   ypos 823
+  }
+  Multiply {
+   channels {rgba.red rgba.green -rgba.blue none}
+   value {{parent.value}}
+   name MultiplyValue
+   xpos 614
+   ypos 847
+  }
+  Merge2 {
+   inputs 2
+   operation stencil
+   name Merge5
+   xpos 614
+   ypos 871
+  }
+set N3dadf180 [stack 0]
+  Expression {
+   expr0 max(abs(r),abs(g))
+   expr1 0
+   expr2 0
+   expr3 0
+   name ExpressionPrvw
+   xpos 739
+   ypos 871
+  }
+push $N3e589180
+  Dot {
+   name Dot29
+   xpos 385
+   ypos 898
+  }
+  Merge2 {
+   inputs 2
+   operation plus
+   mix 0.5
+   name MergePrvw
+   xpos 739
+   ypos 895
+  }
+  Dot {
+   name Dot2
+   xpos 773
+   ypos 1057
+  }
+push $N3dadf180
+push $N3dbf6380
+add_layer {ap_edgepush ap_edgepush.u ap_edgepush.v}
+  ShuffleCopy {
+   inputs 2
+   in2 none
+   red red
+   green green
+   blue black
+   alpha black
+   out ap_edgepush
+   name ShuffleCopy1
+   xpos 614
+   ypos 926
+  }
+  Unpremult {
+   name Unpremult3
+   xpos 614
+   ypos 950
+   disable {{parent.premultiplied==0}}
+  }
+  IDistort {
+   channels rgba
+   uv ap_edgepush
+   uv_scale -1
+   name IDistort
+   xpos 614
+   ypos 974
+  }
+  Premult {
+   name Premult4
+   xpos 614
+   ypos 998
+   disable {{parent.premultiplied==0}}
+  }
+  Remove {
+   channels ap_edgepush
+   name Remove1
+   xpos 614
+   ypos 1022
+  }
+  Switch {
+   inputs 2
+   which {{parent.theOutput}}
+   name SwitchPreview
+   xpos 614
+   ypos 1054
+  }
+  Keymix {
+   inputs 3
+   name Keymix1
+   xpos 614
+   ypos 1078
+   disable {{"!\[exists parent.input2]"}}
+  }
+  Dissolve {
+   inputs 2
+   which {{1-parent.mix}}
+   name Dissolve1
+   xpos 614
+   ypos 1110
+   disable {{parent.mix==1}}
+  }
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos 614
+   ypos 1142
+   disable {{!parent.crop_to_format}}
+  }
+  Output {
+   name Output1
+   xpos 614
+   ypos 1166
+  }
+ end_group
+push $N3dbf7c00
+ STMap {
+  inputs 2
+  uv rgba
+  filter Keys
+  name STMap3
+  xpos 620
+  ypos 800
+ }
+set N3db35880 [stack 0]
+ Output {
+  name Output1
+  xpos 620
+  ypos 902
+ }
+push $N3db35880
+ Viewer {
+  frame_range 1-218
+  fps 25
+  colour_sample_bbox {-0.08645833284 -0.3781250119 -0.08541666716 -0.3770833313}
+  name Viewer1
+  xpos 779
+  ypos 57
+ }
+end_group

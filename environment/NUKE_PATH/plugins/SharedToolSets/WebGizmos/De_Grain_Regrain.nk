@@ -1,0 +1,244 @@
+Group {
+ inputs 0
+ name De_Grain
+ tile_color 0xffffffff
+ xpos 290
+ ypos -256
+ addUserKnob {20 Controls}
+ addUserKnob {26 de_noise_controls l De_Noise}
+ addUserKnob {41 type l Source T Denoise1.type}
+ addUserKnob {41 model l "Noise Model" T Denoise1.model}
+ addUserKnob {41 profile l Profile T Denoise1.profile}
+ addUserKnob {41 output l Output T Denoise1.output}
+ addUserKnob {41 amount l "Denoise Amount" T Denoise1.amount}
+ addUserKnob {26 ""}
+ addUserKnob {6 view_grain l "View grain" +STARTLINE}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode5
+  tile_color 0x7171c600
+  label DeGrain
+  note_font_size 42
+  xpos -566
+  ypos -655
+  bdwidth 601
+  bdheight 329
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  label Footage
+  note_font_size 42
+  xpos -615
+  ypos -977
+  bdwidth 225
+  bdheight 178
+ }
+ Input {
+  inputs 0
+  name FOOTAGE
+  label Footage
+  xpos -556
+  ypos -894
+ }
+ Dot {
+  name Dot18
+  xpos -522
+  ypos -705
+ }
+set N8c909500 [stack 0]
+ Dot {
+  name Dot19
+  xpos -334
+  ypos -705
+ }
+push $N8c909500
+ Denoise2 {
+  amount 1.21
+  analysisRegion {440.75 735.5 661.25 930.5}
+  needsAnalyzing false
+  profileCurve {profile {curve x0.1000000015 0 x0.1333521456 0 x0.1778279394 0 x0.2371373773 0 x0.3162277639 0 x0.4216965139 0 x0.5623413324 0 x0.7498942018 0 x1 0}}
+  serializeKnob "1.500239968e+00 5.134540200e-01 4.981659949e-01
+3.835340030e-03 2.398410114e-03 9.271639865e-04
+3.835340030e-03 2.398410114e-03 9.271639865e-04
+1.600940013e-03 8.293699939e-04 2.837089996e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+2.174929949e-03 2.256050007e-03 1.034129993e-03
+2.174929949e-03 2.256050007e-03 1.034129993e-03
+9.957860457e-04 7.478389889e-04 3.140800109e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+1.086049946e-03 2.102730097e-03 1.030780026e-03
+1.086049946e-03 2.102730097e-03 1.030780026e-03
+5.876760115e-04 9.903940372e-04 4.534939944e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+3.280240053e-04 6.467700005e-04 3.781290143e-04
+3.280240053e-04 6.467700005e-04 3.781290143e-04
+2.312199940e-04 4.864429939e-04 2.874700003e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 
+9032002483793159533"
+  name Denoise1
+  xpos -556
+  ypos -551
+ }
+set N8c908e00 [stack 0]
+ Dot {
+  name Dot20
+  xpos -522
+  ypos -457
+ }
+set N8c908a80 [stack 0]
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge10
+  xpos -368
+  ypos -461
+ }
+push $N8c908e00
+ Dot {
+  name Dot21
+  xpos -88
+  ypos -541
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  name Merge11
+  xpos -122
+  ypos -461
+ }
+ Dot {
+  name Dot1
+  xpos -88
+  ypos -373
+ }
+add_layer {Grain Grain.red Grain.green Grain.blue Grain.alpha}
+ Shuffle {
+  out Grain
+  name Shuffle1
+  xpos -254
+  ypos -377
+ }
+set N8c933880 [stack 0]
+ Dot {
+  name Dot2
+  xpos -220
+  ypos -292
+ }
+push $N8c933880
+push $N8c908a80
+ Merge2 {
+  inputs 2
+  Achannels none
+  also_merge Grain
+  name Merge1
+  xpos -556
+  ypos -377
+ }
+ Switch {
+  inputs 2
+  which {{view_grain}}
+  name Switch1
+  xpos -556
+  ypos -296
+ }
+ Output {
+  name Output2
+  xpos -556
+  ypos -232
+ }
+end_group
+Group {
+ inputs 0
+ name Re_Grain
+ tile_color 0xfcffffff
+ xpos 290
+ ypos -58
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode6
+  tile_color 0x7171c600
+  label Regrain
+  note_font_size 42
+  xpos -147
+  ypos 5
+  bdwidth 515
+  bdheight 182
+ }
+ Input {
+  inputs 0
+  name grain
+  xpos -370
+  ypos -202
+  number 1
+ }
+ Dot {
+  name Dot2
+  xpos -336
+  ypos -102
+ }
+ Input {
+  inputs 0
+  name source
+  xpos -150
+  ypos -202
+ }
+ Copy {
+  inputs 2
+  from0 Grain.red
+  to0 Grain.red
+  from1 Grain.green
+  to1 Grain.green
+  from2 Grain.blue
+  to2 Grain.blue
+  name Copy1
+  xpos -150
+  ypos -125
+ }
+ Dot {
+  name Dot1
+  xpos -116
+  ypos -6
+ }
+set N8c8d7880 [stack 0]
+ Dot {
+  name Dot16
+  xpos -116
+  ypos 90
+ }
+set N8c8d7500 [stack 0]
+ Dot {
+  name Dot17
+  xpos -116
+  ypos 138
+ }
+push $N8c8d7500
+push $N8c8d7880
+ Shuffle {
+  in Grain
+  name Shuffle1
+  xpos 290
+  ypos -10
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge12
+  xpos 290
+  ypos 86
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge13
+  xpos 290
+  ypos 134
+ }
+ Output {
+  name Output1
+  xpos 290
+  ypos 230
+ }
+end_group

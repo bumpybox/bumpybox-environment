@@ -1,0 +1,39 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Grade {
+ name Grade1
+ selected true
+ xpos -229
+ ypos -68
+}
+Grade {
+ name Grade2
+ selected true
+ xpos -229
+ ypos -18
+}
+Grade {
+ name Grade3
+ selected true
+ xpos -229
+ ypos 32
+}
+Grade {
+ name Grade4
+ selected true
+ xpos -229
+ ypos 82
+}
+Grade {
+ name Grade5
+ selected true
+ xpos -229
+ ypos 132
+}
+Grade {
+ name Grade6
+ selected true
+ xpos -229
+ ypos 182
+}

@@ -1,0 +1,81 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Group {
+ name contactSheetLarge
+ selected true
+ xpos 7220
+ ypos 3038
+ addUserKnob {20 User}
+ addUserKnob {41 FormatSheet l "Format Sheet" T ContactSheet1.FormatSheet}
+ addUserKnob {41 res_1 l Resolution T ContactSheet1.res_1}
+ addUserKnob {26 ""}
+ addUserKnob {41 rows l rows/columns T ContactSheet1.rows}
+ addUserKnob {41 columns l "" -STARTLINE T ContactSheet1.columns}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 501
+  ypos 95
+ }
+ Retime {
+  input.first 0
+  input.last 3049
+  output.first 0
+  output.last 1016
+  speed 3
+  before black
+  after black
+  filter none
+  time ""
+  name Retime1
+  xpos 501
+  ypos 135
+ }
+ TimeOffset {
+  time_offset 1
+  time ""
+  name TimeOffset1
+  xpos 501
+  ypos 171
+ }
+set N8293e400 [stack 0]
+ ContactSheet {
+  width {{"this.columns * 1920 * this.res_1"}}
+  height {{"this.rows * 1080 * this.res_1"}}
+  rows 5
+  columns 5
+  roworder TopBottom
+  splitinputs true
+  startframe 1
+  endframe {{"(root.last_frame + 1) /3"}}
+  name ContactSheet1
+  xpos 501
+  ypos 210
+  addUserKnob {20 User}
+  addUserKnob {22 FormatSheet l "Format Sheet" T "#Format the contact sheet to the optimal layout and size.\n\nimport nuke\nimport math\n\ndef getBestFactor(value):\n    factors = \[]\n    for i in range(1, int(value**0.5)+1):\n        if value % i == 0:      \n            factors.append(\[int(i), int(value / i)])\n    if len(factors) == 0:\n        nuke.message('Error: check framerange is correct')\n        return \[5, 10]   \n    factor = factors\[-1]\n    #below 5 rows force 5 and round\n    if factor\[0] > 4:\n        return factor\n    else:\n        return \[int(5), int(math.ceil(value/5))]\n                \n\nnode = nuke.thisNode()\nframes = nuke.Root()\['last_frame'].getValue() + 1\nshots = frames / 3\n\nfactor = getBestFactor(shots)\n\nnode\['rows'].setValue(factor\[0])\nnode\['columns'].setValue(factor\[1])\n" +STARTLINE}
+  addUserKnob {16 res_1 l Resolution}
+  res_1 0.5
+ }
+ FrameHold {
+  name FrameHold1
+  xpos 501
+  ypos 255
+ }
+ Output {
+  name Output1
+  xpos 501
+  ypos 318
+ }
+push $N8293e400
+ Viewer {
+  frame 0
+  frame_range 1-47
+  frame_range_lock true
+  fps 25
+  name Viewer1
+  xpos 204
+  ypos 304
+ }
+end_group

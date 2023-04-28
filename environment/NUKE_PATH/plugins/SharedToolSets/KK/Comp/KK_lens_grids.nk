@@ -1,0 +1,275 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="2544" h="1361" screen="0">
+        <splitter orientation="1">
+            <split size="46"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1875" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1317"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="2552" y="0" w="2560" h="1417" screen="1">
+        <splitter orientation="2">
+            <split size="1417"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "G:/My Drive/library/Nuke/plugins/SharedToolSets/KK/Comp/KK_lens_grids.nk"
+ last_frame 500
+ lock_range true
+ format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 AvalonTab}
+ addUserKnob {20 begin l "Avalon data group" n 2}
+ addUserKnob {26 __divider__ l "" +STARTLINE}
+ addUserKnob {26 avalon_data -STARTLINE T "Warning! Do not change following data!"}
+ addUserKnob {26 avalon:handleEnd l handleEnd T 0}
+ addUserKnob {26 avalon:handleStart l handleStart T 0}
+ addUserKnob {20 end l "Avalon data group" n -1}
+ addUserKnob {26 ""}
+ addUserKnob {6 publish l Publish +STARTLINE}
+}
+Group {
+ inputs 0
+ name KK_lens_grids
+ tile_color 0x64dcffff
+ label "\[value type] \[value s]"
+ selected true
+ xpos 2159
+ ypos 6224
+ addUserKnob {20 User}
+ addUserKnob {4 type M {wide telephoto "" ""}}
+ addUserKnob {3 s l strength t "Min 1, Max 5"}
+ s 5
+}
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingTelelens05/v029/kensukes_kingdom_Lens_Grids_renderCompositingTelelens05_v029.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read2
+  xpos 290
+  ypos 1016
+ }
+ Dot {
+  name Dot9
+  xpos 434
+  ypos 1050
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingTelelens04/v028/kensukes_kingdom_Lens_Grids_renderCompositingTelelens04_v028.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read10
+  xpos 290
+  ypos 920
+ }
+ Dot {
+  name Dot8
+  xpos 434
+  ypos 954
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingTelelens03/v027/kensukes_kingdom_Lens_Grids_renderCompositingTelelens03_v027.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read9
+  xpos 290
+  ypos 824
+ }
+ Dot {
+  name Dot7
+  xpos 434
+  ypos 858
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingTelelens02/v026/kensukes_kingdom_Lens_Grids_renderCompositingTelelens02_v026.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read8
+  xpos 290
+  ypos 728
+ }
+ Dot {
+  name Dot6
+  xpos 434
+  ypos 762
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingTelelens01/v025/kensukes_kingdom_Lens_Grids_renderCompositingTelelens01_v025.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read7
+  xpos 290
+  ypos 632
+ }
+ Dot {
+  name Dot5
+  xpos 434
+  ypos 666
+ }
+ Switch {
+  inputs 5
+  which {{parent.s-1}}
+  name tele
+  xpos 510
+  ypos 1142
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingWidelens05/v024/kensukes_kingdom_Lens_Grids_renderCompositingWidelens05_v024.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read1
+  xpos 510
+  ypos 440
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingWidelens04/v023/kensukes_kingdom_Lens_Grids_renderCompositingWidelens04_v023.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read5
+  xpos 510
+  ypos 344
+ }
+ Dot {
+  name Dot4
+  xpos 654
+  ypos 378
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingWidelens03/v030/kensukes_kingdom_Lens_Grids_renderCompositingWidelens03_v030.####.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  last 2
+  origlast 2
+  origset true
+  name Read4
+  selected true
+  xpos 510
+  ypos 248
+ }
+set Nde41dc00 [stack 0]
+ Dot {
+  name Dot3
+  xpos 654
+  ypos 282
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingWidelens02/v021/kensukes_kingdom_Lens_Grids_renderCompositingWidelens02_v021.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read3
+  xpos 510
+  ypos 152
+ }
+ Dot {
+  name Dot2
+  xpos 654
+  ypos 186
+ }
+ Read {
+  inputs 0
+  file Y:/kensukes_kingdom/library/Lens_Grids/publish/render/renderCompositingWidelens01/v020/kensukes_kingdom_Lens_Grids_renderCompositingWidelens01_v020.0001.exr
+  localizationPolicy on
+  format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+  origset true
+  name Read6
+  xpos 510
+  ypos 56
+ }
+ Dot {
+  name Dot1
+  xpos 654
+  ypos 90
+ }
+ Switch {
+  inputs 5
+  which {{parent.s-1}}
+  name wide
+  xpos 730
+  ypos 470
+ }
+ Switch {
+  inputs 2
+  which {{parent.type}}
+  name type
+  xpos 730
+  ypos 1142
+ }
+ Reformat {
+  format "2578 1080 0 0 2578 1080 1 "
+  name Reformat1
+  xpos 730
+  ypos 1186
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 950
+  ypos 1046
+ }
+ STMap {
+  inputs 2
+  uv rgba
+  name STMap4
+  xpos 950
+  ypos 1186
+ }
+ Output {
+  name Output1
+  xpos 950
+  ypos 1288
+ }
+push $Nde41dc00
+ Viewer {
+  frame_range 1-95
+  name Viewer1
+  xpos 510
+  ypos 334
+ }
+end_group

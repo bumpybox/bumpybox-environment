@@ -1,0 +1,201 @@
+set cut_paste_input [stack 0]
+version 11.0 v4
+push $cut_paste_input
+Group {
+ name setDotBoard15
+ selected true
+ xpos 3330
+ ypos -60
+ addUserKnob {20 User}
+ addUserKnob {41 time_offset l "Frame Offset" T TimeOffset1.time_offset}
+ addUserKnob {41 last_frame l "Last Frame" -STARTLINE T Switch2.disable}
+ addUserKnob {26 ""}
+ addUserKnob {41 to1 T CornerPin2D15.to1}
+ addUserKnob {41 to2 T CornerPin2D15.to2}
+ addUserKnob {41 to3 T CornerPin2D15.to3}
+ addUserKnob {41 to4 T CornerPin2D15.to4}
+ addUserKnob {26 d l "" +STARTLINE}
+ addUserKnob {41 disable_1 l "view board" T Switch1.disable}
+ addUserKnob {22 reset l Reset t "Resets everything to default." -STARTLINE T "n = nuke.thisNode()\nn\['time_offset'].setValue(0)\nn\['last_frame'].setValue(0)\nn\['disable_1'].setValue(0)\ndiv = 3\nx = int(1920/div)\ny= int(1080/div)\nn\['to1'].setValue(\[x, y])\nn\['to2'].setValue(\[x * (div - 1), y])\nn\['to3'].setValue(\[x * (div - 1), y * (div - 1)])\nn\['to4'].setValue(\[x, y * (div - 1)])"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 1500
+  ypos -946
+ }
+ TimeOffset {
+  time ""
+  name TimeOffset1
+  xpos 1500
+  ypos -898
+ }
+set N4d579400 [stack 0]
+ FrameHold {
+  first_frame {{"\[knob parent.input0.frame]"}}
+  name FrameHold5
+  xpos 1500
+  ypos -808
+ }
+push $N4d579400
+ FrameHold {
+  first_frame {{"\[knob parent.input0.frame]+\[value parent.input0.last]-1"}}
+  name FrameHold1
+  xpos 1610
+  ypos -808
+ }
+ Switch {
+  inputs 2
+  which 1
+  name Switch2
+  xpos 1500
+  ypos -706
+ }
+set Nf7358000 [stack 0]
+ RotoPaint {
+  inputs 0
+  curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x44700000 x44070000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier2 512 bezier
+     {{cc
+       {f 8192}
+       {px x44d44000
+        {0 0}
+        {xc1733360 x43862667}
+        {0 0}
+        {0 0}
+        {x44f1c99a x43840000}
+        {0 0}
+        {0 0}
+        {x44f0f334 xc10b3330}
+        {0 0}
+        {0 0}
+        {xc1a3ffc0 xc164cce0}
+        {0 0}}}     idem}
+     {tx x44d44000 x446d7000 x430c8000}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 ltn x44d44000 ltm x44d44000 tt x40800000}}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px x44d44000
+        {0 0}
+        {xc130b124 x444b72ec}
+        {0 0}
+        {0 0}
+        {x44f4e000 x444c8000}
+        {0 0}
+        {0 0}
+        {x44f48d7a x44076dcc}
+        {0 0}
+        {0 0}
+        {xc1ee48cf x44047c39}
+        {0 0}}}     idem}
+     {tx x44d44000 x446dd000 x4428e000}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 ltn x44d44000 ltm x44d44000 tt x40800000}}}}}}
+  toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+  toolbar_brush_hardness 0.200000003
+  toolbar_source_transform_scale {1 1}
+  toolbar_source_transform_center {960 540}
+  colorOverlay {0 0 0 0}
+  lifetime_type "all frames"
+  lifetime_start 1698
+  lifetime_end 1698
+  motionblur_shutter_offset_type centred
+  source_black_outside true
+  name RotoPaint4
+  xpos 1390
+  ypos -490
+ }
+push $Nf7358000
+ CornerPin2D {
+  to1 {640 360}
+  to2 {1280 360}
+  to3 {1280 720}
+  to4 {640 720}
+  invert true
+  from1 {0 0}
+  from2 {1920 0}
+  from3 {1920 1080}
+  from4 {0 1080}
+  name CornerPin2D15
+  xpos 1500
+  ypos -490
+ }
+set N4cde3880 [stack 0]
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge54
+  xpos 1390
+  ypos -394
+ }
+ Mirror2 {
+  flop true
+  name Mirror2_1
+  xpos 1390
+  ypos -322
+ }
+push $N4cde3880
+ Merge2 {
+  inputs 2
+  name Merge55
+  xpos 1500
+  ypos -322
+ }
+ Dot {
+  name Dot53
+  xpos 1534
+  ypos -222
+ }
+ Switch {
+  inputs 2
+  which 1
+  name Switch1
+  xpos 1610
+  ypos -226
+ }
+ Output {
+  name Output1
+  xpos 1610
+  ypos -106
+ }
+end_group
+push 0
+mmColorTarget {
+ inputs 2
+ name mmColorTarget15
+ note_font Verdana
+ selected true
+ xpos 3330
+ ypos -148
+ srcSize 110
+ srcTL {1920 0}
+ srcTR {0 0}
+ srcBL {1920 1080}
+ srcBR {0 1080}
+ ignoreTarget true
+ colorspace "Adobe RGB 1998"
+ colorspace_jsonfile mmColorTarget_colorspaces.json
+}

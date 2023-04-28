@@ -1,0 +1,1038 @@
+#! C:/Program Files/Nuke11.0v4/nuke-11.0.4.dll -nx
+version 11.0 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="2544" h="1361" screen="0">
+        <splitter orientation="1">
+            <split size="46"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1875" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1317"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="2554" y="1" w="1915" h="989" screen="1">
+        <splitter orientation="2">
+            <split size="989"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name Y:/my_petsaurus/work/comp/plugins/SharedToolSets/KK/Comp/Comp_End_Nodes.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode21
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x51235901
+ label "Cut in to Kensuke\nOutput size"
+ note_font_size 50
+ xpos 4
+ ypos 972
+ bdwidth 493
+ bdheight 338
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "Cut in to Kensuke\nOutput size"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x 3594
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y 7794
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {493 338}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode22
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x384c5b01
+ label "Lens Distortion"
+ note_font_size 50
+ xpos -815
+ ypos -1249
+ bdwidth 1200
+ bdheight 1049
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "Lens Distortion"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x 114
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y 2001
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {1200 1049}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode23
+ knobChanged "try:\n    node=nuke.thisNode()\n    knob=nuke.thisKnob()\n    name=knob.name()\n\n    def updateKnobs():\n        nodeWidth=node\['bdwidth'].getValue()\n        nodeHeight=node\['bdheight'].getValue()\n        node\['sizeNode'].setValue(\[int(nodeWidth),int(nodeHeight)])\n        node\['node_position_x'].setValue(int(node\['xpos'].value()))\n        node\['node_position_y'].setValue(int(node\['ypos'].value()))\n        node\['zorder'].setValue(int(node\['z_order'].getValue()))\n        node\['font_size'].setValue(int(node\['note_font_size'].getValue()))\n        node\['oz_appearance'].setValue( node\['appearance'].value() )\n        node\['oz_border_width'].setValue( node\['border_width'].value() )\n        #node\['fontColor'].setValue(int(node\['note_font_color'].getValue()))\n\n    def updateLabelKnob():\n        curLabel = node\['label'].getValue()\n        if '<p align=center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=center>', ''))\n            node\['alignment'].setValue(1)\n        elif '<p align=right>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<p align=right>', ''))\n            node\['alignment'].setValue(2)\n        elif '<center>' in curLabel:\n            node\['text'].setValue(curLabel.replace('<center>', ''))\n            node\['alignment'].setValue(1)\n        else:\n            node\['text'].setValue(curLabel)\n            node\['alignment'].setValue(0)\n\n    ### OPENING SETUP\n    if name=='showPanel':\n        updateKnobs()\n        updateLabelKnob()\n\n    ### UPDATE STYLE\n    if name in \['oz_appearance', 'oz_border_width']:\n        node\['appearance'].setValue( node\['oz_appearance'].value() )\n        node\['border_width'].setValue( node\['oz_border_width'].value() )\n\n    ### CHANGE THE SIZE OF THE NODE\n    if name=='sizeNode':\n        node\['bdwidth'].setValue(int(node\['sizeNode'].getValue()\[0]))\n        node\['bdheight'].setValue(int(node\['sizeNode'].getValue()\[1]))\n\n    ### POSITION\n    if name=='node_position_x' or name=='node_position_y':\n        node.setXYpos(int(node\['node_position_x'].getValue()),int(node\['node_position_y'].getValue()))\n\n    ### ZORDER\n    if name=='zorder':\n        node\['z_order'].setValue(node\['zorder'].getValue())\n\n    ### UPDATE THE 'CURRENT SIZE' AND ORDER\n    #if name=='bdwidth' or name=='bdheight' or name=='z_order':\n    if name in \['bdwidth', 'bdheight', 'z_order']:\n        updateKnobs()\n\n    ### UPDATE LABEL\n    title = node\['name'].value()\n    text = node\['text'].value()\n\n    if name in \['text', 'alignment', 'title']:\n        if text=='':\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+title\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+title\n            else:\n                newLabel=title\n        else:\n            if node\['alignment'].getValue()==1:\n                newLabel='<p align=center>'+text\n            elif node\['alignment'].getValue()==2:\n                newLabel='<p align=right>'+text\n            else:\n                newLabel=text\n\n        node\['label'].setValue(newLabel)\n\n    if name==\"font_size\":\n        new_font_size = node\[\"font_size\"].value()\n        node\['note_font_size'].setValue(new_font_size)\n\n    del newLabel\n\nexcept:\n    pass\n"
+ tile_color 0x27342bff
+ label "Chromatic aberation"
+ note_font_size 50
+ xpos -46
+ ypos -3
+ bdwidth 634
+ bdheight 341
+ addUserKnob {20 Settings}
+ addUserKnob {43 text l Text}
+ text "Chromatic aberation"
+ addUserKnob {7 font_size l "Font Size" R 10 100}
+ font_size 50
+ addUserKnob {4 alignment l "" -STARTLINE M {left center right}}
+ addUserKnob {26 divider1 l "" +STARTLINE}
+ addUserKnob {26 S01 l " " T " "}
+ addUserKnob {22 colorandom l " <img src=\"ColorBars.png\">" -STARTLINE T "import random\nn=nuke.thisNode()\nr,g,b=\[(float(random.randint( 20, 40)))/100,(float(random.randint( 10, 50)))/100,(float(random.randint( 15, 60)))/100]\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (r*255,g*255,b*255,1),16) )\n"}
+ addUserKnob {22 red l " <img src=\"F_r.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.0, 0.65, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 orange l " <img src=\"F_o.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.07, 0.6, 0.75]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 yellow l " <img src=\"F_y.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.16, 0.57, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 green l " <img src=\"F_g.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.33, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 cyan l " <img src=\"F_c.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.46, 0.8, 0.7]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 blue l " <img src=\"F_b.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.6, 0.7, 0.76]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 darkblue l " <img src=\"F_db.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.67, 0.74, 0.6]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 magenta l " <img src=\"F_m.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.8, 0.74, 0.65]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {22 pink l " <img src=\"F_p.png\">" -STARTLINE T "import colorsys\nn=nuke.thisNode()\nR,G,B= \[0.92, 0.74, 0.8]\nR,G,B=colorsys.hsv_to_rgb(R,G,B)\nn\['tile_color'].setValue( int('%02x%02x%02x%02x' % (R*255,G*255,B*255,255), 16 ))\n"}
+ addUserKnob {26 S08 l " " T " "}
+ addUserKnob {4 oz_appearance l appearance -STARTLINE M {Fill Border}}
+ addUserKnob {7 oz_border_width l width -STARTLINE R 0 10}
+ oz_border_width 2
+ addUserKnob {26 divider2 l "" +STARTLINE}
+ addUserKnob {26 S02 l " " T " "}
+ addUserKnob {22 grow l " <img src=\"F_scalep.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef grow(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()-step)\n            n\['ypos'].setValue(n\['ypos'].getValue()-step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()+step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()+step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\ngrow(n,50)"}
+ addUserKnob {22 shrink l " <img src=\"F_scalem.png\">" -STARTLINE T "n=nuke.thisNode()\n\ndef shrink(node=None,step=50):\n    try:\n        if not node:\n            n=nuke.selectedNode()\n        else:\n            n=node\n            n\['xpos'].setValue(n\['xpos'].getValue()+step)\n            n\['ypos'].setValue(n\['ypos'].getValue()+step)\n            n\['bdwidth'].setValue(n\['bdwidth'].getValue()-step*2)\n            n\['bdheight'].setValue(n\['bdheight'].getValue()-step*2)\n    except Exception,e:\n        print('Error:: %s' % e)\n\nshrink(n,50)"}
+ addUserKnob {26 S03 l " " -STARTLINE T "     "}
+ addUserKnob {22 encompassSelectedNodes l " <img src=\"oz_encompass.png\">" -STARTLINE T "this = nuke.thisNode()\npadding = this\['sides'].getValue()\nif this.isSelected:\n    this.setSelected(False)\nselNodes = nuke.selectedNodes()\n        \ndef nodeIsInside (node, backdropNode):\n    # Returns true if node geometry is inside backdropNode otherwise returns false\n    topLeftNode = \[node.xpos(), node.ypos()]\n    topLeftBackDrop = \[backdropNode.xpos(), backdropNode.ypos()]\n    bottomRightNode = \[node.xpos() + node.screenWidth(), node.ypos() + node.screenHeight()]\n    bottomRightBackdrop = \[backdropNode.xpos() + backdropNode.screenWidth(), backdropNode.ypos() + backdropNode.screenHeight()]\n                    \n    topLeft = ( topLeftNode\[0] >= topLeftBackDrop\[0] ) and ( topLeftNode\[1] >= topLeftBackDrop\[1] )\n    bottomRight = ( bottomRightNode\[0] <= bottomRightBackdrop\[0] ) and ( bottomRightNode\[1] <= bottomRightBackdrop\[1] )\n                    \n    return topLeft and bottomRight\n\nif not selNodes:\n    nuke.message('Some nodes should be selected')\nelse:\n    # Calculate bounds for the backdrop node.\n    bdX = min(\[node.xpos() for node in selNodes])\n    bdY = min(\[node.ypos() for node in selNodes])\n    bdW = max(\[node.xpos() + node.screenWidth() for node in selNodes]) - bdX\n    bdH = max(\[node.ypos() + node.screenHeight() for node in selNodes]) - bdY\n                        \n    zOrder = 0\n    selectedBackdropNodes = nuke.selectedNodes( \"BackdropNode\" )\n\n    #if there are backdropNodes selected put the new one immediately behind the farthest one\n                \n    if len( selectedBackdropNodes ):\n        zOrder = min( \[node.knob( \"z_order\" ).value() for node in selectedBackdropNodes] ) - 1\n    else :\n        #otherwise (no backdrop in selection) find the nearest backdrop if exists and set the new one in front of it\n        nonSelectedBackdropNodes = nuke.allNodes(\"BackdropNode\")\n        for nonBackdrop in selNodes:\n            for backdrop in nonSelectedBackdropNodes:\n                if nodeIsInside( nonBackdrop, backdrop ):\n                    zOrder = max( zOrder, backdrop.knob( \"z_order\" ).value() + 1 )\n    \n    # Expand the bounds to leave a little border. Elements are offsets for left, top, right and bottom edges respectively\n    left, top, right, bottom = (-padding, -(padding+70), padding, padding)\n    bdX += left\n    bdY += top\n    bdW += (right - left)\n    bdH += (bottom - top)\n\n    this\['xpos'].setValue(bdX)\n    this\['bdwidth'].setValue(bdW)\n    this\['ypos'].setValue(bdY)\n    this\['bdheight'].setValue(bdH)\n    this\['z_order'].setValue(zOrder)\n"}
+ addUserKnob {26 S04 l " " -STARTLINE T " "}
+ addUserKnob {3 sides l "" -STARTLINE}
+ sides 50
+ addUserKnob {26 divider3 l "" +STARTLINE}
+ addUserKnob {26 S05 l " " -STARTLINE T " "}
+ addUserKnob {26 pos_text l Position -STARTLINE T " "}
+ addUserKnob {3 node_position_x l x -STARTLINE}
+ node_position_x 3711
+ addUserKnob {3 node_position_y l y -STARTLINE}
+ node_position_y 7183
+ addUserKnob {26 S06 l " " T " "}
+ addUserKnob {14 sizeNode l Size -STARTLINE R 0 100}
+ sizeNode {634 341}
+ addUserKnob {26 S07 l " " -STARTLINE T "     "}
+ addUserKnob {3 zorder l "Z Order" -STARTLINE}
+}
+Camera2 {
+ inputs 0
+ translate {0 0 3.410000086}
+ name Camera2
+ xpos -774
+ ypos -806
+}
+set N1e3ac380 [stack 0]
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard4
+ xpos -568
+ ypos -1110
+}
+Card2 {
+ control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+ name Card4
+ xpos -568
+ ypos -980
+}
+RadialDistort {
+ distortion 18
+ power_bias 1
+ name RadialDistort4
+ xpos -568
+ ypos -917
+}
+push 0
+ScanlineRender {
+ inputs 3
+ conservative_shader_sampling false
+ motion_vectors_type distance
+ name ScanlineRender4
+ xpos -568
+ ypos -786
+}
+LensDistortion2 {
+ distortionModelDisplayX "xu = xd / (1 + k0 * rd^2 + k1 * rd^4)"
+ distortionModelDisplayY "yu = yd / (1 + k0 * rd^2 + k1 * rd^4)"
+ "Distortion Parameters" 0
+ distortionDenominator0 0.7642300117
+ distortionDenominator1 -0.04516117311
+ centre {0.1291861863 0.001512901766}
+ keyFrame {{curve x1 1}}
+ keyingInitialised true
+ solveError 7.50790868
+ isSolved true
+ crop {0 0 3094 1296}
+ featuresKnob "
+version 1
+entries 1
+context 1 0 features 543 p 549.615 494.923 p 2696.09 1051.22 p 2961.04 1176.01 p 2587.73 1127.67 p 2195.15 1071.71 p 2944.53 1078.45 p 2466.06 1109.1 p 2481.88 1194.46 p 843.662 440.555 p 2836.77 1162.33 p 257.355 133.811 p 2923.56 904.982 p 628.191 187.171 p 1922.34 1026.24 p 149.518 217.602 p 522.294 258.573 p 53.1329 467.549 p 2712.46 1146.95 p 1690.41 1242.35 p 2820.38 1064.91 p 1212.41 120.058 p 2285.5 1084.23 p 301.449 806.215 p 241.244 44.6736 p 2440.29 947.048 p 180.873 557.766 p 177.21 473.579 p 1171.9 270.016 p 408.4 322.529 p 506.425 168.497 p 490.59 83.1251 p 612.256 101.695 p 53.1418 820.491 p 2270.09 1000.05 p 381.798 149.323 p 933.489 447.51 p 1947.61 1183.99 p 549.617 794.624 p 989.773 238.014 p 56.781 730.225 p 753.934 433.707 p 961.842 77.809 p 824.017 296.074 p 2040.33 1201.93 p 397.916 244.805 p 2423.24 502.097 p 2104.5 1058.26 p 1684.43 1153.51 p 1721.75 807.499 p 365.871 63.8503 p 2012.7 1041.88 p 778.305 45.1451 p 56.7798 557.768 p 542.865 413.745 p 853.852 706.931 p 2685.77 973.647 p 2571.92 1037.66 p 808.746 212.04 p 1372.41 488.681 p 653.901 349.167 p 2208.65 1150.72 p 1081.46 254.282 p 1113.13 462.23 p 304.968 557.783 p 2132.47 1218.53 p 133.16 120.227 p 869.992 61.3859 p 1146.64 112.267 p 1053.84 94.2384 p 159.985 297.947 p 2224.18 1234.8 p 273.832 231.32 p 1004.48 320.834 p 408.529 961.078 p 1069.16 178.211 p 2025.11 1118.06 p 425.509 799.177 p 1490.11 795.704 p 177.269 813.366 p 1264.72 756.673 p 670.758 793.91 p 1486.89 498.493 p 1263.4 534.366 p 1207.87 534.082 p 2923.5 398.248 p 1266.71 591.128 p 1678.59 1072.99 p 1810.02 127.945 p 2809.68 325.304 p 754.362 856.635 p 2786.1 648.786 p 160.123 984.291 p 1365.06 1003.94 p 1746.27 46.7344 p 1033.27 577.691 p 1378.34 747.111 p 294.659 890.608 p 1772.44 544.135 p 2070.35 460.402 p 1660.68 495.521 p 1547.43 1059.19 p 1603.88 500.304 p 1268.22 699.824 p 1815.99 1168.59 p 1321.56 751.872 p 1171.94 1026.01 p 1119.64 761.683 p 134.117 1163.89 p 1774.25 757.939 p 1810.02 1088.04 p 1481.08 230.508 p 1830.6 761.641 p 2089.45 321.6 p 1717.43 753.134 p 2391.64 1182.07 p 1429.17 493.401 p 170.629 897.615 p 532.718 953.904 p 149.573 1077.34 p 1349.66 215.438 p 1415.38 1241.59 p 844.097 849.401 p 2587.13 173.671 p 2789.02 574.749 p 1607.12 797.514 p 1612.93 1065.5 p 1827.29 704.879 p 1829.27 539.334 p 943.625 704.883 p 284.316 970.703 p 1211.34 590.87 p 992.447 1050.56 p 1612.87 991.27 p 1612.8 150.59 p 2711.42 159.982 p 1319.75 538.042 p 1415.41 223.023 p 1356.95 1079.42 p 2249.76 446.769 p 1225.4 1094.49 p 1322.07 591.12 p 1910.08 345.558 p 1377.45 591.115 p 1744.34 1080.57 p 1481.14 304.737 p 1715.66 548.896 p 2023.63 181.731 p 1547.6 985.014 p 2835.59 146.417 p 664.02 868.81 p 1787.59 876.7 p 856.619 648.281 p 418.752 883.535 p 2011.08 258.065 p 2540.85 574.75 p 1547.6 851.818 p 1660.63 748.31 p 553.12 568.206 p 2944.64 218.45 p 1269.69 648.348 p 1214.14 647.969 p 1380.91 693.384 p 1910.28 950.768 p 1824.34 648.469 p 1668.1 298.863 p 2313.44 47.4438 p 490.813 1207.95 p 1947.14 112.322 p 1825.77 596.184 p 1744.22 135.519 p 1768.94 648.638 p 733.76 1011.63 p 522.184 1036.55 p 397.826 1050.29 p 2269.82 296.937 p 3057.97 298.229 p 1023.65 835.604 p 2150.38 591.125 p 1283.98 207.966 p 1184.12 950.23 p 2429.76 427.405 p 1123 584.54 p 924.59 909.239 p 1486.33 1064.63 p 1486.38 990.418 p 2960.02 131.969 p 2169.18 386.993 p 1315.53 483.832 p 1771.92 704.887 p 1291.31 1086.81 p 653.916 946.275 p 382.557 1136.06 p 1211.47 704.29 p 429.069 721.24 p 1840.28 416.745 p 1658.23 648.646 p 1258.79 479.104 p 1879.87 648.93 p 1217.44 1175.74 p 1891.84 474.534 p 1376.57 542.873 p 914.342 986.768 p 1113.52 828.591 p 1415.7 297.256 p 273.665 1063.87 p 1974.41 768.23 p 2037.94 96.6344 p 2405.13 31.3066 p 2389.83 118.39 p 1547.68 1139.22 p 1658.77 553.76 p 1425.9 997.145 p 2419.7 721.351 p 2221.74 63.7101 p 1968.18 648.578 p 2191.67 233.178 p 1607.66 231.378 p 1324.93 695.059 p 1547.39 310.994 p 1974.36 534.324 p 1435.23 742.247 p 506.872 1122.33 p 1159.56 1102.17 p 1104.39 893.09 p 2419.62 575.477 p 366.551 1224.16 p 241.779 1243.5 p 1374.68 866.041 p 964.11 1215.88 p 1491.5 738.758 p 1036.08 648.28 p 1603.88 743.553 p 1602.51 648.633 p 2423.26 794.708 p 1716.59 704.905 p 1146.73 1183.82 p 1433.45 593.054 p 1119.59 527.776 p 1737.05 216.592 p 2060.73 718.316 p 1325.09 648.174 p 1868.55 201.579 p 1802.65 209.243 p 1678.31 998.751 p 1671.11 224.317 p 1713.58 648.471 p 1082.68 1038.19 p 1422.69 1071.91 p 2976.81 33.3796 p 946.717 648.284 p 553.154 721.257 p 1713.09 602.624 p 1607.61 305.589 p 1547.56 739.383 p 1070.37 1114.28 p 2727.73 71.5527 p 1971 711.466 p 1244.93 943.733 p 2429.9 869.305 p 1303.27 1010.8 p 643.385 1024.02 p 670.742 501.3 p 872.514 1232.04 p 1305.5 937.096 p 1790.69 285.25 p 1547.38 911.606 p 2375.6 1096.45 p 823.998 999.249 p 307.918 648.489 p 2481.53 102.203 p 704.161 1177.62 p 1856.3 277.57 p 1547.42 792.041 p 2114.51 167.402 p 1490.16 597.846 p 887.488 1145.17 p 1220.19 200.831 p 1004.55 974.405 p 1901.03 409.972 p 2060.64 591.137 p 1547.52 503.971 p 1728.82 292.169 p 1056.06 1199.37 p 1547.52 557.023 p 2416.74 648.949 p 1033.33 704.904 p 1547.34 444.201 p 1970.92 591.121 p 1602.34 602.616 p 1380.45 648.346 p 59.6998 648.49 p 2298.04 134.753 p 1353.58 290.251 p 674.302 574.657 p 718.296 199.426 p 1253.5 879.481 p 1602.5 557.249 p 556.112 648.492 p 1123.08 704.886 p 1769.02 600.996 p 811.577 1076.06 p 2237.39 648.752 p 902.095 1063.07 p 795.962 1161.25 p 1029.86 520.913 p 258.18 1149.85 p 1547.35 602.389 p 1873.81 1095.17 p 1608.07 917.193 p 1547.51 1227.77 p 1366.14 930.281 p 664.102 426.702 p 764.084 574.786 p 1547.57 236.824 p 1126.19 648.281 p 719.821 1092.42 p 1603.84 698.161 p 1657.77 602.616 p 2373.9 203.862 p 1237.92 1018.19 p 643.4 271.57 p 1436.15 648.357 p 766.885 648.455 p 2329.92 721.221 p 612.171 1194.1 p 1487.33 916.867 p 1436.23 693.391 p 1892.11 821.943 p 1547.38 693.991 p 2916.73 482.642 p 1232.43 276.876 p 1886.04 534.872 p 1740.38 1005.71 p 1886.14 761.925 p 1491.17 648.352 p 35.8468 997.971 p 1490.12 552.453 p 1849.07 352.274 p 1275.98 1257.28 p 1660.55 702.956 p 2300.19 1166.83 p 2206.34 151.009 p 898.855 224.292 p 1491.66 693.391 p 760.454 501.39 p 1789.87 937.389 p 1433.38 547.697 p 2360.16 284.458 p 1183.73 345.239 p 1800.88 1012.32 p 793.666 129.028 p 1668.64 923.96 p 674.284 720.632 p 1292.91 283.448 p 853.776 574.75 p 979.488 1128.6 p 1485.8 378.696 p 2116.71 1134.22 p 1901.26 886.448 p 1850.55 944.162 p 2360.44 1012.54 p 677.291 648.075 p 1426.89 923.474 p 2340.26 862.51 p 2933.83 311.767 p 1861.57 1019.13 p 2243.67 515.832 p 2057.92 648.751 p 184.178 648.484 p 834.453 921.537 p 432.395 648.486 p 2179.57 309.317 p 1547.6 384.4 p 2820.33 232.142 p 1243.45 351.844 p 1193.07 885.923 p 2250.43 855.558 p 1729.42 930.733 p 2910.2 648.949 p 1667.11 372.532 p 743.572 355.988 p 1425.92 431.926 p 760.585 787.041 p 850.325 780.174 p 1788.31 359.106 p 1425.36 372.047 p 764.1 713.815 p 2662 648.951 p 2333.41 508.966 p 885.356 145.284 p 744.214 933.912 p 1207.96 761.135 p 2282.42 219.948 p 2913.13 738.242 p 1882.53 591.717 p 1547.55 68.2286 p 1607.64 857.417 p 977.154 161.649 p 1201.96 821.689 p 1727.86 365.727 p 1304.13 358.618 p 2349.78 362.095 p 1882.66 705.136 p 833.443 362.996 p 2339.63 439.373 p 1668.09 864.081 p 170.464 391.049 p 2259.54 374.471 p 2240.22 721.257 p 1547.58 648.653 p 2799.52 897.974 p 2696.01 245.881 p 943.556 574.793 p 1606.67 379.14 p 2333.54 794.618 p 1094.98 961.817 p 2350.39 939.972 p 1433.32 860.252 p 733.568 283.471 p 2327.12 648.578 p 1486.36 438.591 p 2101.43 245.552 p 1365.16 425.171 p 1192.75 409.557 p 2179.88 987.684 p 1014.66 899.945 p 2792.65 489.692 p 1660.68 435.755 p 2916.68 822.317 p 2329.9 582.193 p 2160.7 848.707 p 1364.58 365.273 p 1376.57 805.249 p 940.056 773.32 p 1490.12 855.454 p 2089.45 975.096 p 1999.01 334.19 p 1547.38 156.788 p 2799.34 405.4 p 2147.65 648.578 p 1319.73 810.096 p 180.916 723.092 p 850.3 507.093 p 1314.22 872.624 p 1779.82 423.327 p 1728.85 870.836 p 294.612 398.171 p 1717.43 490.757 p 2153.89 522.731 p 2160.07 453.565 p 1262.13 815.113 p 1603.88 440.553 p 1934.44 193.839 p 284.09 308.828 p 1476.16 150.262 p 2243.82 789.02 p 2571.81 259.459 p 1201.9 474.046 p 1415.41 1153.01 p 418.641 405.189 p 1719.32 429.965 p 1774.16 485.997 p 2668.49 496.83 p 1433.32 800.486 p 1831.87 480.894 p 2551.11 419.61 p 1481.07 1145.52 p 1306.55 419.467 p 2079.34 396.062 p 304.983 721.258 p 923.458 372.884 p 2070.8 841.677 p 1922.06 269.993 p 2685.47 334.929 p 1283.97 1168.06 p 1999.05 962.554 p 1029.9 766.359 p 1844.34 881.366 p 2260.56 933.01 p 429.049 561.134 p 1934.66 1102.33 p 2913.08 572.914 p 2789.03 738.224 p 2675.34 890.792 p 2792.62 815.296 p 1249.62 414.583 p 1023.15 454.28 p 1617.84 1145.75 p 2150.44 721.214 p 2934.02 998.058 p 914.12 308.32 p 2675.12 412.615 p 3034.32 648.785 p 1664.83 802.607 p 301.383 480.711 p 1349.66 1160.59 p 2064.1 529.649 p 2537.48 648.948 p 2668.48 808.157 p 1980.52 467.361 p 2240.14 589.076 p 1678.59 143.001 p 933.968 842.399 p 1013.82 385.404 p 1094.71 333.212 p 2170.52 923.086 p 1835.21 816.902 p 2153.97 782.05 p 1778.47 812.176 p 940.014 513.94 p 1989.61 402.917 p 2080.18 910.601 p 2561.41 341.954 p 2544.39 801.084 p 2664.95 734.873 p 2465.83 187.448 p 2544.38 501.383 p 2064.26 775.206 p 2664.93 574.768 p 542.888 876.398 p 2809.91 987.18 p 1750.03 1160.86 p 1409.79 142.728 p 2551.14 882.26 p 425.527 487.85 p 2540.88 727.801 p 1989.98 898.242 p 1343.85 135.015 p 2450.61 271.983 p 1980.87 833.773 p 532.486 336.004 p 1103.93 397.658 p 2561.41 959.891 p 2450.6 1024.44 p 1159.34 193.681 p 1278.23 127.646 p 628.167 1108.56 p 1881.71 1176.07 p 2728.13 1232.16 p 702.582 114.189 p 1876.56 120.263 p 46.5576 904.951 p 46.3762 383.988 
+entries 1
+context 1 0 links 76 features 18 p 35.8468 997.971 p 160.123 984.291 p 284.316 970.703 p 408.529 961.078 p 532.718 953.904 p 653.916 946.275 p 744.214 933.912 p 834.453 921.537 p 924.59 909.239 p 1014.66 899.945 p 1104.39 893.09 p 1193.07 885.923 p 1253.5 879.481 p 1314.22 872.624 p 1374.68 866.041 p 1433.32 860.252 p 1490.12 855.454 p 1547.6 851.818 c 8.66585 features 18 p 46.3762 383.988 p 170.464 391.049 p 294.612 398.171 p 418.641 405.189 p 542.865 413.745 p 664.102 426.702 p 753.934 433.707 p 843.662 440.555 p 933.489 447.51 p 1023.15 454.28 p 1113.13 462.23 p 1201.9 474.046 p 1258.79 479.104 p 1315.53 483.832 p 1372.41 488.681 p 1429.17 493.401 p 1486.89 498.493 p 1547.52 503.971 c 7.59319 features 18 p 46.5576 904.951 p 170.629 897.615 p 294.659 890.608 p 418.752 883.535 p 542.888 876.398 p 664.02 868.81 p 754.362 856.635 p 844.097 849.401 p 933.968 842.399 p 1023.65 835.604 p 1113.52 828.591 p 1201.96 821.689 p 1262.13 815.113 p 1319.73 810.096 p 1376.57 805.249 p 1433.32 800.486 p 1490.11 795.704 p 1547.42 792.041 c 7.07188 features 17 p 133.16 120.227 p 257.355 133.811 p 381.798 149.323 p 506.425 168.497 p 628.191 187.171 p 718.296 199.426 p 808.746 212.04 p 898.855 224.292 p 989.773 238.014 p 1081.46 254.282 p 1171.9 270.016 p 1232.43 276.876 p 1292.91 283.448 p 1353.58 290.251 p 1415.7 297.256 p 1481.14 304.737 p 1547.39 310.994 c 10.7357 features 17 p 134.117 1163.89 p 258.18 1149.85 p 382.557 1136.06 p 506.872 1122.33 p 628.167 1108.56 p 719.821 1092.42 p 811.577 1076.06 p 902.095 1063.07 p 992.447 1050.56 p 1082.68 1038.19 p 1171.94 1026.01 p 1237.92 1018.19 p 1303.27 1010.8 p 1365.06 1003.94 p 1425.9 997.145 p 1486.38 990.418 p 1547.6 985.014 c 10.8494 features 17 p 149.518 217.602 p 273.832 231.32 p 397.916 244.805 p 522.294 258.573 p 643.4 271.57 p 733.568 283.471 p 824.017 296.074 p 914.12 308.32 p 1004.48 320.834 p 1094.71 333.212 p 1183.73 345.239 p 1243.45 351.844 p 1304.13 358.618 p 1364.58 365.273 p 1425.36 372.047 p 1485.8 378.696 p 1547.6 384.4 c 9.19704 features 17 p 149.573 1077.34 p 273.665 1063.87 p 397.826 1050.29 p 522.184 1036.55 p 643.385 1024.02 p 733.76 1011.63 p 823.998 999.249 p 914.342 986.768 p 1004.55 974.405 p 1094.98 961.817 p 1184.12 950.23 p 1244.93 943.733 p 1305.5 937.096 p 1366.14 930.281 p 1426.89 923.474 p 1487.33 916.867 p 1547.38 911.606 c 8.97932 features 17 p 159.985 297.947 p 284.09 308.828 p 408.4 322.529 p 532.486 336.004 p 653.901 349.167 p 743.572 355.988 p 833.443 362.996 p 923.458 372.884 p 1013.82 385.404 p 1103.93 397.658 p 1192.75 409.557 p 1249.62 414.583 p 1306.55 419.467 p 1365.16 425.171 p 1425.92 431.926 p 1486.36 438.591 p 1547.34 444.201 c 7.84119 features 16 p 241.244 44.6736 p 365.871 63.8503 p 490.59 83.1251 p 612.256 101.695 p 702.582 114.189 p 793.666 129.028 p 885.356 145.284 p 977.154 161.649 p 1069.16 178.211 p 1159.34 193.681 p 1220.19 200.831 p 1283.98 207.966 p 1349.66 215.438 p 1415.41 223.023 p 1481.08 230.508 p 1547.57 236.824 c 10.2035 features 16 p 241.779 1243.5 p 366.551 1224.16 p 490.813 1207.95 p 612.171 1194.1 p 704.161 1177.62 p 795.962 1161.25 p 887.488 1145.17 p 979.488 1128.6 p 1070.37 1114.28 p 1159.56 1102.17 p 1225.4 1094.49 p 1291.31 1086.81 p 1356.95 1079.42 p 1422.69 1071.91 p 1486.33 1064.63 p 1547.43 1059.19 c 10.1523 features 11 p 778.305 45.1451 p 869.992 61.3859 p 961.842 77.809 p 1053.84 94.2384 p 1146.64 112.267 p 1212.41 120.058 p 1278.23 127.646 p 1343.85 135.015 p 1409.79 142.728 p 1476.16 150.262 p 1547.38 156.788 c 3.20307 features 10 p 872.514 1232.04 p 964.11 1215.88 p 1056.06 1199.37 p 1146.73 1183.82 p 1217.44 1175.74 p 1283.97 1168.06 p 1349.66 1160.59 p 1415.41 1153.01 p 1481.07 1145.52 p 1547.68 1139.22 c 2.62648 features 3 p 1275.98 1257.28 p 1415.38 1241.59 p 1547.51 1227.77 c 1.04453 features 34 p 53.1329 467.549 p 177.21 473.579 p 301.383 480.711 p 425.527 487.85 p 549.615 494.923 p 670.742 501.3 p 760.454 501.39 p 850.3 507.093 p 940.014 513.94 p 1029.86 520.913 p 1119.59 527.776 p 1207.87 534.082 p 1263.4 534.366 p 1319.75 538.042 p 1376.57 542.873 p 1433.38 547.697 p 1490.12 552.453 p 1547.52 557.023 p 1602.5 557.249 p 1658.77 553.76 p 1715.66 548.896 p 1772.44 544.135 p 1829.27 539.334 p 1886.04 534.872 p 1974.36 534.324 p 2064.1 529.649 p 2153.89 522.731 p 2243.67 515.832 p 2333.41 508.966 p 2423.24 502.097 p 2544.38 501.383 p 2668.49 496.83 p 2792.65 489.692 p 2916.73 482.642 c 7.65933 features 34 p 56.7798 557.768 p 180.873 557.766 p 304.968 557.783 p 429.049 561.134 p 553.12 568.206 p 674.302 574.657 p 764.084 574.786 p 853.776 574.75 p 943.556 574.793 p 1033.27 577.691 p 1123 584.54 p 1211.34 590.87 p 1266.71 591.128 p 1322.07 591.12 p 1377.45 591.115 p 1433.45 593.054 p 1490.16 597.846 p 1547.35 602.389 p 1602.34 602.616 p 1657.77 602.616 p 1713.09 602.624 p 1769.02 600.996 p 1825.77 596.184 p 1882.53 591.717 p 1970.92 591.121 p 2060.64 591.137 p 2150.38 591.125 p 2240.14 589.076 p 2329.9 582.193 p 2419.62 575.477 p 2540.85 574.75 p 2664.93 574.768 p 2789.02 574.749 p 2913.08 572.914 c 4.57516 features 34 p 56.781 730.225 p 180.916 723.092 p 304.983 721.258 p 429.069 721.24 p 553.154 721.257 p 674.284 720.632 p 764.1 713.815 p 853.852 706.931 p 943.625 704.883 p 1033.33 704.904 p 1123.08 704.886 p 1211.47 704.29 p 1268.22 699.824 p 1324.93 695.059 p 1380.91 693.384 p 1436.23 693.391 p 1491.66 693.391 p 1547.38 693.991 p 1603.84 698.161 p 1660.55 702.956 p 1716.59 704.905 p 1771.92 704.887 p 1827.29 704.879 p 1882.66 705.136 p 1971 711.466 p 2060.73 718.316 p 2150.44 721.214 p 2240.22 721.257 p 2329.92 721.221 p 2419.7 721.351 p 2540.88 727.801 p 2664.95 734.873 p 2789.03 738.224 p 2913.13 738.242 c 4.52129 features 34 p 53.1418 820.491 p 177.269 813.366 p 301.449 806.215 p 425.509 799.177 p 549.617 794.624 p 670.758 793.91 p 760.585 787.041 p 850.325 780.174 p 940.056 773.32 p 1029.9 766.359 p 1119.64 761.683 p 1207.96 761.135 p 1264.72 756.673 p 1321.56 751.872 p 1378.34 747.111 p 1435.23 742.247 p 1491.5 738.758 p 1547.56 739.383 p 1603.88 743.553 p 1660.63 748.31 p 1717.43 753.134 p 1774.25 757.939 p 1830.6 761.641 p 1886.14 761.925 p 1974.41 768.23 p 2064.26 775.206 p 2153.97 782.05 p 2243.82 789.02 p 2333.54 794.618 p 2423.26 794.708 p 2544.39 801.084 p 2668.48 808.157 p 2792.62 815.296 p 2916.68 822.317 c 7.77546 features 35 p 59.6998 648.49 p 184.178 648.484 p 307.918 648.489 p 432.395 648.486 p 556.112 648.492 p 677.291 648.075 p 766.885 648.455 p 856.619 648.281 p 946.717 648.284 p 1036.08 648.28 p 1126.19 648.281 p 1214.14 647.969 p 1269.69 648.348 p 1325.09 648.174 p 1380.45 648.346 p 1436.15 648.357 p 1491.17 648.352 p 1547.58 648.653 p 1602.51 648.633 p 1658.23 648.646 p 1713.58 648.471 p 1768.94 648.638 p 1824.34 648.469 p 1879.87 648.93 p 1968.18 648.578 p 2057.92 648.751 p 2147.65 648.578 p 2237.39 648.752 p 2327.12 648.578 p 2416.74 648.949 p 2537.48 648.948 p 2662 648.951 p 2786.1 648.786 p 2910.2 648.949 p 3034.32 648.785 c 0.318895 features 10 p 1612.8 150.59 p 1678.59 143.001 p 1744.22 135.519 p 1810.02 127.945 p 1876.56 120.263 p 1947.14 112.322 p 2037.94 96.6344 p 2221.74 63.7101 p 2313.44 47.4438 p 2405.13 31.3066 c 4.47477 features 9 p 1617.84 1145.75 p 1684.43 1153.51 p 1750.03 1160.86 p 1815.99 1168.59 p 1881.71 1176.07 p 1947.61 1183.99 p 2040.33 1201.93 p 2132.47 1218.53 p 2224.18 1234.8 c 2.23942 features 16 p 1603.88 440.553 p 1660.68 435.755 p 1719.32 429.965 p 1779.82 423.327 p 1840.28 416.745 p 1901.03 409.972 p 1989.61 402.917 p 2079.34 396.062 p 2169.18 386.993 p 2259.54 374.471 p 2349.78 362.095 p 2561.41 341.954 p 2685.47 334.929 p 2809.68 325.304 p 2933.83 311.767 p 3057.97 298.229 c 10.6715 features 12 p 1607.66 231.378 p 1671.11 224.317 p 1737.05 216.592 p 1802.65 209.243 p 1868.55 201.579 p 1934.44 193.839 p 2023.63 181.731 p 2114.51 167.402 p 2206.34 151.009 p 2298.04 134.753 p 2389.83 118.39 p 2481.53 102.203 c 4.48749 features 12 p 1612.93 1065.5 p 1678.59 1072.99 p 1744.34 1080.57 p 1810.02 1088.04 p 1873.81 1095.17 p 1934.66 1102.33 p 2025.11 1118.06 p 2116.71 1134.22 p 2208.65 1150.72 p 2300.19 1166.83 p 2391.64 1182.07 p 2481.88 1194.46 c 5.08233 features 16 p 1603.88 500.304 p 1660.68 495.521 p 1717.43 490.757 p 1774.16 485.997 p 1831.87 480.894 p 1891.84 474.534 p 1980.52 467.361 p 2070.35 460.402 p 2160.07 453.565 p 2249.76 446.769 p 2339.63 439.373 p 2429.76 427.405 p 2551.11 419.61 p 2675.12 412.615 p 2799.34 405.4 p 2923.5 398.248 c 7.64474 features 16 p 1607.12 797.514 p 1664.83 802.607 p 1721.75 807.499 p 1778.47 812.176 p 1835.21 816.902 p 1892.11 821.943 p 1980.87 833.773 p 2070.8 841.677 p 2160.7 848.707 p 2250.43 855.558 p 2340.26 862.51 p 2429.9 869.305 p 2551.14 882.26 p 2675.34 890.792 p 2799.52 897.974 p 2923.56 904.982 c 7.80696 features 16 p 1607.64 857.417 p 1668.09 864.081 p 1728.85 870.836 p 1787.59 876.7 p 1844.34 881.366 p 1901.26 886.448 p 1989.98 898.242 p 2080.18 910.601 p 2170.52 923.086 p 2260.56 933.01 p 2350.39 939.972 p 2440.29 947.048 p 2561.41 959.891 p 2685.77 973.647 p 2809.91 987.18 p 2934.02 998.058 c 9.5122 features 16 p 1606.67 379.14 p 1667.11 372.532 p 1727.86 365.727 p 1788.31 359.106 p 1849.07 352.274 p 1910.08 345.558 p 1999.01 334.19 p 2089.45 321.6 p 2179.57 309.317 p 2269.82 296.937 p 2360.16 284.458 p 2450.61 271.983 p 2571.81 259.459 p 2696.01 245.881 p 2820.33 232.142 p 2944.64 218.45 c 11.2855 features 16 p 1607.61 305.589 p 1668.1 298.863 p 1728.82 292.169 p 1790.69 285.25 p 1856.3 277.57 p 1922.06 269.993 p 2011.08 258.065 p 2101.43 245.552 p 2191.67 233.178 p 2282.42 219.948 p 2373.9 203.862 p 2465.83 187.448 p 2587.13 173.671 p 2711.42 159.982 p 2835.59 146.417 p 2960.02 131.969 c 13.2398 features 16 p 1608.07 917.193 p 1668.64 923.96 p 1729.42 930.733 p 1789.87 937.389 p 1850.55 944.162 p 1910.28 950.768 p 1999.05 962.554 p 2089.45 975.096 p 2179.88 987.684 p 2270.09 1000.05 p 2360.44 1012.54 p 2450.6 1024.44 p 2571.92 1037.66 p 2696.09 1051.22 p 2820.38 1064.91 p 2944.53 1078.45 c 11.1897 features 16 p 1612.87 991.27 p 1678.31 998.751 p 1740.38 1005.71 p 1800.88 1012.32 p 1861.57 1019.13 p 1922.34 1026.24 p 2012.7 1041.88 p 2104.5 1058.26 p 2195.15 1071.71 p 2285.5 1084.23 p 2375.6 1096.45 p 2466.06 1109.1 p 2587.73 1127.67 p 2712.46 1146.95 p 2836.77 1162.33 p 2961.04 1176.01 c 12.909 features 4 p 1275.98 1257.28 p 1283.97 1168.06 p 1291.31 1086.81 p 1303.27 1010.8 c 1.85117 features 8 p 1690.41 1242.35 p 1684.43 1153.51 p 1678.59 1072.99 p 1678.31 998.751 p 1667.11 372.532 p 1668.1 298.863 p 1671.11 224.317 p 1678.59 143.001 c 5.88611 features 4 p 1815.99 1168.59 p 1810.02 1088.04 p 1800.88 1012.32 p 1789.87 937.389 c 1.36812 features 6 p 1415.38 1241.59 p 1415.41 1153.01 p 1422.69 1071.91 p 1425.9 997.145 p 1426.89 923.474 p 1433.32 860.252 c 2.23345 features 4 p 1750.03 1160.86 p 1744.34 1080.57 p 1740.38 1005.71 p 1729.42 930.733 c 1.56876 features 7 p 1349.66 1160.59 p 1356.95 1079.42 p 1365.06 1003.94 p 1366.14 930.281 p 1415.7 297.256 p 1415.41 223.023 p 1409.79 142.728 c 4.59811 features 9 p 872.514 1232.04 p 887.488 1145.17 p 902.095 1063.07 p 914.342 986.768 p 924.59 909.239 p 933.968 842.399 p 940.056 773.32 p 943.625 704.883 p 946.717 648.284 c 2.871 features 9 p 1056.06 1199.37 p 1070.37 1114.28 p 1082.68 1038.19 p 1094.98 961.817 p 1104.39 893.09 p 1113.52 828.591 p 1119.64 761.683 p 1123.08 704.886 p 1126.19 648.281 c 1.86763 features 16 p 2132.47 1218.53 p 2116.71 1134.22 p 2104.5 1058.26 p 2089.45 975.096 p 2080.18 910.601 p 2070.8 841.677 p 2064.26 775.206 p 2060.73 718.316 p 2057.92 648.751 p 2060.64 591.137 p 2064.1 529.649 p 2070.35 460.402 p 2079.34 396.062 p 2089.45 321.6 p 2101.43 245.552 p 2114.51 167.402 c 10.2713 features 8 p 35.8468 997.971 p 46.5576 904.951 p 53.1418 820.491 p 56.781 730.225 p 59.6998 648.49 p 56.7798 557.768 p 53.1329 467.549 p 46.3762 383.988 c 4.14757 features 10 p 1668.64 923.96 p 1668.09 864.081 p 1664.83 802.607 p 1660.63 748.31 p 1660.55 702.956 p 1658.23 648.646 p 1657.77 602.616 p 1658.77 553.76 p 1660.68 495.521 p 1660.68 435.755 c 2.85275 features 10 p 1305.5 937.096 p 1314.22 872.624 p 1319.73 810.096 p 1321.56 751.872 p 1324.93 695.059 p 1325.09 648.174 p 1322.07 591.12 p 1319.75 538.042 p 1315.53 483.832 p 1306.55 419.467 c 2.6539 features 13 p 2836.77 1162.33 p 2820.38 1064.91 p 2809.91 987.18 p 2799.52 897.974 p 2792.62 815.296 p 2789.03 738.224 p 2786.1 648.786 p 2789.02 574.749 p 2792.65 489.692 p 2799.34 405.4 p 2809.68 325.304 p 2820.33 232.142 p 2835.59 146.417 c 8.46112 features 15 p 2728.13 1232.16 p 2712.46 1146.95 p 2696.09 1051.22 p 2685.77 973.647 p 2675.34 890.792 p 2668.48 808.157 p 2664.95 734.873 p 2662 648.951 p 2664.93 574.768 p 2668.49 496.83 p 2675.12 412.615 p 2685.47 334.929 p 2696.01 245.881 p 2711.42 159.982 p 2727.73 71.5527 c 8.71419 features 13 p 2587.73 1127.67 p 2571.92 1037.66 p 2561.41 959.891 p 2551.14 882.26 p 2544.39 801.084 p 2540.88 727.801 p 2537.48 648.948 p 2540.85 574.75 p 2544.38 501.383 p 2551.11 419.61 p 2561.41 341.954 p 2571.81 259.459 p 2587.13 173.671 c 3.69376 features 17 p 2224.18 1234.8 p 2208.65 1150.72 p 2195.15 1071.71 p 2179.88 987.684 p 2170.52 923.086 p 2160.7 848.707 p 2153.97 782.05 p 2150.44 721.214 p 2147.65 648.578 p 2150.38 591.125 p 2153.89 522.731 p 2160.07 453.565 p 2169.18 386.993 p 2179.57 309.317 p 2191.67 233.178 p 2206.34 151.009 p 2221.74 63.7101 c 7.67277 features 17 p 2040.33 1201.93 p 2025.11 1118.06 p 2012.7 1041.88 p 1999.05 962.554 p 1989.98 898.242 p 1980.87 833.773 p 1974.41 768.23 p 1971 711.466 p 1968.18 648.578 p 1970.92 591.121 p 1974.36 534.324 p 1980.52 467.361 p 1989.61 402.917 p 1999.01 334.19 p 2011.08 258.065 p 2023.63 181.731 p 2037.94 96.6344 c 14.1041 features 14 p 2481.88 1194.46 p 2466.06 1109.1 p 2450.6 1024.44 p 2440.29 947.048 p 2429.9 869.305 p 2423.26 794.708 p 2419.7 721.351 p 2416.74 648.949 p 2419.62 575.477 p 2423.24 502.097 p 2429.76 427.405 p 2450.61 271.983 p 2465.83 187.448 p 2481.53 102.203 c 1.87074 features 9 p 1728.85 870.836 p 1721.75 807.499 p 1717.43 753.134 p 1716.59 704.905 p 1713.58 648.471 p 1713.09 602.624 p 1715.66 548.896 p 1717.43 490.757 p 1719.32 429.965 c 3.89988 features 17 p 1947.61 1183.99 p 1934.66 1102.33 p 1922.34 1026.24 p 1910.28 950.768 p 1901.26 886.448 p 1892.11 821.943 p 1886.14 761.925 p 1882.66 705.136 p 1879.87 648.93 p 1882.53 591.717 p 1886.04 534.872 p 1891.84 474.534 p 1901.03 409.972 p 1910.08 345.558 p 1922.06 269.993 p 1934.44 193.839 p 1947.14 112.322 c 16.6032 features 17 p 1881.71 1176.07 p 1873.81 1095.17 p 1861.57 1019.13 p 1850.55 944.162 p 1844.34 881.366 p 1835.21 816.902 p 1830.6 761.641 p 1827.29 704.879 p 1824.34 648.469 p 1825.77 596.184 p 1829.27 539.334 p 1831.87 480.894 p 1840.28 416.745 p 1849.07 352.274 p 1856.3 277.57 p 1868.55 201.579 p 1876.56 120.263 c 14.98 features 17 p 1617.84 1145.75 p 1612.93 1065.5 p 1612.87 991.27 p 1608.07 917.193 p 1607.64 857.417 p 1607.12 797.514 p 1603.88 743.553 p 1603.84 698.161 p 1602.51 648.633 p 1602.34 602.616 p 1602.5 557.249 p 1603.88 500.304 p 1603.88 440.553 p 1606.67 379.14 p 1607.61 305.589 p 1607.66 231.378 p 1612.8 150.59 c 7.06445 features 19 p 1547.51 1227.77 p 1547.68 1139.22 p 1547.43 1059.19 p 1547.6 985.014 p 1547.38 911.606 p 1547.6 851.818 p 1547.42 792.041 p 1547.56 739.383 p 1547.38 693.991 p 1547.58 648.653 p 1547.35 602.389 p 1547.52 557.023 p 1547.52 503.971 p 1547.34 444.201 p 1547.6 384.4 p 1547.39 310.994 p 1547.57 236.824 p 1547.38 156.788 p 1547.55 68.2286 c 6.15847 features 17 p 1481.07 1145.52 p 1486.33 1064.63 p 1486.38 990.418 p 1487.33 916.867 p 1490.12 855.454 p 1490.11 795.704 p 1491.5 738.758 p 1491.66 693.391 p 1491.17 648.352 p 1490.16 597.846 p 1490.12 552.453 p 1486.89 498.493 p 1486.36 438.591 p 1485.8 378.696 p 1481.14 304.737 p 1481.08 230.508 p 1476.16 150.262 c 2.70694 features 17 p 1217.44 1175.74 p 1225.4 1094.49 p 1237.92 1018.19 p 1244.93 943.733 p 1253.5 879.481 p 1262.13 815.113 p 1264.72 756.673 p 1268.22 699.824 p 1269.69 648.348 p 1266.71 591.128 p 1263.4 534.366 p 1258.79 479.104 p 1249.62 414.583 p 1243.45 351.844 p 1232.43 276.876 p 1220.19 200.831 p 1212.41 120.058 c 3.44247 features 17 p 1146.73 1183.82 p 1159.56 1102.17 p 1171.94 1026.01 p 1184.12 950.23 p 1193.07 885.923 p 1201.96 821.689 p 1207.96 761.135 p 1211.47 704.29 p 1214.14 647.969 p 1211.34 590.87 p 1207.87 534.082 p 1201.9 474.046 p 1192.75 409.557 p 1183.73 345.239 p 1171.9 270.016 p 1159.34 193.681 p 1146.64 112.267 c 3.97108 features 9 p 1374.68 866.041 p 1376.57 805.249 p 1378.34 747.111 p 1380.91 693.384 p 1380.45 648.346 p 1377.45 591.115 p 1376.57 542.873 p 1372.41 488.681 p 1365.16 425.171 c 1.49174 features 15 p 612.171 1194.1 p 628.167 1108.56 p 643.385 1024.02 p 653.916 946.275 p 664.02 868.81 p 670.758 793.91 p 674.284 720.632 p 677.291 648.075 p 674.302 574.657 p 670.742 501.3 p 664.102 426.702 p 653.901 349.167 p 643.4 271.57 p 628.191 187.171 p 612.256 101.695 c 8.93129 features 17 p 964.11 1215.88 p 979.488 1128.6 p 992.447 1050.56 p 1004.55 974.405 p 1014.66 899.945 p 1023.65 835.604 p 1029.9 766.359 p 1033.33 704.904 p 1036.08 648.28 p 1033.27 577.691 p 1029.86 520.913 p 1023.15 454.28 p 1013.82 385.404 p 1004.48 320.834 p 989.773 238.014 p 977.154 161.649 p 961.842 77.809 c 2.84881 features 15 p 704.161 1177.62 p 719.821 1092.42 p 733.76 1011.63 p 744.214 933.912 p 754.362 856.635 p 760.585 787.041 p 764.1 713.815 p 766.885 648.455 p 764.084 574.786 p 760.454 501.39 p 753.934 433.707 p 743.572 355.988 p 733.568 283.471 p 718.296 199.426 p 702.582 114.189 c 7.18981 features 15 p 490.813 1207.95 p 506.872 1122.33 p 522.184 1036.55 p 532.718 953.904 p 542.888 876.398 p 549.617 794.624 p 553.154 721.257 p 556.112 648.492 p 553.12 568.206 p 549.615 494.923 p 542.865 413.745 p 532.486 336.004 p 522.294 258.573 p 506.425 168.497 p 490.59 83.1251 c 10.9124 features 15 p 241.779 1243.5 p 258.18 1149.85 p 273.665 1063.87 p 284.316 970.703 p 294.659 890.608 p 301.449 806.215 p 304.983 721.258 p 307.918 648.489 p 304.968 557.783 p 301.383 480.711 p 294.612 398.171 p 284.09 308.828 p 273.832 231.32 p 257.355 133.811 p 241.244 44.6736 c 13.735 features 15 p 366.551 1224.16 p 382.557 1136.06 p 397.826 1050.29 p 408.529 961.078 p 418.752 883.535 p 425.509 799.177 p 429.069 721.24 p 432.395 648.486 p 429.049 561.134 p 425.527 487.85 p 418.641 405.189 p 408.4 322.529 p 397.916 244.805 p 381.798 149.323 p 365.871 63.8503 c 12.523 features 13 p 134.117 1163.89 p 149.573 1077.34 p 160.123 984.291 p 170.629 897.615 p 177.269 813.366 p 180.916 723.092 p 184.178 648.484 p 180.873 557.766 p 177.21 473.579 p 170.464 391.049 p 159.985 297.947 p 149.518 217.602 p 133.16 120.227 c 10.8117 features 10 p 1787.59 876.7 p 1778.47 812.176 p 1774.25 757.939 p 1771.92 704.887 p 1768.94 648.638 p 1769.02 600.996 p 1772.44 544.135 p 1774.16 485.997 p 1779.82 423.327 p 1788.31 359.106 c 6.2918 features 16 p 2300.19 1166.83 p 2285.5 1084.23 p 2270.09 1000.05 p 2260.56 933.01 p 2250.43 855.558 p 2243.82 789.02 p 2240.22 721.257 p 2237.39 648.752 p 2240.14 589.076 p 2243.67 515.832 p 2249.76 446.769 p 2259.54 374.471 p 2269.82 296.937 p 2282.42 219.948 p 2298.04 134.753 p 2313.44 47.4438 c 4.16143 features 16 p 2391.64 1182.07 p 2375.6 1096.45 p 2360.44 1012.54 p 2350.39 939.972 p 2340.26 862.51 p 2333.54 794.618 p 2329.92 721.221 p 2327.12 648.578 p 2329.9 582.193 p 2333.41 508.966 p 2339.63 439.373 p 2349.78 362.095 p 2360.16 284.458 p 2373.9 203.862 p 2389.83 118.39 p 2405.13 31.3066 c 1.53478 features 14 p 2961.04 1176.01 p 2944.53 1078.45 p 2934.02 998.058 p 2923.56 904.982 p 2916.68 822.317 p 2913.13 738.242 p 2910.2 648.949 p 2913.08 572.914 p 2916.73 482.642 p 2923.5 398.248 p 2933.83 311.767 p 2944.64 218.45 p 2960.02 131.969 p 2976.81 33.3796 c 11.9336 features 16 p 795.962 1161.25 p 811.577 1076.06 p 823.998 999.249 p 834.453 921.537 p 844.097 849.401 p 850.325 780.174 p 853.852 706.931 p 856.619 648.281 p 853.776 574.75 p 850.3 507.093 p 843.662 440.555 p 833.443 362.996 p 824.017 296.074 p 808.746 212.04 p 793.666 129.028 p 778.305 45.1451 c 6.46591 features 9 p 1433.32 800.486 p 1435.23 742.247 p 1436.23 693.391 p 1436.15 648.357 p 1433.45 593.054 p 1433.38 547.697 p 1429.17 493.401 p 1425.92 431.926 p 1425.36 372.047 c 1.01543 features 8 p 1123 584.54 p 1119.59 527.776 p 1113.13 462.23 p 1103.93 397.658 p 1094.71 333.212 p 1081.46 254.282 p 1069.16 178.211 p 1053.84 94.2384 c 1.62964 features 8 p 943.556 574.793 p 940.014 513.94 p 933.489 447.51 p 923.458 372.884 p 914.12 308.32 p 898.855 224.292 p 885.356 145.284 p 869.992 61.3859 c 2.37782 features 4 p 1364.58 365.273 p 1353.58 290.251 p 1349.66 215.438 p 1343.85 135.015 c 1.95303 features 4 p 1304.13 358.618 p 1292.91 283.448 p 1283.98 207.966 p 1278.23 127.646 c 1.87146 features 5 p 1727.86 365.727 p 1728.82 292.169 p 1737.05 216.592 p 1744.22 135.519 p 1746.27 46.7344 c 1.70384 features 3 p 1790.69 285.25 p 1802.65 209.243 p 1810.02 127.945 c 1.15264 
+"
+ name LensDistortion7
+ xpos -568
+ ypos -665
+}
+push $N1e3ac380
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard3
+ xpos -352
+ ypos -1095
+}
+Card2 {
+ control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+ name Card3
+ xpos -352
+ ypos -965
+}
+RadialDistort {
+ distortion 0.1
+ power_bias 1
+ name RadialDistort3
+ xpos -352
+ ypos -902
+}
+push 0
+ScanlineRender {
+ inputs 3
+ conservative_shader_sampling false
+ motion_vectors_type distance
+ name ScanlineRender3
+ xpos -352
+ ypos -786
+}
+LensDistortion2 {
+ distortionModelDisplayX "xu = xd / (1 + k0 * rd^2 + k1 * rd^4)"
+ distortionModelDisplayY "yu = yd / (1 + k0 * rd^2 + k1 * rd^4)"
+ distortionDenominator0 0.03463386698
+ distortionDenominator1 -0.03767651372
+ centre {0.01058161114 0.001398952753}
+ keyFrame {{curve x1 1}}
+ keyingInitialised true
+ solveError 0.02853662884
+ isSolved true
+ "Adjust Bounding Box" 1
+ manualCrop true
+ crop {0 0 3094 1296}
+ featuresKnob "
+version 1
+entries 1
+context 1 0 features 803 p 1086.23 878.378 p 1086.47 609.638 p 1086.3 839.945 p 1086.44 724.731 p 1930.63 532.945 p 1086.04 955.288 p 1776.69 686.292 p 1240.31 532.999 p 1930.58 686.36 p 1930.96 340.863 p 1240.36 686.287 p 2239.93 955.971 p 1930.74 839.794 p 1930.68 494.597 p 1930.58 609.687 p 1317.3 686.278 p 1240.07 379.481 p 1431.97 954.628 p 2007.94 340.701 p 2007.59 532.823 p 776.829 609.455 p 1662.03 954.644 p 2007.52 686.358 p 2007.94 955.31 p 2356.04 532.446 p 2394.83 609.516 p 2007.84 379.179 p 815.353 917.528 p 2007.69 839.929 p 2239.93 340.042 p 698.764 917.834 p 2433.99 416.633 p 1317.03 379.655 p 1930.73 456.199 p 1508.64 954.551 p 892.827 917.322 p 1317.3 609.704 p 2007.63 494.454 p 2007.52 609.618 p 2200.8 609.583 p 2200.85 763.384 p 931.25 994.286 p 699.095 763.59 p 1700.13 533.206 p 737.644 917.723 p 2395.33 339.6 p 1700.32 379.735 p 1278.75 762.884 p 1969.08 763.096 p 2008.06 993.811 p 1508.68 762.715 p 776.819 570.979 p 2433.85 840.771 p 776.496 917.604 p 2434.28 995.186 p 2395.01 840.711 p 698.955 840.708 p 660.135 840.781 p 2201.16 917.335 p 1124.42 993.708 p 699.156 686.48 p 659.676 995.154 p 1432.1 839.433 p 776.381 956.197 p 970.155 917.099 p 1008.92 878.551 p 1892.62 993.542 p 737.819 840.632 p 1008.83 916.988 p 1162.91 993.61 p 1623.7 954.588 p 1623.6 762.769 p 1432.18 686.235 p 1969.35 916.739 p 2317.49 917.671 p 1278.54 916.372 p 776.67 840.559 p 854.528 571.076 p 2201.25 955.858 p 2046.72 993.931 p 2317.3 840.564 p 1163.03 955.127 p 1201.58 916.554 p 1163.12 916.649 p 776.852 724.993 p 1623.72 993.059 p 2200.98 840.335 p 1969.05 724.758 p 2085.36 994.084 p 1278.6 878.015 p 2434.16 956.587 p 893.032 840.328 p 699.158 725.075 p 1047.47 916.883 p 1854.11 993.437 p 1124.61 916.733 p 2162.47 917.282 p 2162.29 840.269 p 698.538 995.03 p 2394.86 648.322 p 1892.42 916.607 p 1815.23 494.769 p 2355.99 725.093 p 1853.91 916.515 p 776.255 994.761 p 1008.74 955.531 p 737.4 994.873 p 815.54 840.474 p 2239.62 840.41 p 2240.05 994.55 p 1892.18 494.687 p 970.059 955.639 p 737.951 725.032 p 2317.72 994.824 p 1969.26 878.337 p 893.158 724.91 p 2433.94 879.394 p 1124.79 839.882 p 1047.69 840.04 p 854.327 840.409 p 1623.66 916.188 p 2356.34 378.266 p 853.915 994.549 p 970.468 724.835 p 2356.35 917.771 p 892.632 994.409 p 2356.09 493.972 p 2239.59 494.111 p 1393.67 916.26 p 2239.83 917.405 p 2356.13 802.13 p 2239.83 378.553 p 931.75 494.187 p 2123.83 917.175 p 2123.58 494.323 p 970.158 378.813 p 2278.89 994.693 p 970.377 494.247 p 2123.61 801.749 p 2123.83 378.891 p 2239.56 801.879 p 815.137 994.669 p 1393.74 494.804 p 931.736 801.739 p 931.52 917.196 p 2355.99 609.529 p 1547.25 648.311 p 1393.78 801.123 p 2356.07 763.6 p 660.001 879.362 p 737.851 493.866 p 737.629 378.218 p 815.585 494.027 p 1700.21 494.871 p 1047.74 494.363 p 854.158 917.443 p 1815.46 916.416 p 815.317 378.437 p 1700.24 801.187 p 815.606 801.928 p 1086.35 494.432 p 1815.29 801.25 p 1086.15 916.818 p 1047.74 801.577 p 854.154 378.589 p 2123.47 609.624 p 970.407 801.673 p 1969.44 955.239 p 931.471 378.758 p 1086.35 801.536 p 1240.26 494.659 p 1508.67 916.106 p 2356.26 879.224 p 1508.69 801.041 p 1047.37 955.423 p 1700.35 916.227 p 2278.38 494.068 p 854.391 801.879 p 776.751 493.94 p 1508.67 494.961 p 1201.79 494.573 p 1047.84 609.597 p 2007.84 916.817 p 2123.55 763.317 p 815.71 609.491 p 1240.09 916.458 p 1930.89 916.684 p 1853.71 494.697 p 1201.81 801.306 p 1047.51 379.084 p 2162.24 494.249 p 1355.35 916.294 p 1086.14 379.179 p 2278.63 378.464 p 1163.3 494.518 p 2317.26 494.02 p 1508.64 379.843 p 2239.5 763.432 p 2355.97 686.564 p 2046.24 494.418 p 1355.48 494.794 p 2046.48 916.909 p 2239.45 609.533 p 2007.63 801.557 p 699.054 493.811 p 1240.28 801.294 p 1355.5 801.179 p 2162.23 801.803 p 931.842 609.535 p 1853.72 801.331 p 1815.45 379.618 p 970.43 763.237 p 931.794 763.294 p 1163.31 801.392 p 854.427 494.112 p 970.43 532.674 p 2317.49 378.392 p 2239.53 532.578 p 1930.68 801.472 p 698.762 378.136 p 2046.25 801.632 p 1201.56 379.382 p 2123.46 686.457 p 776.722 801.97 p 2239.73 878.897 p 737.895 802.022 p 815.657 763.462 p 776.496 378.325 p 2356.04 570.963 p 2162.47 378.799 p 1470.38 494.912 p 699.011 802.103 p 1815.17 609.699 p 1278.7 494.745 p 2317.23 802.052 p 931.803 532.644 p 1393.83 609.703 p 1047.8 763.211 p 1393.62 379.766 p 1892.19 801.423 p 970.512 686.365 p 1930.86 379.347 p 738.01 609.426 p 970.527 609.533 p 2278.4 801.968 p 1470.41 801.079 p 2394.93 802.183 p 2239.45 686.465 p 815.652 532.501 p 1201.89 609.625 p 737.915 532.391 p 1700.15 609.743 p 2123.75 878.685 p 1623.57 494.91 p 931.848 686.378 p 815.702 686.456 p 1508.69 609.739 p 1470.36 916.152 p 931.825 724.846 p 2046.51 379.109 p 931.609 878.708 p 2084.92 494.366 p 1163.1 379.312 p 2123.51 724.837 p 970.242 878.633 p 1623.6 801.078 p 2123.52 571.159 p 1355.58 609.702 p 2239.46 724.915 p 2239.46 571.045 p 2085.16 917.053 p 1278.52 379.574 p 931.834 571.106 p 737.942 763.545 p 2123.56 532.756 p 2356.47 956.316 p 2394.98 493.89 p 1355.32 379.72 p 2356.46 339.688 p 2278.28 609.533 p 2046.14 609.617 p 1047.84 686.374 p 1853.9 379.537 p 1086.4 763.172 p 737.989 686.46 p 2278.67 917.553 p 1700.2 762.795 p 2356.17 455.359 p 1393.61 341.317 p 1585.34 916.147 p 2356.23 416.854 p 815.447 878.974 p 1969.14 494.538 p 2278.33 532.529 p 1661.83 494.91 p 1393.63 954.656 p 2395.22 917.86 p 2162.18 763.352 p 2239.74 417.109 p 1661.99 916.189 p 1700.34 341.335 p 2162.14 609.619 p 2084.91 801.684 p 2201.16 378.668 p 2395.22 378.161 p 2123.67 455.834 p 2278.27 686.498 p 970.064 340.333 p 1661.89 801.157 p 2123.92 955.663 p 854.459 763.418 p 1815.19 762.915 p 2123.93 340.357 p 776.779 763.513 p 1393.84 686.253 p 2046.19 763.202 p 1738.48 494.817 p 854.243 878.881 p 1470.32 379.809 p 815.687 724.938 p 970.474 571.158 p 2356.19 840.643 p 1585.28 494.931 p 1393.81 571.421 p 1969.37 379.257 p 1815.18 686.331 p 2085.15 379.007 p 1700.15 686.293 p 1163.41 609.636 p 2200.89 494.191 p 2278.34 763.496 p 1393.73 877.813 p 1969.15 801.518 p 2317.19 763.554 p 1240.37 609.63 p 1047.8 532.792 p 1853.62 609.709 p 1892.09 609.687 p 1278.76 801.223 p 1700.14 571.468 p 970.314 840.158 p 1201.8 762.968 p 1700.38 954.673 p 815.69 571.011 p 1815.53 341.168 p 2123.74 417.363 p 1047.82 724.734 p 1738.66 916.269 p 2239.66 455.587 p 2394.87 763.639 p 1585.32 801.034 p 854.534 609.531 p 1508.67 456.632 p 699.155 609.426 p 970.311 455.788 p 1393.76 456.53 p 1815.32 456.395 p 1047.82 571.203 p 2046.19 532.781 p 1738.63 379.697 p 699.111 532.357 p 2317.14 609.535 p 1738.5 801.203 p 1892.41 379.436 p 1047.56 878.484 p 1508.7 686.205 p 1815.55 954.831 p 1047.69 455.987 p 1393.84 724.521 p 1700.24 456.522 p 931.606 417.242 p 1393.85 762.78 p 1700.3 877.844 p 1201.9 686.304 p 1700.17 724.57 p 931.37 340.221 p 1163.36 763.051 p 2046.15 686.393 p 2007.59 763.136 p 1853.68 762.997 p 776.794 532.442 p 1355.54 762.811 p 931.702 455.726 p 1355.6 686.265 p 1930.64 763.057 p 1086.46 686.378 p 1278.8 609.659 p 893.071 494.152 p 1086.45 571.23 p 1086.04 340.679 p 970.236 417.311 p 2200.91 801.843 p 1776.78 494.779 p 1815.4 878.001 p 1393.74 839.474 p 931.407 955.747 p 2162.19 532.702 p 1047.36 340.591 p 737.754 879.141 p 1508.68 533.247 p 2123.67 840.204 p 1815.2 571.41 p 1700.23 839.466 p 1393.79 533.2 p 1892.14 763.01 p 1776.96 916.341 p 1009.07 494.306 p 2317.39 879.127 p 815.439 416.966 p 2317.21 532.484 p 698.846 879.203 p 1240.33 762.931 p 776.59 879.073 p 931.703 840.227 p 1815.23 533.107 p 1393.68 418.145 p 1815.18 724.618 p 1508.63 341.451 p 2394.89 532.407 p 1317.21 494.791 p 2162.15 724.884 p 854.056 955.948 p 1239.98 341.073 p 892.826 378.654 p 1086.4 532.859 p 737.727 416.772 p 2162.38 878.749 p 2007.53 724.759 p 1470.42 609.709 p 1432 916.183 p 1239.99 954.924 p 1776.78 801.219 p 854.057 340.018 p 2355.94 648.299 p 2395.1 879.276 p 1623.62 379.844 p 1892.1 686.364 p 1240.16 878.085 p 1661.99 379.812 p 1508.7 648.303 p 698.839 416.67 p 2162.14 686.461 p 1201.47 340.974 p 776.841 686.461 p 2278.3 724.984 p 2007.54 571.259 p 1009.06 801.622 p 1930.81 878.266 p 2046.38 878.511 p 1853.62 686.366 p 1508.68 839.337 p 854.485 532.564 p 2007.77 878.395 p 1201.86 724.641 p 1738.38 609.724 p 2162.16 571.143 p 1585.28 609.785 p 815.254 956.07 p 2317.14 571.005 p 1969.02 609.652 p 815.212 339.899 p 1317.21 801.21 p 1201.87 571.308 p 1623.56 609.78 p 1355.28 341.28 p 815.52 455.514 p 1086.3 456.067 p 1047.6 417.484 p 1201.72 456.253 p 1163.02 340.878 p 1508.69 571.531 p 1585.32 379.885 p 1240.34 724.608 p 1661.81 609.756 p 1700.25 418.179 p 1163.41 686.309 p 1508.69 877.724 p 1355.43 456.482 p 1930.6 571.319 p 1854 341.066 p 699.111 570.86 p 1086.22 417.595 p 2394.83 686.571 p 893.094 801.805 p 1201.84 532.982 p 1508.7 724.458 p 1853.64 571.381 p 1240.35 571.349 p 2278.56 879.016 p 737.521 339.683 p 2433.69 648.287 p 1930.97 955.113 p 1815.38 417.981 p 1853.64 724.64 p 1930.6 724.727 p 1815.32 839.62 p 2278.3 571.059 p 1163.38 724.67 p 1355.31 954.699 p 2394.83 570.918 p 2046.17 724.792 p 931.873 648.311 p 2317.16 686.541 p 1163.39 571.263 p 1355.57 571.41 p 1201.69 878.125 p 737.798 455.347 p 1853.83 878.099 p 2317.16 725.009 p 1240.22 456.311 p 1355.56 724.557 p 854.255 417.092 p 1008.82 378.943 p 2046.16 571.262 p 1854.01 954.918 p 1355.55 533.168 p 2084.85 763.28 p 738.001 570.901 p 1470.42 762.742 p 1355.42 877.858 p 1470.28 341.401 p 1124.84 494.477 p 1163.2 878.204 p 1201.49 955.034 p 1278.81 686.29 p 2084.81 609.623 p 854.517 724.921 p 1317.04 916.298 p 2046.29 455.953 p 1853.76 456.333 p 1240.22 839.663 p 2162.57 340.252 p 2007.68 456.052 p 854.544 686.451 p 2317.61 339.805 p 1163.34 532.939 p 1163.25 456.203 p 1853.66 533.064 p 1623.66 341.396 p 1124.84 801.457 p 893.2 609.532 p 1278.44 341.165 p 2007.76 417.612 p 2317.39 416.916 p 776.388 339.786 p 2162.38 417.282 p 1201.73 839.733 p 2162.28 455.766 p 1355.46 839.507 p 1470.43 686.216 p 776.599 416.864 p 1930.79 417.785 p 1892.12 724.689 p 2046.62 340.573 p 1470.38 456.599 p 1738.44 762.822 p 1853.77 839.685 p 737.544 956.286 p 1470.41 571.498 p 1470.33 954.594 p 2278.44 455.516 p 1508.64 418.272 p 2046.3 840.005 p 2084.87 532.754 p 1892.25 456.257 p 1432.1 494.838 p 1853.82 417.905 p 1585.3 762.74 p 1969.03 686.353 p 1163.17 417.724 p 1738.4 686.287 p 1278.45 954.827 p 1969.08 532.89 p 2085.08 878.609 p 1470.43 724.468 p 1661.85 762.768 p 1623.6 456.614 p 1278.66 456.369 p 2317.6 956.206 p 1661.83 686.274 p 776.872 648.311 p 1432.16 801.084 p 1355.38 418.118 p 1623.57 686.287 p 2278.73 339.925 p 2278.54 417.021 p 1623.55 571.522 p 2200.83 532.641 p 1585.3 686.262 p 1585.3 456.652 p 1201.63 417.823 p 1470.38 877.763 p 1662.02 341.368 p 2046.63 955.404 p 1278.79 724.586 p 1892.13 571.355 p 1124.64 379.253 p 2085.24 340.46 p 698.657 956.39 p 2084.81 686.445 p 1240.15 417.893 p 1124.96 609.638 p 1892.5 340.962 p 893.155 763.348 p 1470.39 533.227 p 776.685 455.432 p 2278.31 648.28 p 698.652 339.527 p 2394.88 725.133 p 2084.82 724.821 p 2084.83 571.23 p 2201.07 878.831 p 1623.57 724.491 p 1163.26 839.796 p 1623.65 877.753 p 1661.89 456.558 p 1776.95 379.697 p 1009.18 609.55 p 2317.32 455.438 p 1278.66 839.595 p 1470.33 418.238 p 2046.42 417.512 p 2200.78 686.457 p 1009.12 763.242 p 698.976 455.285 p 1892.52 955.021 p 1776.69 609.718 p 1585.35 954.545 p 1969.47 340.765 p 1738.68 341.296 p 1278.81 571.378 p 1470.38 839.382 p 1547.3 609.747 p 893.129 532.606 p 854.615 648.318 p 854.369 455.585 p 1585.34 341.445 p 1662 877.796 p 2085.25 955.537 p 1738.53 456.482 p 1661.83 571.503 p 1815.1 648.312 p 1892.36 878.171 p 1623.57 533.253 p 1892.18 533.024 p 1623.6 418.225 p 1969.04 571.296 p 1547.29 916.101 p 1432.16 609.717 p 1738.71 954.716 p 893.186 686.407 p 1661.85 533.222 p 1623.61 839.397 p 2278.46 840.476 p 2085.07 417.439 p 1547.3 494.999 p 2084.97 455.909 p 1969.19 456.11 p 1661.83 724.542 p 1585.29 533.276 p 1777.04 341.245 p 1585.29 571.538 p 2007.6 648.342 p 1738.42 724.586 p 2162.61 955.769 p 1661.92 839.426 p 1278.79 533.077 p 2201.24 340.172 p 1278.59 417.994 p 1585.34 877.724 p 1776.75 762.857 p 1585.3 724.465 p 1892.26 839.736 p 2200.82 724.918 p 1892.3 417.87 p 1585.32 839.357 p 1738.6 877.878 p 1317.33 648.317 p 1124.91 763.102 p 1738.42 571.44 p 1317.26 762.849 p 1009.14 532.716 p 1969.19 839.851 p 2239.48 648.326 p 2200.83 571.085 p 892.927 878.792 p 1240.4 648.317 p 2278.77 956.096 p 1432 379.805 p 2395.14 416.789 p 1738.44 533.179 p 815.678 648.31 p 1316.92 341.244 p 1009.15 724.76 p 2084.98 840.116 p 1009.18 686.374 p 1432.13 762.768 p 2200.95 455.663 p 1777.06 954.744 p 2395.03 455.289 p 1355.57 648.306 p 1163.54 648.34 p 1124.96 686.339 p 1661.89 418.219 p 893.163 571.078 p 1547.32 418.32 p 1009.16 571.169 p 1853.72 648.343 p 2201.06 417.204 p 1776.7 571.407 p 1086.52 648.317 p 1776.83 456.453 p 1585.31 418.262 p 1317.27 571.409 p 1738.55 839.508 p 1008.73 340.454 p 1776.71 724.581 p 1776.89 877.913 p 1738.56 418.137 p 1317.28 724.583 p 2395.33 956.464 p 1969.25 417.722 p 1432.06 456.566 p 1317.17 456.443 p 1316.94 954.745 p 1317.08 877.908 p 892.737 340.138 p 893.002 455.655 p 1776.72 533.146 p 1317.24 533.138 p 1776.91 418.082 p 1008.9 417.381 p 1124.79 456.141 p 892.919 417.165 p 1009.01 455.879 p 1124.94 571.238 p 1124.94 724.699 p 1431.96 341.351 p 1623.68 648.343 p 2046.14 648.293 p 1776.82 839.552 p 1124.91 532.897 p 1124.55 340.755 p 1317.09 418.076 p 1432.15 724.492 p 892.744 955.824 p 1393.9 648.321 p 1124.73 878.272 p 1317.16 839.543 p 1124.56 955.182 p 1432.16 571.454 p 1930.58 648.318 p 1431.99 418.199 p 2084.9 648.342 p 1432.09 877.776 p 1124.72 417.657 p 1009.02 840.087 p 1432.14 533.222 p 2123.52 648.278 p 2317.17 648.32 p 1547.32 686.144 p 1009.29 648.334 p 1547.3 456.648 p 1547.33 341.599 p 970.531 648.31 p 1047.85 648.308 p 738 648.311 p 1470.45 648.317 p 1547.33 724.542 p 1700.14 648.316 p 1201.89 648.309 p 1738.36 648.306 p 1547.32 877.746 p 699.171 648.306 p 1585.29 648.299 p 1892.14 648.284 p 1278.84 648.307 p 1124.91 648.317 p 1547.32 954.536 p 1547.32 571.588 p 1969.07 648.286 p 2200.8 648.296 p 1661.86 648.292 p 893.235 648.298 p 1547.31 533.251 p 1432.17 648.303 p 1547.31 762.708 p 1547.33 302.929 p 1547.31 839.295 p 1547.3 992.963 p 660.241 648.313 p 1393.52 302.864 p 2433.74 532.36 p 1393.6 993.157 p 1239.91 993.366 p 660.202 802.18 p 1700.39 302.839 p 1854.07 302.628 p 660.243 763.63 p 659.934 378.025 p 2434.05 917.967 p 1700.47 993.131 p 2433.78 493.815 
+entries 1
+context 1 0 links 65 features 20 p 659.676 995.154 p 698.538 995.03 p 737.4 994.873 p 776.255 994.761 p 815.137 994.669 p 853.915 994.549 p 892.632 994.409 p 931.25 994.286 p 1124.42 993.708 p 1162.91 993.61 p 1239.91 993.366 p 1547.3 992.963 p 1623.72 993.059 p 1700.47 993.131 p 2008.06 993.811 p 2046.72 993.931 p 2085.36 994.084 p 2240.05 994.55 p 2278.89 994.693 p 2317.72 994.824 c 0.045257 features 45 p 659.934 378.025 p 698.762 378.136 p 737.629 378.218 p 776.496 378.325 p 815.317 378.437 p 854.154 378.589 p 892.826 378.654 p 931.471 378.758 p 970.158 378.813 p 1008.82 378.943 p 1047.51 379.084 p 1086.14 379.179 p 1124.64 379.253 p 1163.1 379.312 p 1201.56 379.382 p 1240.07 379.481 p 1278.52 379.574 p 1317.03 379.655 p 1355.32 379.72 p 1393.62 379.766 p 1432 379.805 p 1470.32 379.809 p 1508.64 379.843 p 1585.32 379.885 p 1623.62 379.844 p 1661.99 379.812 p 1700.32 379.735 p 1738.63 379.697 p 1776.95 379.697 p 1815.45 379.618 p 1853.9 379.537 p 1892.41 379.436 p 1930.86 379.347 p 1969.37 379.257 p 2007.84 379.179 p 2046.51 379.109 p 2085.15 379.007 p 2123.83 378.891 p 2162.47 378.799 p 2201.16 378.668 p 2239.83 378.553 p 2278.63 378.464 p 2317.49 378.392 p 2356.34 378.266 p 2395.22 378.161 c 0.0328335 features 45 p 660.202 802.18 p 699.011 802.103 p 737.895 802.022 p 776.722 801.97 p 815.606 801.928 p 854.391 801.879 p 893.094 801.805 p 931.736 801.739 p 970.407 801.673 p 1009.06 801.622 p 1047.74 801.577 p 1086.35 801.536 p 1124.84 801.457 p 1163.31 801.392 p 1201.81 801.306 p 1240.28 801.294 p 1278.76 801.223 p 1317.21 801.21 p 1355.5 801.179 p 1393.78 801.123 p 1432.16 801.084 p 1470.41 801.079 p 1508.69 801.041 p 1585.32 801.034 p 1623.6 801.078 p 1661.89 801.157 p 1700.24 801.187 p 1738.5 801.203 p 1776.78 801.219 p 1815.29 801.25 p 1853.72 801.331 p 1892.19 801.423 p 1930.68 801.472 p 1969.15 801.518 p 2007.63 801.557 p 2046.25 801.632 p 2084.91 801.684 p 2123.61 801.749 p 2162.23 801.803 p 2200.91 801.843 p 2239.56 801.879 p 2278.4 801.968 p 2317.23 802.052 p 2356.13 802.13 p 2394.93 802.183 c 0.0324313 features 45 p 660.241 648.313 p 699.171 648.306 p 738 648.311 p 776.872 648.311 p 815.678 648.31 p 854.615 648.318 p 893.235 648.298 p 931.873 648.311 p 970.531 648.31 p 1009.29 648.334 p 1047.85 648.308 p 1086.52 648.317 p 1124.91 648.317 p 1163.54 648.34 p 1201.89 648.309 p 1240.4 648.317 p 1278.84 648.307 p 1317.33 648.317 p 1355.57 648.306 p 1393.9 648.321 p 1432.17 648.303 p 1470.45 648.317 p 1508.7 648.303 p 1547.25 648.311 p 1585.29 648.299 p 1623.68 648.343 p 1661.86 648.292 p 1700.14 648.316 p 1738.36 648.306 p 1815.1 648.312 p 1853.72 648.343 p 1892.14 648.284 p 1930.58 648.318 p 1969.07 648.286 p 2007.6 648.342 p 2046.14 648.293 p 2084.9 648.342 p 2123.52 648.278 p 2200.8 648.296 p 2239.48 648.326 p 2278.31 648.28 p 2317.17 648.32 p 2355.94 648.299 p 2394.86 648.322 p 2433.69 648.287 c 0.0159835 features 46 p 660.243 763.63 p 699.095 763.59 p 737.942 763.545 p 776.779 763.513 p 815.657 763.462 p 854.459 763.418 p 893.155 763.348 p 931.794 763.294 p 970.43 763.237 p 1009.12 763.242 p 1047.8 763.211 p 1086.4 763.172 p 1124.91 763.102 p 1163.36 763.051 p 1201.8 762.968 p 1240.33 762.931 p 1278.75 762.884 p 1317.26 762.849 p 1355.54 762.811 p 1393.85 762.78 p 1432.13 762.768 p 1470.42 762.742 p 1508.68 762.715 p 1547.31 762.708 p 1585.3 762.74 p 1623.6 762.769 p 1661.85 762.768 p 1700.2 762.795 p 1738.44 762.822 p 1776.75 762.857 p 1815.19 762.915 p 1853.68 762.997 p 1892.14 763.01 p 1930.64 763.057 p 1969.08 763.096 p 2007.59 763.136 p 2046.19 763.202 p 2084.85 763.28 p 2123.55 763.317 p 2162.18 763.352 p 2200.85 763.384 p 2239.5 763.432 p 2278.34 763.496 p 2317.19 763.554 p 2356.07 763.6 p 2394.87 763.639 c 0.0433421 features 45 p 699.111 570.86 p 738.001 570.901 p 776.819 570.979 p 815.69 571.011 p 854.528 571.076 p 893.163 571.078 p 931.834 571.106 p 970.474 571.158 p 1009.16 571.169 p 1047.82 571.203 p 1086.45 571.23 p 1124.94 571.238 p 1163.39 571.263 p 1201.87 571.308 p 1240.35 571.349 p 1278.81 571.378 p 1317.27 571.409 p 1355.57 571.41 p 1393.81 571.421 p 1432.16 571.454 p 1470.41 571.498 p 1508.69 571.531 p 1547.32 571.588 p 1585.29 571.538 p 1623.55 571.522 p 1661.83 571.503 p 1700.14 571.468 p 1738.42 571.44 p 1776.7 571.407 p 1815.2 571.41 p 1853.64 571.381 p 1892.13 571.355 p 1930.6 571.319 p 1969.04 571.296 p 2007.54 571.259 p 2046.16 571.262 p 2084.83 571.23 p 2123.52 571.159 p 2162.16 571.143 p 2200.83 571.085 p 2239.46 571.045 p 2278.3 571.059 p 2317.14 571.005 p 2356.04 570.963 p 2394.83 570.918 c 0.0302809 features 47 p 660.001 879.362 p 698.846 879.203 p 737.754 879.141 p 776.59 879.073 p 815.447 878.974 p 854.243 878.881 p 892.927 878.792 p 931.609 878.708 p 970.242 878.633 p 1008.92 878.551 p 1047.56 878.484 p 1086.23 878.378 p 1124.73 878.272 p 1163.2 878.204 p 1201.69 878.125 p 1240.16 878.085 p 1278.6 878.015 p 1317.08 877.908 p 1355.42 877.858 p 1393.73 877.813 p 1432.09 877.776 p 1470.38 877.763 p 1508.69 877.724 p 1547.32 877.746 p 1585.34 877.724 p 1623.65 877.753 p 1662 877.796 p 1700.3 877.844 p 1738.6 877.878 p 1776.89 877.913 p 1815.4 878.001 p 1853.83 878.099 p 1892.36 878.171 p 1930.81 878.266 p 1969.26 878.337 p 2007.77 878.395 p 2046.38 878.511 p 2085.08 878.609 p 2123.75 878.685 p 2162.38 878.749 p 2201.07 878.831 p 2239.73 878.897 p 2278.56 879.016 p 2317.39 879.127 p 2356.26 879.224 p 2395.1 879.276 p 2433.94 879.394 c 0.033305 features 45 p 698.652 339.527 p 737.521 339.683 p 776.388 339.786 p 815.212 339.899 p 854.057 340.018 p 892.737 340.138 p 931.37 340.221 p 970.064 340.333 p 1008.73 340.454 p 1047.36 340.591 p 1086.04 340.679 p 1124.55 340.755 p 1163.02 340.878 p 1201.47 340.974 p 1239.98 341.073 p 1278.44 341.165 p 1316.92 341.244 p 1355.28 341.28 p 1393.61 341.317 p 1431.96 341.351 p 1470.28 341.401 p 1508.63 341.451 p 1547.33 341.599 p 1585.34 341.445 p 1623.66 341.396 p 1662.02 341.368 p 1700.34 341.335 p 1738.68 341.296 p 1777.04 341.245 p 1815.53 341.168 p 1854 341.066 p 1892.5 340.962 p 1930.96 340.863 p 1969.47 340.765 p 2007.94 340.701 p 2046.62 340.573 p 2085.24 340.46 p 2123.93 340.357 p 2162.57 340.252 p 2201.24 340.172 p 2239.93 340.042 p 2278.73 339.925 p 2317.61 339.805 p 2356.46 339.688 p 2395.33 339.6 c 0.0429293 features 45 p 699.155 609.426 p 738.01 609.426 p 776.829 609.455 p 815.71 609.491 p 854.534 609.531 p 893.2 609.532 p 931.842 609.535 p 970.527 609.533 p 1009.18 609.55 p 1047.84 609.597 p 1086.47 609.638 p 1124.96 609.638 p 1163.41 609.636 p 1201.89 609.625 p 1240.37 609.63 p 1278.8 609.659 p 1317.3 609.704 p 1355.58 609.702 p 1393.83 609.703 p 1432.16 609.717 p 1470.42 609.709 p 1508.69 609.739 p 1547.3 609.747 p 1585.28 609.785 p 1623.56 609.78 p 1661.81 609.756 p 1700.15 609.743 p 1738.38 609.724 p 1776.69 609.718 p 1815.17 609.699 p 1853.62 609.709 p 1892.09 609.687 p 1930.58 609.687 p 1969.02 609.652 p 2007.52 609.618 p 2046.14 609.617 p 2084.81 609.623 p 2123.47 609.624 p 2162.14 609.619 p 2200.8 609.583 p 2239.45 609.533 p 2278.28 609.533 p 2317.14 609.535 p 2355.99 609.529 p 2394.83 609.516 c 0.0199629 features 45 p 699.156 686.48 p 737.989 686.46 p 776.841 686.461 p 815.702 686.456 p 854.544 686.451 p 893.186 686.407 p 931.848 686.378 p 970.512 686.365 p 1009.18 686.374 p 1047.84 686.374 p 1086.46 686.378 p 1124.96 686.339 p 1163.41 686.309 p 1201.9 686.304 p 1240.36 686.287 p 1278.81 686.29 p 1317.3 686.278 p 1355.6 686.265 p 1393.84 686.253 p 1432.18 686.235 p 1470.43 686.216 p 1508.7 686.205 p 1547.32 686.144 p 1585.3 686.262 p 1623.57 686.287 p 1661.83 686.274 p 1700.15 686.293 p 1738.4 686.287 p 1776.69 686.292 p 1815.18 686.331 p 1853.62 686.366 p 1892.1 686.364 p 1930.58 686.36 p 1969.03 686.353 p 2007.52 686.358 p 2046.15 686.393 p 2084.81 686.445 p 2123.46 686.457 p 2162.14 686.461 p 2200.78 686.457 p 2239.45 686.465 p 2278.27 686.498 p 2317.16 686.541 p 2355.97 686.564 p 2394.83 686.571 c 0.0266046 features 47 p 660.135 840.781 p 698.955 840.708 p 737.819 840.632 p 776.67 840.559 p 815.54 840.474 p 854.327 840.409 p 893.032 840.328 p 931.703 840.227 p 970.314 840.158 p 1009.02 840.087 p 1047.69 840.04 p 1086.3 839.945 p 1124.79 839.882 p 1163.26 839.796 p 1201.73 839.733 p 1240.22 839.663 p 1278.66 839.595 p 1317.16 839.543 p 1355.46 839.507 p 1393.74 839.474 p 1432.1 839.433 p 1470.38 839.382 p 1508.68 839.337 p 1547.31 839.295 p 1585.32 839.357 p 1623.61 839.397 p 1661.92 839.426 p 1700.23 839.466 p 1738.55 839.508 p 1776.82 839.552 p 1815.32 839.62 p 1853.77 839.685 p 1892.26 839.736 p 1930.74 839.794 p 1969.19 839.851 p 2007.69 839.929 p 2046.3 840.005 p 2084.98 840.116 p 2123.67 840.204 p 2162.29 840.269 p 2200.98 840.335 p 2239.62 840.41 p 2278.46 840.476 p 2317.3 840.564 p 2356.19 840.643 p 2395.01 840.711 p 2433.85 840.771 c 0.0336804 features 45 p 698.976 455.285 p 737.798 455.347 p 776.685 455.432 p 815.52 455.514 p 854.369 455.585 p 893.002 455.655 p 931.702 455.726 p 970.311 455.788 p 1009.01 455.879 p 1047.69 455.987 p 1086.3 456.067 p 1124.79 456.141 p 1163.25 456.203 p 1201.72 456.253 p 1240.22 456.311 p 1278.66 456.369 p 1317.17 456.443 p 1355.43 456.482 p 1393.76 456.53 p 1432.06 456.566 p 1470.38 456.599 p 1508.67 456.632 p 1547.3 456.648 p 1585.3 456.652 p 1623.6 456.614 p 1661.89 456.558 p 1700.24 456.522 p 1738.53 456.482 p 1776.83 456.453 p 1815.32 456.395 p 1853.76 456.333 p 1892.25 456.257 p 1930.73 456.199 p 1969.19 456.11 p 2007.68 456.052 p 2046.29 455.953 p 2084.97 455.909 p 2123.67 455.834 p 2162.28 455.766 p 2200.95 455.663 p 2239.66 455.587 p 2278.44 455.516 p 2317.32 455.438 p 2356.17 455.359 p 2395.03 455.289 c 0.0247735 features 45 p 699.158 725.075 p 737.951 725.032 p 776.852 724.993 p 815.687 724.938 p 854.517 724.921 p 893.158 724.91 p 931.825 724.846 p 970.468 724.835 p 1009.15 724.76 p 1047.82 724.734 p 1086.44 724.731 p 1124.94 724.699 p 1163.38 724.67 p 1201.86 724.641 p 1240.34 724.608 p 1278.79 724.586 p 1317.28 724.583 p 1355.56 724.557 p 1393.84 724.521 p 1432.15 724.492 p 1470.43 724.468 p 1508.7 724.458 p 1547.33 724.542 p 1585.3 724.465 p 1623.57 724.491 p 1661.83 724.542 p 1700.17 724.57 p 1738.42 724.586 p 1776.71 724.581 p 1815.18 724.618 p 1853.64 724.64 p 1892.12 724.689 p 1930.6 724.727 p 1969.05 724.758 p 2007.53 724.759 p 2046.17 724.792 p 2084.82 724.821 p 2123.51 724.837 p 2162.15 724.884 p 2200.82 724.918 p 2239.46 724.915 p 2278.3 724.984 p 2317.16 725.009 p 2355.99 725.093 p 2394.88 725.133 c 0.0301963 features 46 p 698.839 416.67 p 737.727 416.772 p 776.599 416.864 p 815.439 416.966 p 854.255 417.092 p 892.919 417.165 p 931.606 417.242 p 970.236 417.311 p 1008.9 417.381 p 1047.6 417.484 p 1086.22 417.595 p 1124.72 417.657 p 1163.17 417.724 p 1201.63 417.823 p 1240.15 417.893 p 1278.59 417.994 p 1317.09 418.076 p 1355.38 418.118 p 1393.68 418.145 p 1431.99 418.199 p 1470.33 418.238 p 1508.64 418.272 p 1547.32 418.32 p 1585.31 418.262 p 1623.6 418.225 p 1661.89 418.219 p 1700.25 418.179 p 1738.56 418.137 p 1776.91 418.082 p 1815.38 417.981 p 1853.82 417.905 p 1892.3 417.87 p 1930.79 417.785 p 1969.25 417.722 p 2007.76 417.612 p 2046.42 417.512 p 2085.07 417.439 p 2123.74 417.363 p 2162.38 417.282 p 2201.06 417.204 p 2239.74 417.109 p 2278.54 417.021 p 2317.39 416.916 p 2356.23 416.854 p 2395.14 416.789 p 2433.99 416.633 c 0.033468 features 46 p 699.054 493.811 p 737.851 493.866 p 776.751 493.94 p 815.585 494.027 p 854.427 494.112 p 893.071 494.152 p 931.75 494.187 p 970.377 494.247 p 1009.07 494.306 p 1047.74 494.363 p 1086.35 494.432 p 1124.84 494.477 p 1163.3 494.518 p 1201.79 494.573 p 1240.26 494.659 p 1278.7 494.745 p 1317.21 494.791 p 1355.48 494.794 p 1393.74 494.804 p 1432.1 494.838 p 1470.38 494.912 p 1508.67 494.961 p 1547.3 494.999 p 1585.28 494.931 p 1623.57 494.91 p 1661.83 494.91 p 1700.21 494.871 p 1738.48 494.817 p 1776.78 494.779 p 1815.23 494.769 p 1853.71 494.697 p 1892.18 494.687 p 1930.68 494.597 p 1969.14 494.538 p 2007.63 494.454 p 2046.24 494.418 p 2084.92 494.366 p 2123.58 494.323 p 2162.24 494.249 p 2200.89 494.191 p 2239.59 494.111 p 2278.38 494.068 p 2317.26 494.02 p 2356.09 493.972 p 2394.98 493.89 p 2433.78 493.815 c 0.0321416 features 46 p 698.764 917.834 p 737.644 917.723 p 776.496 917.604 p 815.353 917.528 p 854.158 917.443 p 892.827 917.322 p 931.52 917.196 p 970.155 917.099 p 1008.83 916.988 p 1047.47 916.883 p 1086.15 916.818 p 1124.61 916.733 p 1163.12 916.649 p 1201.58 916.554 p 1240.09 916.458 p 1278.54 916.372 p 1317.04 916.298 p 1355.35 916.294 p 1393.67 916.26 p 1432 916.183 p 1470.36 916.152 p 1508.67 916.106 p 1547.29 916.101 p 1585.34 916.147 p 1623.66 916.188 p 1661.99 916.189 p 1700.35 916.227 p 1738.66 916.269 p 1776.96 916.341 p 1815.46 916.416 p 1853.91 916.515 p 1892.42 916.607 p 1930.89 916.684 p 1969.35 916.739 p 2007.84 916.817 p 2046.48 916.909 p 2085.16 917.053 p 2123.83 917.175 p 2162.47 917.282 p 2201.16 917.335 p 2239.83 917.405 p 2278.67 917.553 p 2317.49 917.671 p 2356.35 917.771 p 2395.22 917.86 p 2434.05 917.967 c 0.0306638 features 46 p 699.111 532.357 p 737.915 532.391 p 776.794 532.442 p 815.652 532.501 p 854.485 532.564 p 893.129 532.606 p 931.803 532.644 p 970.43 532.674 p 1009.14 532.716 p 1047.8 532.792 p 1086.4 532.859 p 1124.91 532.897 p 1163.34 532.939 p 1201.84 532.982 p 1240.31 532.999 p 1278.79 533.077 p 1317.24 533.138 p 1355.55 533.168 p 1393.79 533.2 p 1432.14 533.222 p 1470.39 533.227 p 1508.68 533.247 p 1547.31 533.251 p 1585.29 533.276 p 1623.57 533.253 p 1661.85 533.222 p 1700.13 533.206 p 1738.44 533.179 p 1776.72 533.146 p 1815.23 533.107 p 1853.66 533.064 p 1892.18 533.024 p 1930.63 532.945 p 1969.08 532.89 p 2007.59 532.823 p 2046.19 532.781 p 2084.87 532.754 p 2123.56 532.756 p 2162.19 532.702 p 2200.83 532.641 p 2239.53 532.578 p 2278.33 532.529 p 2317.21 532.484 p 2356.04 532.446 p 2394.89 532.407 p 2433.74 532.36 c 0.0343867 features 46 p 698.657 956.39 p 737.544 956.286 p 776.381 956.197 p 815.254 956.07 p 854.056 955.948 p 892.744 955.824 p 931.407 955.747 p 970.059 955.639 p 1008.74 955.531 p 1047.37 955.423 p 1086.04 955.288 p 1124.56 955.182 p 1163.03 955.127 p 1201.49 955.034 p 1239.99 954.924 p 1278.45 954.827 p 1316.94 954.745 p 1355.31 954.699 p 1393.63 954.656 p 1431.97 954.628 p 1470.33 954.594 p 1508.64 954.551 p 1547.32 954.536 p 1585.35 954.545 p 1623.7 954.588 p 1662.03 954.644 p 1700.38 954.673 p 1738.71 954.716 p 1777.06 954.744 p 1815.55 954.831 p 1854.01 954.918 p 1892.52 955.021 p 1930.97 955.113 p 1969.44 955.239 p 2007.94 955.31 p 2046.63 955.404 p 2085.25 955.537 p 2123.92 955.663 p 2162.61 955.769 p 2201.25 955.858 p 2239.93 955.971 p 2278.77 956.096 p 2317.6 956.206 p 2356.47 956.316 p 2395.33 956.464 p 2434.16 956.587 c 0.0310693 features 8 p 2434.28 995.186 p 2434.16 956.587 p 2434.05 917.967 p 2433.94 879.394 p 2433.85 840.771 p 2433.74 532.36 p 2433.78 493.815 p 2433.99 416.633 c 0.0528248 features 15 p 1547.3 992.963 p 1547.32 954.536 p 1547.29 916.101 p 1547.32 877.746 p 1547.31 839.295 p 1547.31 762.708 p 1547.33 724.542 p 1547.32 686.144 p 1547.25 648.311 p 1547.3 609.747 p 1547.32 571.588 p 1547.31 533.251 p 1547.3 494.999 p 1547.3 456.648 p 1547.32 418.32 c 0.0198546 features 5 p 659.676 995.154 p 660.001 879.362 p 660.135 840.781 p 660.202 802.18 p 660.243 763.63 c 0.0228937 features 16 p 1777.06 954.744 p 1776.96 916.341 p 1776.89 877.913 p 1776.82 839.552 p 1776.78 801.219 p 1776.75 762.857 p 1776.71 724.581 p 1776.69 686.292 p 1776.69 609.718 p 1776.7 571.407 p 1776.72 533.146 p 1776.78 494.779 p 1776.83 456.453 p 1776.91 418.082 p 1776.95 379.697 p 1777.04 341.245 c 0.0332217 features 18 p 2317.72 994.824 p 2317.6 956.206 p 2317.49 917.671 p 2317.39 879.127 p 2317.3 840.564 p 2317.23 802.052 p 2317.19 763.554 p 2317.16 725.009 p 2317.16 686.541 p 2317.17 648.32 p 2317.14 609.535 p 2317.14 571.005 p 2317.21 532.484 p 2317.26 494.02 p 2317.32 455.438 p 2317.39 416.916 p 2317.49 378.392 p 2317.61 339.805 c 0.0160167 features 18 p 2278.89 994.693 p 2278.77 956.096 p 2278.67 917.553 p 2278.56 879.016 p 2278.46 840.476 p 2278.4 801.968 p 2278.34 763.496 p 2278.3 724.984 p 2278.27 686.498 p 2278.31 648.28 p 2278.28 609.533 p 2278.3 571.059 p 2278.33 532.529 p 2278.38 494.068 p 2278.44 455.516 p 2278.54 417.021 p 2278.63 378.464 p 2278.73 339.925 c 0.0120067 features 18 p 2240.05 994.55 p 2239.93 955.971 p 2239.83 917.405 p 2239.73 878.897 p 2239.62 840.41 p 2239.56 801.879 p 2239.5 763.432 p 2239.46 724.915 p 2239.45 686.465 p 2239.48 648.326 p 2239.45 609.533 p 2239.46 571.045 p 2239.53 532.578 p 2239.59 494.111 p 2239.66 455.587 p 2239.74 417.109 p 2239.83 378.553 p 2239.93 340.042 c 0.0143481 features 18 p 2085.36 994.084 p 2085.25 955.537 p 2085.16 917.053 p 2085.08 878.609 p 2084.98 840.116 p 2084.91 801.684 p 2084.85 763.28 p 2084.82 724.821 p 2084.81 686.445 p 2084.9 648.342 p 2084.81 609.623 p 2084.83 571.23 p 2084.87 532.754 p 2084.92 494.366 p 2084.97 455.909 p 2085.07 417.439 p 2085.15 379.007 p 2085.24 340.46 c 0.0350241 features 18 p 698.538 995.03 p 698.657 956.39 p 698.764 917.834 p 698.846 879.203 p 698.955 840.708 p 699.011 802.103 p 699.095 763.59 p 699.158 725.075 p 699.156 686.48 p 699.171 648.306 p 699.155 609.426 p 699.111 570.86 p 699.111 532.357 p 699.054 493.811 p 698.976 455.285 p 698.839 416.67 p 698.762 378.136 p 698.652 339.527 c 0.0713229 features 18 p 737.4 994.873 p 737.544 956.286 p 737.644 917.723 p 737.754 879.141 p 737.819 840.632 p 737.895 802.022 p 737.942 763.545 p 737.951 725.032 p 737.989 686.46 p 738 648.311 p 738.01 609.426 p 738.001 570.901 p 737.915 532.391 p 737.851 493.866 p 737.798 455.347 p 737.727 416.772 p 737.629 378.218 p 737.521 339.683 c 0.0392182 features 18 p 2046.72 993.931 p 2046.63 955.404 p 2046.48 916.909 p 2046.38 878.511 p 2046.3 840.005 p 2046.25 801.632 p 2046.19 763.202 p 2046.17 724.792 p 2046.15 686.393 p 2046.14 648.293 p 2046.14 609.617 p 2046.16 571.262 p 2046.19 532.781 p 2046.24 494.418 p 2046.29 455.953 p 2046.42 417.512 p 2046.51 379.109 p 2046.62 340.573 c 0.015002 features 18 p 2008.06 993.811 p 2007.94 955.31 p 2007.84 916.817 p 2007.77 878.395 p 2007.69 839.929 p 2007.63 801.557 p 2007.59 763.136 p 2007.53 724.759 p 2007.52 686.358 p 2007.6 648.342 p 2007.52 609.618 p 2007.54 571.259 p 2007.59 532.823 p 2007.63 494.454 p 2007.68 456.052 p 2007.76 417.612 p 2007.84 379.179 p 2007.94 340.701 c 0.0292138 features 18 p 1892.62 993.542 p 1892.52 955.021 p 1892.42 916.607 p 1892.36 878.171 p 1892.26 839.736 p 1892.19 801.423 p 1892.14 763.01 p 1892.12 724.689 p 1892.1 686.364 p 1892.14 648.284 p 1892.09 609.687 p 1892.13 571.355 p 1892.18 533.024 p 1892.18 494.687 p 1892.25 456.257 p 1892.3 417.87 p 1892.41 379.436 p 1892.5 340.962 c 0.0192216 features 18 p 815.137 994.669 p 815.254 956.07 p 815.353 917.528 p 815.447 878.974 p 815.54 840.474 p 815.606 801.928 p 815.657 763.462 p 815.687 724.938 p 815.702 686.456 p 815.678 648.31 p 815.71 609.491 p 815.69 571.011 p 815.652 532.501 p 815.585 494.027 p 815.52 455.514 p 815.439 416.966 p 815.317 378.437 p 815.212 339.899 c 0.0143107 features 18 p 776.255 994.761 p 776.381 956.197 p 776.496 917.604 p 776.59 879.073 p 776.67 840.559 p 776.722 801.97 p 776.779 763.513 p 776.852 724.993 p 776.841 686.461 p 776.872 648.311 p 776.829 609.455 p 776.819 570.979 p 776.794 532.442 p 776.751 493.94 p 776.685 455.432 p 776.599 416.864 p 776.496 378.325 p 776.388 339.786 c 0.0216837 features 18 p 853.915 994.549 p 854.056 955.948 p 854.158 917.443 p 854.243 878.881 p 854.327 840.409 p 854.391 801.879 p 854.459 763.418 p 854.517 724.921 p 854.544 686.451 p 854.615 648.318 p 854.534 609.531 p 854.528 571.076 p 854.485 532.564 p 854.427 494.112 p 854.369 455.585 p 854.255 417.092 p 854.154 378.589 p 854.057 340.018 c 0.0199661 features 18 p 892.632 994.409 p 892.744 955.824 p 892.827 917.322 p 892.927 878.792 p 893.032 840.328 p 893.094 801.805 p 893.155 763.348 p 893.158 724.91 p 893.186 686.407 p 893.235 648.298 p 893.2 609.532 p 893.163 571.078 p 893.129 532.606 p 893.071 494.152 p 893.002 455.655 p 892.919 417.165 p 892.826 378.654 p 892.737 340.138 c 0.0166842 features 18 p 931.25 994.286 p 931.407 955.747 p 931.52 917.196 p 931.609 878.708 p 931.703 840.227 p 931.736 801.739 p 931.794 763.294 p 931.825 724.846 p 931.848 686.378 p 931.873 648.311 p 931.842 609.535 p 931.834 571.106 p 931.803 532.644 p 931.75 494.187 p 931.702 455.726 p 931.606 417.242 p 931.471 378.758 p 931.37 340.221 c 0.020828 features 18 p 1162.91 993.61 p 1163.03 955.127 p 1163.12 916.649 p 1163.2 878.204 p 1163.26 839.796 p 1163.31 801.392 p 1163.36 763.051 p 1163.38 724.67 p 1163.41 686.309 p 1163.54 648.34 p 1163.41 609.636 p 1163.39 571.263 p 1163.34 532.939 p 1163.3 494.518 p 1163.25 456.203 p 1163.17 417.724 p 1163.1 379.312 p 1163.02 340.878 c 0.0311884 features 18 p 1124.42 993.708 p 1124.56 955.182 p 1124.61 916.733 p 1124.73 878.272 p 1124.79 839.882 p 1124.84 801.457 p 1124.91 763.102 p 1124.94 724.699 p 1124.96 686.339 p 1124.91 648.317 p 1124.96 609.638 p 1124.94 571.238 p 1124.91 532.897 p 1124.84 494.477 p 1124.79 456.141 p 1124.72 417.657 p 1124.64 379.253 p 1124.55 340.755 c 0.0250101 features 18 p 1623.72 993.059 p 1623.7 954.588 p 1623.66 916.188 p 1623.65 877.753 p 1623.61 839.397 p 1623.6 801.078 p 1623.6 762.769 p 1623.57 724.491 p 1623.57 686.287 p 1623.68 648.343 p 1623.56 609.78 p 1623.55 571.522 p 1623.57 533.253 p 1623.57 494.91 p 1623.6 456.614 p 1623.6 418.225 p 1623.62 379.844 p 1623.66 341.396 c 0.0276222 features 18 p 1239.91 993.366 p 1239.99 954.924 p 1240.09 916.458 p 1240.16 878.085 p 1240.22 839.663 p 1240.28 801.294 p 1240.33 762.931 p 1240.34 724.608 p 1240.36 686.287 p 1240.4 648.317 p 1240.37 609.63 p 1240.35 571.349 p 1240.31 532.999 p 1240.26 494.659 p 1240.22 456.311 p 1240.15 417.893 p 1240.07 379.481 p 1239.98 341.073 c 0.00845673 features 17 p 2395.33 956.464 p 2395.22 917.86 p 2395.1 879.276 p 2395.01 840.711 p 2394.93 802.183 p 2394.87 763.639 p 2394.88 725.133 p 2394.83 686.571 p 2394.86 648.322 p 2394.83 609.516 p 2394.83 570.918 p 2394.89 532.407 p 2394.98 493.89 p 2395.03 455.289 p 2395.14 416.789 p 2395.22 378.161 p 2395.33 339.6 c 0.0466619 features 19 p 1854.11 993.437 p 1854.01 954.918 p 1853.91 916.515 p 1853.83 878.099 p 1853.77 839.685 p 1853.72 801.331 p 1853.68 762.997 p 1853.64 724.64 p 1853.62 686.366 p 1853.72 648.343 p 1853.62 609.709 p 1853.64 571.381 p 1853.66 533.064 p 1853.71 494.697 p 1853.76 456.333 p 1853.82 417.905 p 1853.9 379.537 p 1854 341.066 p 1854.07 302.628 c 0.0251512 features 17 p 2201.25 955.858 p 2201.16 917.335 p 2201.07 878.831 p 2200.98 840.335 p 2200.91 801.843 p 2200.85 763.384 p 2200.82 724.918 p 2200.78 686.457 p 2200.8 648.296 p 2200.8 609.583 p 2200.83 571.085 p 2200.83 532.641 p 2200.89 494.191 p 2200.95 455.663 p 2201.06 417.204 p 2201.16 378.668 p 2201.24 340.172 c 0.0193163 features 17 p 2356.47 956.316 p 2356.35 917.771 p 2356.26 879.224 p 2356.19 840.643 p 2356.13 802.13 p 2356.07 763.6 p 2355.99 725.093 p 2355.97 686.564 p 2355.94 648.299 p 2355.99 609.529 p 2356.04 570.963 p 2356.04 532.446 p 2356.09 493.972 p 2356.17 455.359 p 2356.23 416.854 p 2356.34 378.266 p 2356.46 339.688 c 0.0272521 features 16 p 2162.61 955.769 p 2162.47 917.282 p 2162.38 878.749 p 2162.29 840.269 p 2162.23 801.803 p 2162.18 763.352 p 2162.15 724.884 p 2162.14 686.461 p 2162.14 609.619 p 2162.16 571.143 p 2162.19 532.702 p 2162.24 494.249 p 2162.28 455.766 p 2162.38 417.282 p 2162.47 378.799 p 2162.57 340.252 c 0.0241978 features 17 p 2123.92 955.663 p 2123.83 917.175 p 2123.75 878.685 p 2123.67 840.204 p 2123.61 801.749 p 2123.55 763.317 p 2123.51 724.837 p 2123.46 686.457 p 2123.52 648.278 p 2123.47 609.624 p 2123.52 571.159 p 2123.56 532.756 p 2123.58 494.323 p 2123.67 455.834 p 2123.74 417.363 p 2123.83 378.891 p 2123.93 340.357 c 0.0280008 features 17 p 1738.71 954.716 p 1738.66 916.269 p 1738.6 877.878 p 1738.55 839.508 p 1738.5 801.203 p 1738.44 762.822 p 1738.42 724.586 p 1738.4 686.287 p 1738.36 648.306 p 1738.38 609.724 p 1738.42 571.44 p 1738.44 533.179 p 1738.48 494.817 p 1738.53 456.482 p 1738.56 418.137 p 1738.63 379.697 p 1738.68 341.296 c 0.0347926 features 17 p 1662.03 954.644 p 1661.99 916.189 p 1662 877.796 p 1661.92 839.426 p 1661.89 801.157 p 1661.85 762.768 p 1661.83 724.542 p 1661.83 686.274 p 1661.86 648.292 p 1661.81 609.756 p 1661.83 571.503 p 1661.85 533.222 p 1661.83 494.91 p 1661.89 456.558 p 1661.89 418.219 p 1661.99 379.812 p 1662.02 341.368 c 0.0331976 features 17 p 1815.55 954.831 p 1815.46 916.416 p 1815.4 878.001 p 1815.32 839.62 p 1815.29 801.25 p 1815.19 762.915 p 1815.18 724.618 p 1815.18 686.331 p 1815.1 648.312 p 1815.17 609.699 p 1815.2 571.41 p 1815.23 533.107 p 1815.23 494.769 p 1815.32 456.395 p 1815.38 417.981 p 1815.45 379.618 p 1815.53 341.168 c 0.033754 features 17 p 1201.49 955.034 p 1201.58 916.554 p 1201.69 878.125 p 1201.73 839.733 p 1201.81 801.306 p 1201.8 762.968 p 1201.86 724.641 p 1201.9 686.304 p 1201.89 648.309 p 1201.89 609.625 p 1201.87 571.308 p 1201.84 532.982 p 1201.79 494.573 p 1201.72 456.253 p 1201.63 417.823 p 1201.56 379.382 p 1201.47 340.974 c 0.0135049 features 17 p 1047.37 955.423 p 1047.47 916.883 p 1047.56 878.484 p 1047.69 840.04 p 1047.74 801.577 p 1047.8 763.211 p 1047.82 724.734 p 1047.84 686.374 p 1047.85 648.308 p 1047.84 609.597 p 1047.82 571.203 p 1047.8 532.792 p 1047.74 494.363 p 1047.69 455.987 p 1047.6 417.484 p 1047.51 379.084 p 1047.36 340.591 c 0.0169655 features 17 p 1278.45 954.827 p 1278.54 916.372 p 1278.6 878.015 p 1278.66 839.595 p 1278.76 801.223 p 1278.75 762.884 p 1278.79 724.586 p 1278.81 686.29 p 1278.84 648.307 p 1278.8 609.659 p 1278.81 571.378 p 1278.79 533.077 p 1278.7 494.745 p 1278.66 456.369 p 1278.59 417.994 p 1278.52 379.574 p 1278.44 341.165 c 0.0185493 features 17 p 1316.94 954.745 p 1317.04 916.298 p 1317.08 877.908 p 1317.16 839.543 p 1317.21 801.21 p 1317.26 762.849 p 1317.28 724.583 p 1317.3 686.278 p 1317.33 648.317 p 1317.3 609.704 p 1317.27 571.409 p 1317.24 533.138 p 1317.21 494.791 p 1317.17 456.443 p 1317.09 418.076 p 1317.03 379.655 p 1316.92 341.244 c 0.0249003 features 17 p 1969.44 955.239 p 1969.35 916.739 p 1969.26 878.337 p 1969.19 839.851 p 1969.15 801.518 p 1969.08 763.096 p 1969.05 724.758 p 1969.03 686.353 p 1969.07 648.286 p 1969.02 609.652 p 1969.04 571.296 p 1969.08 532.89 p 1969.14 494.538 p 1969.19 456.11 p 1969.25 417.722 p 1969.37 379.257 p 1969.47 340.765 c 0.0159354 features 17 p 1930.97 955.113 p 1930.89 916.684 p 1930.81 878.266 p 1930.74 839.794 p 1930.68 801.472 p 1930.64 763.057 p 1930.6 724.727 p 1930.58 686.36 p 1930.58 648.318 p 1930.58 609.687 p 1930.6 571.319 p 1930.63 532.945 p 1930.68 494.597 p 1930.73 456.199 p 1930.79 417.785 p 1930.86 379.347 p 1930.96 340.863 c 0.0114979 features 19 p 1700.47 993.131 p 1700.38 954.673 p 1700.35 916.227 p 1700.3 877.844 p 1700.23 839.466 p 1700.24 801.187 p 1700.2 762.795 p 1700.17 724.57 p 1700.15 686.293 p 1700.14 648.316 p 1700.15 609.743 p 1700.14 571.468 p 1700.13 533.206 p 1700.21 494.871 p 1700.24 456.522 p 1700.25 418.179 p 1700.32 379.735 p 1700.34 341.335 p 1700.39 302.839 c 0.0262582 features 19 p 1393.6 993.157 p 1393.63 954.656 p 1393.67 916.26 p 1393.73 877.813 p 1393.74 839.474 p 1393.78 801.123 p 1393.85 762.78 p 1393.84 724.521 p 1393.84 686.253 p 1393.9 648.321 p 1393.83 609.703 p 1393.81 571.421 p 1393.79 533.2 p 1393.74 494.804 p 1393.76 456.53 p 1393.68 418.145 p 1393.62 379.766 p 1393.61 341.317 p 1393.52 302.864 c 0.0223686 features 17 p 1508.64 954.551 p 1508.67 916.106 p 1508.69 877.724 p 1508.68 839.337 p 1508.69 801.041 p 1508.68 762.715 p 1508.7 724.458 p 1508.7 686.205 p 1508.7 648.303 p 1508.69 609.739 p 1508.69 571.531 p 1508.68 533.247 p 1508.67 494.961 p 1508.67 456.632 p 1508.64 418.272 p 1508.64 379.843 p 1508.63 341.451 c 0.00820811 features 17 p 1585.35 954.545 p 1585.34 916.147 p 1585.34 877.724 p 1585.32 839.357 p 1585.32 801.034 p 1585.3 762.74 p 1585.3 724.465 p 1585.3 686.262 p 1585.29 648.299 p 1585.28 609.785 p 1585.29 571.538 p 1585.29 533.276 p 1585.28 494.931 p 1585.3 456.652 p 1585.31 418.262 p 1585.32 379.885 p 1585.34 341.445 c 0.0121807 features 17 p 1470.33 954.594 p 1470.36 916.152 p 1470.38 877.763 p 1470.38 839.382 p 1470.41 801.079 p 1470.42 762.742 p 1470.43 724.468 p 1470.43 686.216 p 1470.45 648.317 p 1470.42 609.709 p 1470.41 571.498 p 1470.39 533.227 p 1470.38 494.912 p 1470.38 456.599 p 1470.33 418.238 p 1470.32 379.809 p 1470.28 341.401 c 0.00879744 features 17 p 1431.97 954.628 p 1432 916.183 p 1432.09 877.776 p 1432.1 839.433 p 1432.16 801.084 p 1432.13 762.768 p 1432.15 724.492 p 1432.18 686.235 p 1432.17 648.303 p 1432.16 609.717 p 1432.16 571.454 p 1432.14 533.222 p 1432.1 494.838 p 1432.06 456.566 p 1431.99 418.199 p 1432 379.805 p 1431.96 341.351 c 0.0230488 features 17 p 1355.31 954.699 p 1355.35 916.294 p 1355.42 877.858 p 1355.46 839.507 p 1355.5 801.179 p 1355.54 762.811 p 1355.56 724.557 p 1355.6 686.265 p 1355.57 648.306 p 1355.58 609.702 p 1355.57 571.41 p 1355.55 533.168 p 1355.48 494.794 p 1355.43 456.482 p 1355.38 418.118 p 1355.32 379.72 p 1355.28 341.28 c 0.0192259 features 17 p 1008.74 955.531 p 1008.83 916.988 p 1008.92 878.551 p 1009.02 840.087 p 1009.06 801.622 p 1009.12 763.242 p 1009.15 724.76 p 1009.18 686.374 p 1009.29 648.334 p 1009.18 609.55 p 1009.16 571.169 p 1009.14 532.716 p 1009.07 494.306 p 1009.01 455.879 p 1008.9 417.381 p 1008.82 378.943 p 1008.73 340.454 c 0.0279407 features 17 p 970.059 955.639 p 970.155 917.099 p 970.242 878.633 p 970.314 840.158 p 970.407 801.673 p 970.43 763.237 p 970.468 724.835 p 970.512 686.365 p 970.531 648.31 p 970.527 609.533 p 970.474 571.158 p 970.43 532.674 p 970.377 494.247 p 970.311 455.788 p 970.236 417.311 p 970.158 378.813 p 970.064 340.333 c 0.0235414 features 17 p 1086.04 955.288 p 1086.15 916.818 p 1086.23 878.378 p 1086.3 839.945 p 1086.35 801.536 p 1086.4 763.172 p 1086.44 724.731 p 1086.46 686.378 p 1086.52 648.317 p 1086.47 609.638 p 1086.45 571.23 p 1086.4 532.859 p 1086.35 494.432 p 1086.3 456.067 p 1086.22 417.595 p 1086.14 379.179 p 1086.04 340.679 c 0.0227999 
+"
+ name LensDistortion6
+ xpos -352
+ ypos -670
+}
+Shuffle {
+ in backward
+ name Shuffle9
+ xpos -352
+ ypos -357
+}
+push 0
+STMap {
+ inputs 2
+ uv rgba
+ name STMap4
+ xpos 219
+ ypos -363
+}
+Group {
+ name ArriLensDistortion1
+ help "ARRI's 35 mm format lenses have become the standard against which others are measured. Precisely designed and engineered, yet highly durable, these lenses offer exceptional performance across a wide range of applications."
+ tile_color 0xa479aaff
+ xpos 219
+ ypos -270
+ disable true
+ addUserKnob {20 ARRI}
+ addUserKnob {26 "" l "<b><u>Ultra Primes</u></b>"}
+ addUserKnob {4 lensModel l "Focal Lenght" M {12mm 16mm 20mm 24mm 32mm 40mm 50mm 85mm 100mm 135mm 180mm ""}}
+ lensModel 50mm
+ addUserKnob {26 ""}
+ addUserKnob {6 undistort l Undistort +STARTLINE}
+ undistort true
+ addUserKnob {68 overscanSelect l Overscan M {None Automatic User-Defined ""}}
+ overscanSelect User-Defined
+ addUserKnob {3 overscanX l X}
+ addUserKnob {3 overscanY l Y}
+ addUserKnob {26 ""}
+ addUserKnob {26 copyright l "" +STARTLINE T "ArriLenses v1.1 by Constantin Rukavitsin"}
+ addUserKnob {26 expectation l "" +STARTLINE T "Expects overscanned input."}
+}
+ Input {
+  inputs 0
+  name Source
+  xpos -403
+  ypos -804
+ }
+ Crop {
+  box {0 0 {width} {height}}
+  name Crop1
+  xpos -403
+  ypos -717
+ }
+ Dot {
+  name Dot12
+  xpos -369
+  ypos -631
+ }
+set Ne1a6e00 [stack 0]
+ Dot {
+  name Dot14
+  xpos -293
+  ypos -631
+ }
+set Ne1a6a80 [stack 0]
+ Dot {
+  name Dot13
+  xpos -195
+  ypos -631
+ }
+ Reformat {
+  type "to box"
+  box_width {{width+(2*parent.overscanX)}}
+  box_height {{height+(2*parent.overscanY)}}
+  box_fixed true
+  resize none
+  pbb true
+  name Reformat2
+  label "Overscan2\nUser-Defined"
+  xpos -229
+  ypos -532
+  disable {{!parent.overscan}}
+ }
+push $Ne1a6a80
+ Reformat {
+  type "to box"
+  box_width {{width*1.0606}}
+  box_height {{height*1.0606}}
+  box_fixed true
+  resize none
+  pbb true
+  name Reformat1
+  label "Overscan1\nAutomatic"
+  xpos -327
+  ypos -532
+  disable {{!parent.overscan}}
+ }
+push $Ne1a6e00
+ Switch {
+  inputs 3
+  which {{parent.overscanSelect}}
+  name Switch2
+  xpos -403
+  ypos -399
+  disable {{!parent.undistort}}
+ }
+ Dot {
+  name Dot1
+  xpos -369
+  ypos -309
+ }
+set N1755d880 [stack 0]
+ Dot {
+  name Dot10
+  xpos -283
+  ypos -309
+ }
+set N1755d500 [stack 0]
+ Dot {
+  name Dot9
+  xpos -197
+  ypos -309
+ }
+set N1755d180 [stack 0]
+ Dot {
+  name Dot8
+  xpos -111
+  ypos -309
+ }
+set N1755ce00 [stack 0]
+ Dot {
+  name Dot7
+  xpos -25
+  ypos -309
+ }
+set N1755ca80 [stack 0]
+ Dot {
+  name Dot6
+  xpos 61
+  ypos -309
+ }
+set N1755c700 [stack 0]
+ Dot {
+  name Dot5
+  xpos 147
+  ypos -309
+ }
+set N1755c380 [stack 0]
+ Dot {
+  name Dot4
+  xpos 233
+  ypos -309
+ }
+set N1755c000 [stack 0]
+ Dot {
+  name Dot3
+  xpos 319
+  ypos -309
+ }
+set N17577c00 [stack 0]
+ Dot {
+  name Dot2
+  xpos 405
+  ypos -309
+ }
+set N17577880 [stack 0]
+ Dot {
+  name Dot11
+  xpos 491
+  ypos -309
+ }
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 -0.00251428
+  distortion2 -0.00119706
+  invertDistortion {{!parent.undistort}}
+  cardScale {1.003725171 1.003725171 1}
+  a -0.002819081768
+  b -0.0008154451498
+  c 6.188752195e-06
+  alignmentCorrection {1.003050804 0.0001755959092 2.926668969e-07 -0.0001938510686 1.002609372 5.412244377e-07 -1.778698921 -0.8748891354 1}
+  name Arri_UP_180
+  xpos 457
+  ypos -168
+ }
+push $N17577880
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 -0.00702408
+  distortion2 0.00059331
+  invertDistortion {{!parent.undistort}}
+  cardScale {1.006472349 1.006472349 1}
+  a 0.0002294504375
+  b -0.004969264846
+  c -0.002121845726
+  alignmentCorrection {1 0 0 0 1 0 0 0 1}
+  name Arri_UP_135
+  xpos 371
+  ypos -168
+ }
+push $N17577c00
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 -0.0048225
+  distortion2 0.0005712484126
+  invertDistortion {{!parent.undistort}}
+  "Card Parameters" 1
+  cardScale {1.004269242 1.004269242 1}
+  a 0.0002932957432
+  b -0.003240938997
+  c -0.001712754834
+  alignmentCorrection {-3466.026123 -0.7582190037 -0.003171856981 -0.242942512 2.143562779e-05 1.881177158e-11 1092816.375 239.0601501 1}
+  name Arri_UP_100
+  xpos 285
+  ypos -168
+ }
+push $N1755c000
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.00281112
+  distortion2 -0.0002835910127
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9974789023 0.9974789023 1}
+  a -3.166417446e-05
+  b 0.001695228741
+  c 0.001100380556
+  alignmentCorrection {1 0 0 0 1 0 0 0 1}
+  name Arri_UP_85
+  xpos 199
+  ypos -168
+ }
+push $N1755c380
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.01122802
+  distortion2 0.00095375
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9879648685 0.9879648685 1}
+  a 0.004541669041
+  b 0.004737302195
+  c 0.00242894236
+  alignmentCorrection {0.9994665384 -0.000428260857 -8.16650811e-07 -8.757611067e-05 1.000195861 2.117951254e-07 0.0615593195 0.01775036566 1}
+  name Arri_UP_50
+  xpos 113
+  ypos -168
+ }
+push $N1755c700
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.00410296
+  distortion2 0.0008633330581
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9950585365 0.9950585365 1}
+  a 0.002829845296
+  b 0.001378101646
+  c 0.0003656337503
+  alignmentCorrection {1 0 0 0 1 0 0 0 1}
+  name Arri_UP_40
+  xpos 27
+  ypos -168
+ }
+push $N1755ca80
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.00876533
+  distortion2 -0.0002950285852
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9916007519 0.9916007519 1}
+  a 0.0009098150185
+  b 0.005376677494
+  c 0.002532978309
+  alignmentCorrection {0.9992177486 0.0003987204982 -4.991379683e-07 -0.0004754100519 0.9982125163 -7.202143593e-07 0.08562261611 -0.5607672334 1}
+  name Arri_UP_32
+  xpos -59
+  ypos -168
+ }
+push $N1755ce00
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.02676017
+  distortion2 -0.007557946257
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9811594486 0.9811594486 1}
+  a -0.0121318493
+  b 0.02249652147
+  c 0.0126739163
+  alignmentCorrection {1.002369404 0.0003539303725 2.333083131e-07 -0.0008470157627 0.9980030656 -8.66483731e-07 -0.6613090038 0.01397165749 1}
+  name Arri_UP_24
+  xpos -145
+  ypos -167
+ }
+push $N1755d180
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.02987668
+  distortion2 -0.00947697
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9800080061 0.9800080061 1}
+  a -0.01205980778
+  b 0.01811115257
+  c 0.01837520115
+  alignmentCorrection {1.001197457 0.0002682334743 -4.404707568e-07 0.0005500753759 1.00081265 3.036672922e-07 -1.52293992 -0.3853323758 1}
+  name Arri_UP_20
+  xpos -231
+  ypos -167
+ }
+push $N1755d500
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.03605628
+  distortion2 -0.0179321
+  invertDistortion {{!parent.undistort}}
+  cardScale {0.9821985364 0.9821985364 1}
+  a -0.02899587899
+  b 0.02838465385
+  c 0.02681010216
+  alignmentCorrection {1 0 0 0 1 0 0 0 1}
+  name Arri_UP_16
+  xpos -317
+  ypos -167
+ }
+push $N1755d880
+ LensDistortion {
+  serializeKnob ""
+  serialiseKnob "22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0"
+  distortion1 0.08263374
+  distortion2 -0.03051648
+  invertDistortion {{!parent.undistort}}
+  "Card Parameters" 1
+  cardScale {0.9504643083 0.9504643083 1}
+  a -0.03984513134
+  b 0.0390272215
+  c 0.07468524575
+  alignmentCorrection {1 0 0 0 1 0 0 0 1}
+  name Arri_UP_12
+  xpos -403
+  ypos -167
+ }
+ Switch {
+  inputs 11
+  which {{parent.lensModel}}
+  name Switch1
+  xpos -403
+  ypos -24
+ }
+ Crop {
+  box {0 0 {width} {height}}
+  reformat true
+  crop false
+  name Crop2
+  xpos -403
+  ypos 90
+ }
+set N175d4700 [stack 0]
+ Output {
+  name Output1
+  xpos -403
+  ypos 235
+ }
+push $N175d4700
+ Viewer {
+  fps 25
+  input_process false
+  name Viewer1
+  xpos -225
+  ypos 173
+ }
+end_group
+Group {
+ name Chromatik1
+ help "Chromatic aberration node using a real spectral gradient."
+ xpos 219
+ ypos 201
+ addUserKnob {20 User l Chromatik}
+ addUserKnob {41 center l "Center Point" T RadialVectorGenerator1.center}
+ addUserKnob {41 ratio l "Aspect Ratio" T RadialVectorGenerator1.ratio}
+ addUserKnob {26 ""}
+ addUserKnob {41 Multiplier l Size T Vector_Chromatic.Multiplier}
+ addUserKnob {26 ""}
+ addUserKnob {41 protect l "Protect Center" T RadialVectorGenerator1.protect}
+ addUserKnob {41 gamma l "Falloff Hardness" T RadialVectorGenerator1.gamma}
+ addUserKnob {41 rotate l Swirl T RadialVectorGenerator1.rotate}
+ addUserKnob {26 ""}
+ addUserKnob {41 saturation l Saturation T Vector_Chromatic.saturation}
+ addUserKnob {41 offset l Offset T Vector_Chromatic.offset}
+ addUserKnob {26 ""}
+ addUserKnob {41 min l "Min Samples" T Vector_Chromatic.min}
+ addUserKnob {41 max l "Max Samples" -STARTLINE T Vector_Chromatic.max}
+ addUserKnob {26 ""}
+ addUserKnob {26 spin_copyright l "" t "© <b>SPIN<span style=\"color:#b32026\">VFX</span></b>\nChromatik\nVersion 1.1\n2018" +STARTLINE T "<span style=\"color:#aaa;font-family:sans-serif;font-size:8pt\"><b>SPIN<span style=\"color:#b32026\">VFX</span></b> - Version 1.1 - 2018 - <a href=\"https://github.com/SpinVFX/spin_nuke_gizmos/\" style=\"color:#aaa\">Github Page</a></span>"}
+}
+ Input {
+  inputs 0
+  name Input
+  xpos 829
+  ypos -285
+ }
+ Dot {
+  name Dot52
+  tile_color 0xcccccc00
+  xpos 863
+  ypos -181
+ }
+set N1286dc00 [stack 0]
+ Group {
+  name RadialVectorGenerator1
+  xpos 985
+  ypos -185
+  disable {{"!\[exists parent.input]"}}
+  addUserKnob {20 genTab l Generator}
+  addUserKnob {12 center l "Center Point" t "Center of the Radial vectors"}
+  center {1547 648}
+  addUserKnob {7 ratio l "Aspect Ratio" t "Distort the circle to a different aspect ratio." R 0.5 2}
+  ratio 1
+  addUserKnob {26 ""}
+  addUserKnob {7 protect l "Protect Center" t "Create an area around your center that won't be affected by vectors. (0,0 vectors)\nOther vectors will be spread around that center so that there isn't a sharp transition.\n\nA value of 1 or above would protect the whole image, not producting any vectors."}
+  addUserKnob {7 gamma l Gamma t "Gamma the magnitude of the vectors, to create a sharper or smoother transition between the center and the outskirt areas." R 0.1 2}
+  gamma 1
+  addUserKnob {26 ""}
+  addUserKnob {7 rotate l Rotate t "Rotating the vectors can create either a zoom type of vectors (0, 180 rotation), a spin (90, 270 rotation) or a swirl for any value in between." R 0 360}
+  addUserKnob {7 multiply l Multiply t "Multpilies the overall value/length of the vectors." R 0 10}
+  multiply 1
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -908
+   ypos 131
+  }
+  Expression {
+   expr0 x/width
+   expr1 y/height
+   expr2 0
+   name Expression1
+   xpos -908
+   ypos 182
+  }
+  BlinkScript {
+   recompileCount 28
+   ProgramGroup 1
+   KernelDescription "2 \"RadialVectors\" iterate pixelWise 022dfefcb578cac450e99b3e9eaa966ae848c25352f9d35bd31e5f1e18b9e87e 2 \"src\" Read Point \"dst\" Write Point 7 \"Aspect Ratio\" Float 1 AACAPw== \"Center\" Float 2 AACAPwAAgD8= \"Protect Center\" Float 1 AAAAAA== \"Rotate Vectors\" Float 1 AAAAAA== \"Gamma\" Float 1 AACAPw== \"Multiply\" Float 1 AACAPw== \"size\" Float 2 AAAAAAAAAAA= 7 \"ratio\" 1 1 \"center\" 2 1 \"protect\" 1 1 \"rotate\" 1 1 \"gamma\" 1 1 \"multiply\" 1 1 \"size\" 2 1 1 \"_imgDiag\" Float 1 1 AAAAAA=="
+   kernelSource "kernel RadialVectors : ImageComputationKernel<ePixelWise>\n\{\n  Image<eRead, eAccessPoint, eEdgeClamped> src;  //the input image\n  Image<eWrite> dst;  //the output image\n\n  param:\n    float ratio;  //This parameter is made available to the user.\n    float2 center;\n    float protect;\n    float rotate;\n    float gamma;\n    float multiply;\n    float2 size;\n\n  local:\n\n    float _imgDiag; //Image diagonal\n\n  //In define(), parameters can be given labels and default values.\n  void define() \{\n    defineParam(ratio, \"Aspect Ratio\", 1.0f);\n    defineParam(center, \"Center\", float2(1.0f,1.0f));\n    defineParam(protect, \"Protect Center\", 0.0f);\n    defineParam(rotate, \"Rotate Vectors\", 0.0f);\n    defineParam(gamma, \"Gamma\", 1.0f);\n    defineParam(multiply, \"Multiply\", 1.0f);\n  \}\n\n  //The init() function is run before any calls to kernel().\n  void init() \{\n    _imgDiag = length(size);\n  \}\n\n  //The kernel function is run at every pixel to produce the output.\n  void process(int2 pos) \{\n    //float2 posf = float2(pos.x, pos.y);\n    float2 posf = float2(src(0)*size.x, src(1)*size.y);\n    float2 v = posf-center;\n    v = v/(_imgDiag/2.0f);\n    \n    // Edit vector magnitude: Blackpoint+clamp for protecting center\n    if (protect < (1.0f))\{ //If we protect the whole image then we don't need to output any vectors\n      // Edit aspect Ratio\n      v = float2(v.x, v.y * ratio);\n      // Find vector Magnitude so that can be edited \n      float magv = length(v);\n\n      magv = max((magv - protect) / (1-protect),0.0f);\n      magv = pow(magv, 1/gamma);\n      float2 normv;\n      if (magv>0)\{\n        normv = normalize(v);\n      \}\n      else \{\n        normv = float2(1.0f, 0.0f);\n      \}\n      v = normv * magv;\n      // Rotate Normals\n      if (rotate != 0.0f)\{\n        float r = rotate * 3.141592653589793f / 180.0f;\n        v = float2( v.x * cos(r) - v.y * sin(r), v.x * sin(r) + v.y * cos(r));\n      \}\n      // Multiply Output\n      //v = v * (_imgDiag/4) * multiply;\n      v = v * multiply;\n      dst() = float4(v.x, v.y, 0.0f, 0.0f);\n      //dst() = float4(magv, magv, magv, 0.0f);\n    \}\n    else\{\n      dst() = float4(0.0f);\n    \}\n\n   \}\n\};\n\n"
+   rebuild ""
+   "RadialVectors_Aspect Ratio" {{parent.ratio}}
+   RadialVectors_Center {{parent.center} {parent.center}}
+   "RadialVectors_Protect Center" {{parent.protect}}
+   "RadialVectors_Rotate Vectors" {{parent.rotate}}
+   RadialVectors_Gamma {{parent.gamma}}
+   RadialVectors_Multiply {{parent.multiply}}
+   RadialVectors_size {{width} {height}}
+   rebuild_finalise ""
+   name BlinkScript8
+   xpos -908
+   ypos 271
+  }
+  Output {
+   name Output1
+   xpos -908
+   ypos 340
+  }
+  StickyNote {
+   inputs 0
+   name StickyNote1
+   label "We base the calculation on a modified STMAP instead of actual x/y because blinkscript doesn't handle proxy res very well"
+   xpos -797
+   ypos 180
+  }
+ end_group
+ Dot {
+  name Dot1
+  tile_color 0xcccccc00
+  xpos 1019
+  ypos -41
+ }
+push $N1286dc00
+ Group {
+  inputs 2
+  name Vector_Chromatic
+  xpos 829
+  ypos -45
+  disable {{"!\[exists parent.input]"}}
+  addUserKnob {20 Chromatik}
+  addUserKnob {26 title l "Generate Gradient"}
+  addUserKnob {41 lut l "" -STARTLINE T ColorLookup1.lut}
+  addUserKnob {6 clampg l "Clamp Gradient" +STARTLINE}
+  clampg true
+  addUserKnob {7 saturation l Saturation R 0 2}
+  saturation 1
+  addUserKnob {26 ""}
+  addUserKnob {7 Multiplier R 0 250}
+  Multiplier 7
+  addUserKnob {7 offset l Offset t "Negate Vectors (-1)\nCenter Vectors (0)\nRegular Vectors (1)" R -1 1}
+  addUserKnob {26 ""}
+  addUserKnob {3 min l "Min Samples" t "How many times the operation will be run.\nHigher Values = Smoother result = Slower render"}
+  min 5
+  addUserKnob {3 max l "Max Samples" t "How many times the operation will be run.\nHigher Values = Smoother result = Slower render" -STARTLINE}
+  max 150
+  addUserKnob {6 normalize l Normalize t "Conserves original color better" +STARTLINE}
+  normalize true
+  addUserKnob {6 XYZ_space t "Process in XYZ space." -STARTLINE}
+  addUserKnob {6 bbox l "BBox Union" t "Union the BBox of the image and the vectormap rather than using the image's bbox" -STARTLINE}
+ }
+  BackdropNode {
+   inputs 0
+   name BackdropNode1
+   tile_color 0x71c67100
+   label "Gradient Generator"
+   note_font_size 42
+   xpos 368
+   ypos -422
+   bdheight 293
+  }
+  Input {
+   inputs 0
+   name Img
+   xpos 206
+   ypos -530
+  }
+  Dot {
+   name Dot3
+   xpos 240
+   ypos -448
+  }
+set N1288d880 [stack 0]
+  Input {
+   inputs 0
+   name Vector_Map
+   xpos 587
+   ypos -533
+   number 1
+  }
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos 587
+   ypos -452
+   disable {{parent.bbox}}
+  }
+set N1288d180 [stack 0]
+  Dot {
+   name Dot1
+   tile_color 0x9e3c6300
+   xpos 621
+   ypos 18
+  }
+  Reformat {
+   inputs 0
+   type "to box"
+   box_width 100
+   box_height 4
+   box_fixed true
+   name Reformat2
+   xpos 378
+   ypos -342
+  }
+  Ramp {
+   p0 {0 0}
+   p1 {99 0}
+   name Ramp1
+   xpos 378
+   ypos -316
+  }
+  ColorLookup {
+   lut {master {}
+     red {curve C x-0.05884177983 -0.004536509514 x0.01015070826 0 s0.1400000006 x0.1017729789 0.1076634228 x0.1737238914 0 x0.4376193285 0 x0.6908689141 0.9834897519 S x0.7745882273 0.8638155506 C x0.871829927 0.2472041845 S x1.006029606 0 C x1.015911102 0}
+     green {curve x0.0120717017 0 x0.1647586226 0 x0.2049030662 0 x0.5025014281 0.9204615951 x0.6684435606 0.3995269537 x0.7975517511 0 x0.905554533 0 x1.027772069 0 x1.02872479 0}
+     blue {curve x-0.06189316511 0 s0 x0.01178315841 0 x0.06641255319 0.1264923215 C x0.1299110055 0.6372379661 x0.3119857609 0.7685220838 S x0.360124141 0.3393670321 x0.5631426573 0 C x0.7848843336 0 S x0.9272136688 0 x1.066449285 0 x1.069784403 0}
+     alpha {}}
+   name ColorLookup1
+   xpos 378
+   ypos -290
+  }
+  Clamp {
+   minimum_enable {{parent.clampg}}
+   maximum_enable false
+   name Clamp4
+   xpos 378
+   ypos -264
+  }
+  Saturation {
+   saturation {{parent.saturation}}
+   name Saturation1
+   xpos 378
+   ypos -226
+  }
+  Expression {
+   expr3 clamp(.2126*r+.7152*g+0.0722*b)
+   name Luma_to_Alpha
+   xpos 378
+   ypos -160
+  }
+  Colorspace {
+   colorspace_out CIE-XYZ
+   name Colorspace2
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos 378
+   ypos -91
+   disable {{1-parent.XYZ_space}}
+  }
+push $N1288d880
+  Colorspace {
+   colorspace_out CIE-XYZ
+   name Colorspace1
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos 206
+   ypos -90
+   disable {{1-parent.XYZ_space}}
+  }
+  Dot {
+   name Dot2
+   xpos 240
+   ypos 18
+  }
+  BlinkScript {
+   inputs 3
+   recompileCount 8
+   ProgramGroup 1
+   KernelDescription "2 \"Chromatic\" iterate pixelWise 6f453a157371752868a37327fbdb66c1856663f8af8ccd497d5f5f6edc9785cd 4 \"src\" Read Random \"gradient\" Read Random \"vector\" Read Point \"dst\" Write Point 6 \"Multiply\" Float 1 AACAPw== \"Min Samples\" Int 1 BAAAAA== \"Max Samples\" Int 1 UAAAAA== \"Offset\" Float 1 AAAAAA== \"Normalize\" Bool 1 AQ== \"proxy\" Float 1 AAAAAA== 6 \"multiply\" 1 1 \"min_samples\" 1 1 \"max_samples\" 1 1 \"offset\" 1 1 \"normalize\" 1 1 \"proxy\" 1 1 0"
+   kernelSource "kernel Chromatic : ImageComputationKernel<ePixelWise>\n\{\n  Image<eRead, eAccessRandom, eEdgeClamped> src;  //the input image\n  Image<eRead, eAccessRandom, eEdgeClamped> gradient;  //color gradient\n  Image<eRead, eAccessPoint, eEdgeClamped> vector;  //VectorMap\n  Image<eWrite> dst;  //the output image\n\n  param:\n    float multiply;  //This parameter is made available to the user.\n    int min_samples;\n    int max_samples;\n    float offset;\n    bool normalize;\n    float proxy;\n\n  local:\n\n\n  //In define(), parameters can be given labels and default values.\n  void define() \{\n    defineParam(multiply, \"Multiply\", 1.0f);\n    defineParam(min_samples, \"Min Samples\", 4); \n    defineParam(max_samples, \"Max Samples\", 80); \n    defineParam(offset, \"Offset\", 0.0f);\n    defineParam(normalize, \"Normalize\", true);\n  \}\n\n  //The kernel function is run at every pixel to produce the output.\n  void process(int2 pos) \{\n    SampleType(src) valueSum(0);\n    SampleType(src) curVal(0);\n    float2 fpos = float2(pos.x,pos.y);  \n    float nSample;\n    int l;\n\n\n    //Read Vector value\n    float2 v = float2(vector(0), vector(1));\n    // Take into account the proxy scale\n    v = v*proxy;\n    //Vector Length int\n    l = int(floor(length(v)*fabs(multiply)+0.5));\n    \n\n    //Define Adaptive Sampling\n    int samples;\n    if (l < min_samples)\{samples = min_samples;\}\n    else if (l > max_samples)\{samples = max_samples;\}\n    else \{samples = l;\}\n\n\n    //Init value for normalization \n    float4 normSum = float4(0.0f) ;\n\n    // Loop through Samples\n    for( int a = 0; a < samples; a ++ )\n    \{\n      // Define normalised index of this sample (0-1 range)\n      nSample = float(a)/samples;\n\n      // Define the vector value for this pass (depending on offset)\n      float2 Ofs = ((v*nSample)-(v*(offset/2.0f+0.5f)))*multiply+fpos;\n\n      curVal = bilinear(src,Ofs.x,Ofs.y); //This function does a bilinear sampling of the scr image\n      int gIndex = int(99.0f*proxy*nSample+0.5f);\n      float4 gradVal = gradient(gIndex,0);\n      valueSum += curVal*gradVal;\n      normSum += float4(gradVal);\n    \}\n\n    if (normalize)\{\n      dst() = (valueSum/float(samples))/(normSum/float(samples));\n    \}\n    else \{\n      dst() = (valueSum/float(samples));\n    \}\n  \}\n\};\n\n"
+   rebuild ""
+   Chromatic_Multiply {{parent.Multiplier}}
+   "Chromatic_Min Samples" {{parent.min}}
+   "Chromatic_Max Samples" {{parent.max}}
+   Chromatic_Offset {{parent.offset}}
+   Chromatic_Normalize {{parent.normalize x50 0}}
+   Chromatic_proxy {{"proxy ? (proxy_type ? proxy_scale : \[lindex \[value proxy_format] 0] / \[lindex \[value format] 0]) : 1"}}
+   rebuild_finalise ""
+   name BlinkScript10
+   xpos 378
+   ypos 8
+  }
+  Colorspace {
+   colorspace_in CIE-XYZ
+   name Colorspace3
+   label "input \[value colorspace_in]\noutput \[value colorspace_out]"
+   xpos 378
+   ypos 116
+   disable {{1-parent.XYZ_space}}
+  }
+  Clamp {
+   maximum_enable false
+   name Clamp1
+   xpos 378
+   ypos 204
+  }
+  Output {
+   name Output1
+   xpos 378
+   ypos 272
+  }
+push $N1288d180
+  Viewer {
+   frame_range 1-27
+   name Viewer1
+   xpos 488
+   ypos -316
+  }
+ end_group
+set Ne1b0c00 [stack 0]
+ Output {
+  name Output1
+  xpos 829
+  ypos 56
+ }
+push $Ne1b0c00
+ Viewer {
+  frame_range 1-27
+  name Viewer1
+  xpos 829
+  ypos -19
+ }
+end_group
+Reformat {
+ format "2578 1080 0 0 2578 1080 1 kensukes_kingdom"
+ resize none
+ name Reformat2
+ xpos 219
+ ypos 1214
+}
+Crop {
+ box {0 0 2578 1080}
+ name Crop1
+ xpos 219
+ ypos 1252
+}
