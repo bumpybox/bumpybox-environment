@@ -1,6 +1,5 @@
 from functools import partial
 
-import pymel.core as pm
 import maya.cmds as cmds
 
 import ZvParentMaster
@@ -91,13 +90,13 @@ def get_all_nodes(node_list):
 
     controls = []
     for set in [x + ":controls_SET" for x in namespaces]:
-        controls.extend(pm.PyNode(set).members())
+        controls.extend(cmds.sets(set, query=True))
 
     return controls
 
 
 def select_all(node_list):
-    pm.select(get_all_nodes(node_list))
+    cmds.select(get_all_nodes(node_list))
 
 
 def reset_all_cmd(node_list, *args):
@@ -106,13 +105,13 @@ def reset_all_cmd(node_list, *args):
     for node in nodes:
         if "world" in node.name():
             selection_nodes.remove(node)
-    pm.select(selection_nodes)
+    cmds.select(selection_nodes)
     resetSelection()
 
 
 def key_all_cmd(node_list, *args):
     select_all(node_list)
-    pm.setKeyframe()
+    cmds.setKeyframe()
 
 
 def select_all_cmd(node_list, *args):
@@ -120,9 +119,9 @@ def select_all_cmd(node_list, *args):
 
 
 def align_cmd(node_list, *args):
-    scale = node_list[0].scale.get()
-    pm.matchTransform(node_list[0], node_list[1])
-    node_list[0].scale.set(scale)
+    scale = cmds.getAttr(node_list[0] + ".scale")[0]
+    cmds.matchTransform(node_list[0], node_list[1])
+    cmds.setAttr(node_list[0] + ".scale", *scale)
 
 
 def zv_attach_cmd(node_list, *args):
@@ -134,18 +133,51 @@ def zv_detach_cmd(node_list, *args):
 
 
 def zv_destroy_cmd(node_list, *args):
+    # Remove any scale constraints.
+    target_parent = cmds.listRelatives(node_list[0], parent=True)[0]
+    if not target_parent.endswith("_SN"):
+        raise ValueError(
+            "\"{}\" does not have ZV parents.".format(node_list[0])
+        )
+
+    target_ph = cmds.listRelatives(target_parent, parent=True)[0]
+    cmds.delete(cmds.listConnections(target_ph, type="scaleConstraint"))
+
+    # Delete ZV link.
     ZvParentMaster.destroy()
 
 
+def zv_custom_attach_cmd(node_list, *args):
+    # Setup parent/scale constrained locator.
+    target_parent = cmds.listRelatives(node_list[0], parent=True)[0]
+    if not target_parent.endswith("_SN"):
+        raise ValueError(
+            "\"{}\" does not have ZV parents.".format(node_list[0])
+        )
+
+    null = cmds.group(empty=True, name=(node_list[1] + "_link"))
+    align_cmd([null, node_list[0]])
+    cmds.parentConstraint(node_list[1], null, maintainOffset=True)
+
+    # ZV attach target to locator.
+    cmds.select(clear=True)
+    cmds.select([node_list[0], null])
+    ZvParentMaster.attach()
+
+    # Scale constrain to source.
+    target_ph = cmds.listRelatives(target_parent, parent=True)[0]
+    cmds.scaleConstraint(node_list[1], target_ph, maintainOffset=True)
+
+
 def pre_command(*args):
-    if pm.popupMenu(WindowName, ex=True):
+    if cmds.popupMenu(WindowName, ex=True):
         # Clear existing items for the wrapped commands, or we
         # could just edit them
-        pm.popupMenu(WindowName, e=True, deleteAllItems=True)
-        pm.setParent(WindowName, menu=True)
+        cmds.popupMenu(WindowName, e=True, deleteAllItems=True)
+        cmds.setParent(WindowName, menu=True)
 
         # Context sensitive
-        selection = pm.selected()
+        selection = cmds.ls(selection=True, long=True)
         selection_count = len(selection)
 
         # Dont re-build if we have nothing selected
@@ -153,7 +185,7 @@ def pre_command(*args):
             return
 
         # Select all
-        pm.menuItem(
+        cmds.menuItem(
             label="Select All",
             command=partial(select_all_cmd, selection),
             radialPosition=PositionNorthWest,
@@ -161,7 +193,7 @@ def pre_command(*args):
         )
 
         # Key all
-        pm.menuItem(
+        cmds.menuItem(
             label="Key All",
             command=partial(key_all_cmd, selection),
             radialPosition=PositionWest,
@@ -169,7 +201,7 @@ def pre_command(*args):
         )
 
         # Reset all
-        pm.menuItem(
+        cmds.menuItem(
             label="Reset All",
             command=partial(reset_all_cmd, selection),
             radialPosition=PositionSouthWest,
@@ -177,7 +209,7 @@ def pre_command(*args):
         )
 
         # zv detach
-        pm.menuItem(
+        cmds.menuItem(
             label="zv detach",
             command=partial(zv_detach_cmd, selection),
             radialPosition=PositionSouth,
@@ -185,7 +217,7 @@ def pre_command(*args):
         )
 
         # zv destroy
-        pm.menuItem(
+        cmds.menuItem(
             label="zv destroy",
             command=partial(zv_destroy_cmd, selection),
             radialPosition=PositionSouthEast,
@@ -194,17 +226,24 @@ def pre_command(*args):
 
         if selection_count >= 2:
             # Align
-            pm.menuItem(
+            cmds.menuItem(
                 label="Align",
                 command=partial(align_cmd, selection),
                 radialPosition=PositionNorth,
                 parent=WindowName
             )
             # zv attach
-            pm.menuItem(
+            cmds.menuItem(
                 label="zv attach",
                 command=partial(zv_attach_cmd, selection),
                 radialPosition=PositionNorthEast,
+                parent=WindowName
+            )
+            # zv custom attach
+            cmds.menuItem(
+                label="zv custom attach",
+                command=partial(zv_custom_attach_cmd, selection),
+                radialPosition=PositionEast,
                 parent=WindowName
             )
 
@@ -244,10 +283,10 @@ def on_open(*args, **kwargs):
 
 
 def main():
-    if pm.popupMenu(WindowName, ex=True):
-        pm.deleteUI(WindowName)
+    if cmds.popupMenu(WindowName, ex=True):
+        cmds.deleteUI(WindowName)
 
-    pm.popupMenu(
+    cmds.popupMenu(
         WindowName,
         ctl=True,
         sh=True,
@@ -265,7 +304,7 @@ try:
 except ImportError:
     pass
 
-pm.evalDeferred("main()")
-pm.evalDeferred(
+cmds.evalDeferred("main()")
+cmds.evalDeferred(
     "from bumpybox_environment.maya import shelves;shelves.create()"
 )
